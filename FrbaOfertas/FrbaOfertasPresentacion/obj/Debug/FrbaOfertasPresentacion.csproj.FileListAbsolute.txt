@@ -1,0 +1,5 @@
+C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertasPresentacion\bin\Debug\FrbaOfertasPresentacion.dll
+C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertasPresentacion\bin\Debug\FrbaOfertasPresentacion.pdb
+C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertasPresentacion\obj\Debug\FrbaOfertasPresentacion.csprojResolveAssemblyReference.cache
+C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertasPresentacion\obj\Debug\FrbaOfertasPresentacion.dll
+C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertasPresentacion\obj\Debug\FrbaOfertasPresentacion.pdb

@@ -44,11 +44,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbmCliente\Form1.cs">
+    <Compile Include="AbmCliente\FrmCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmCliente\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AbmCliente\FrmCliente.Designer.cs">
+      <DependentUpon>FrmCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmCliente\FrmClienteEditar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmCliente\FrmClienteEditar.Designer.cs">
+      <DependentUpon>FrmClienteEditar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmCliente\FrmCRUDCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmCliente\FrmCRUDCliente.Designer.cs">
+      <DependentUpon>FrmCRUDCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmProveedor\Form1.cs">
       <SubType>Form</SubType>
@@ -86,11 +98,17 @@
     <Compile Include="Facturar\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="LogIn\FrmInicioDeSession.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="LogIn\FrmInicioDeSession.Designer.cs">
+      <DependentUpon>FrmInicioDeSession.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Principal.Designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
     </Compile>
     <Compile Include="ListadoEstadistico\Form1.cs">
       <SubType>Form</SubType>
@@ -100,6 +118,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AbmCliente\FrmCliente.resx">
+      <DependentUpon>FrmCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmCliente\FrmClienteEditar.resx">
+      <DependentUpon>FrmClienteEditar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmCliente\FrmCRUDCliente.resx">
+      <DependentUpon>FrmCRUDCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogIn\FrmInicioDeSession.resx">
+      <DependentUpon>FrmInicioDeSession.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -108,6 +141,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -121,6 +155,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FrbaOfertasPresentacion\FrbaOfertasPresentacion.csproj">
+      <Project>{0c6fe85b-6ba8-4286-a1e8-50efdb459275}</Project>
+      <Name>FrbaOfertasPresentacion</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
