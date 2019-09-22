@@ -25,8 +25,14 @@ namespace FrbaOfertas.AbmCliente
 
         public String Nombre
         {
-            get { return btnAceptar.Text; }
-            set { btnAceptar.Text = value.ToString(); }
+            get { return txtNombre.Text; }
+            set { txtNombre.Text = value.ToString(); }
+        }
+
+        public String Apellido
+        {
+            get { return txtApellido.Text; }
+            set { txtApellido.Text = value.ToString(); }
         }
 
         public List<Cliente> Clientes
@@ -45,7 +51,7 @@ namespace FrbaOfertas.AbmCliente
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            _presenter.Buscar();
+            _presenter.BuscarConFiltros();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -67,6 +73,11 @@ namespace FrbaOfertas.AbmCliente
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             mniAgregar_Click(sender, e);
+        }
+
+        private void btnBuscarTodos_Click(object sender, EventArgs e)
+        {
+            _presenter.Buscar();
         }
 
  

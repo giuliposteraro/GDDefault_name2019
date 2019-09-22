@@ -11,6 +11,8 @@ namespace FrbaOfertasPresentacion.AbmCliente
     {
         string Nombre { get; set; }
 
+        string Apellido { get; set; }
+
         List<Cliente> Clientes { get; set; }
     }
 }

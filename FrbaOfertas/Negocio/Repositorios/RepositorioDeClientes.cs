@@ -21,5 +21,21 @@ namespace Negocio.Repositorios
             lista = this.maper.mapearAEntidad(BuscarTodos());
             return lista;
         }
+
+
+
+        public List<Cliente> BuscarConFiltros(string Nombre, string Apellido)
+        {
+            List<Cliente> lista = new List<Cliente>();
+
+            Dictionary<string, object[]> parametros = new Dictionary<string, object[]>();
+            if (Nombre != string.Empty) parametros.Add("Cli_Nombre", new object[2] {Nombre,TipoDeComparador.eID.Texto});
+            if (Apellido != string.Empty) parametros.Add("Cli_Apellido", new object[2] { Apellido, TipoDeComparador.eID.TextoExacto });
+
+            lista = this.maper.mapearAEntidad(BuscarTodosPorFiltro(parametros));
+            return lista;
+        }
+
+        
     }
 }

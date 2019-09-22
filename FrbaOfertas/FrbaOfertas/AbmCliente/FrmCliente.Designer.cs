@@ -35,7 +35,7 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnAceptar = new System.Windows.Forms.Button();
+            this.btnBuscarTodos = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnLimpiar = new System.Windows.Forms.Button();
@@ -48,6 +48,10 @@
             this.mniEliminar = new System.Windows.Forms.ToolStripMenuItem();
             this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txtApellido = new System.Windows.Forms.TextBox();
             this.panComandos.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -75,7 +79,6 @@
             this.panComandos.Controls.Add(this.btnModificar);
             this.panComandos.Controls.Add(this.btnAgregar);
             this.panComandos.Controls.Add(this.btnCancelar);
-            this.panComandos.Controls.Add(this.btnAceptar);
             this.panComandos.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panComandos.Location = new System.Drawing.Point(0, 289);
             this.panComandos.Name = "panComandos";
@@ -132,17 +135,18 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // btnAceptar
+            // btnBuscarTodos
             // 
-            this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAceptar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAceptar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnAceptar.Location = new System.Drawing.Point(526, 4);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(75, 25);
-            this.btnAceptar.TabIndex = 0;
-            this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnBuscarTodos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBuscarTodos.BackColor = System.Drawing.SystemColors.Control;
+            this.btnBuscarTodos.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnBuscarTodos.Location = new System.Drawing.Point(494, 45);
+            this.btnBuscarTodos.Name = "btnBuscarTodos";
+            this.btnBuscarTodos.Size = new System.Drawing.Size(100, 25);
+            this.btnBuscarTodos.TabIndex = 0;
+            this.btnBuscarTodos.Text = "Buscar Todos";
+            this.btnBuscarTodos.UseVisualStyleBackColor = false;
+            this.btnBuscarTodos.Click += new System.EventHandler(this.btnBuscarTodos_Click);
             // 
             // label1
             // 
@@ -159,8 +163,13 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtApellido);
+            this.panel1.Controls.Add(this.txtNombre);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnLimpiar);
             this.panel1.Controls.Add(this.btnBuscar);
+            this.panel1.Controls.Add(this.btnBuscarTodos);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 19);
             this.panel1.Name = "panel1";
@@ -256,6 +265,38 @@
             this.colApellido.HeaderText = "Apellido";
             this.colApellido.Name = "colApellido";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(21, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Nombre:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(255, 14);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(47, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Apellido:";
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Location = new System.Drawing.Point(74, 11);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(174, 20);
+            this.txtNombre.TabIndex = 6;
+            // 
+            // txtApellido
+            // 
+            this.txtApellido.Location = new System.Drawing.Point(308, 11);
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Size = new System.Drawing.Size(174, 20);
+            this.txtApellido.TabIndex = 7;
+            // 
             // FrmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -272,6 +313,7 @@
             this.Load += new System.EventHandler(this.FrmCliente_Load);
             this.panComandos.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
@@ -288,7 +330,7 @@
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Button btnBuscarTodos;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnLimpiar;
@@ -301,5 +343,9 @@
         private System.Windows.Forms.ToolStripMenuItem mniEliminar;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn colApellido;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtApellido;
+        private System.Windows.Forms.TextBox txtNombre;
     }
 }

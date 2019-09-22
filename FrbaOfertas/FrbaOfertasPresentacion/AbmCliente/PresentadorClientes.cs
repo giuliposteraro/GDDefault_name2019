@@ -18,7 +18,7 @@ namespace FrbaOfertasPresentacion.AbmCliente
         }
         public void IniciarVista()
         {
-            _vista.Nombre = "nuevo";
+          
 
         }
         public void ActualizarVista()
@@ -36,6 +36,13 @@ namespace FrbaOfertasPresentacion.AbmCliente
             
         }
 
+        public void BuscarConFiltros()
+        {
+            var maper = new MaperDeClientes();
+            var repo = new RepositorioDeClientes(maper);
+
+            _vista.Clientes = repo.BuscarConFiltros(_vista.Nombre, _vista.Apellido);
+        }
 
     }
 

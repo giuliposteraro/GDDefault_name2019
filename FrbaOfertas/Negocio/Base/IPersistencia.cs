@@ -11,7 +11,7 @@ namespace Negocio.Base
     public class IPersistencia<T>
     {
         
-        public MaperBase<T> maper;
+        internal MaperBase<T> maper;
         private SqlConnection conn;
 
         internal void InicializarConexion()
@@ -26,7 +26,7 @@ namespace Negocio.Base
             conn.Close();
         }
 
-        public DataTable BuscarTodos()
+        internal DataTable BuscarTodos()
         { 
             try
             {
@@ -52,6 +52,63 @@ namespace Negocio.Base
                 CerrarConexion();
             }
         }
+
+
+        internal DataTable BuscarTodosPorFiltro(Dictionary<string, object[]> parametros)
+        {
+            try
+            {
+                InicializarConexion();
+                SqlCommand command = conn.CreateCommand();
+                command.Connection = conn;
+
+                string where = "";
+                for (int i = 0; i < parametros.Count(); i++ )
+                {
+                    var item = parametros.ElementAt(i);
+                    var itemKey = item.Key;
+                    var itemValue = item.Value[0];
+                    var comparador = "";
+                    var union = "and";
+                    
+                    if (i == 0)
+                        union = "where";
+
+                    switch ((int)item.Value[1])
+                    {
+                        case 0:
+                            comparador = "=";
+                            break;
+                        case 1:
+                            comparador = "like ";
+                            itemValue = "%" + itemValue + "%";
+                            break;
+                    }
+                    
+                    where = string.Format("{0} {1} {2} {3}@{4}", where, union, itemKey, comparador, i);
+
+                    command.Parameters.Add(new SqlParameter(string.Format("{0}", i),itemValue));
+                }
+                command.CommandText = string.Format("select * from {0}.{1} {2}", maper.schema, maper.tabla, where);
+                
+                SqlDataReader rd = command.ExecuteReader();
+
+                var dataTable = new DataTable();
+                dataTable.Load(rd);
+
+                CerrarConexion();
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+        }
+
 
         private static void ExecuteSqlTransaction(string connectionString)
         {

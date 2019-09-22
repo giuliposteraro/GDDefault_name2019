@@ -30,5 +30,7 @@ namespace Negocio.Repositorios
             return newList;
         }
 
+
+        
     }
 }

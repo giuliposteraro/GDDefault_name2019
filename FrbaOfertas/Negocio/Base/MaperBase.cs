@@ -12,8 +12,7 @@ namespace Negocio.Base
         public string tabla {get;set;}
         public string schema {get;set;}
 
-
         public abstract List<T> mapearAEntidad(DataTable dt);
- 
+
     }
 }
