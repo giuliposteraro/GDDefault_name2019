@@ -39,12 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\EntidadBase.cs" />
+    <Compile Include="Base\IPersistencia.cs" />
+    <Compile Include="Base\MaperBase.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Entidades\Cliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entidades\" />
-    <Folder Include="Repositorios\" />
+    <Compile Include="Repositorios\MaperDeClientes.cs" />
+    <Compile Include="Repositorios\RepositorioDeClientes.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -41,15 +41,17 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvClientes = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mniAgregar = new System.Windows.Forms.ToolStripMenuItem();
             this.mniModificar = new System.Windows.Forms.ToolStripMenuItem();
             this.mniEliminar = new System.Windows.Forms.ToolStripMenuItem();
+            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panComandos.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -194,22 +196,25 @@
             // 
             this.panel2.AutoScroll = true;
             this.panel2.AutoSize = true;
-            this.panel2.Controls.Add(this.dataGridView1);
+            this.panel2.Controls.Add(this.dgvClientes);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 111);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(687, 178);
             this.panel2.TabIndex = 9;
             // 
-            // dataGridView1
+            // dgvClientes
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(687, 178);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colNombre,
+            this.colApellido});
+            this.dgvClientes.ContextMenuStrip = this.contextMenuStrip1;
+            this.dgvClientes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvClientes.Location = new System.Drawing.Point(0, 0);
+            this.dgvClientes.Name = "dgvClientes";
+            this.dgvClientes.Size = new System.Drawing.Size(687, 178);
+            this.dgvClientes.TabIndex = 0;
             // 
             // contextMenuStrip1
             // 
@@ -223,21 +228,33 @@
             // mniAgregar
             // 
             this.mniAgregar.Name = "mniAgregar";
-            this.mniAgregar.Size = new System.Drawing.Size(152, 22);
+            this.mniAgregar.Size = new System.Drawing.Size(125, 22);
             this.mniAgregar.Text = "Agregar";
             this.mniAgregar.Click += new System.EventHandler(this.mniAgregar_Click);
             // 
             // mniModificar
             // 
             this.mniModificar.Name = "mniModificar";
-            this.mniModificar.Size = new System.Drawing.Size(152, 22);
+            this.mniModificar.Size = new System.Drawing.Size(125, 22);
             this.mniModificar.Text = "Modificar";
             // 
             // mniEliminar
             // 
             this.mniEliminar.Name = "mniEliminar";
-            this.mniEliminar.Size = new System.Drawing.Size(152, 22);
+            this.mniEliminar.Size = new System.Drawing.Size(125, 22);
             this.mniEliminar.Text = "Eliminar";
+            // 
+            // colNombre
+            // 
+            this.colNombre.DataPropertyName = "Nombre";
+            this.colNombre.HeaderText = "Nombre";
+            this.colNombre.Name = "colNombre";
+            // 
+            // colApellido
+            // 
+            this.colApellido.DataPropertyName = "Apellido";
+            this.colApellido.HeaderText = "Apellido";
+            this.colApellido.Name = "colApellido";
             // 
             // FrmCliente
             // 
@@ -256,7 +273,7 @@
             this.panComandos.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -277,10 +294,12 @@
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvClientes;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mniAgregar;
         private System.Windows.Forms.ToolStripMenuItem mniModificar;
         private System.Windows.Forms.ToolStripMenuItem mniEliminar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colApellido;
     }
 }

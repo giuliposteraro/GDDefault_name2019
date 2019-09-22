@@ -39,7 +39,6 @@
             this.Label1 = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panPrincipal.SuspendLayout();
@@ -58,7 +57,6 @@
             // 
             this.panPrincipal.BackColor = System.Drawing.Color.Transparent;
             this.panPrincipal.Controls.Add(this.linkLabel2);
-            this.panPrincipal.Controls.Add(this.linkLabel1);
             this.panPrincipal.Controls.Add(this.btnSalir);
             this.panPrincipal.Controls.Add(this.btnAceptar);
             this.panPrincipal.Controls.Add(this.txtContraseña);
@@ -171,20 +169,10 @@
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(87, 192);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(108, 13);
-            this.linkLabel1.TabIndex = 16;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Recordar Contraseña";
-            // 
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(87, 218);
+            this.linkLabel2.Location = new System.Drawing.Point(87, 193);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(60, 13);
             this.linkLabel2.TabIndex = 17;
@@ -218,7 +206,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panPrincipal;
         private System.Windows.Forms.LinkLabel linkLabel2;
-        private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.TextBox txtContraseña;

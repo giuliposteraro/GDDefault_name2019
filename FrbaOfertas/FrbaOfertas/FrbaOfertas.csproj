@@ -56,12 +56,6 @@
     <Compile Include="AbmCliente\FrmClienteEditar.Designer.cs">
       <DependentUpon>FrmClienteEditar.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmCliente\FrmCRUDCliente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AbmCliente\FrmCRUDCliente.Designer.cs">
-      <DependentUpon>FrmCRUDCliente.cs</DependentUpon>
-    </Compile>
     <Compile Include="AbmProveedor\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,9 +118,6 @@
     <EmbeddedResource Include="AbmCliente\FrmClienteEditar.resx">
       <DependentUpon>FrmClienteEditar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AbmCliente\FrmCRUDCliente.resx">
-      <DependentUpon>FrmCRUDCliente.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="LogIn\FrmInicioDeSession.resx">
       <DependentUpon>FrmInicioDeSession.cs</DependentUpon>
     </EmbeddedResource>
@@ -160,6 +151,10 @@
     <ProjectReference Include="..\FrbaOfertasPresentacion\FrbaOfertasPresentacion.csproj">
       <Project>{0c6fe85b-6ba8-4286-a1e8-50efdb459275}</Project>
       <Name>FrbaOfertasPresentacion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Negocio\Negocio.csproj">
+      <Project>{b5c49f11-bc75-437d-b43b-e0efbbf150aa}</Project>
+      <Name>Negocio</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

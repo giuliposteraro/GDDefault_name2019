@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Negocio.Repositorios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,12 @@ namespace FrbaOfertasPresentacion.AbmCliente
 
         public void Buscar()
         {
-            throw new NotImplementedException();
+            //buscador 
+            var maper = new MaperDeClientes();
+            var repo = new RepositorioDeClientes(maper);
+
+            _vista.Clientes = repo.Buscar();
+            
         }
 
 

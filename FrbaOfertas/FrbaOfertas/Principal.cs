@@ -29,14 +29,6 @@ namespace FrbaOfertas
  
         }
 
-        private void mnuCRUDCLIE_Click(object sender, EventArgs e)
-        {
-            if (DesignMode) return;
-
-            var frm = new FrmCRUDCliente();
-            frm.MdiParent = this;
-            frm.Show();
-        }
 
         private void Principal_Load(object sender, EventArgs e)
         {

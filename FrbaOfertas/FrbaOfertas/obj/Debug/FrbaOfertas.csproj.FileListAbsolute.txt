@@ -12,6 +12,7 @@ C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.
 C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertasPresentacion.dll
 C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertasPresentacion.pdb
 C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.FrmCliente.resources
-C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.FrmCRUDCliente.resources
 C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.FrmClienteEditar.resources
 C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.LogIn.FrmInicioDeSession.resources
+C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\bin\Debug\Negocio.dll
+C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\bin\Debug\Negocio.pdb

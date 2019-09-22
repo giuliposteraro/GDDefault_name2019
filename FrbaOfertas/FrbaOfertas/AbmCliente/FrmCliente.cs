@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Negocio.Entidades;
 
 namespace FrbaOfertas.AbmCliente
 {
@@ -27,6 +28,13 @@ namespace FrbaOfertas.AbmCliente
             get { return btnAceptar.Text; }
             set { btnAceptar.Text = value.ToString(); }
         }
+
+        public List<Cliente> Clientes
+        {
+            get { return new List<Cliente>(); }
+            set { dgvClientes.DataSource = value; }
+        }
+
 
         #endregion
 
