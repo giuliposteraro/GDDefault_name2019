@@ -30,6 +30,7 @@
         {
             this.mnuPrincipal = new System.Windows.Forms.MenuStrip();
             this.mnuClientes = new System.Windows.Forms.ToolStripMenuItem();
+            this.clientes2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -37,7 +38,8 @@
             // 
             this.mnuPrincipal.BackColor = System.Drawing.SystemColors.Control;
             this.mnuPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuClientes});
+            this.mnuClientes,
+            this.clientes2ToolStripMenuItem});
             this.mnuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.mnuPrincipal.Name = "mnuPrincipal";
             this.mnuPrincipal.Size = new System.Drawing.Size(784, 24);
@@ -50,6 +52,13 @@
             this.mnuClientes.Size = new System.Drawing.Size(61, 20);
             this.mnuClientes.Text = "Clientes";
             this.mnuClientes.Click += new System.EventHandler(this.mnuClientes_Click);
+            // 
+            // clientes2ToolStripMenuItem
+            // 
+            this.clientes2ToolStripMenuItem.Name = "clientes2ToolStripMenuItem";
+            this.clientes2ToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.clientes2ToolStripMenuItem.Text = "Clientes2";
+            this.clientes2ToolStripMenuItem.Click += new System.EventHandler(this.clientes2ToolStripMenuItem_Click);
             // 
             // Principal
             // 
@@ -75,6 +84,7 @@
 
         private System.Windows.Forms.MenuStrip mnuPrincipal;
         private System.Windows.Forms.ToolStripMenuItem mnuClientes;
+        private System.Windows.Forms.ToolStripMenuItem clientes2ToolStripMenuItem;
     }
 }
 

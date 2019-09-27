@@ -50,6 +50,12 @@
     <Compile Include="AbmCliente\FrmCliente.Designer.cs">
       <DependentUpon>FrmCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmCliente\FrmCliente2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmCliente\FrmCliente2.Designer.cs">
+      <DependentUpon>FrmCliente2.cs</DependentUpon>
+    </Compile>
     <Compile Include="AbmCliente\FrmClienteEditar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +73,12 @@
     </Compile>
     <Compile Include="AbmRol\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Componentes\GrillaGestionDatos.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Componentes\GrillaGestionDatos.Designer.cs">
+      <DependentUpon>GrillaGestionDatos.cs</DependentUpon>
     </Compile>
     <Compile Include="ComprarOferta\Form1.cs">
       <SubType>Form</SubType>
@@ -115,8 +127,14 @@
     <EmbeddedResource Include="AbmCliente\FrmCliente.resx">
       <DependentUpon>FrmCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbmCliente\FrmCliente2.resx">
+      <DependentUpon>FrmCliente2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AbmCliente\FrmClienteEditar.resx">
       <DependentUpon>FrmClienteEditar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Componentes\GrillaGestionDatos.resx">
+      <DependentUpon>GrillaGestionDatos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogIn\FrmInicioDeSession.resx">
       <DependentUpon>FrmInicioDeSession.cs</DependentUpon>
@@ -159,6 +177,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\hideTableColumn.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

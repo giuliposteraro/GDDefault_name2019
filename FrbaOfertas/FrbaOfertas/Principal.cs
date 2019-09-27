@@ -39,5 +39,14 @@ namespace FrbaOfertas
                 this.Close();
             }
         }
+
+        private void clientes2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
+
+            var frm = new FrmCliente2();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

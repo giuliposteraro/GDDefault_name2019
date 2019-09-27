@@ -42,6 +42,8 @@
     <Compile Include="AbmCliente\IVistaClientes.cs" />
     <Compile Include="AbmCliente\PresentadorClientes.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Componentes\IGrillaGestionDatosVista.cs" />
+    <Compile Include="Componentes\PresentadorGrillaGestionDatos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

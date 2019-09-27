@@ -23,7 +23,7 @@ namespace FrbaOfertasPresentacion.AbmCliente
         }
         public void ActualizarVista()
         {
-
+            var cli = _vista.Clientes;
         }
 
         public void Buscar()
