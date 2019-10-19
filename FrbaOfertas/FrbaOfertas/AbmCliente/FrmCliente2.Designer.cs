@@ -52,8 +52,8 @@ namespace FrbaOfertas.AbmCliente
             this.mniModificar = new System.Windows.Forms.ToolStripMenuItem();
             this.mniEliminar = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvClientes = new FrbaOfertas.Componentes.GrillaGestionDatos();
-            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panComandos.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -285,7 +285,7 @@ namespace FrbaOfertas.AbmCliente
             this.dgvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colNombre,
             this.colApellido});
-            this.dgvClientes.ColumnsOcultas = ((System.Collections.Generic.List<string>)(resources.GetObject("dgvClientes.ColumnasOcultas")));
+            this.dgvClientes.ColumnsOcultas = ((System.Collections.Generic.List<string>)(resources.GetObject("dgvClientes.ColumnsOcultas")));
             this.dgvClientes.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvClientes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -314,17 +314,17 @@ namespace FrbaOfertas.AbmCliente
             this.dgvClientes.CambioChequeadosUnItem += new System.EventHandler<System.Windows.Forms.DataGridViewCellEventArgs>(this.dgvClientes_CambioChequeadosUnItem);
             this.dgvClientes.SelectionChanged += new System.EventHandler(this.dgvClientes_SelectionChanged);
             // 
-            // colNombre
-            // 
-            this.colNombre.DataPropertyName = "Nombre";
-            this.colNombre.HeaderText = "Nombre";
-            this.colNombre.Name = "colNombre";
-            // 
             // colApellido
             // 
             this.colApellido.DataPropertyName = "Apellido";
             this.colApellido.HeaderText = "Apellido";
             this.colApellido.Name = "colApellido";
+            // 
+            // colNombre
+            // 
+            this.colNombre.DataPropertyName = "Nombre";
+            this.colNombre.HeaderText = "Nombre";
+            this.colNombre.Name = "colNombre";
             // 
             // FrmCliente2
             // 
@@ -369,11 +369,11 @@ namespace FrbaOfertas.AbmCliente
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Panel panel2;
         private Componentes.GrillaGestionDatos dgvClientes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colApellido;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mniAgregar;
         private System.Windows.Forms.ToolStripMenuItem mniModificar;
         private System.Windows.Forms.ToolStripMenuItem mniEliminar;
+        private DataGridViewTextBoxColumn colNombre;
+        private DataGridViewTextBoxColumn colApellido;
     }
 }
