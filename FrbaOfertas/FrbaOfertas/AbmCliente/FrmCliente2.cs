@@ -112,5 +112,10 @@ namespace FrbaOfertas.AbmCliente
         {
 
         }
+
+        public void MostrarMensaje(string message)
+        {
+            MessageBox.Show(message);
+        }
     }
 }

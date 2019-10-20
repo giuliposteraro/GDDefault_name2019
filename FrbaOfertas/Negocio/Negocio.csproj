@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,15 +41,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\EntidadBase.cs" />
+    <Compile Include="Base\Extensiones.cs" />
     <Compile Include="Base\IPersistencia.cs" />
     <Compile Include="Base\MaperBase.cs" />
     <Compile Include="Base\TipoDeComparador.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Entidades\Cliente.cs" />
+    <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\MaperDeUsuarios.cs" />
     <Compile Include="Repositorios\MaperDeClientes.cs" />
     <Compile Include="Repositorios\RepositorioDeClientes.cs" />
+    <Compile Include="Repositorios\RepositorioDeUsuarios.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using System.Configuration;
+
 
 namespace Negocio.Base
 {
@@ -17,7 +19,8 @@ namespace Negocio.Base
         internal void InicializarConexion()
         {
             conn = new SqlConnection();
-            conn.ConnectionString = "Server=localhost\\SQLSERVER2012;Database=GD2C2019;User Id=gdCupon2019;Password=gd2019;";
+            string connectionString = ConfigurationManager.ConnectionStrings["gdDatos"].ConnectionString;
+            conn.ConnectionString = connectionString;
             conn.Open();
         }
 
@@ -54,7 +57,7 @@ namespace Negocio.Base
         }
 
 
-        internal DataTable BuscarTodosPorFiltro(Dictionary<string, object[]> parametros)
+        internal DataTable BuscarTodosPorFiltro(Dictionary<string, object[]> parametros, List<string> columnas = null)
         {
             try
             {
@@ -63,14 +66,14 @@ namespace Negocio.Base
                 command.Connection = conn;
 
                 string where = "";
-                for (int i = 0; i < parametros.Count(); i++ )
+                for (int i = 0; i < parametros.Count(); i++)
                 {
                     var item = parametros.ElementAt(i);
                     var itemKey = item.Key;
                     var itemValue = item.Value[0];
                     var comparador = "";
                     var union = "and";
-                    
+
                     if (i == 0)
                         union = "where";
 
@@ -84,12 +87,25 @@ namespace Negocio.Base
                             itemValue = "%" + itemValue + "%";
                             break;
                     }
-                    
+
                     where = string.Format("{0} {1} {2} {3}@{4}", where, union, itemKey, comparador, i);
 
-                    command.Parameters.Add(new SqlParameter(string.Format("{0}", i),itemValue));
+                    command.Parameters.Add(new SqlParameter(string.Format("{0}", i), itemValue));
                 }
-                command.CommandText = string.Format("select * from {0}.{1} {2}", maper.schema, maper.tabla, where);
+                if (columnas == null || !columnas.Any())
+                    columnas = new List<string>(new string[] {"*"});
+
+                string columns = "";
+                foreach (string col in columnas)
+                {
+                    if (columns != "")
+                        columns = columns + ", " + col;
+                    else
+                        columns = col;
+                }
+
+
+                command.CommandText = string.Format("select {0} from {1}.{2} {3}", columns, maper.schema, maper.tabla, where);
                 
                 SqlDataReader rd = command.ExecuteReader();
 

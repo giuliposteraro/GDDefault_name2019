@@ -80,6 +80,9 @@ namespace FrbaOfertas.AbmCliente
             _presenter.Buscar();
         }
 
- 
+        public void MostrarMensaje(string message)
+        {
+            MessageBox.Show(message);
+        }
     }
 }

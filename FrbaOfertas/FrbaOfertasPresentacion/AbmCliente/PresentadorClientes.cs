@@ -28,20 +28,34 @@ namespace FrbaOfertasPresentacion.AbmCliente
 
         public void Buscar()
         {
-            //buscador 
-            var maper = new MaperDeClientes();
-            var repo = new RepositorioDeClientes(maper);
+            try
+            {
+                //buscador 
+                var maper = new MaperDeClientes();
+                var repo = new RepositorioDeClientes(maper);
 
-            _vista.Clientes = repo.Buscar();
-            
+                _vista.Clientes = repo.Buscar();
+            }
+            catch (Exception ex)
+            {
+                _vista.MostrarMensaje(ex.Message);
+            }
+
         }
 
         public void BuscarConFiltros()
         {
-            var maper = new MaperDeClientes();
-            var repo = new RepositorioDeClientes(maper);
+            try
+            {
+                var maper = new MaperDeClientes();
+                var repo = new RepositorioDeClientes(maper);
 
-            _vista.Clientes = repo.BuscarConFiltros(_vista.Nombre, _vista.Apellido);
+                _vista.Clientes = repo.BuscarConFiltros(_vista.Nombre, _vista.Apellido);
+            }            
+            catch (Exception ex)
+            {
+                _vista.MostrarMensaje(ex.Message);
+            }
         }
 
     }

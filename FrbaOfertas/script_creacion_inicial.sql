@@ -61,7 +61,7 @@ CREATE TABLE [DEFAULT_NAME].[Cuenta]
 (
 	Id_Usuario int IDENTITY(1,1) PRIMARY KEY,
     Usuario_Cuenta varchar(20) NOT NULL unique,
-	Contra_Cuenta varbinary(32) NOT NULL,
+	Contra_Cuenta varbinary(100) NOT NULL,
 	Cant_Ingresos_Cuenta int NOT NULL default(0),
 	Estado_Cuenta int NOT NULL,
 )
@@ -277,7 +277,7 @@ INSERT INTO [DEFAULT_NAME].[Cuenta]
            ([Usuario_Cuenta],[Contra_Cuenta],[Cant_Ingresos_Cuenta],[Estado_Cuenta])
      VALUES
            ('admin'
-           ,CAST( 'e6b87050bfcb8143fcb8db0170a4dc9ed00d904ddd3e2a4ad1b1e8dc0fdc9be7' as Varbinary(32) )
+           ,CONVERT(VARBINARY(100), 'e6b87050bfcb8143fcb8db0170a4dc9ed00d904ddd3e2a4ad1b1e8dc0fdc9be7')
            ,0
            ,1)
 
