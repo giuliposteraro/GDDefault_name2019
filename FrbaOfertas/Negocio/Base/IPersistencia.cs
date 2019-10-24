@@ -125,6 +125,34 @@ namespace Negocio.Base
             }
         }
 
+        public void EjecutarSP(string sp, List<SqlParameter> parametros)
+        {
+            try
+            {
+                InicializarConexion();
+                SqlCommand cmd = new SqlCommand(sp, conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                foreach(SqlParameter par in parametros)
+                {
+                    cmd.Parameters.Add(par);
+                }
+
+                int resultado = cmd.ExecuteNonQuery();
+                if (resultado == 0)
+                    throw new Exception("error al ejecutar el sp");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+        }
+
+
 
         private static void ExecuteSqlTransaction(string connectionString)
         {

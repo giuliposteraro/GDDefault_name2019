@@ -287,5 +287,71 @@ INSERT INTO [DEFAULT_NAME].[Rol_Por_Cuenta]
            ([Id_Rol],[Id_Usuario])
      VALUES
            (@IdAdmin,@UserId)
+go
+
+--sp SP_Cuenta_Suma_Intento_Fallido
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'SP_Cuenta_Suma_Intento_Fallido') 
+BEGIN
+	DROP PROCEDURE DEFAULT_NAME.SP_Cuenta_Suma_Intento_Fallido
+END
+GO
+
+CREATE PROCEDURE DEFAULT_NAME.SP_Cuenta_Suma_Intento_Fallido
+	@Id_Usuario INT 
+AS
+BEGIN
+	DECLARE @Error_Var INT
+
+	UPDATE DEFAULT_NAME.Cuenta set Cant_Ingresos_Cuenta = Cant_Ingresos_Cuenta + 1 where Id_Usuario = @Id_Usuario;
+
+	if (select Cant_Ingresos_Cuenta from DEFAULT_NAME.Cuenta where Id_Usuario = @Id_Usuario) >= 3
+	begin
+		UPDATE DEFAULT_NAME.Cuenta set Estado_Cuenta = 0 where Id_Usuario = @Id_Usuario;
+	end 
+
+	SELECT  @Error_Var = @@Error
+    IF ( @Error_Var = 0 )   
+        BEGIN
+            RETURN -1 -- OK
+        END
+    ELSE
+        BEGIN
+            RAISERROR ('No se pudo actualizar la cantidad de intentos en la tabla cuenta', 16, 16)
+
+            RETURN 0 -- Error
+        END
+END
+GO
+
+
+--sp SP_Cuenta_Suma_Intento_Fallido
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'SP_Cuenta_Limpia_Intentos_Fallidos') 
+BEGIN
+	DROP PROCEDURE DEFAULT_NAME.SP_Cuenta_Limpia_Intentos_Fallidos
+END
+GO
+
+CREATE PROCEDURE DEFAULT_NAME.SP_Cuenta_Limpia_Intentos_Fallidos
+	@Id_Usuario INT 
+AS
+BEGIN
+	DECLARE @Error_Var INT
+
+	UPDATE DEFAULT_NAME.Cuenta set Cant_Ingresos_Cuenta = 0, Estado_Cuenta = 1 where Id_Usuario = @Id_Usuario;
+
+	SELECT  @Error_Var = @@Error
+    IF ( @Error_Var = 0 )   
+        BEGIN
+            RETURN -1 -- OK
+        END
+    ELSE
+        BEGIN
+            RAISERROR ('No se pudo actualizar la cantidad de intentos en la tabla cuenta', 16, 16)
+
+            RETURN 0 -- Error
+        END
+END
+GO
+
 
 --IMPORTACION DESDE TABLA

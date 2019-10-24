@@ -2,6 +2,7 @@
 using Negocio.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +38,40 @@ namespace Negocio.Repositorios
             catch (Exception ex)
             {
                 throw new Exception(string.Format("se produjo un error al buscar los clientes: {0}", ex.Message));
+            }
+        }
+
+        public void SumarUnError(int Id_Usuario)
+        {
+            try
+            {
+                List<SqlParameter> parametros = new List<SqlParameter>();
+
+                SqlParameter param = new SqlParameter("@Id_Usuario", Id_Usuario);
+                parametros.Add(param);
+
+                this.EjecutarSP("DEFAULT_NAME.SP_Cuenta_Suma_Intento_Fallido", parametros);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("se produjo un error al ejecutar procedimiento almacenado: {0}", ex.Message));
+            }
+        }
+
+        public void LimpiarCantidadDeErrores(int Id_Usuario)
+        {
+            try
+            {
+                List<SqlParameter> parametros = new List<SqlParameter>();
+
+                SqlParameter param = new SqlParameter("@Id_Usuario", Id_Usuario);
+                parametros.Add(param);
+
+                this.EjecutarSP("DEFAULT_NAME.SP_Cuenta_Limpia_Intentos_Fallidos", parametros);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("se produjo un error al ejecutar procedimiento almacenado: {0}", ex.Message));
             }
         }
     }
