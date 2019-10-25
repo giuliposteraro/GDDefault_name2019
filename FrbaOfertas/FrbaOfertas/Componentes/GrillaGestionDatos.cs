@@ -41,7 +41,7 @@ namespace FrbaOfertas.Componentes
             this.DoubleBuffered = true;
         }
 
-
+        protected System.Windows.Forms.Form _parentForm = new System.Windows.Forms.Form();
         private const DataGridViewAutoSizeColumnsMode DefaultAutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
         protected override void OnColumnHeaderMouseDoubleClick(System.Windows.Forms.DataGridViewCellMouseEventArgs e)

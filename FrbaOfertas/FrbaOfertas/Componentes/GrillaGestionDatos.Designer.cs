@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.chkCheck = new System.Windows.Forms.CheckBox();
-            this._parentForm = new System.Windows.Forms.Form();
+            //this._parentForm = new System.Windows.Forms.Form();
             this._btnMostrarTodas = new System.Windows.Forms.Button();
             this._btnAjustarAnchos = new System.Windows.Forms.Button();
             this._btnCerrar = new System.Windows.Forms.Button(); 
@@ -58,7 +58,7 @@
             this.chkCheck.Visible = false;
             this.chkCheck.CheckedChanged += chkCheck_CheckedChanged;
             this.KeyDown += DataGridView_Standard_KeyDown;
-            this._parentForm.Shown += _parentForm_Shown;
+            //this._parentForm.Shown += _parentForm_Shown;
             this._btnMostrarTodas.Click += _btnMostrarTodas_Click;
             this._btnAjustarAnchos.Click += _btnAjustarAnchos_Click;
             this._mnuExportarDatosTodoConEncabezados.Click += _mnuExportarDatosTodoConEncabezados_Click;
@@ -84,7 +84,7 @@
         }
 
         protected System.Windows.Forms.CheckBox chkCheck;
-        protected System.Windows.Forms.Form _parentForm;
+        //protected System.Windows.Forms.Form _parentForm;
         protected System.Windows.Forms.Button _btnMostrarTodas;
         protected System.Windows.Forms.Button _btnAjustarAnchos;
         protected System.Windows.Forms.Button _btnCerrar;

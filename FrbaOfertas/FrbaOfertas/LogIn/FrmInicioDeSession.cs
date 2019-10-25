@@ -62,6 +62,16 @@ namespace FrbaOfertas.LogIn
         {
             DialogResult = DialogResult.Cancel;
         }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var frm = new FrmAltaDeCuentas();
+            //frm.MdiParent = this;
+            if (frm.ShowDialog() == DialogResult.Cancel)
+            {
+                
+            }
+        }
     }
 }
 

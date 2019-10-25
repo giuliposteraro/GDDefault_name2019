@@ -1,4 +1,5 @@
 ﻿using Negocio.Repositorios;
+using Negocio.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,8 +19,7 @@ namespace FrbaOfertasPresentacion.AbmCliente
         }
         public void IniciarVista()
         {
-          
-
+            _vista.Nombre = Global.SessionUsuario.Usuario_Cuenta;
         }
         public void ActualizarVista()
         {

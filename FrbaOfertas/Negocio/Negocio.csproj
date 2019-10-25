@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Base\EntidadBase.cs" />
     <Compile Include="Base\Extensiones.cs" />
+    <Compile Include="Base\Global.cs" />
     <Compile Include="Base\IPersistencia.cs" />
     <Compile Include="Base\MaperBase.cs" />
     <Compile Include="Base\TipoDeComparador.cs" />

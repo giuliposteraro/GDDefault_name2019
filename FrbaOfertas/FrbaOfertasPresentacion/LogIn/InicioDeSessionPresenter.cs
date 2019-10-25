@@ -19,15 +19,7 @@ namespace FrbaOfertasPresentacion.LogIn
             _vista = vista;
 
         }
-        public void IniciarVista()
-        {
-
-
-        }
-        public void ActualizarVista()
-        {
-
-        }
+        
 
         public bool logguearUsuario()
         {
@@ -78,6 +70,8 @@ namespace FrbaOfertasPresentacion.LogIn
                 if (usuario.Cant_Ingresos_Cuenta > 0)
                     repo.LimpiarCantidadDeErrores(usuario.Id_Usuario);
 
+                Global.SessionUsuario = usuario;
+                
                 return true;
             }
             catch (Exception ex)

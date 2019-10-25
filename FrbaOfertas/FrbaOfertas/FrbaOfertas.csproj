@@ -104,11 +104,23 @@
     <Compile Include="Facturar\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="LogIn\FrmAltaDeCuentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogIn\FrmAltaDeCuentas.Designer.cs">
+      <DependentUpon>FrmAltaDeCuentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="LogIn\FrmInicioDeSession.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LogIn\FrmInicioDeSession.Designer.cs">
       <DependentUpon>FrmInicioDeSession.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogIn\FrmListadoDeCuentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogIn\FrmListadoDeCuentas.Designer.cs">
+      <DependentUpon>FrmListadoDeCuentas.cs</DependentUpon>
     </Compile>
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
