@@ -40,8 +40,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panComandos = new System.Windows.Forms.Panel();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnModificar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.dgvClientes = new System.Windows.Forms.DataGridView();
             this.colRazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -174,8 +174,8 @@
             // 
             this.panComandos.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panComandos.Controls.Add(this.btnEliminar);
-            this.panComandos.Controls.Add(this.btnModificar);
-            this.panComandos.Controls.Add(this.btnAgregar);
+            this.panComandos.Controls.Add(this.btnEliminar);
+            this.panComandos.Controls.Add(this.btnEliminar);
             this.panComandos.Controls.Add(this.btnCancelar);
             this.panComandos.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panComandos.Location = new System.Drawing.Point(0, 398);
@@ -198,29 +198,29 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnModificar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnModificar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnModificar.Location = new System.Drawing.Point(269, 3);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(75, 25);
-            this.btnModificar.TabIndex = 3;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = false;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEliminar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEliminar.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnEliminar.Location = new System.Drawing.Point(269, 3);
+            this.btnEliminar.Name = "btnModificar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 25);
+            this.btnEliminar.TabIndex = 3;
+            this.btnEliminar.Text = "Modificar";
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAgregar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAgregar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnAgregar.Location = new System.Drawing.Point(188, 3);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 25);
-            this.btnAgregar.TabIndex = 2;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = false;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEliminar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEliminar.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnEliminar.Location = new System.Drawing.Point(188, 3);
+            this.btnEliminar.Name = "btnAgregar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 25);
+            this.btnEliminar.TabIndex = 2;
+            this.btnEliminar.Text = "Agregar";
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnCancelar
             // 
