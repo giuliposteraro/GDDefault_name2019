@@ -32,6 +32,8 @@
             this.mnuClientes = new System.Windows.Forms.ToolStripMenuItem();
             this.clientes2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aCercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cambiarContraseñaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,7 +43,9 @@
             this.mnuPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuClientes,
             this.clientes2ToolStripMenuItem,
-            this.cuentasToolStripMenuItem});
+            this.cuentasToolStripMenuItem,
+            this.cambiarContraseñaToolStripMenuItem,
+            this.aCercaDeToolStripMenuItem});
             this.mnuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.mnuPrincipal.Name = "mnuPrincipal";
             this.mnuPrincipal.Size = new System.Drawing.Size(784, 24);
@@ -69,6 +73,20 @@
             this.cuentasToolStripMenuItem.Text = "Cuentas";
             this.cuentasToolStripMenuItem.Click += new System.EventHandler(this.cuentasToolStripMenuItem_Click);
             // 
+            // aCercaDeToolStripMenuItem
+            // 
+            this.aCercaDeToolStripMenuItem.Name = "aCercaDeToolStripMenuItem";
+            this.aCercaDeToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
+            this.aCercaDeToolStripMenuItem.Text = "A Cerca de...";
+            this.aCercaDeToolStripMenuItem.Click += new System.EventHandler(this.aCercaDeToolStripMenuItem_Click);
+            // 
+            // cambiarContraseñaToolStripMenuItem
+            // 
+            this.cambiarContraseñaToolStripMenuItem.Name = "cambiarContraseñaToolStripMenuItem";
+            this.cambiarContraseñaToolStripMenuItem.Size = new System.Drawing.Size(127, 20);
+            this.cambiarContraseñaToolStripMenuItem.Text = "Cambiar Contraseña";
+            this.cambiarContraseñaToolStripMenuItem.Click += new System.EventHandler(this.cambiarContraseñaToolStripMenuItem_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -95,6 +113,8 @@
         private System.Windows.Forms.ToolStripMenuItem mnuClientes;
         private System.Windows.Forms.ToolStripMenuItem clientes2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cuentasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aCercaDeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cambiarContraseñaToolStripMenuItem;
     }
 }
 

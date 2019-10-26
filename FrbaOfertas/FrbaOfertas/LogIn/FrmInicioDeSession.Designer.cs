@@ -125,6 +125,7 @@
             this.txtContraseña.Size = new System.Drawing.Size(148, 20);
             this.txtContraseña.TabIndex = 12;
             this.txtContraseña.UseSystemPasswordChar = true;
+            this.txtContraseña.KeyPress += txtContraseña_KeyPress;
             // 
             // txtNombreInicioSesion
             // 
@@ -203,6 +204,8 @@
 
         }
 
+
+      
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;

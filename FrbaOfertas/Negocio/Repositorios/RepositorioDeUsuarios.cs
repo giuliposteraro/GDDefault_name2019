@@ -30,7 +30,7 @@ namespace Negocio.Repositorios
                 Dictionary<string, object[]> parametros = new Dictionary<string, object[]>();
                 if (Nombre != string.Empty) parametros.Add("Usuario_Cuenta", new object[2] { Nombre, TipoDeComparador.eID.Texto });
 
-                List<string> columnas = new List<string>(new string[] { "Id_Usuario", "Usuario_Cuenta", "CONVERT(VARCHAR  (100), Contra_Cuenta) as Contra_Cuenta","Cant_Ingresos_Cuenta",   "Estado_Cuenta"  });
+                List<string> columnas = new List<string>(new string[] { "Id_Usuario", "Usuario_Cuenta", "Contra_Cuenta","Cant_Ingresos_Cuenta",   "Estado_Cuenta"  });
 
                 lista = this.maper.mapearAEntidad(BuscarTodosPorFiltro(parametros, columnas));
                 return lista;
@@ -72,6 +72,31 @@ namespace Negocio.Repositorios
             catch (Exception ex)
             {
                 throw new Exception(string.Format("se produjo un error al ejecutar procedimiento almacenado: {0}", ex.Message));
+            }
+        }
+
+        public void GuardarContraseña(int Id_Usuario, string Contraseña)
+        {
+            try
+            {
+                List<Funcionalidad> lista = new List<Funcionalidad>();
+
+                List<SqlParameter> parametros = new List<SqlParameter>();
+                SqlParameter param = new SqlParameter("@Id_Usuario", Id_Usuario);
+                parametros.Add(param);
+                param = new SqlParameter("@Contra_Cuenta", Contraseña);
+                parametros.Add(param);
+
+                string statement = @"UPDATE [DEFAULT_NAME].[Cuenta]
+                                    SET [Contra_Cuenta] =  @Contra_Cuenta
+                                    WHERE Id_Usuario = @Id_Usuario";
+
+                EjecutarStatement(statement, parametros);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("se produjo un error al ejecutar la actualización: {0}", ex.Message));
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using FrbaOfertas.AbmCliente;
 using FrbaOfertas.LogIn;
+using Negocio.Base;
 using Negocio.Entidades;
 using Negocio.Gestores;
 using System;
@@ -67,6 +68,21 @@ namespace FrbaOfertas
             if (DesignMode) return;
 
             var frm = new FrmListadoDeCuentas();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void aCercaDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Gestión de datos 2C 2019 - DEFAULT_NAME");
+        }
+
+        private void cambiarContraseñaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
+
+            var frm = new FrmCambiarContraseña();
+            frm.Presentador.Posicionar(Global.SessionUsuario);
             frm.MdiParent = this;
             frm.Show();
         }

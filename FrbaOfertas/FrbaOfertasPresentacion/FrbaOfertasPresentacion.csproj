@@ -46,6 +46,8 @@
     <Compile Include="Componentes\PresentadorGrillaGestionDatos.cs" />
     <Compile Include="LogIn\AltaCuenta\IVistaAltaCuenta.cs" />
     <Compile Include="LogIn\AltaCuenta\PresentadorAltaCuenta.cs" />
+    <Compile Include="LogIn\CambiarContraseña\IVistaCambioContraseña.cs" />
+    <Compile Include="LogIn\CambiarContraseña\PresentadorCambioContraseña.cs" />
     <Compile Include="LogIn\InicioDeSessionPresenter.cs" />
     <Compile Include="LogIn\IVistaInicioSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

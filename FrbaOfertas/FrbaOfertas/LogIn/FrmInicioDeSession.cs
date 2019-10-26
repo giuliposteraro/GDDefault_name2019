@@ -72,6 +72,16 @@ namespace FrbaOfertas.LogIn
                 
             }
         }
+
+
+        private void txtContraseña_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                btnAceptar.PerformClick();
+            }
+        }
+
     }
 }
 

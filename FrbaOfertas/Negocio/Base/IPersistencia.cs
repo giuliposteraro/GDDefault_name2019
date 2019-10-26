@@ -213,6 +213,32 @@ namespace Negocio.Base
             }
         }
 
+        //para insert update y delete
+        internal void EjecutarStatement(string consulta, List<SqlParameter> parametros)
+        {
+            try
+            {
+                InicializarConexion();
+                SqlCommand command = conn.CreateCommand();
+                command.Connection = conn;
+
+                foreach (SqlParameter param in parametros)
+                    command.Parameters.Add(param);
+
+                command.CommandText = consulta;
+                command.ExecuteNonQuery();
+                CerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+        }
+
         private static void ExecuteSqlTransaction(string connectionString)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))

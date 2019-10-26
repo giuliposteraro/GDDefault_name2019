@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Negocio.Base;
 using Negocio.Repositorios;
-using System.Security.Cryptography;
+
 using Negocio.Entidades;
 
 namespace FrbaOfertasPresentacion.LogIn
@@ -49,7 +49,7 @@ namespace FrbaOfertasPresentacion.LogIn
                 }
 
                 //comparo el password con el que viene de la base de datos
-                if (ComputeSha256Hash(_vista.Password) != usuario.Contra_Cuenta)
+                if (Encriptador.ComputeSha256Hash(_vista.Password) != usuario.Contra_Cuenta)
                 {
                     //si el password es incorrecto se considera un error y debe sumar 1 a los intentos incorrectos
                     repo.SumarUnError(usuario.Id_Usuario);
@@ -82,19 +82,6 @@ namespace FrbaOfertasPresentacion.LogIn
            
         }
 
-        static string ComputeSha256Hash(string rawData)
-        {
-            SHA256CryptoServiceProvider provider = new SHA256CryptoServiceProvider();
-
-            byte[] inputBytes = Encoding.UTF8.GetBytes(rawData);
-            byte[] hashedBytes = provider.ComputeHash(inputBytes);
-
-            StringBuilder output = new StringBuilder();
-
-            for (int i = 0; i < hashedBytes.Length; i++)
-                output.Append(hashedBytes[i].ToString("x2").ToLower());
-
-            return output.ToString();
-        }
+        
     }
 }

@@ -110,6 +110,12 @@
     <Compile Include="LogIn\FrmAltaDeCuentas.Designer.cs">
       <DependentUpon>FrmAltaDeCuentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="LogIn\FrmCambiarContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogIn\FrmCambiarContraseña.Designer.cs">
+      <DependentUpon>FrmCambiarContraseña.cs</DependentUpon>
+    </Compile>
     <Compile Include="LogIn\FrmInicioDeSession.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Componentes\GrillaGestionDatos.resx">
       <DependentUpon>GrillaGestionDatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogIn\FrmCambiarContraseña.resx">
+      <DependentUpon>FrmCambiarContraseña.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogIn\FrmInicioDeSession.resx">
       <DependentUpon>FrmInicioDeSession.cs</DependentUpon>
