@@ -18,3 +18,4 @@ C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertasP
 C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\bin\Debug\Negocio.pdb
 C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.exe
 C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
+C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.LogIn.FrmListadoDeCuentas.resources

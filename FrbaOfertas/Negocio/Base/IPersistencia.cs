@@ -125,6 +125,36 @@ namespace Negocio.Base
             }
         }
 
+        public DataTable ObtenerPorID(string idName, int idValue)
+        {
+            try
+            {
+                InicializarConexion();
+                SqlCommand command = conn.CreateCommand();
+                command.Connection = conn;
+
+                command.Parameters.Add(new SqlParameter(string.Format("@{0}",idName), idValue));                
+                command.CommandText = string.Format("select * from {0}.{1} where {2} = @{2}",  maper.schema, maper.tabla, idName);
+
+                SqlDataReader rd = command.ExecuteReader();
+
+                var dataTable = new DataTable();
+                dataTable.Load(rd);
+
+                CerrarConexion();
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+        }
+
+
         public void EjecutarSP(string sp, List<SqlParameter> parametros)
         {
             try
@@ -152,7 +182,36 @@ namespace Negocio.Base
             }
         }
 
+        internal DataTable EjecutarConsulta(string consulta, List<SqlParameter> parametros)
+        {
+            try
+            {
+                InicializarConexion();
+                SqlCommand command = conn.CreateCommand();
+                command.Connection = conn;
 
+                foreach (SqlParameter param in parametros)
+                    command.Parameters.Add(param);
+
+                command.CommandText = consulta;
+
+                SqlDataReader rd = command.ExecuteReader();
+
+                var dataTable = new DataTable();
+                dataTable.Load(rd);
+
+                CerrarConexion();
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+        }
 
         private static void ExecuteSqlTransaction(string connectionString)
         {

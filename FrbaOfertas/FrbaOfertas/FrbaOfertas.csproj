@@ -151,6 +151,9 @@
     <EmbeddedResource Include="LogIn\FrmInicioDeSession.resx">
       <DependentUpon>FrmInicioDeSession.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LogIn\FrmListadoDeCuentas.resx">
+      <DependentUpon>FrmListadoDeCuentas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
