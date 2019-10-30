@@ -52,6 +52,7 @@ namespace FrbaOfertas
             //voy a verificar si el usuario tiene 
             GestorDeValidacionDePermisos gestor = new GestorDeValidacionDePermisos();
             clientes2ToolStripMenuItem.Visible = gestor.TienePermisoPara(Funcionalidad.ABMdeCliente);
+            cuentasToolStripMenuItem.Visible = gestor.TienePermisoPara(Funcionalidad.RegistroDeUsuarios);
         }
 
         private void clientes2ToolStripMenuItem_Click(object sender, EventArgs e)

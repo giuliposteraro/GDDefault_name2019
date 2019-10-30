@@ -18,10 +18,10 @@ namespace Negocio.Repositorios
 
         public Usuario ObtenerPorNombre(string nombre)
         {
-            return BuscarConFiltros(nombre).FirstOrDefault();
+            return BuscarConFiltros(nombre, true).FirstOrDefault();
         }
 
-        public List<Usuario> BuscarConFiltros(string Nombre)
+        public List<Usuario> BuscarConFiltros(string Nombre, bool activo)
         {
             try
             {
@@ -29,6 +29,7 @@ namespace Negocio.Repositorios
 
                 Dictionary<string, object[]> parametros = new Dictionary<string, object[]>();
                 if (Nombre != string.Empty) parametros.Add("Usuario_Cuenta", new object[2] { Nombre, TipoDeComparador.eID.Texto });
+                parametros.Add("Estado_Cuenta", new object[2] { activo, TipoDeComparador.eID.TextoExacto });
 
                 List<string> columnas = new List<string>(new string[] { "Id_Usuario", "Usuario_Cuenta", "Contra_Cuenta","Cant_Ingresos_Cuenta",   "Estado_Cuenta"  });
 

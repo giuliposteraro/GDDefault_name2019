@@ -21,6 +21,16 @@ namespace Negocio.Entidades
                 return repo.ObtenerUnoPorId((int)Eid.ABMdeCliente);
             }
         }
+
+        public static Funcionalidad RegistroDeUsuarios
+        {
+            get
+            {
+                var maper = new MaperDeFuncionalidades();
+                var repo = new RepositorioDeFuncionalidades(maper);
+                return repo.ObtenerUnoPorId((int)Eid.RegistroDeUsuarios);
+            }
+        }
     }
 
     public enum Eid
