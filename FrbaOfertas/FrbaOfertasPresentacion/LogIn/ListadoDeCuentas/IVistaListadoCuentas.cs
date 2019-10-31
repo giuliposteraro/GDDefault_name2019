@@ -13,5 +13,7 @@ namespace FrbaOfertasPresentacion.LogIn.ListadoDeCuentas
         string Usuario_Nombre { get; set; }
         bool Activo { get; set; }
         List<Usuario> Usuarios { get; set; }
+
+        void ReloadView();
     }
 }

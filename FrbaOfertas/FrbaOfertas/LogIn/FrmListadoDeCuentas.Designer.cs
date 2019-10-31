@@ -45,11 +45,11 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.dgvCuentas = new FrbaOfertas.Componentes.GrillaGestionDatos();
             this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCantidadIngresos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado_Cuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel1.SuspendLayout();
             this.panComandos.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -64,7 +64,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(0, 92);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(662, 19);
+            this.label1.Size = new System.Drawing.Size(607, 19);
             this.label1.TabIndex = 16;
             this.label1.Text = "Listado";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -79,7 +79,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 19);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(662, 73);
+            this.panel1.Size = new System.Drawing.Size(607, 73);
             this.panel1.TabIndex = 17;
             // 
             // chkActivo
@@ -114,19 +114,20 @@
             this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLimpiar.BackColor = System.Drawing.SystemColors.Control;
             this.btnLimpiar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnLimpiar.Location = new System.Drawing.Point(575, 45);
+            this.btnLimpiar.Location = new System.Drawing.Point(520, 45);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 25);
             this.btnLimpiar.TabIndex = 3;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnBuscar
             // 
             this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBuscar.BackColor = System.Drawing.SystemColors.Control;
             this.btnBuscar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnBuscar.Location = new System.Drawing.Point(575, 14);
+            this.btnBuscar.Location = new System.Drawing.Point(520, 14);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 25);
             this.btnBuscar.TabIndex = 2;
@@ -142,7 +143,7 @@
             this.Label4.ForeColor = System.Drawing.Color.White;
             this.Label4.Location = new System.Drawing.Point(0, 0);
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(662, 19);
+            this.Label4.Size = new System.Drawing.Size(607, 19);
             this.Label4.TabIndex = 14;
             this.Label4.Text = "Filtros";
             this.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -158,15 +159,14 @@
             this.panComandos.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panComandos.Location = new System.Drawing.Point(0, 347);
             this.panComandos.Name = "panComandos";
-            this.panComandos.Size = new System.Drawing.Size(662, 32);
+            this.panComandos.Size = new System.Drawing.Size(607, 32);
             this.panComandos.TabIndex = 15;
             // 
             // btnCambiarContraseña
             // 
-            this.btnCambiarContraseña.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCambiarContraseña.BackColor = System.Drawing.SystemColors.Control;
             this.btnCambiarContraseña.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnCambiarContraseña.Location = new System.Drawing.Point(303, 3);
+            this.btnCambiarContraseña.Location = new System.Drawing.Point(248, 3);
             this.btnCambiarContraseña.Name = "btnCambiarContraseña";
             this.btnCambiarContraseña.Size = new System.Drawing.Size(118, 25);
             this.btnCambiarContraseña.TabIndex = 5;
@@ -176,34 +176,33 @@
             // 
             // btnActivar
             // 
-            this.btnActivar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnActivar.BackColor = System.Drawing.SystemColors.Control;
             this.btnActivar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnActivar.Location = new System.Drawing.Point(222, 4);
+            this.btnActivar.Location = new System.Drawing.Point(167, 4);
             this.btnActivar.Name = "btnActivar";
             this.btnActivar.Size = new System.Drawing.Size(75, 25);
             this.btnActivar.TabIndex = 4;
             this.btnActivar.Text = "Activar";
             this.btnActivar.UseVisualStyleBackColor = false;
+            this.btnActivar.Click += new System.EventHandler(this.btnActivar_Click);
             // 
             // btnDesactivar
             // 
-            this.btnDesactivar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDesactivar.BackColor = System.Drawing.SystemColors.Control;
             this.btnDesactivar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnDesactivar.Location = new System.Drawing.Point(141, 4);
+            this.btnDesactivar.Location = new System.Drawing.Point(86, 4);
             this.btnDesactivar.Name = "btnDesactivar";
             this.btnDesactivar.Size = new System.Drawing.Size(75, 25);
             this.btnDesactivar.TabIndex = 3;
             this.btnDesactivar.Text = "Desactivar";
             this.btnDesactivar.UseVisualStyleBackColor = false;
+            this.btnDesactivar.Click += new System.EventHandler(this.btnDesactivar_Click);
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAgregar.BackColor = System.Drawing.SystemColors.Control;
             this.btnAgregar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnAgregar.Location = new System.Drawing.Point(60, 4);
+            this.btnAgregar.Location = new System.Drawing.Point(5, 4);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 25);
             this.btnAgregar.TabIndex = 2;
@@ -215,7 +214,7 @@
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancelar.BackColor = System.Drawing.SystemColors.Control;
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(582, 4);
+            this.btnCancelar.Location = new System.Drawing.Point(527, 4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 25);
             this.btnCancelar.TabIndex = 1;
@@ -228,13 +227,8 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 111);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(662, 236);
+            this.panel2.Size = new System.Drawing.Size(607, 236);
             this.panel2.TabIndex = 18;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // dgvCuentas
             // 
@@ -268,7 +262,7 @@
             this.dgvCuentas.ResaltarCeldasEditables = false;
             this.dgvCuentas.RowHeadersVisible = false;
             this.dgvCuentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCuentas.Size = new System.Drawing.Size(662, 236);
+            this.dgvCuentas.Size = new System.Drawing.Size(607, 236);
             this.dgvCuentas.StatusTripAMostrarAlerta = null;
             this.dgvCuentas.TabIndex = 13;
             this.dgvCuentas.TieneCheckMasivo = true;
@@ -297,16 +291,22 @@
             this.Estado_Cuenta.HeaderText = "Estado Cuenta";
             this.Estado_Cuenta.Name = "Estado_Cuenta";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // FrmListadoDeCuentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(662, 379);
+            this.ClientSize = new System.Drawing.Size(607, 379);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Label4);
             this.Controls.Add(this.panComandos);
+            this.MinimumSize = new System.Drawing.Size(623, 418);
             this.Name = "FrmListadoDeCuentas";
             this.Text = "Listado De Cuentas";
             this.Load += new System.EventHandler(this.FrmListadoDeCuentas_Load);

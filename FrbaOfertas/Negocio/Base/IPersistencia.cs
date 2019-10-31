@@ -239,6 +239,42 @@ namespace Negocio.Base
             }
         }
 
+        public bool ActualizarEntidad (T unaEntidad, List<string> propertiesAActualizar, string propertyID)
+        {
+            try
+            {
+                List<SqlParameter> parametros = new List<SqlParameter>();
+
+
+                //armo el parametro para los ids
+                SqlParameter param = new SqlParameter(string.Format("@{0}", propertyID), unaEntidad.GetType().GetProperty(propertyID).GetValue(unaEntidad, null));
+                parametros.Add(param);
+
+                //armo el update en funcion de los parametros a actualizar
+                StringBuilder statement = new StringBuilder();
+                statement.AppendLine(string.Format("UPDATE {0}.{1}",maper.schema, maper.tabla));
+
+                string banderaPrimeraProperty = "SET";
+                foreach (string propiedad in propertiesAActualizar)
+                {
+                    statement.AppendLine(string.Format("{0} {1} = @{1}",banderaPrimeraProperty,propiedad));
+                    param = new SqlParameter(string.Format("@{0}", propiedad), unaEntidad.GetType().GetProperty(propiedad).GetValue(unaEntidad, null));
+                    parametros.Add(param);
+                    banderaPrimeraProperty = ",";
+                }
+                //armo el where con la property que es el id
+                statement.AppendLine(string.Format("WHERE {0} = @{0}",propertyID));
+
+                //ejecuto la actualizacion
+                EjecutarStatement(statement.ToString(), parametros);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("se produjo un error al actualizar la tabla: {0} - {1}",maper.tabla, ex.Message));
+            }
+        }
+
         private static void ExecuteSqlTransaction(string connectionString)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))

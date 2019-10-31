@@ -60,6 +60,7 @@ namespace Negocio.Entidades
 
     public enum EstadosUsuario
     {
-        creado = 1
+        desactivo = 0,
+        activo = 1
     }
 }

@@ -108,8 +108,40 @@ namespace FrbaOfertas.LogIn
             frm.Presentador.Posicionar((Usuario)dgvCuentas.ItemSeleccionado);
             if (frm.ShowDialog(this.MdiParent) == System.Windows.Forms.DialogResult.OK)
             {
-                _presenter.ActualizarGrilla();
+                _presenter.ActualizarGrilla(frm.Presentador.UsuarioEnEdicion);
             }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            _presenter.LimpiarFiltros();
+        }
+
+        private void btnDesactivar_Click(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
+            if (dgvCuentas.ItemSeleccionado == null)
+            {
+                this.MostrarMensaje("debe seleccionar un usuario para desactivar");
+                return;
+            }
+            _presenter.Activar((Usuario)this.dgvCuentas.ItemSeleccionado, false);
+        }
+
+        private void btnActivar_Click(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
+            if (dgvCuentas.ItemSeleccionado == null)
+            {
+                this.MostrarMensaje("debe seleccionar un usuario para activar");
+                return;
+            }
+            _presenter.Activar((Usuario)this.dgvCuentas.ItemSeleccionado, true);
+        }
+
+        public void ReloadView()
+        {
+            this.dgvCuentas.Refresh();
         }
     }
 }

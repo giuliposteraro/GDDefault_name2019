@@ -100,5 +100,7 @@ namespace Negocio.Repositorios
                 throw new Exception(string.Format("se produjo un error al ejecutar la actualización: {0}", ex.Message));
             }
         }
+
+        
     }
 }
