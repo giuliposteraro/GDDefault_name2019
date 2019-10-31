@@ -18,3 +18,6 @@ C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.
 C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.exe
 C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
 C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Componentes.GrillaGestionDatos.resources
+C:\Users\user\Desktop\TP_GestionDeDatos\GDDefault_name2019\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.exe.config
+C:\Users\user\Desktop\TP_GestionDeDatos\GDDefault_name2019\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.exe
+C:\Users\user\Desktop\TP_GestionDeDatos\GDDefault_name2019\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.pdb

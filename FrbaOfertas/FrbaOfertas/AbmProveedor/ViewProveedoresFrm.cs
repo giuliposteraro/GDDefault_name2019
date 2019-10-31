@@ -10,19 +10,19 @@ using System.Windows.Forms;
 
 namespace FrbaOfertas.AbmProveedor
 {
-    public partial class ViewProveedores : Form
+    public partial class ViewProveedoresFrm : Form
     {
-        public ViewProveedores()
+        public ViewProveedoresFrm()
         {
             InitializeComponent();
         }
 
-        private void txtApellido_TextChanged(object sender, EventArgs e)
+        private void txtRazonSocial_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void txtCuit_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -42,12 +42,7 @@ namespace FrbaOfertas.AbmProveedor
 
         }
 
-        private void textBoxRubro_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtRazonSocial_TextChanged(object sender, EventArgs e)
+        private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
@@ -72,32 +67,12 @@ namespace FrbaOfertas.AbmProveedor
 
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void ViewProveedores_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label14_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxCp_TextChanged(object sender, EventArgs e)
+        private void ViewProveedoresFrm_Load(object sender, EventArgs e)
         {
 
         }
