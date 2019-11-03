@@ -39,7 +39,7 @@
             this.agregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.asignarAUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reHabilitarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -48,12 +48,11 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.Label4 = new System.Windows.Forms.Label();
             this.panComandos = new System.Windows.Forms.Panel();
-            this.btnAsignar = new System.Windows.Forms.Button();
+            this.btnRehabilitar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.reHabilitarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoles)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -137,37 +136,37 @@
             this.agregarToolStripMenuItem,
             this.modificarToolStripMenuItem,
             this.eliminarToolStripMenuItem,
-            this.asignarAUsuarioToolStripMenuItem,
             this.reHabilitarToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(169, 136);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 114);
             // 
             // agregarToolStripMenuItem
             // 
             this.agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
-            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.agregarToolStripMenuItem.Text = "Agregar";
             this.agregarToolStripMenuItem.Click += new System.EventHandler(this.agregarToolStripMenuItem_Click);
             // 
             // modificarToolStripMenuItem
             // 
             this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.modificarToolStripMenuItem.Text = "Modificar";
             this.modificarToolStripMenuItem.Click += new System.EventHandler(this.modificarToolStripMenuItem_Click);
             // 
             // eliminarToolStripMenuItem
             // 
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
             this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
-            // asignarAUsuarioToolStripMenuItem
+            // reHabilitarToolStripMenuItem
             // 
-            this.asignarAUsuarioToolStripMenuItem.Name = "asignarAUsuarioToolStripMenuItem";
-            this.asignarAUsuarioToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.asignarAUsuarioToolStripMenuItem.Text = "Asignar A Usuario";
+            this.reHabilitarToolStripMenuItem.Name = "reHabilitarToolStripMenuItem";
+            this.reHabilitarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.reHabilitarToolStripMenuItem.Text = "Re habilitar";
+            this.reHabilitarToolStripMenuItem.Click += new System.EventHandler(this.reHabilitarToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -252,7 +251,7 @@
             // panComandos
             // 
             this.panComandos.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.panComandos.Controls.Add(this.btnAsignar);
+            this.panComandos.Controls.Add(this.btnRehabilitar);
             this.panComandos.Controls.Add(this.btnEliminar);
             this.panComandos.Controls.Add(this.btnModificar);
             this.panComandos.Controls.Add(this.btnAgregar);
@@ -263,16 +262,17 @@
             this.panComandos.Size = new System.Drawing.Size(580, 32);
             this.panComandos.TabIndex = 15;
             // 
-            // btnAsignar
+            // btnRehabilitar
             // 
-            this.btnAsignar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAsignar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnAsignar.Location = new System.Drawing.Point(249, 4);
-            this.btnAsignar.Name = "btnAsignar";
-            this.btnAsignar.Size = new System.Drawing.Size(107, 25);
-            this.btnAsignar.TabIndex = 5;
-            this.btnAsignar.Text = "Asignar A Usuario";
-            this.btnAsignar.UseVisualStyleBackColor = false;
+            this.btnRehabilitar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnRehabilitar.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnRehabilitar.Location = new System.Drawing.Point(249, 4);
+            this.btnRehabilitar.Name = "btnRehabilitar";
+            this.btnRehabilitar.Size = new System.Drawing.Size(75, 25);
+            this.btnRehabilitar.TabIndex = 6;
+            this.btnRehabilitar.Text = "Re habilitar";
+            this.btnRehabilitar.UseVisualStyleBackColor = false;
+            this.btnRehabilitar.Click += new System.EventHandler(this.btnRehabilitar_Click);
             // 
             // btnEliminar
             // 
@@ -322,13 +322,6 @@
             this.btnCancelar.Text = "Cerrar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             // 
-            // reHabilitarToolStripMenuItem
-            // 
-            this.reHabilitarToolStripMenuItem.Name = "reHabilitarToolStripMenuItem";
-            this.reHabilitarToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.reHabilitarToolStripMenuItem.Text = "Re habilitar";
-            this.reHabilitarToolStripMenuItem.Click += new System.EventHandler(this.reHabilitarToolStripMenuItem_Click);
-            // 
             // FrmListadoDeRoles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -370,7 +363,6 @@
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnAsignar;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEstado;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFuncionalidades;
@@ -378,7 +370,7 @@
         private System.Windows.Forms.ToolStripMenuItem agregarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem asignarAUsuarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reHabilitarToolStripMenuItem;
+        private System.Windows.Forms.Button btnRehabilitar;
     }
 }

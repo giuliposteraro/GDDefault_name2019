@@ -40,7 +40,7 @@ namespace Negocio.Repositorios
             }
         }
 
-        public List<Rol> BuscarConFiltros(string Nombre)
+        public List<Rol> BuscarConFiltros(string Nombre, bool buscarSoloActivos = false)
         {
             try
             {
@@ -48,6 +48,7 @@ namespace Negocio.Repositorios
 
                 Dictionary<string, object[]> parametros = new Dictionary<string, object[]>();
                 if (Nombre != string.Empty) parametros.Add("Nombre_Rol", new object[2] { Nombre, TipoDeComparador.eID.Texto });
+                if (buscarSoloActivos) parametros.Add("Estado_Rol", new object[2] { "1", TipoDeComparador.eID.TextoExacto });
 
                 lista = this.maper.mapearAEntidad(BuscarTodosPorFiltro(parametros));
                 return lista;

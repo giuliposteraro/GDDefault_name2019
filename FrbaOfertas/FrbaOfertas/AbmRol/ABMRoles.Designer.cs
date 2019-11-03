@@ -67,9 +67,9 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(0, 53);
+            this.label1.Location = new System.Drawing.Point(0, 76);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(353, 19);
+            this.label1.Size = new System.Drawing.Size(353, 42);
             this.label1.TabIndex = 21;
             this.label1.Text = "Funcionalidades";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -103,7 +103,7 @@
             this.dgvFuncionalidades.ResaltarCeldasEditables = false;
             this.dgvFuncionalidades.RowHeadersVisible = false;
             this.dgvFuncionalidades.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFuncionalidades.Size = new System.Drawing.Size(353, 223);
+            this.dgvFuncionalidades.Size = new System.Drawing.Size(353, 177);
             this.dgvFuncionalidades.StatusTripAMostrarAlerta = null;
             this.dgvFuncionalidades.TabIndex = 17;
             this.dgvFuncionalidades.TieneCheckMasivo = true;
@@ -164,16 +164,16 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(353, 53);
+            this.panel1.Size = new System.Drawing.Size(353, 76);
             this.panel1.TabIndex = 22;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.dgvFuncionalidades);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 72);
+            this.panel2.Location = new System.Drawing.Point(0, 118);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(353, 223);
+            this.panel2.Size = new System.Drawing.Size(353, 177);
             this.panel2.TabIndex = 23;
             // 
             // ABMRoles

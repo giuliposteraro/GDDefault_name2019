@@ -33,11 +33,7 @@ namespace Negocio.Entidades
             get
             {
                 if (_roles == null)
-                {
-                    var maper = new MaperDeRoles();
-                    var repo = new RepositorioDeRoles(maper);
-                    _roles = repo.ObtenerPorIdUsuario(this.Id_Usuario);
-                }
+                    RecargarRoles();
                 return _roles;
             }
         }
@@ -65,6 +61,15 @@ namespace Negocio.Entidades
         }
         #endregion
 
+        /// <summary>
+        /// llena los roles con lo que existe en base de datos.
+        /// </summary>
+        public void RecargarRoles()
+        {
+            var maper = new MaperDeRoles();
+            var repo = new RepositorioDeRoles(maper);
+            _roles = repo.ObtenerPorIdUsuario(this.Id_Usuario);
+        }
     }
 
     public enum EstadosUsuario

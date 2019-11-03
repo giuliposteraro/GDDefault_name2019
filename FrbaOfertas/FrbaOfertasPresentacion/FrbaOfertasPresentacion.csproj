@@ -43,8 +43,10 @@
     <Compile Include="AbmCliente\PresentadorClientes.cs" />
     <Compile Include="ABMRol\IVistaABMRol.cs" />
     <Compile Include="ABMRol\IVistaListaDeRoles.cs" />
+    <Compile Include="ABMRol\IVistaRolesCta.cs" />
     <Compile Include="ABMRol\PresentadorABMRol.cs" />
     <Compile Include="ABMRol\PresentadorListaDeRoles.cs" />
+    <Compile Include="ABMRol\PresentadorRolesCta.cs" />
     <Compile Include="bases\IVistaBase.cs" />
     <Compile Include="bases\ModosDeEjecucion.cs" />
     <Compile Include="Componentes\IGrillaGestionDatosVista.cs" />

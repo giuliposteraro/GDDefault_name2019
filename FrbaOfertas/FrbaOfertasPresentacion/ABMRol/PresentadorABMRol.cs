@@ -92,6 +92,7 @@ namespace FrbaOfertasPresentacion.ABMRol
                 repo.Actualizar(RolEnEdicion);
 
                 _vista.MostrarMensaje("Rol actualizado con exito");
+                this.RevisarRolEnUsuarioActual();
                 return true;
             }
             catch (Exception ex)
@@ -136,9 +137,9 @@ namespace FrbaOfertasPresentacion.ABMRol
                 var repo = new RepositorioDeRoles(maper);
 
                 repo.Guardar(RolEnEdicion);
-
                 
                 _vista.MostrarMensaje("Rol creado con exito");
+                this.RevisarRolEnUsuarioActual();
                 return true;
             }
             catch (Exception ex)
@@ -178,12 +179,22 @@ namespace FrbaOfertasPresentacion.ABMRol
                 repo.ActualizarEntidad(RolEnEdicion, propertiesAActualizar, "Id_Rol");
 
                 _vista.MostrarMensaje("El rol se deshabilito con éxito");
+                this.RevisarRolEnUsuarioActual();
                 return true;
             }
             catch (Exception ex)
             {
                 _vista.MostrarMensaje(ex.Message);
                 return false;
+            }
+        }
+
+        private void RevisarRolEnUsuarioActual()
+        {
+            //si el usuario logueado tiene el rol que se esta ejecutando, recargo los roles del usuario logueado
+            if ((from r in Global.SessionUsuario.RolDelUsuario where r.Id_Rol == RolEnEdicion.Id_Rol select r).Any())
+            {
+                Global.SessionUsuario.RecargarRoles();
             }
         }
     }

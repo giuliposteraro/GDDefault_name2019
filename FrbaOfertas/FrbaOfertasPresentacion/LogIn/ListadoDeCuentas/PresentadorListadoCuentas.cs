@@ -42,10 +42,11 @@ namespace FrbaOfertasPresentacion.LogIn.ListadoDeCuentas
 
         public void ActualizarGrilla(Negocio.Entidades.Usuario usuario)
         {
-            List<Usuario> users = _vista.Usuarios;
+            /*List<Usuario> users = _vista.Usuarios;
             users[users.FindIndex(ind=>ind.Equals(usuario))] =  usuario;
             _vista.Usuarios = users;
-            _vista.ReloadView();
+            _vista.ReloadView();*/
+            this.BuscarConFiltros();
         }
 
         public void Activar(Usuario usuario, bool activar)

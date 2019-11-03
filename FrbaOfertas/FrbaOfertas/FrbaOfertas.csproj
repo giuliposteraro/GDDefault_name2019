@@ -68,6 +68,12 @@
     <Compile Include="AbmRol\ABMRoles.Designer.cs">
       <DependentUpon>ABMRoles.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmRol\FrmRolesDelUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\FrmRolesDelUsuario.Designer.cs">
+      <DependentUpon>FrmRolesDelUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="AbmRol\FrmListadoDeRoles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AbmRol\ABMRoles.resx">
       <DependentUpon>ABMRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\FrmRolesDelUsuario.resx">
+      <DependentUpon>FrmRolesDelUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmRol\FrmListadoDeRoles.resx">
       <DependentUpon>FrmListadoDeRoles.cs</DependentUpon>

@@ -127,6 +127,7 @@ namespace FrbaOfertas.AbmRol
             if (frm.ShowDialog(this.MdiParent) == System.Windows.Forms.DialogResult.OK)
             {
                 _presenter.ActualizarGrilla(frm.Presentador.RolEnEdicion);
+                ((Principal)this.MdiParent).OcultarMenu();
             }
         }
 
@@ -149,6 +150,7 @@ namespace FrbaOfertas.AbmRol
             if (frm.ShowDialog(this.MdiParent) == System.Windows.Forms.DialogResult.OK)
             {
                 _presenter.ActualizarGrilla(frm.Presentador.RolEnEdicion);
+                ((Principal)this.MdiParent).OcultarMenu();
             }
         }
 
@@ -164,7 +166,12 @@ namespace FrbaOfertas.AbmRol
 
         private void reHabilitarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-             if (DesignMode) return;
+            btnRehabilitar.PerformClick();
+        }
+
+        private void btnRehabilitar_Click(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
             if (dgvRoles.ItemSeleccionado == null)
             {
                 this.MostrarMensaje("debe seleccionar un rol a re habilitar");

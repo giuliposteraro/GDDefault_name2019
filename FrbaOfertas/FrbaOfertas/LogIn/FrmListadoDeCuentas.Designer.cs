@@ -45,6 +45,10 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dgvCuentas = new FrbaOfertas.Componentes.GrillaGestionDatos();
+            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCantidadIngresos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado_Cuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.agregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -52,15 +56,13 @@
             this.activarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.cambiarContraseñaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dgvCuentas = new FrbaOfertas.Componentes.GrillaGestionDatos();
-            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCantidadIngresos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado_Cuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.verRolesDeLaCuentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRolesCta = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panComandos.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCuentas)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -158,6 +160,7 @@
             // panComandos
             // 
             this.panComandos.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panComandos.Controls.Add(this.btnRolesCta);
             this.panComandos.Controls.Add(this.btnCambiarContraseña);
             this.panComandos.Controls.Add(this.btnActivar);
             this.panComandos.Controls.Add(this.btnDesactivar);
@@ -238,56 +241,6 @@
             this.panel2.Size = new System.Drawing.Size(607, 236);
             this.panel2.TabIndex = 18;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.agregarToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.desactivarToolStripMenuItem,
-            this.activarToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.cambiarContraseñaToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(183, 104);
-            // 
-            // agregarToolStripMenuItem
-            // 
-            this.agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
-            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.agregarToolStripMenuItem.Text = "Agregar";
-            this.agregarToolStripMenuItem.Click += new System.EventHandler(this.agregarToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(179, 6);
-            // 
-            // desactivarToolStripMenuItem
-            // 
-            this.desactivarToolStripMenuItem.Name = "desactivarToolStripMenuItem";
-            this.desactivarToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.desactivarToolStripMenuItem.Text = "Desactivar";
-            this.desactivarToolStripMenuItem.Click += new System.EventHandler(this.desactivarToolStripMenuItem_Click);
-            // 
-            // activarToolStripMenuItem
-            // 
-            this.activarToolStripMenuItem.Name = "activarToolStripMenuItem";
-            this.activarToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.activarToolStripMenuItem.Text = "Activar";
-            this.activarToolStripMenuItem.Click += new System.EventHandler(this.activarToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(179, 6);
-            // 
-            // cambiarContraseñaToolStripMenuItem
-            // 
-            this.cambiarContraseñaToolStripMenuItem.Name = "cambiarContraseñaToolStripMenuItem";
-            this.cambiarContraseñaToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.cambiarContraseñaToolStripMenuItem.Text = "Cambiar Contraseña";
-            this.cambiarContraseñaToolStripMenuItem.Click += new System.EventHandler(this.cambiarContraseñaToolStripMenuItem_Click);
-            // 
             // dgvCuentas
             // 
             this.dgvCuentas.AjustarColumnas = false;
@@ -349,6 +302,76 @@
             this.Estado_Cuenta.HeaderText = "Estado Cuenta";
             this.Estado_Cuenta.Name = "Estado_Cuenta";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.agregarToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.desactivarToolStripMenuItem,
+            this.activarToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.cambiarContraseñaToolStripMenuItem,
+            this.verRolesDeLaCuentaToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(189, 148);
+            // 
+            // agregarToolStripMenuItem
+            // 
+            this.agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
+            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.agregarToolStripMenuItem.Text = "Agregar";
+            this.agregarToolStripMenuItem.Click += new System.EventHandler(this.agregarToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(185, 6);
+            // 
+            // desactivarToolStripMenuItem
+            // 
+            this.desactivarToolStripMenuItem.Name = "desactivarToolStripMenuItem";
+            this.desactivarToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.desactivarToolStripMenuItem.Text = "Desactivar";
+            this.desactivarToolStripMenuItem.Click += new System.EventHandler(this.desactivarToolStripMenuItem_Click);
+            // 
+            // activarToolStripMenuItem
+            // 
+            this.activarToolStripMenuItem.Name = "activarToolStripMenuItem";
+            this.activarToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.activarToolStripMenuItem.Text = "Activar";
+            this.activarToolStripMenuItem.Click += new System.EventHandler(this.activarToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(185, 6);
+            // 
+            // cambiarContraseñaToolStripMenuItem
+            // 
+            this.cambiarContraseñaToolStripMenuItem.Name = "cambiarContraseñaToolStripMenuItem";
+            this.cambiarContraseñaToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.cambiarContraseñaToolStripMenuItem.Text = "Cambiar Contraseña";
+            this.cambiarContraseñaToolStripMenuItem.Click += new System.EventHandler(this.cambiarContraseñaToolStripMenuItem_Click);
+            // 
+            // verRolesDeLaCuentaToolStripMenuItem
+            // 
+            this.verRolesDeLaCuentaToolStripMenuItem.Name = "verRolesDeLaCuentaToolStripMenuItem";
+            this.verRolesDeLaCuentaToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.verRolesDeLaCuentaToolStripMenuItem.Text = "Ver Roles de la cuenta";
+            this.verRolesDeLaCuentaToolStripMenuItem.Click += new System.EventHandler(this.verRolesDeLaCuentaToolStripMenuItem_Click);
+            // 
+            // btnRolesCta
+            // 
+            this.btnRolesCta.BackColor = System.Drawing.SystemColors.Control;
+            this.btnRolesCta.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnRolesCta.Location = new System.Drawing.Point(372, 3);
+            this.btnRolesCta.Name = "btnRolesCta";
+            this.btnRolesCta.Size = new System.Drawing.Size(114, 25);
+            this.btnRolesCta.TabIndex = 6;
+            this.btnRolesCta.Text = "Roles de la cuenta";
+            this.btnRolesCta.UseVisualStyleBackColor = false;
+            this.btnRolesCta.Click += new System.EventHandler(this.btnRolesCta_Click);
+            // 
             // FrmListadoDeCuentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -368,8 +391,8 @@
             this.panel1.PerformLayout();
             this.panComandos.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCuentas)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -402,5 +425,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCantidadIngresos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado_Cuenta;
+        private System.Windows.Forms.Button btnRolesCta;
+        private System.Windows.Forms.ToolStripMenuItem verRolesDeLaCuentaToolStripMenuItem;
     }
 }

@@ -101,6 +101,83 @@ namespace Negocio.Repositorios
             }
         }
 
-        
+
+
+        public void ActualizarRoles(Usuario UsuarioEnEdicion)
+        {
+            this.InicializarConexion();
+            SqlTransaction transaction;
+            transaction = conn.BeginTransaction();
+
+            try
+            {
+                //busco las funcionalidades de la base
+                var maper = new MaperDeRoles();
+                var repo = new RepositorioDeRoles(maper);
+                List<int> _roles = (from f in repo.ObtenerPorIdUsuario(UsuarioEnEdicion.Id_Usuario) select f.Id_Rol).ToList();
+                List<int> _RolesDelUser = (from f in UsuarioEnEdicion.RolDelUsuario select f.Id_Rol).ToList();
+                SqlCommand command = conn.CreateCommand();
+                command.Transaction = transaction;
+                SqlParameter param;
+
+                //actualizo los roles asociadas al usuario
+                //elimino las que estan en la base y no en mi objeto
+                List<int> RolEliminar = (from f in _roles where !_RolesDelUser.Contains(f) select f).ToList();
+                if (RolEliminar.Any())
+                {
+                    command.Parameters.Clear();
+                    param = new SqlParameter("@Id_Usuario", UsuarioEnEdicion.Id_Usuario);
+                    command.Parameters.Add(param);
+                    string cmd = @"DELETE FROM [DEFAULT_NAME].[Rol_Por_Cuenta]
+                                    where [Id_Usuario] = @Id_Usuario and [Id_Rol] in (";
+
+                    for (int i = 0; i < RolEliminar.Count(); i++)
+                    {
+                        string a = ",";
+                        if (i == 0) a = "";
+                        param = new SqlParameter(string.Format("@Id_Rol{0}", i), RolEliminar[i]);
+                        command.Parameters.Add(param);
+                        cmd = cmd + string.Format("{1}@Id_Rol{0}", i, a);
+                    }
+                    cmd = cmd + ")";
+                    command.CommandText = cmd;
+                    command.ExecuteNonQuery();
+                }
+                //inserto las que estan en mi objeto y no en la base
+                List<int> RolAgregar = (from f in _RolesDelUser where !_roles.Contains(f) select f).ToList();
+                if (RolAgregar.Any())
+                {
+                    command.Parameters.Clear();
+                    StringBuilder comando = new StringBuilder();
+                    comando.AppendLine(@"INSERT INTO [DEFAULT_NAME].[Rol_Por_Cuenta]
+                                    ([Id_Usuario] ,[Id_Rol])
+                                     VALUES");
+
+                    for (int i = 0; i < RolAgregar.Count(); i++)
+                    {
+                        string a = ",";
+                        if (i == 0) a = "";
+                        param = new SqlParameter(string.Format("@Id_Usuario{0}", i), UsuarioEnEdicion.Id_Usuario);
+                        command.Parameters.Add(param);
+                        param = new SqlParameter(string.Format("@Id_Rol{0}", i), RolAgregar[i]);
+                        command.Parameters.Add(param);
+                        comando.AppendLine(string.Format("{1}(@Id_Usuario{0} , @Id_Rol{0})", i, a));
+                    }
+                    command.CommandText = comando.ToString();
+
+                    command.ExecuteNonQuery();
+                }
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                throw new Exception(string.Format("se produjo un error al actualizar los roles: {0}", ex.Message));
+            }
+            finally
+            {
+                this.CerrarConexion();
+            }
+        }
     }
 }

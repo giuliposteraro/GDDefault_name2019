@@ -53,7 +53,7 @@ namespace FrbaOfertas
             }
         }
 
-        private void OcultarMenu()
+        public void OcultarMenu()
         {
             //voy a verificar si el usuario tiene 
             GestorDeValidacionDePermisos gestor = new GestorDeValidacionDePermisos();

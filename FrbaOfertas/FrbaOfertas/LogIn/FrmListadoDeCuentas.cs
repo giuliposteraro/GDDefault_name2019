@@ -1,4 +1,5 @@
-﻿using FrbaOfertasPresentacion.LogIn.ListadoDeCuentas;
+﻿using FrbaOfertas.AbmRol;
+using FrbaOfertasPresentacion.LogIn.ListadoDeCuentas;
 using Negocio.Entidades;
 using System;
 using System.Collections.Generic;
@@ -177,6 +178,27 @@ namespace FrbaOfertas.LogIn
         public bool MensajePregunta(string mensage)
         {
             return (MessageBox.Show(mensage, "Confirmar", System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes);
+        }
+
+        private void btnRolesCta_Click(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
+            if (dgvCuentas.ItemSeleccionado == null)
+            {
+                this.MostrarMensaje("debe seleccionar un usuario para ver los roles");
+                return;
+            }
+            var frm = new FrmRolesDelUsuario();
+            frm.Presentador.Posicionar((Usuario)dgvCuentas.ItemSeleccionado);
+            if (frm.ShowDialog(this.MdiParent) == System.Windows.Forms.DialogResult.OK)
+            {
+                _presenter.ActualizarGrilla(frm.Presentador.UsuarioEnEdicion);
+            }
+        }
+
+        private void verRolesDeLaCuentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnRolesCta.PerformClick();
         }
     }
 }
