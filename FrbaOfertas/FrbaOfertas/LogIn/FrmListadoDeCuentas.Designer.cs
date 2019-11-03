@@ -45,14 +45,21 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.agregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.desactivarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.activarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.cambiarContraseñaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvCuentas = new FrbaOfertas.Componentes.GrillaGestionDatos();
             this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCantidadIngresos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado_Cuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel1.SuspendLayout();
             this.panComandos.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCuentas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -208,6 +215,7 @@
             this.btnAgregar.TabIndex = 2;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnCancelar
             // 
@@ -229,6 +237,56 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(607, 236);
             this.panel2.TabIndex = 18;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.agregarToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.desactivarToolStripMenuItem,
+            this.activarToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.cambiarContraseñaToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(183, 104);
+            // 
+            // agregarToolStripMenuItem
+            // 
+            this.agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
+            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.agregarToolStripMenuItem.Text = "Agregar";
+            this.agregarToolStripMenuItem.Click += new System.EventHandler(this.agregarToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(179, 6);
+            // 
+            // desactivarToolStripMenuItem
+            // 
+            this.desactivarToolStripMenuItem.Name = "desactivarToolStripMenuItem";
+            this.desactivarToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.desactivarToolStripMenuItem.Text = "Desactivar";
+            this.desactivarToolStripMenuItem.Click += new System.EventHandler(this.desactivarToolStripMenuItem_Click);
+            // 
+            // activarToolStripMenuItem
+            // 
+            this.activarToolStripMenuItem.Name = "activarToolStripMenuItem";
+            this.activarToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.activarToolStripMenuItem.Text = "Activar";
+            this.activarToolStripMenuItem.Click += new System.EventHandler(this.activarToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(179, 6);
+            // 
+            // cambiarContraseñaToolStripMenuItem
+            // 
+            this.cambiarContraseñaToolStripMenuItem.Name = "cambiarContraseñaToolStripMenuItem";
+            this.cambiarContraseñaToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.cambiarContraseñaToolStripMenuItem.Text = "Cambiar Contraseña";
+            this.cambiarContraseñaToolStripMenuItem.Click += new System.EventHandler(this.cambiarContraseñaToolStripMenuItem_Click);
             // 
             // dgvCuentas
             // 
@@ -265,8 +323,7 @@
             this.dgvCuentas.Size = new System.Drawing.Size(607, 236);
             this.dgvCuentas.StatusTripAMostrarAlerta = null;
             this.dgvCuentas.TabIndex = 13;
-            this.dgvCuentas.TieneCheckMasivo = true;
-            this.dgvCuentas.TieneChecks = true;
+            this.dgvCuentas.TieneCheckMasivo = false;
             this.dgvCuentas.TieneCopiarDatos = true;
             this.dgvCuentas.TieneExportarDatos = false;
             this.dgvCuentas.CambioChequeadosMultiplesItems += new System.EventHandler(this.dgvCuentas_CambioChequeadosMultiplesItems);
@@ -275,6 +332,7 @@
             // 
             // colNombre
             // 
+            this.colNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colNombre.DataPropertyName = "Usuario_Cuenta";
             this.colNombre.HeaderText = "Nombre";
             this.colNombre.Name = "colNombre";
@@ -290,11 +348,6 @@
             this.Estado_Cuenta.DataPropertyName = "Estado_Cuenta";
             this.Estado_Cuenta.HeaderText = "Estado Cuenta";
             this.Estado_Cuenta.Name = "Estado_Cuenta";
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // FrmListadoDeCuentas
             // 
@@ -315,6 +368,7 @@
             this.panel1.PerformLayout();
             this.panComandos.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCuentas)).EndInit();
             this.ResumeLayout(false);
 
@@ -337,10 +391,16 @@
         private System.Windows.Forms.Button btnDesactivar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem agregarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem desactivarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem activarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem cambiarContraseñaToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCantidadIngresos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado_Cuenta;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

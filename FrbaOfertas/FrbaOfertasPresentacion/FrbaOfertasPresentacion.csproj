@@ -41,10 +41,16 @@
   <ItemGroup>
     <Compile Include="AbmCliente\IVistaClientes.cs" />
     <Compile Include="AbmCliente\PresentadorClientes.cs" />
+    <Compile Include="ABMRol\IVistaABMRol.cs" />
+    <Compile Include="ABMRol\IVistaListaDeRoles.cs" />
+    <Compile Include="ABMRol\PresentadorABMRol.cs" />
+    <Compile Include="ABMRol\PresentadorListaDeRoles.cs" />
     <Compile Include="bases\IVistaBase.cs" />
+    <Compile Include="bases\ModosDeEjecucion.cs" />
     <Compile Include="Componentes\IGrillaGestionDatosVista.cs" />
     <Compile Include="Componentes\PresentadorGrillaGestionDatos.cs" />
     <Compile Include="LogIn\AltaCuenta\IVistaAltaCuenta.cs" />
+    <Compile Include="LogIn\AltaCuenta\ModoAltaCuenta.cs" />
     <Compile Include="LogIn\AltaCuenta\PresentadorAltaCuenta.cs" />
     <Compile Include="LogIn\CambiarContraseña\IVistaCambioContraseña.cs" />
     <Compile Include="LogIn\CambiarContraseña\PresentadorCambioContraseña.cs" />

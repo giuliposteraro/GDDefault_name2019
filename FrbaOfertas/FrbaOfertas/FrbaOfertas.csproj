@@ -50,12 +50,6 @@
     <Compile Include="AbmCliente\FrmCliente.Designer.cs">
       <DependentUpon>FrmCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmCliente\FrmCliente2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AbmCliente\FrmCliente2.Designer.cs">
-      <DependentUpon>FrmCliente2.cs</DependentUpon>
-    </Compile>
     <Compile Include="AbmCliente\FrmClienteEditar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,11 +62,17 @@
     <Compile Include="AbmProveedor\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmRol\Form1.cs">
+    <Compile Include="AbmRol\ABMRoles.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmRol\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AbmRol\ABMRoles.Designer.cs">
+      <DependentUpon>ABMRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\FrmListadoDeRoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\FrmListadoDeRoles.Designer.cs">
+      <DependentUpon>FrmListadoDeRoles.cs</DependentUpon>
     </Compile>
     <Compile Include="Componentes\GrillaGestionDatos.cs">
       <SubType>Component</SubType>
@@ -80,29 +80,29 @@
     <Compile Include="Componentes\GrillaGestionDatos.Designer.cs">
       <DependentUpon>GrillaGestionDatos.cs</DependentUpon>
     </Compile>
-    <Compile Include="ComprarOferta\Form1.cs">
+    <Compile Include="ComprarOferta\FrmCompraDeOfertas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ComprarOferta\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ComprarOferta\FrmCompraDeOfertas.Designer.cs">
+      <DependentUpon>FrmCompraDeOfertas.cs</DependentUpon>
     </Compile>
-    <Compile Include="CragaCredito\Form1.cs">
+    <Compile Include="CragaCredito\FrmListadoDeCreditos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CragaCredito\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="CragaCredito\FrmListadoDeCreditos.Designer.cs">
+      <DependentUpon>FrmListadoDeCreditos.cs</DependentUpon>
     </Compile>
-    <Compile Include="CrearOferta\Form1.cs">
+    <Compile Include="CrearOferta\FrmListadoDeOfertas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CrearOferta\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="CrearOferta\FrmListadoDeOfertas.Designer.cs">
+      <DependentUpon>FrmListadoDeOfertas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Facturar\Form1.cs">
+    <Compile Include="Facturar\FrmListadoDeFacturas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Facturar\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Facturar\FrmListadoDeFacturas.Designer.cs">
+      <DependentUpon>FrmListadoDeFacturas.cs</DependentUpon>
     </Compile>
     <Compile Include="LogIn\FrmAltaDeCuentas.cs">
       <SubType>Form</SubType>
@@ -134,25 +134,31 @@
     <Compile Include="Principal.Designer.cs">
       <DependentUpon>Principal.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListadoEstadistico\Form1.cs">
+    <Compile Include="ListadoEstadistico\FrmEstadisticas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListadoEstadistico\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ListadoEstadistico\FrmEstadisticas.Designer.cs">
+      <DependentUpon>FrmEstadisticas.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AbmCliente\FrmCliente.resx">
       <DependentUpon>FrmCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AbmCliente\FrmCliente2.resx">
-      <DependentUpon>FrmCliente2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AbmCliente\FrmClienteEditar.resx">
       <DependentUpon>FrmClienteEditar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\ABMRoles.resx">
+      <DependentUpon>ABMRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\FrmListadoDeRoles.resx">
+      <DependentUpon>FrmListadoDeRoles.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Componentes\GrillaGestionDatos.resx">
       <DependentUpon>GrillaGestionDatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogIn\FrmAltaDeCuentas.resx">
+      <DependentUpon>FrmAltaDeCuentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogIn\FrmCambiarContraseña.resx">
       <DependentUpon>FrmCambiarContraseña.cs</DependentUpon>

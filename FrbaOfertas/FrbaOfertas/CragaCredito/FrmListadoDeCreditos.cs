@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace FrbaOfertas.CragaCredito
 {
-    public partial class Form1 : Form
+    public partial class FrmListadoDeCreditos : Form
     {
-        public Form1()
+        public FrmListadoDeCreditos()
         {
             InitializeComponent();
+        }
+
+        public bool MensajePregunta(string mensage)
+        {
+            return (MessageBox.Show(mensage, "Confirmar", System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes);
         }
     }
 }

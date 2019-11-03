@@ -16,5 +16,10 @@ namespace FrbaOfertas.AbmCliente
         {
             InitializeComponent();
         }
+
+        public bool MensajePregunta(string mensage)
+        {
+            return (MessageBox.Show(mensage, "Confirmar", System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes);
+        }
     }
 }

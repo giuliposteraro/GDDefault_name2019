@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace FrbaOfertas.CrearOferta
 {
-    public partial class Form1 : Form
+    public partial class FrmListadoDeOfertas : Form
     {
-        public Form1()
+        public FrmListadoDeOfertas()
         {
             InitializeComponent();
+        }
+
+        public bool MensajePregunta(string mensage)
+        {
+            return (MessageBox.Show(mensage, "Confirmar", System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes);
         }
     }
 }

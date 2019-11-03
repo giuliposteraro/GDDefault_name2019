@@ -1,4 +1,10 @@
 ﻿using FrbaOfertas.AbmCliente;
+using FrbaOfertas.AbmRol;
+using FrbaOfertas.ComprarOferta;
+using FrbaOfertas.CragaCredito;
+using FrbaOfertas.CrearOferta;
+using FrbaOfertas.Facturar;
+using FrbaOfertas.ListadoEstadistico;
 using FrbaOfertas.LogIn;
 using Negocio.Base;
 using Negocio.Entidades;
@@ -22,11 +28,11 @@ namespace FrbaOfertas
             InitializeComponent();
         }
 
-        private void mnuClientes_Click(object sender, EventArgs e)
+        private void mnuRoles_Click(object sender, EventArgs e)
         {
             if (DesignMode) return;
 
-            var frm = new FrmCliente();
+            var frm = new FrmListadoDeRoles();
             frm.MdiParent = this;
             frm.Show();
  
@@ -51,15 +57,15 @@ namespace FrbaOfertas
         {
             //voy a verificar si el usuario tiene 
             GestorDeValidacionDePermisos gestor = new GestorDeValidacionDePermisos();
-            clientes2ToolStripMenuItem.Visible = gestor.TienePermisoPara(Funcionalidad.ABMdeCliente);
+            clientesToolStripMenuItem.Visible = gestor.TienePermisoPara(Funcionalidad.ABMdeCliente);
             cuentasToolStripMenuItem.Visible = gestor.TienePermisoPara(Funcionalidad.RegistroDeUsuarios);
         }
 
-        private void clientes2ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (DesignMode) return;
 
-            var frm = new FrmCliente2();
+            var frm = new FrmCliente();
             frm.MdiParent = this;
             frm.Show();
         }
@@ -84,6 +90,62 @@ namespace FrbaOfertas
 
             var frm = new FrmCambiarContraseña();
             frm.Presentador.Posicionar(Global.SessionUsuario);
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void creditoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
+
+            var frm = new FrmListadoDeCreditos();
+            //frm.Presentador.Posicionar(Global.SessionUsuario);
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripMenuPubicacion_Click(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
+
+            var frm = new FrmListadoDeOfertas();
+            //frm.Presentador.Posicionar(Global.SessionUsuario);
+            frm.MdiParent = this;
+            frm.Show();
+            
+        }
+
+        private void toolStripMenuCompras_Click(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
+
+            var frm = new FrmCompraDeOfertas();
+            //frm.Presentador.Posicionar(Global.SessionUsuario);
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void facturaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
+
+            var frm = new FrmListadoDeFacturas();
+            //frm.Presentador.Posicionar(Global.SessionUsuario);
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void estadisticasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
+
+            var frm = new FrmEstadisticas();
+            //frm.Presentador.Posicionar(Global.SessionUsuario);
             frm.MdiParent = this;
             frm.Show();
         }

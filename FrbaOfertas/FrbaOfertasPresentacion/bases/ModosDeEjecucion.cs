@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Negocio.Base
+namespace FrbaOfertasPresentacion.bases
 {
-    [Serializable]
-    public class EntidadBase
+    public enum ModosDeEjecucion
     {
-        public virtual int ID { get {return 0;} }
+        Alta,
+        Baja,
+        Modificacion
     }
 }

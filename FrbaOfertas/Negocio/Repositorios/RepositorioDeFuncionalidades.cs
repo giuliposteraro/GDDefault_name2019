@@ -42,7 +42,29 @@ namespace Negocio.Repositorios
 
         internal Funcionalidad ObtenerUnoPorId(int Id_Funcionalidad)
         {
-            return this.maper.mapearAEntidad(ObtenerPorID("Id_Funcionalidad", Id_Funcionalidad)).FirstOrDefault();
+            try
+            {
+                return this.maper.mapearAEntidad(ObtenerPorID("Id_Funcionalidad", Id_Funcionalidad)).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("se produjo un error al buscar la Funcionalidad: {0}", ex.Message));
+            }
         }
+
+        public List<Funcionalidad> ObtenerTodos()
+        {
+            try
+            {
+                List<Funcionalidad> lista = new List<Funcionalidad>();
+                lista = this.maper.mapearAEntidad(BuscarTodos());
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("se produjo un error al buscar las funcionalidades: {0}", ex.Message));
+            }
+        }
+
     }
 }

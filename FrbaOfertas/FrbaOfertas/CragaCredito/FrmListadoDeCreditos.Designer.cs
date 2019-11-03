@@ -1,6 +1,6 @@
-﻿namespace FrbaOfertas.AbmRol
+﻿namespace FrbaOfertas.CragaCredito
 {
-    partial class Form1
+    partial class FrmListadoDeCreditos
     {
         /// <summary>
         /// Required designer variable.

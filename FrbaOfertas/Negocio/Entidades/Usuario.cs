@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Negocio.Entidades
 {
+    [Serializable]
     public class Usuario : EntidadBase
     {
         public int Cant_Ingresos_Cuenta { get;  set; }
@@ -15,6 +16,14 @@ namespace Negocio.Entidades
         public EstadosUsuario Estado_Cuenta { get; set; }
         public int Id_Usuario { get; set; }
         public string Usuario_Cuenta { get; set; }
+        
+        public override int ID
+        {
+            get
+            {
+                return Id_Usuario;
+            }
+        }
 
         #region roles
         private List<Rol> _roles;

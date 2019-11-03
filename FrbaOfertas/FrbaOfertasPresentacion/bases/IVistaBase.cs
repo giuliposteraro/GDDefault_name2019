@@ -9,5 +9,7 @@ namespace FrbaOfertasPresentacion.bases
     public interface IVistaBase
     {
         void MostrarMensaje(string message);
+
+        bool MensajePregunta(string mensage);
     }
 }

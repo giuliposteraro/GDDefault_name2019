@@ -1,6 +1,6 @@
-﻿namespace FrbaOfertas.CrearOferta
+﻿namespace FrbaOfertas.Facturar
 {
-    partial class Form1
+    partial class FrmListadoDeFacturas
     {
         /// <summary>
         /// Required designer variable.

@@ -1,6 +1,6 @@
-﻿namespace FrbaOfertas.CragaCredito
+﻿namespace FrbaOfertas.ListadoEstadistico
 {
-    partial class Form1
+    partial class FrmEstadisticas
     {
         /// <summary>
         /// Required designer variable.

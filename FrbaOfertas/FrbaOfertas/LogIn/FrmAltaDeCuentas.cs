@@ -25,5 +25,15 @@ namespace FrbaOfertas.LogIn
         {
             MessageBox.Show(message);
         }
+
+        private void FrmAltaDeCuentas_Load(object sender, EventArgs e)
+        {
+            _presenter.IniciarVista();
+        }
+
+        public bool MensajePregunta(string mensage)
+        {
+            return (MessageBox.Show(mensage, "Confirmar", System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes);
+        }
     }
 }

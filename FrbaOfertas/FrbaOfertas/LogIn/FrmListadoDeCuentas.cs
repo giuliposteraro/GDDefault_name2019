@@ -143,5 +143,40 @@ namespace FrbaOfertas.LogIn
         {
             this.dgvCuentas.Refresh();
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmAltaDeCuentas();
+            //frm.MdiParent = this;
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                _presenter.BuscarConFiltros();
+            }
+        }
+
+        private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnAgregar.PerformClick();
+        }
+
+        private void desactivarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnDesactivar.PerformClick();
+        }
+
+        private void activarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnActivar.PerformClick();
+        }
+
+        private void cambiarContraseñaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnCambiarContraseña.PerformClick();
+        }
+
+        public bool MensajePregunta(string mensage)
+        {
+            return (MessageBox.Show(mensage, "Confirmar", System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes);
+        }
     }
 }

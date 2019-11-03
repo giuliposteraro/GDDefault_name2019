@@ -353,5 +353,15 @@ BEGIN
 END
 GO
 
+--trigger para modificacion de roles
+create trigger TR_Modificar_Roles_AFT_UPD
+ON DEFAULT_NAME.Rol
+AFTER UPDATE As
+Begin
+
+	Delete FROM DEFAULT_NAME.Rol_Por_Cuenta where id_Rol in (
+		select id_Rol from inserted where Estado_rol = 0)
+
+END
 
 --IMPORTACION DESDE TABLA

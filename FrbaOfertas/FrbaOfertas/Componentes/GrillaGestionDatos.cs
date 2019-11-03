@@ -741,6 +741,8 @@ namespace FrbaOfertas.Componentes
             {
                 // If Not _ItemsPorLinea.TryGetValue(value, fila) Then Return Nothing
                 _ItemsPorLinea.TryGetValue( value, out fila);
+                if (fila == null)
+                    fila = (from it in _ItemsPorLinea where ((EntidadBase)value).ID == ((EntidadBase)it.Key).ID select it.Value).FirstOrDefault(); 
             }
             catch (Exception ex)
             {
@@ -1273,6 +1275,7 @@ namespace FrbaOfertas.Componentes
                     }
                     else {
                         _ItemsChequeadosNoVisible = value;
+                        Chequear(_ItemsChequeadosNoVisible);
                         return;
                     }
             

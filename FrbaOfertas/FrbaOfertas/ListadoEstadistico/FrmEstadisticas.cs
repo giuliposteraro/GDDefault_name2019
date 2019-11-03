@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace FrbaOfertas.ListadoEstadistico
 {
-    public partial class Form1 : Form
+    public partial class FrmEstadisticas : Form
     {
-        public Form1()
+        public FrmEstadisticas()
         {
             InitializeComponent();
+        }
+
+        public bool MensajePregunta(string mensage)
+        {
+            return (MessageBox.Show(mensage, "Confirmar", System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes);
         }
     }
 }

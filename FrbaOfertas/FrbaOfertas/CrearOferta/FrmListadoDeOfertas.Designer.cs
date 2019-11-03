@@ -1,6 +1,6 @@
-﻿namespace FrbaOfertas.ListadoEstadistico
+﻿namespace FrbaOfertas.CrearOferta
 {
-    partial class Form1
+    partial class FrmListadoDeOfertas
     {
         /// <summary>
         /// Required designer variable.

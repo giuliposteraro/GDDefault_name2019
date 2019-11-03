@@ -1,4 +1,5 @@
 ﻿using FrbaOfertasPresentacion.AbmCliente;
+using Negocio.Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Negocio.Entidades;
 
 namespace FrbaOfertas.AbmCliente
 {
@@ -37,8 +37,10 @@ namespace FrbaOfertas.AbmCliente
 
         public List<Cliente> Clientes
         {
-            get { return new List<Cliente>(); }
-            set { dgvClientes.DataSource = value; }
+            get { return (List<Cliente>)dgvClientes.Items; }
+            set { 
+                dgvClientes.Items = value;
+            }
         }
 
 
@@ -47,6 +49,11 @@ namespace FrbaOfertas.AbmCliente
         private void FrmCliente_Load(object sender, EventArgs e)
         {
             _presenter.IniciarVista();
+        }
+
+        private void FrmCliente_Shown(object sender, EventArgs e)
+        {
+            dgvClientes._parentForm_Shown(sender, e);
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -80,9 +87,40 @@ namespace FrbaOfertas.AbmCliente
             _presenter.Buscar();
         }
 
+        private void  dgvClientes_SelectionChanged(object sender , System.EventArgs e)
+        {   
+           if (DesignMode) return;
+                //Presenter.CambioItemSeleccionado()
+        }
+
+        private void  dgvClientes_CambioChequeadosMultiplesItems(object sender , System.EventArgs e)
+        {
+            if (DesignMode) return;
+        }
+
+        private void  dgvClientes_CambioChequeadosUnItem( object sender , System.Windows.Forms.DataGridViewCellEventArgs e)
+        {
+            if (DesignMode) return;
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            this._presenter.ActualizarVista();
+        }
+
+        private void dgvClientes_CargarMenuContextual(object sender, EventArgs e)
+        {
+
+        }
+
         public void MostrarMensaje(string message)
         {
             MessageBox.Show(message);
+        }
+
+        public bool MensajePregunta(string mensage)
+        {
+            return (MessageBox.Show(mensage, "Confirmar", System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes);
         }
     }
 }
