@@ -57,8 +57,18 @@ namespace FrbaOfertas
         {
             //voy a verificar si el usuario tiene 
             GestorDeValidacionDePermisos gestor = new GestorDeValidacionDePermisos();
+            mnuRoles.Visible = gestor.TienePermisoPara(Funcionalidad.ABMdeRol);
             clientesToolStripMenuItem.Visible = gestor.TienePermisoPara(Funcionalidad.ABMdeCliente);
             cuentasToolStripMenuItem.Visible = gestor.TienePermisoPara(Funcionalidad.RegistroDeUsuarios);
+
+	        proveedoresToolStripMenuItem.Visible = gestor.TienePermisoPara(Funcionalidad.ABMdeProveedor);
+	        creditoToolStripMenuItem.Visible = gestor.TienePermisoPara(Funcionalidad.CargarCrédito);
+            facturaciónToolStripMenuItem.Visible = gestor.TienePermisoPara(Funcionalidad.FacturacionaProveedor);
+            estadisticasToolStripMenuItem.Visible = gestor.TienePermisoPara(Funcionalidad.ListadoEstadistico);
+            toolStripMenuCompraOferta.Visible = gestor.TienePermisoPara(Funcionalidad.ComprarOferta);
+            ofertasToolStripMenuItem.Visible = gestor.TienePermisoPara(Funcionalidad.Confeccionypublicaciondeofertas);
+            
+            
         }
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -109,27 +119,6 @@ namespace FrbaOfertas
 
         }
 
-        private void toolStripMenuPubicacion_Click(object sender, EventArgs e)
-        {
-            if (DesignMode) return;
-
-            var frm = new FrmListadoDeOfertas();
-            //frm.Presentador.Posicionar(Global.SessionUsuario);
-            frm.MdiParent = this;
-            frm.Show();
-            
-        }
-
-        private void toolStripMenuCompras_Click(object sender, EventArgs e)
-        {
-            if (DesignMode) return;
-
-            var frm = new FrmCompraDeOfertas();
-            //frm.Presentador.Posicionar(Global.SessionUsuario);
-            frm.MdiParent = this;
-            frm.Show();
-        }
-
         private void facturaciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (DesignMode) return;
@@ -145,6 +134,26 @@ namespace FrbaOfertas
             if (DesignMode) return;
 
             var frm = new FrmEstadisticas();
+            //frm.Presentador.Posicionar(Global.SessionUsuario);
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void ofertasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
+
+            var frm = new FrmListadoDeOfertas();
+            //frm.Presentador.Posicionar(Global.SessionUsuario);
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void toolStripMenuCompraOferta_Click(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
+
+            var frm = new FrmCompraDeOfertas();
             //frm.Presentador.Posicionar(Global.SessionUsuario);
             frm.MdiParent = this;
             frm.Show();

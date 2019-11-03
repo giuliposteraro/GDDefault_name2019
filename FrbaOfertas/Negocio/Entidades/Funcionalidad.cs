@@ -22,6 +22,16 @@ namespace Negocio.Entidades
             }
         }
 
+        public static Funcionalidad ABMdeRol
+        {
+            get
+            {
+                var maper = new MaperDeFuncionalidades();
+                var repo = new RepositorioDeFuncionalidades(maper);
+                return repo.ObtenerUnoPorId((int)Eid.ABMdeRol);
+            }
+        }
+
         public static Funcionalidad ABMdeCliente
         {
             get {
@@ -38,6 +48,65 @@ namespace Negocio.Entidades
                 var maper = new MaperDeFuncionalidades();
                 var repo = new RepositorioDeFuncionalidades(maper);
                 return repo.ObtenerUnoPorId((int)Eid.RegistroDeUsuarios);
+            }
+        }
+
+        public static Funcionalidad ABMdeProveedor
+        {
+            get
+            {
+                var maper = new MaperDeFuncionalidades();
+                var repo = new RepositorioDeFuncionalidades(maper);
+                return repo.ObtenerUnoPorId((int)Eid.ABMdeProveedor);
+            }
+        }
+
+        public static Funcionalidad CargarCrédito
+        {
+            get
+            {
+                var maper = new MaperDeFuncionalidades();
+                var repo = new RepositorioDeFuncionalidades(maper);
+                return repo.ObtenerUnoPorId((int)Eid.CargarCrédito);
+            }
+        }
+
+        public static Funcionalidad ComprarOferta
+        {
+            get
+            {
+                var maper = new MaperDeFuncionalidades();
+                var repo = new RepositorioDeFuncionalidades(maper);
+                return repo.ObtenerUnoPorId((int)Eid.ComprarOferta);
+            }
+        }
+        public static Funcionalidad Confeccionypublicaciondeofertas
+        {
+            get
+            {
+                var maper = new MaperDeFuncionalidades();
+                var repo = new RepositorioDeFuncionalidades(maper);
+                return repo.ObtenerUnoPorId((int)Eid.Confeccionypublicaciondeofertas);
+            }
+        }
+
+        public static Funcionalidad FacturacionaProveedor
+        {
+            get
+            {
+                var maper = new MaperDeFuncionalidades();
+                var repo = new RepositorioDeFuncionalidades(maper);
+                return repo.ObtenerUnoPorId((int)Eid.FacturacionaProveedor);
+            }
+        }
+
+        public static Funcionalidad ListadoEstadistico
+        {
+            get
+            {
+                var maper = new MaperDeFuncionalidades();
+                var repo = new RepositorioDeFuncionalidades(maper);
+                return repo.ObtenerUnoPorId((int)Eid.ListadoEstadistico);
             }
         }
 
