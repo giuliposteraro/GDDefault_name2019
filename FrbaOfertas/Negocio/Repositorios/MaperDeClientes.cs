@@ -12,9 +12,9 @@ namespace Negocio.Repositorios
     public class MaperDeClientes : MaperBase<Cliente>
     {
         public MaperDeClientes()
-        { 
-            this.tabla = "clientesTabla";
-            this.schema = "dbo";
+        {
+            this.tabla = "Cliente";
+            this.schema = "DEFAULT_NAME";
         }
         public override List<Cliente> mapearAEntidad(DataTable dt)
         {
@@ -23,8 +23,17 @@ namespace Negocio.Repositorios
             foreach (DataRow dr in  dt.Rows)
             {
                 var c = new Cliente();
-                c.Nombre = dr.IsNull("Cli_Nombre") ? String.Empty : dr.Field<String>("Cli_Nombre");
-                c.Apellido = dr.IsNull("Cli_Apellido") ? String.Empty : dr.Field<String>("Cli_Apellido");
+                c.Id_Cliente = dr.IsNull("Id_Cliente") ? 0 : dr.Field<int>("Id_Cliente");
+                c.Id_Cuenta = dr.IsNull("Id_Cuenta") ? 0 : dr.Field<int>("Id_Cuenta");
+                c.Id_Cuenta = dr.IsNull("Id_Cliente_Dest") ? 0 : dr.Field<int>("Id_Cliente_Dest");
+                c.Nombre_Clie = dr.IsNull("Nombre_Clie") ? String.Empty : dr.Field<String>("Nombre_Clie");
+                c.Apellido_Clie = dr.IsNull("Apellido_Clie") ? String.Empty : dr.Field<String>("Apellido_Clie");
+                c.DNI_Clie = dr.IsNull("DNI_Clie") ? 0 : dr.Field<int>("DNI_Clie");
+                c.Mail_Clie = dr.IsNull("Mail_Clie") ? String.Empty : dr.Field<String>("Mail_Clie");
+                c.Tel_Clie = dr.IsNull("Tel_Clie") ? String.Empty : dr.Field<String>("Tel_Clie");             
+                c.Fecha_Nac_Clie = dr.IsNull("Fecha_Nac_Clie") ? DateTime.MinValue : dr.Field<DateTime>("Fecha_Nac_Clie");
+                c.Monto_Total_cred_Clie = dr.IsNull("Monto_Total_cred_Clie") ? 0: dr.Field<Decimal>("Monto_Total_cred_Clie");
+
                 newList.Add(c);
             }
             return newList;

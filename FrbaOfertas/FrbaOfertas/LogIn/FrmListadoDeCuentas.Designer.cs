@@ -39,6 +39,7 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.Label4 = new System.Windows.Forms.Label();
             this.panComandos = new System.Windows.Forms.Panel();
+            this.btnRolesCta = new System.Windows.Forms.Button();
             this.btnCambiarContraseña = new System.Windows.Forms.Button();
             this.btnActivar = new System.Windows.Forms.Button();
             this.btnDesactivar = new System.Windows.Forms.Button();
@@ -57,7 +58,6 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.cambiarContraseñaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verRolesDeLaCuentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnRolesCta = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panComandos.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -172,6 +172,18 @@
             this.panComandos.Size = new System.Drawing.Size(607, 32);
             this.panComandos.TabIndex = 15;
             // 
+            // btnRolesCta
+            // 
+            this.btnRolesCta.BackColor = System.Drawing.SystemColors.Control;
+            this.btnRolesCta.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnRolesCta.Location = new System.Drawing.Point(372, 3);
+            this.btnRolesCta.Name = "btnRolesCta";
+            this.btnRolesCta.Size = new System.Drawing.Size(114, 25);
+            this.btnRolesCta.TabIndex = 6;
+            this.btnRolesCta.Text = "Roles de la cuenta";
+            this.btnRolesCta.UseVisualStyleBackColor = false;
+            this.btnRolesCta.Click += new System.EventHandler(this.btnRolesCta_Click);
+            // 
             // btnCambiarContraseña
             // 
             this.btnCambiarContraseña.BackColor = System.Drawing.SystemColors.Control;
@@ -231,6 +243,7 @@
             this.btnCancelar.TabIndex = 1;
             this.btnCancelar.Text = "Cerrar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // panel2
             // 
@@ -313,7 +326,7 @@
             this.cambiarContraseñaToolStripMenuItem,
             this.verRolesDeLaCuentaToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(189, 148);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(189, 126);
             // 
             // agregarToolStripMenuItem
             // 
@@ -360,22 +373,11 @@
             this.verRolesDeLaCuentaToolStripMenuItem.Text = "Ver Roles de la cuenta";
             this.verRolesDeLaCuentaToolStripMenuItem.Click += new System.EventHandler(this.verRolesDeLaCuentaToolStripMenuItem_Click);
             // 
-            // btnRolesCta
-            // 
-            this.btnRolesCta.BackColor = System.Drawing.SystemColors.Control;
-            this.btnRolesCta.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnRolesCta.Location = new System.Drawing.Point(372, 3);
-            this.btnRolesCta.Name = "btnRolesCta";
-            this.btnRolesCta.Size = new System.Drawing.Size(114, 25);
-            this.btnRolesCta.TabIndex = 6;
-            this.btnRolesCta.Text = "Roles de la cuenta";
-            this.btnRolesCta.UseVisualStyleBackColor = false;
-            this.btnRolesCta.Click += new System.EventHandler(this.btnRolesCta_Click);
-            // 
             // FrmListadoDeCuentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(607, 379);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label1);

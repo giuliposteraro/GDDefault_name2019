@@ -38,8 +38,8 @@ namespace Negocio.Repositorios
                 List<Cliente> lista = new List<Cliente>();
 
                 Dictionary<string, object[]> parametros = new Dictionary<string, object[]>();
-                if (Nombre != string.Empty) parametros.Add("Cli_Nombre", new object[2] {Nombre,TipoDeComparador.eID.Texto});
-                if (Apellido != string.Empty) parametros.Add("Cli_Apellido", new object[2] { Apellido, TipoDeComparador.eID.TextoExacto });
+                if (Nombre != string.Empty) parametros.Add("Nombre_Clie", new object[2] { Nombre, TipoDeComparador.eID.Texto });
+                if (Apellido != string.Empty) parametros.Add("Apellido_Clie", new object[2] { Apellido, TipoDeComparador.eID.Texto });
 
                 lista = this.maper.mapearAEntidad(BuscarTodosPorFiltro(parametros));
                 return lista;
@@ -50,6 +50,18 @@ namespace Negocio.Repositorios
             }
         }
 
+
+        internal Cliente ObtenerUnoPorId(int Id_Cliente)
+        {
+            try
+            {
+                return this.maper.mapearAEntidad(ObtenerPorID("Id_Cliente", Id_Cliente)).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("se produjo un error al buscar el cliente: {0}", ex.Message));
+            }
+        }
         
     }
 }

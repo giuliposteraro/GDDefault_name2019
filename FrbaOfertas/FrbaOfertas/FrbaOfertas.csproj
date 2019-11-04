@@ -166,6 +166,9 @@
     <EmbeddedResource Include="Componentes\GrillaGestionDatos.resx">
       <DependentUpon>GrillaGestionDatos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CragaCredito\FrmListadoDeCreditos.resx">
+      <DependentUpon>FrmListadoDeCreditos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LogIn\FrmAltaDeCuentas.resx">
       <DependentUpon>FrmAltaDeCuentas.cs</DependentUpon>
     </EmbeddedResource>

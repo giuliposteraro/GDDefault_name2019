@@ -49,6 +49,7 @@
     <Compile Include="Base\TipoDeComparador.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Entidades\Cliente.cs" />
+    <Compile Include="Entidades\Credito.cs" />
     <Compile Include="Entidades\Funcionalidad.cs" />
     <Compile Include="Entidades\Rol.cs" />
     <Compile Include="Entidades\Usuario.cs" />

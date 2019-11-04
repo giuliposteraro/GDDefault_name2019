@@ -58,7 +58,7 @@ namespace FrbaOfertas.AbmCliente
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            _presenter.BuscarConFiltros();
+            _presenter.Buscar();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -80,11 +80,6 @@ namespace FrbaOfertas.AbmCliente
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             mniAgregar_Click(sender, e);
-        }
-
-        private void btnBuscarTodos_Click(object sender, EventArgs e)
-        {
-            _presenter.Buscar();
         }
 
         private void  dgvClientes_SelectionChanged(object sender , System.EventArgs e)

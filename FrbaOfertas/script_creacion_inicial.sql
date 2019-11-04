@@ -105,7 +105,7 @@ end
 CREATE TABLE [DEFAULT_NAME].[Cliente]
 (
 	Id_Cliente int IDENTITY(1,1) PRIMARY KEY,
-	Id_Cuenta  int NOT NULL,
+	Id_Cuenta  int NULL,
 	Id_Cliente_Dest int NULL,
 	Nombre_Clie varchar(100),
 	Apellido_Clie varchar(100),
@@ -126,7 +126,7 @@ CREATE TABLE [DEFAULT_NAME].[Credito]
 	Carga_Cred decimal(12,2),
 	Tarjeta varchar(16),
 	Detalle varchar(100),
-	Tipo_Pago int
+	Tipo_Pago varchar(10) not null
 )
 
 --proveedor. se borra la tabla si existia previamente
@@ -363,5 +363,44 @@ Begin
 		select id_Rol from inserted where Estado_rol = 0)
 
 END
+go
+
+create trigger TR_Actualizar_Cliente_Monto_AFT_INS
+on DEFAULT_NAME.Credito
+AFTER INSERT AS
+begin
+	Update c set c.Monto_Total_cred_Clie = ss.Carga_Cred
+	from DEFAULT_NAME.cliente c 
+	inner join 	(select id_Cliente, sum(Carga_Cred) as Carga_Cred from inserted  group by Id_Cliente) as ss
+	on c.id_cliente = ss.id_cliente
+end 
+
 
 --IMPORTACION DESDE TABLA
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'SP_ImportacionDeDatos') 
+BEGIN
+	DROP PROCEDURE DEFAULT_NAME.SP_ImportacionDeDatos
+END
+GO
+
+create PROCEDURE DEFAULT_NAME.SP_ImportacionDeDatos
+as 
+begin
+	--inserto los clientes
+	INSERT INTO [DEFAULT_NAME].[Cliente] ([Id_Cuenta],[Id_Cliente_Dest],[Nombre_Clie],[Apellido_Clie],
+			[DNI_Clie],[Mail_Clie],[Tel_Clie],[Fecha_Nac_Clie],[Monto_Total_cred_Clie])
+	select distinct null, null, Cli_Nombre,	Cli_Apellido, Cli_Dni, Cli_Mail, Cli_Telefono, Cli_Fecha_Nac,0				
+	from gd_esquema.Maestra
+
+	--inserto los creditos
+	INSERT INTO [DEFAULT_NAME].[Credito]
+           ([Id_Cliente],[Carga_Fecha],[Carga_Cred],[Tarjeta],[Detalle],[Tipo_Pago])
+	select distinct id_cliente, Carga_Fecha,Carga_Credito, '','',Tipo_Pago_Desc
+	from gd_esquema.Maestra
+	inner join [DEFAULT_NAME].[Cliente] on gd_esquema.Maestra.Cli_DNI = [DEFAULT_NAME].[Cliente].DNI_Clie
+	where  carga_credito is not null
+end
+go
+
+exec DEFAULT_NAME.SP_ImportacionDeDatos
+go

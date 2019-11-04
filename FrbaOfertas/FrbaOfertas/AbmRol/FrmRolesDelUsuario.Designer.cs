@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRolesDelUsuario));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dgvRoles = new FrbaOfertas.Componentes.GrillaGestionDatos();
+            this.colFuncionalidades = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,13 +40,10 @@
             this.panComandos = new System.Windows.Forms.Panel();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.dgvRoles = new FrbaOfertas.Componentes.GrillaGestionDatos();
-            this.colFuncionalidades = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRoles)).BeginInit();
             this.panel1.SuspendLayout();
             this.panComandos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRoles)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -54,6 +54,60 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(398, 206);
             this.panel2.TabIndex = 27;
+            // 
+            // dgvRoles
+            // 
+            this.dgvRoles.AjustarColumnas = false;
+            this.dgvRoles.AllowUserToAddRows = false;
+            this.dgvRoles.AllowUserToDeleteRows = false;
+            this.dgvRoles.AllowUserToResizeRows = false;
+            this.dgvRoles.CheckOnClick = false;
+            this.dgvRoles.ChecksDataPropertyName = null;
+            this.dgvRoles.ChecksToolTipText = "";
+            this.dgvRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRoles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colFuncionalidades,
+            this.colEstado});
+            this.dgvRoles.ColumnsOcultas = ((System.Collections.Generic.List<string>)(resources.GetObject("dgvRoles.ColumnsOcultas")));
+            this.dgvRoles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvRoles.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvRoles.EventSyncInvoke = null;
+            this.dgvRoles.Exportar_FinDeColumna = "\t";
+            this.dgvRoles.Exportar_FinDeFila = "\r\n";
+            this.dgvRoles.Exportar_FinDeLineaEnCelda = ",";
+            this.dgvRoles.ItemsChequeados = ((System.Collections.IEnumerable)(resources.GetObject("dgvRoles.ItemsChequeados")));
+            this.dgvRoles.Location = new System.Drawing.Point(0, 0);
+            this.dgvRoles.MantenerSeleccionAlReordenar = false;
+            this.dgvRoles.MostrarWaitWindowOnDataSourceChanged = false;
+            this.dgvRoles.MultiSelect = false;
+            this.dgvRoles.Name = "dgvRoles";
+            this.dgvRoles.PermiteOcultarColumnas = true;
+            this.dgvRoles.ResaltarCeldasEditables = false;
+            this.dgvRoles.RowHeadersVisible = false;
+            this.dgvRoles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvRoles.Size = new System.Drawing.Size(398, 206);
+            this.dgvRoles.StatusTripAMostrarAlerta = null;
+            this.dgvRoles.TabIndex = 17;
+            this.dgvRoles.TieneCheckMasivo = true;
+            this.dgvRoles.TieneChecks = true;
+            this.dgvRoles.TieneCopiarDatos = true;
+            this.dgvRoles.TieneExportarDatos = false;
+            this.dgvRoles.CambioChequeadosMultiplesItems += new System.EventHandler(this.dgvRoles_CambioChequeadosMultiplesItems);
+            this.dgvRoles.CambioChequeadosUnItem += new System.EventHandler<System.Windows.Forms.DataGridViewCellEventArgs>(this.dgvRoles_CambioChequeadosUnItem);
+            this.dgvRoles.SelectionChanged += new System.EventHandler(this.dgvRoles_SelectionChanged);
+            // 
+            // colFuncionalidades
+            // 
+            this.colFuncionalidades.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colFuncionalidades.DataPropertyName = "Nombre_rol";
+            this.colFuncionalidades.HeaderText = "Nombre";
+            this.colFuncionalidades.Name = "colFuncionalidades";
+            // 
+            // colEstado
+            // 
+            this.colEstado.DataPropertyName = "EstadoComoString";
+            this.colEstado.HeaderText = "Estado Del Rol";
+            this.colEstado.Name = "colEstado";
             // 
             // label1
             // 
@@ -131,60 +185,7 @@
             this.btnCancelar.TabIndex = 1;
             this.btnCancelar.Text = "Cerrar";
             this.btnCancelar.UseVisualStyleBackColor = false;
-            // 
-            // dgvRoles
-            // 
-            this.dgvRoles.AjustarColumnas = false;
-            this.dgvRoles.AllowUserToAddRows = false;
-            this.dgvRoles.AllowUserToDeleteRows = false;
-            this.dgvRoles.AllowUserToResizeRows = false;
-            this.dgvRoles.CheckOnClick = false;
-            this.dgvRoles.ChecksDataPropertyName = null;
-            this.dgvRoles.ChecksToolTipText = "";
-            this.dgvRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRoles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colFuncionalidades,
-            this.colEstado});
-            this.dgvRoles.ColumnsOcultas = ((System.Collections.Generic.List<string>)(resources.GetObject("dgvRoles.ColumnsOcultas")));
-            this.dgvRoles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvRoles.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvRoles.EventSyncInvoke = null;
-            this.dgvRoles.Exportar_FinDeColumna = "\t";
-            this.dgvRoles.Exportar_FinDeFila = "\r\n";
-            this.dgvRoles.Exportar_FinDeLineaEnCelda = ",";
-            this.dgvRoles.ItemsChequeados = ((System.Collections.IEnumerable)(resources.GetObject("dgvRoles.ItemsChequeados")));
-            this.dgvRoles.Location = new System.Drawing.Point(0, 0);
-            this.dgvRoles.MantenerSeleccionAlReordenar = false;
-            this.dgvRoles.MostrarWaitWindowOnDataSourceChanged = false;
-            this.dgvRoles.MultiSelect = false;
-            this.dgvRoles.Name = "dgvRoles";
-            this.dgvRoles.PermiteOcultarColumnas = true;
-            this.dgvRoles.ResaltarCeldasEditables = false;
-            this.dgvRoles.RowHeadersVisible = false;
-            this.dgvRoles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRoles.Size = new System.Drawing.Size(398, 206);
-            this.dgvRoles.StatusTripAMostrarAlerta = null;
-            this.dgvRoles.TabIndex = 17;
-            this.dgvRoles.TieneCheckMasivo = true;
-            this.dgvRoles.TieneChecks = true;
-            this.dgvRoles.TieneCopiarDatos = true;
-            this.dgvRoles.TieneExportarDatos = false;
-            this.dgvRoles.CambioChequeadosMultiplesItems += new System.EventHandler(this.dgvRoles_CambioChequeadosMultiplesItems);
-            this.dgvRoles.CambioChequeadosUnItem += new System.EventHandler<System.Windows.Forms.DataGridViewCellEventArgs>(this.dgvRoles_CambioChequeadosUnItem);
-            this.dgvRoles.SelectionChanged += new System.EventHandler(this.dgvRoles_SelectionChanged);
-            // 
-            // colFuncionalidades
-            // 
-            this.colFuncionalidades.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colFuncionalidades.DataPropertyName = "Nombre_rol";
-            this.colFuncionalidades.HeaderText = "Nombre";
-            this.colFuncionalidades.Name = "colFuncionalidades";
-            // 
-            // colEstado
-            // 
-            this.colEstado.DataPropertyName = "EstadoComoString";
-            this.colEstado.HeaderText = "Estado Del Rol";
-            this.colEstado.Name = "colEstado";
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // FrmRolesDelUsuario
             // 
@@ -205,10 +206,10 @@
             this.Load += new System.EventHandler(this.FrmRolesDelUsuario_Load);
             this.Shown += new System.EventHandler(this.FrmRolesDelUsuario_Shown);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRoles)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panComandos.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRoles)).EndInit();
             this.ResumeLayout(false);
 
         }

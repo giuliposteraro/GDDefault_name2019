@@ -111,5 +111,11 @@ namespace FrbaOfertas.AbmRol
                 this.Close();
             }
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
     }
 }

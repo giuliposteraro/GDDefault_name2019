@@ -39,7 +39,6 @@ namespace FrbaOfertas.AbmCliente
             this.label2 = new System.Windows.Forms.Label();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.btnBuscarTodos = new System.Windows.Forms.Button();
             this.Label4 = new System.Windows.Forms.Label();
             this.panComandos = new System.Windows.Forms.Panel();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -48,12 +47,12 @@ namespace FrbaOfertas.AbmCliente
             this.btnCancelar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvClientes = new FrbaOfertas.Componentes.GrillaGestionDatos();
-            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mniAgregar = new System.Windows.Forms.ToolStripMenuItem();
             this.mniModificar = new System.Windows.Forms.ToolStripMenuItem();
             this.mniEliminar = new System.Windows.Forms.ToolStripMenuItem();
+            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panComandos.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -82,7 +81,6 @@ namespace FrbaOfertas.AbmCliente
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnLimpiar);
             this.panel1.Controls.Add(this.btnBuscar);
-            this.panel1.Controls.Add(this.btnBuscarTodos);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 19);
             this.panel1.Name = "panel1";
@@ -145,19 +143,6 @@ namespace FrbaOfertas.AbmCliente
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
-            // btnBuscarTodos
-            // 
-            this.btnBuscarTodos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBuscarTodos.BackColor = System.Drawing.SystemColors.Control;
-            this.btnBuscarTodos.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnBuscarTodos.Location = new System.Drawing.Point(408, 45);
-            this.btnBuscarTodos.Name = "btnBuscarTodos";
-            this.btnBuscarTodos.Size = new System.Drawing.Size(100, 25);
-            this.btnBuscarTodos.TabIndex = 0;
-            this.btnBuscarTodos.Text = "Buscar Todos";
-            this.btnBuscarTodos.UseVisualStyleBackColor = false;
-            this.btnBuscarTodos.Click += new System.EventHandler(this.btnBuscarTodos_Click);
             // 
             // Label4
             // 
@@ -260,6 +245,7 @@ namespace FrbaOfertas.AbmCliente
             this.colApellido});
             this.dgvClientes.ColumnsOcultas = ((System.Collections.Generic.List<string>)(resources.GetObject("dgvClientes.ColumnsOcultas")));
             this.dgvClientes.ContextMenuStrip = this.contextMenuStrip1;
+            this.dgvClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvClientes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvClientes.EventSyncInvoke = null;
             this.dgvClientes.Exportar_FinDeColumna = "\t";
@@ -275,7 +261,7 @@ namespace FrbaOfertas.AbmCliente
             this.dgvClientes.ResaltarCeldasEditables = false;
             this.dgvClientes.RowHeadersVisible = false;
             this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClientes.Size = new System.Drawing.Size(555, 124);
+            this.dgvClientes.Size = new System.Drawing.Size(601, 169);
             this.dgvClientes.StatusTripAMostrarAlerta = null;
             this.dgvClientes.TabIndex = 0;
             this.dgvClientes.TieneCheckMasivo = true;
@@ -285,18 +271,6 @@ namespace FrbaOfertas.AbmCliente
             this.dgvClientes.CambioChequeadosMultiplesItems += new System.EventHandler(this.dgvClientes_CambioChequeadosMultiplesItems);
             this.dgvClientes.CambioChequeadosUnItem += new System.EventHandler<System.Windows.Forms.DataGridViewCellEventArgs>(this.dgvClientes_CambioChequeadosUnItem);
             this.dgvClientes.SelectionChanged += new System.EventHandler(this.dgvClientes_SelectionChanged);
-            // 
-            // colNombre
-            // 
-            this.colNombre.DataPropertyName = "Nombre";
-            this.colNombre.HeaderText = "Nombre";
-            this.colNombre.Name = "colNombre";
-            // 
-            // colApellido
-            // 
-            this.colApellido.DataPropertyName = "Apellido";
-            this.colApellido.HeaderText = "Apellido";
-            this.colApellido.Name = "colApellido";
             // 
             // contextMenuStrip1
             // 
@@ -324,6 +298,18 @@ namespace FrbaOfertas.AbmCliente
             this.mniEliminar.Name = "mniEliminar";
             this.mniEliminar.Size = new System.Drawing.Size(125, 22);
             this.mniEliminar.Text = "Eliminar";
+            // 
+            // colNombre
+            // 
+            this.colNombre.DataPropertyName = "Nombre_Clie";
+            this.colNombre.HeaderText = "Nombre";
+            this.colNombre.Name = "colNombre";
+            // 
+            // colApellido
+            // 
+            this.colApellido.DataPropertyName = "Apellido_Clie";
+            this.colApellido.HeaderText = "Apellido";
+            this.colApellido.Name = "colApellido";
             // 
             // FrmCliente
             // 
@@ -359,7 +345,6 @@ namespace FrbaOfertas.AbmCliente
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.Button btnBuscarTodos;
         private System.Windows.Forms.Label Label4;
         private System.Windows.Forms.Panel panComandos;
         private System.Windows.Forms.Button btnEliminar;

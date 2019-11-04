@@ -507,7 +507,7 @@ namespace FrbaOfertas.Componentes
                         ItemSeleccionado = seleccionado;
                     }
 
-                    Chequear(chequeados);
+                    //Chequear(chequeados);
                     // respeto lo chequeado anterior + lo que tenga EstaSeleccionado=true en el datasource actual
                 }
 

@@ -180,5 +180,11 @@ namespace FrbaOfertas.AbmRol
             Presentador.ReHabilitarRol((Rol)dgvRoles.ItemSeleccionado);
         }
 
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
     }
 }
