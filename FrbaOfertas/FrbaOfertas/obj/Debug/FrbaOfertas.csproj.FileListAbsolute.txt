@@ -24,3 +24,6 @@ C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.
 C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.csproj.GenerateResource.Cache
 C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.exe
 C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
+C:\Users\giuli\OneDrive\Documentos\GDDefault_name2019\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.exe.config
+C:\Users\giuli\OneDrive\Documentos\GDDefault_name2019\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.exe
+C:\Users\giuli\OneDrive\Documentos\GDDefault_name2019\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
