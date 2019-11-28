@@ -15,6 +15,11 @@ namespace Negocio.Repositorios
             this.maper = maper;
         }
 
+
+        /// <summary>
+        /// busca todos los clientes existentes en el sistema,.
+        /// </summary>
+        /// <returns></returns>
         public List<Cliente> Buscar()
         {
             try
@@ -30,8 +35,14 @@ namespace Negocio.Repositorios
         }
 
 
-
-        public List<Cliente> BuscarConFiltros(string Nombre, string Apellido)
+        /// <summary>
+        /// busca multiples clientes por los filtros seleccionados
+        /// </summary>
+        /// <param name="Nombre">busca concidencias aproximadas</param>
+        /// <param name="Apellido">busca concidencias aproximadas</param>
+        /// <param name="idUsuario">filtro exacto</param>
+        /// <returns></returns>
+        public List<Cliente> BuscarConFiltros(string Nombre = null, string Apellido = null, int idUsuario = 0)
         {
             try
             {
@@ -40,6 +51,7 @@ namespace Negocio.Repositorios
                 Dictionary<string, object[]> parametros = new Dictionary<string, object[]>();
                 if (Nombre != string.Empty) parametros.Add("Nombre_Clie", new object[2] { Nombre, TipoDeComparador.eID.Texto });
                 if (Apellido != string.Empty) parametros.Add("Apellido_Clie", new object[2] { Apellido, TipoDeComparador.eID.Texto });
+                if (idUsuario != 0) parametros.Add("Id_Cuenta", new object[2] { idUsuario, TipoDeComparador.eID.TextoExacto });
 
                 lista = this.maper.mapearAEntidad(BuscarTodosPorFiltro(parametros));
                 return lista;
@@ -50,7 +62,11 @@ namespace Negocio.Repositorios
             }
         }
 
-
+        /// <summary>
+        /// devuelve uno por id
+        /// </summary>
+        /// <param name="Id_Cliente">id del cliente que queremos buscar</param>
+        /// <returns></returns>
         internal Cliente ObtenerUnoPorId(int Id_Cliente)
         {
             try
@@ -62,6 +78,24 @@ namespace Negocio.Repositorios
                 throw new Exception(string.Format("se produjo un error al buscar el cliente: {0}", ex.Message));
             }
         }
-        
+
+
+        /// <summary>
+        /// busca un cliente por su IdCuenta (idusuario)
+        /// </summary>
+        /// <param name="idUsuario"> id cuenta del cliente a encontrar</param>
+        /// <returns></returns>
+        public Cliente ObtenerDelUsuario(int idUsuario)
+        {
+            try
+            {
+                //busco por el filtro y me quedo con el primero o un nulo si la lista devuelta esta vacia.
+                return this.BuscarConFiltros(idUsuario: idUsuario).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("se produjo un error al buscar el cliente: {0}", ex.Message));
+            }
+        }
     }
 }

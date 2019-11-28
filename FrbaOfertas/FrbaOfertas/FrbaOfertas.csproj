@@ -98,6 +98,12 @@
     <Compile Include="CragaCredito\FrmListadoDeCreditos.Designer.cs">
       <DependentUpon>FrmListadoDeCreditos.cs</DependentUpon>
     </Compile>
+    <Compile Include="CrearOferta\FrmBuscarOfertas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrearOferta\FrmBuscarOfertas.Designer.cs">
+      <DependentUpon>FrmBuscarOfertas.cs</DependentUpon>
+    </Compile>
     <Compile Include="CrearOferta\FrmListadoDeOfertas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,8 +172,14 @@
     <EmbeddedResource Include="Componentes\GrillaGestionDatos.resx">
       <DependentUpon>GrillaGestionDatos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ComprarOferta\FrmCompraDeOfertas.resx">
+      <DependentUpon>FrmCompraDeOfertas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CragaCredito\FrmListadoDeCreditos.resx">
       <DependentUpon>FrmListadoDeCreditos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrearOferta\FrmBuscarOfertas.resx">
+      <DependentUpon>FrmBuscarOfertas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogIn\FrmAltaDeCuentas.resx">
       <DependentUpon>FrmAltaDeCuentas.cs</DependentUpon>
@@ -221,6 +233,8 @@
     <None Include="Resources\login.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\botonBuscador.png" />
+    <None Include="Resources\alerta.png" />
     <Content Include="Resources\hideTableColumn.png" />
   </ItemGroup>
   <ItemGroup>

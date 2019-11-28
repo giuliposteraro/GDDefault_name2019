@@ -333,7 +333,6 @@ namespace FrbaOfertas.Componentes
 
         // esta propiedad est� as� sombreada para que el control base no sepa 
         // que tiene un men� contextual configurado, y pretenda abrirlo autom�ticamente
-        // NO CAMBIAR
         private ContextMenuStrip _ContextMenuStrip;
 
         public new ContextMenuStrip ContextMenuStrip
@@ -388,7 +387,7 @@ namespace FrbaOfertas.Componentes
                 current = _parents.Pop();
                 if ((current == ctrl)) {
                     this._parents.Push(current);
-                    break; //Warning!!! Review that break works as 'Exit Do' as it could be in a nested instruction like switch
+                    break; 
                 }
                 else {
                     current.ParentChanged -= this.CambioDeParent;
@@ -403,7 +402,7 @@ namespace FrbaOfertas.Componentes
                 Control parent = current.Parent;
                 if (((parent == null) 
                             || (parent.GetType() is Form))) {
-                    break; //Warning!!! Review that break works as 'Exit Do' as it could be in a nested instruction like switch
+                    break; 
                 }
                 
                 this._parents.Push(parent);
@@ -419,11 +418,11 @@ namespace FrbaOfertas.Componentes
             if ((AutoSizeRowsMode == DataGridViewAutoSizeRowsMode.None)) {
                 foreach (DataGridViewColumn col in this.Columns) {
                     if ((col.DefaultCellStyle.WrapMode == DataGridViewTriState.NotSet)) {
-                        // TODO: Continue For... Warning!!! not translated
+                        
                     }
                     
                     if ((col.DefaultCellStyle.WrapMode == DataGridViewTriState.False)) {
-                        // TODO: Continue For... Warning!!! not translated
+                        
                     }
                     
                     AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
@@ -439,7 +438,7 @@ namespace FrbaOfertas.Componentes
         {
             get
             {
-                //  If Me._parentForm Is Nothing Then Me._parentForm = Me.FindForm()
+                
                 if ((this._parentForm == null))
                     return false;
 
@@ -592,7 +591,7 @@ namespace FrbaOfertas.Componentes
 
             if (this.MostrarWaitWindowOnDataSourceChanged)
             {
-                //WaitWindow.Show("Cargando datos...");
+                //TODO: WaitWindow  ("Cargando datos...");
             }
 
             // CargarDiccionario()
@@ -614,7 +613,7 @@ namespace FrbaOfertas.Componentes
 
             if (this.MostrarWaitWindowOnDataSourceChanged)
             {
-                //WaitWindow.Hide();
+                //TODO: WaitWindow.Hide();
             }
         }
 
@@ -667,7 +666,7 @@ namespace FrbaOfertas.Componentes
                 }
                 catch (Exception ex)
                 {
-                    // parche temporal porque daba error si se presionaba muchas veces y r�pido el F5 (refresh).
+                    // parche porque daba error si se presionaba muchas veces y r�pido el F5 (refresh).
                 }
 
                 switch (ordenTipo)

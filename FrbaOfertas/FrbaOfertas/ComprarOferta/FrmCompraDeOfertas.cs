@@ -1,4 +1,7 @@
-﻿using System;
+﻿using FrbaOfertas.CrearOferta;
+using FrbaOfertasPresentacion.CompraOfertas;
+using Negocio.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,9 +13,9 @@ using System.Windows.Forms;
 
 namespace FrbaOfertas.ComprarOferta
 {
-    public partial class FrmCompraDeOfertas : Form
+    public partial class FrmCompraDeOfertas : Form, IVistaCompraOferta
     {
-        private Credito Credito;
+        /*private Credito Credito;
         private Oferta oferta;
         private float precio;
         private int id_compra;
@@ -24,6 +27,30 @@ namespace FrbaOfertas.ComprarOferta
             this.oferta = oferta;
             this.Credito - precio;
             InitializeComponent();
+        }*/
+        private readonly PresentadorCompraOferta _presenter;
+        public PresentadorCompraOferta Presentador { get { return _presenter; } }
+
+        public FrmCompraDeOfertas()
+        {
+            InitializeComponent();
+            _presenter = new PresentadorCompraOferta(this);
+        }
+
+        #region implementacion de la vista
+        public Cliente Cliente { get; set; }
+
+        public string NombreCliente
+        {
+            get { return txtNombreCliente.Text; }
+            set { txtNombreCliente.Text = value; }
+        }
+        #endregion
+
+
+        public void MostrarMensaje(string message)
+        {
+            MessageBox.Show(message);
         }
 
         public bool MensajePregunta(string mensage)
@@ -31,22 +58,7 @@ namespace FrbaOfertas.ComprarOferta
             return (MessageBox.Show(mensage, "Confirmar", System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes);
         }
 
-        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
@@ -54,6 +66,21 @@ namespace FrbaOfertas.ComprarOferta
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
+
+            var frm = new FrmBuscarOfertas();
+            if (frm.ShowDialog(this.MdiParent) == System.Windows.Forms.DialogResult.OK)
+            {
+                //_presenter.ActualizarVista();
+            }
+        }
+
+        public void MostrarAlerta(bool mostrarAlerta){
+            lblAlertaUsuario.Visible = mostrarAlerta;
         }
     }
 }

@@ -27,3 +27,5 @@ C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.
 C:\Users\giuli\OneDrive\Documentos\GDDefault_name2019\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.exe.config
 C:\Users\giuli\OneDrive\Documentos\GDDefault_name2019\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.exe
 C:\Users\giuli\OneDrive\Documentos\GDDefault_name2019\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
+C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.ComprarOferta.FrmCompraDeOfertas.resources
+C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.CrearOferta.FrmBuscarOfertas.resources

@@ -419,8 +419,8 @@ begin
 	begin
 		declare @idCliente int = 0
 		declare @Usuario varchar(20)
-		declare @Contra varchar(20)
-		SELECT @idCliente = Id_CLiente, @Usuario = substring(Nombre_Clie,0,5) + Apellido_Clie, @Contra = HASHBYTES('SHA2_256', cast(DNI_Clie as varchar(20)))
+		declare @Contra varchar(250)
+		SELECT @idCliente = Id_CLiente, @Usuario = substring(Nombre_Clie,0,5) + Apellido_Clie, @Contra = SUBSTRING(master.dbo.fn_varbintohexstr(HASHBYTES('SHA2_256', cast(DNI_Clie as varchar(20)))), 3, 250)
 			 FROM  [DEFAULT_NAME].[Cliente] WHERE [Id_CLiente] =@cantidadRegistros
 			  
 		if (isnull(@idCliente,0) =0 )
