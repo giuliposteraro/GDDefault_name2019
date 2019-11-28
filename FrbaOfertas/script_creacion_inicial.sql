@@ -392,6 +392,56 @@ begin
 	select distinct null, null, Cli_Nombre,	Cli_Apellido, Cli_Dni, Cli_Mail, Cli_Telefono, Cli_Fecha_Nac,0				
 	from gd_esquema.Maestra
 
+	--inserto los cliente dest, que no esten ya como cliente, valido por dni
+	INSERT INTO [DEFAULT_NAME].[Cliente] ([Id_Cuenta],[Id_Cliente_Dest],[Nombre_Clie],[Apellido_Clie],
+			[DNI_Clie],[Mail_Clie],[Tel_Clie],[Fecha_Nac_Clie],[Monto_Total_cred_Clie])
+	select distinct null, null, Cli_Dest_Nombre, Cli_Dest_Apellido, Cli_Dest_Dni, Cli_Dest_Mail, Cli_Dest_Telefono, Cli_Dest_Fecha_Nac,0				
+	from gd_esquema.Maestra m
+	where not exists (select 1 from Default_name.cliente where m.Cli_Dest_Dni = DNI_clie)
+	and Cli_Dest_Dni is not null
+
+	--actualizo el id cliente dest
+	update c set c.id_cliente_Dest = c2.id_Cliente from Default_name.cliente c
+		inner join (select distinct Cli_Nombre,	Cli_Apellido, Cli_Dni, Cli_Mail, Cli_Telefono, Cli_Fecha_Nac,Cli_Dest_Nombre	
+			Cli_Dest_Apellido, Cli_Dest_Dni, Cli_Dest_Direccion, Cli_Dest_Telefono, Cli_Dest_Mail, Cli_Dest_Fecha_Nac, Cli_Dest_Ciudad
+			from gd_esquema.Maestra) ss  on ss.Cli_DNI =c.DNI_CLie
+		left join Default_name.cliente c2 on ss.cli_dest_dni = c2.DNI_CLIE
+
+
+	--busco el id mayor y voy a recorrer para abajo creando los usuarios correspondientes
+	declare @cantidadRegistros int
+	select @cantidadRegistros = max([Id_CLiente]) from [DEFAULT_NAME].[Cliente]
+	--busco el rol para el usuario
+	declare @idRol int 
+	select @idRol= Id_Rol from [DEFAULT_NAME].[Rol] where [Nombre_rol] = 'Cliente';
+
+	while(@cantidadRegistros > 0)
+	begin
+		declare @idCliente int = 0
+		declare @Usuario varchar(20)
+		declare @Contra varchar(20)
+		SELECT @idCliente = Id_CLiente, @Usuario = substring(Nombre_Clie,0,5) + Apellido_Clie, @Contra = HASHBYTES('SHA2_256', cast(DNI_Clie as varchar(20)))
+			 FROM  [DEFAULT_NAME].[Cliente] WHERE [Id_CLiente] =@cantidadRegistros
+			  
+		if (isnull(@idCliente,0) =0 )
+		begin
+			set @cantidadRegistros = @cantidadRegistros -1
+			continue
+		end 
+		--creo el usuario para el cliente
+		INSERT INTO [DEFAULT_NAME].[Cuenta]([Usuario_Cuenta],[Contra_Cuenta],[Cant_Ingresos_Cuenta],[Estado_Cuenta])
+			VALUES(@Usuario,@Contra,0,1)
+		--asigno el usuario al cliente
+		declare @UserId int = @@Identity;
+		update [DEFAULT_NAME].[Cliente] set [Id_Cuenta] = @UserId where [Id_CLiente] =@cantidadRegistros
+		--le asigno el rol al nuevo usuario
+		
+		INSERT INTO [DEFAULT_NAME].[Rol_Por_Cuenta]([Id_Rol],[Id_Usuario])
+			VALUES (@idRol,@UserId)
+		--descuento uno de la cantidad
+		set @cantidadRegistros = @cantidadRegistros -1
+	end 
+
 	--inserto los creditos
 	INSERT INTO [DEFAULT_NAME].[Credito]
            ([Id_Cliente],[Carga_Fecha],[Carga_Cred],[Tarjeta],[Detalle],[Tipo_Pago])
