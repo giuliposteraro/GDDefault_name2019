@@ -52,14 +52,17 @@
     <Compile Include="Entidades\Credito.cs" />
     <Compile Include="Entidades\Funcionalidad.cs" />
     <Compile Include="Entidades\Rol.cs" />
+    <Compile Include="Entidades\TipoDePago.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Gestores\GestorDeValidacionDePermisos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\MaperDeCreditos.cs" />
     <Compile Include="Repositorios\MaperDeFuncionalidades.cs" />
     <Compile Include="Repositorios\MaperDeRoles.cs" />
     <Compile Include="Repositorios\MaperDeUsuarios.cs" />
     <Compile Include="Repositorios\MaperDeClientes.cs" />
     <Compile Include="Repositorios\RepositorioDeClientes.cs" />
+    <Compile Include="Repositorios\RepositorioDeCreditos.cs" />
     <Compile Include="Repositorios\RepositorioDeFuncionalidades.cs" />
     <Compile Include="Repositorios\RepositorioDeRoles.cs" />
     <Compile Include="Repositorios\RepositorioDeUsuarios.cs" />

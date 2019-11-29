@@ -108,8 +108,8 @@ namespace FrbaOfertas
         {
             if (DesignMode) return;
 
-            var frm = new FrmListadoDeCreditos();
-            //frm.Presentador.Posicionar(Global.SessionUsuario);
+            var frm = new FrmAltaCredito();
+            frm.Presentador.Posicionar();
             frm.MdiParent = this;
             frm.Show();
         }

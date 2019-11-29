@@ -126,7 +126,7 @@ CREATE TABLE [DEFAULT_NAME].[Credito]
 	Carga_Cred decimal(12,2),
 	Tarjeta varchar(16),
 	Detalle varchar(100),
-	Tipo_Pago varchar(10) not null
+	Tipo_Pago varchar(20) not null
 )
 
 --proveedor. se borra la tabla si existia previamente
@@ -369,7 +369,7 @@ create trigger TR_Actualizar_Cliente_Monto_AFT_INS
 on DEFAULT_NAME.Credito
 AFTER INSERT AS
 begin
-	Update c set c.Monto_Total_cred_Clie = ss.Carga_Cred
+	Update c set c.Monto_Total_cred_Clie += ss.Carga_Cred
 	from DEFAULT_NAME.cliente c 
 	inner join 	(select id_Cliente, sum(Carga_Cred) as Carga_Cred from inserted  group by Id_Cliente) as ss
 	on c.id_cliente = ss.id_cliente

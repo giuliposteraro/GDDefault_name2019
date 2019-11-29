@@ -5,11 +5,15 @@ al momento de insertar los datos para cada cliente se va a generar un usuario, e
 las columnas Cli_Dest_* tenian todos sus datos en null, igualmente se dejo listo el script de inserción para  trabajar con un set de datos donde estas columnas si esten completas, creando los clientes correspondientes y asociandolos cuando corresponda.
 
 --consideraciones programa
+-En la modificación de roles, al rol "administrador general" se le podra cambiar las funcionalidades asociadas pero no se podra darlo de baja.
+-Al agregar o quitar funcionalidades a un rol, si el usuario actual tiene asociado el rol, automaticamente se validaran los permisos asociados a dichas funcionalidades y se quitaran o agregaran los menus asociados.
+
 -Se creo un uc para manejar las grillas, para que se vea correctamente el diseñador hay que hacer un build del proyecto antes de entrar a los diseñadores.
 -En las pantallas se utilizo el patron Model - view -Presenter.
 -Se creo una clase llamada Ipersistencia en el proyecto Negocio, en la cual se maneja la conexion a la base de datos y las transacciones.
 -Los repositorios de cada entidad tambien estan definidos en el proyecto Negocio y heredan de la clase nombrada en el punto anterior, redefiniendo cosas especificas de las propias entidades.
 -El usuario actual puede cambiar su contraseña desde la opcion "cambiar contraseña" en el menu de la pantalla principal.
 -Al loguearse un usuario, sus datos se guardan en una variable global que luego se usa desde mutiples lugares en el sistema, por ejemplo para validar permisos.
--Al agregar o quitar funcionalidades a un rol, si el usuario actual tiene asociado el rol, automaticamente se validaran los permisos asociados a dichas funcionalidades y se quitaran o agregaran los menus asociados.
 
+-Desde la carga de créditos un usuario puede acceder al historico de sus créditos, si el usuario ademas tiene el rol de administrador podra ver el historico de todos los clientes.
+-El usuario q tenga el rol de "administrador general" podra cargar creditos a otros usuarios.

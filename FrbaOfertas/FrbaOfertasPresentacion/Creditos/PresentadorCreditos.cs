@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Negocio.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,10 @@ namespace FrbaOfertasPresentacion.Creditos
         {
             _vista = vista;
 
+        }
+
+        public void Posicionar(int idCliente) { 
+            
         }
     }
 }

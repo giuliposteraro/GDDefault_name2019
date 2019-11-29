@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -53,6 +54,8 @@
     <Compile Include="Componentes\PresentadorGrillaGestionDatos.cs" />
     <Compile Include="CompraOfertas\IVistaCompraOferta.cs" />
     <Compile Include="CompraOfertas\PresentadorCompraOferta.cs" />
+    <Compile Include="Creditos\IVistaAltaCredito.cs" />
+    <Compile Include="Creditos\PresentadorAltaCredito.cs" />
     <Compile Include="Creditos\PresentadorCreditos.cs" />
     <Compile Include="LogIn\AltaCuenta\IVistaAltaCuenta.cs" />
     <Compile Include="LogIn\AltaCuenta\ModoAltaCuenta.cs" />

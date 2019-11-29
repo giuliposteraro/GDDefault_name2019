@@ -36,12 +36,7 @@ namespace FrbaOfertas.CragaCredito
             }
         }
 
-        public string Nombre 
-        { 
-            get { return txtNombre.Text; }
-            set {txtNombre.Text = value; } 
-        }
-
+       
         public void MostrarMensaje(string message)
         {
             MessageBox.Show(message);

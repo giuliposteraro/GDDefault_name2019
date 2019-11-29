@@ -17,7 +17,7 @@ namespace Negocio.Entidades
 	    public decimal Carga_Cred {get; set;}
 	    public string Tarjeta {get; set;}
 	    public string Detalle  {get; set;}
-        public int Tipo_Pago { get; set; }
+        public string Tipo_Pago { get; set; }
 
         private Cliente _cliente;
         public Cliente Cliente

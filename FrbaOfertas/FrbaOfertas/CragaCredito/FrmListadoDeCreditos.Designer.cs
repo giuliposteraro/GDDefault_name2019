@@ -35,9 +35,6 @@
             this.colApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtApellido = new System.Windows.Forms.TextBox();
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -45,6 +42,7 @@
             this.panComandos = new System.Windows.Forms.Panel();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCreditos)).BeginInit();
             this.panel1.SuspendLayout();
@@ -125,9 +123,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.txtApellido);
-            this.panel1.Controls.Add(this.txtNombre);
-            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnLimpiar);
             this.panel1.Controls.Add(this.btnBuscar);
@@ -136,29 +132,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(783, 73);
             this.panel1.TabIndex = 17;
-            // 
-            // txtApellido
-            // 
-            this.txtApellido.Location = new System.Drawing.Point(308, 11);
-            this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(174, 20);
-            this.txtApellido.TabIndex = 7;
-            // 
-            // txtNombre
-            // 
-            this.txtNombre.Location = new System.Drawing.Point(74, 11);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(174, 20);
-            this.txtNombre.TabIndex = 6;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(255, 14);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Apellido:";
             // 
             // label2
             // 
@@ -243,18 +216,28 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(74, 11);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(248, 21);
+            this.comboBox1.TabIndex = 7;
+            // 
             // FrmListadoDeCreditos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(783, 432);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Label4);
             this.Controls.Add(this.panComandos);
+            this.MinimumSize = new System.Drawing.Size(799, 471);
             this.Name = "FrmListadoDeCreditos";
-            this.Text = "Form1";
+            this.Text = "Listado De Créditos";
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCreditos)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -272,9 +255,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colApellido;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtApellido;
-        private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnBuscar;
@@ -282,5 +262,6 @@
         private System.Windows.Forms.Panel panComandos;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
