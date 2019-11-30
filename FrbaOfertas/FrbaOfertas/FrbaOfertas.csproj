@@ -172,6 +172,9 @@
     <EmbeddedResource Include="AbmCliente\FrmClienteEditar.resx">
       <DependentUpon>FrmClienteEditar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbmProveedor\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AbmRol\ABMRoles.resx">
       <DependentUpon>ABMRoles.cs</DependentUpon>
     </EmbeddedResource>
