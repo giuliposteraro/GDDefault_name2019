@@ -35,5 +35,18 @@ namespace Negocio.Entidades
                 return Id_Cliente;
             }
         }
+        
+        public override bool Equals(object obj)
+        {
+            //pregunto si los tipos son diferentes
+            if (this.GetType() != obj.GetType())
+                return false;
+            //si son el mismo tipo pregunto si los ids son igual a 0, 
+            //si los dos son 0 (la entidad no fue guardada en la base y comparo por su padre
+            if( this.ID ==0 && ((Cliente)obj).ID == 0)
+                return base.Equals(obj);
+            //sino compara por los ids
+            return this.ID == ((Cliente)obj).ID;
+        }
     }
 }

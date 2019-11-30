@@ -12,11 +12,19 @@ namespace Negocio.Entidades
         public int Id { get; set; }
         public string Nombre { get; set; }
 
+        public override int ID
+        {
+            get
+            {
+                return Id;
+            }
+        }
+
         public static TipoDePago TarjetaDeCredito
         {
             get
             {
-                var credito = new TipoDePago(){ Id = 1, Nombre = "Tarjeta de Crédito"};
+                var credito = new TipoDePago(){ Id = 1, Nombre = "Crédito"};
                 return credito;
             }
         }
@@ -25,7 +33,7 @@ namespace Negocio.Entidades
         {
             get
             {
-                var credito = new TipoDePago() { Id = 2, Nombre = "Tarjeta de débito" };
+                var credito = new TipoDePago() { Id = 2, Nombre = "Débito"};
                 return credito;
             }
         }
@@ -36,6 +44,19 @@ namespace Negocio.Entidades
             Todos.Add(TipoDePago.TarjetaDeCredito);
             Todos.Add(TipoDePago.TarjetaDeDebito);
             return Todos;
+        }
+
+        public override bool Equals(object obj)
+        {
+            //pregunto si los tipos son diferentes
+            if (this.GetType() != obj.GetType())
+                return false;
+            //si son el mismo tipo pregunto si los ids son igual a 0, 
+            //si los dos son 0 (la entidad no fue guardada en la base y comparo por su padre
+            if (this.ID == 0 && ((TipoDePago)obj).ID == 0)
+                return base.Equals(obj);
+            //sino compara por los ids
+            return this.ID == ((TipoDePago)obj).ID;
         }
     }
 }

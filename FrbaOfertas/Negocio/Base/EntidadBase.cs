@@ -10,5 +10,7 @@ namespace Negocio.Base
     public class EntidadBase
     {
         public virtual int ID { get {return 0;} }
+
+        
     }
 }

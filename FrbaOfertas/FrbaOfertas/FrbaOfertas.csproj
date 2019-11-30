@@ -86,6 +86,12 @@
     <Compile Include="Componentes\GrillaGestionDatos.Designer.cs">
       <DependentUpon>GrillaGestionDatos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Componentes\paginador.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Componentes\paginador.Designer.cs">
+      <DependentUpon>paginador.cs</DependentUpon>
+    </Compile>
     <Compile Include="ComprarOferta\FrmCompraDeOfertas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +184,9 @@
     <EmbeddedResource Include="Componentes\GrillaGestionDatos.resx">
       <DependentUpon>GrillaGestionDatos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Componentes\paginador.resx">
+      <DependentUpon>paginador.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ComprarOferta\FrmCompraDeOfertas.resx">
       <DependentUpon>FrmCompraDeOfertas.cs</DependentUpon>
     </EmbeddedResource>
@@ -242,8 +251,14 @@
     <None Include="Resources\login.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\UltimaPagina.png" />
+    <None Include="Resources\PrimerPagina.png" />
+    <None Include="Resources\PaginaSiguiente.png" />
+    <None Include="Resources\PaginaAnterior.png" />
     <None Include="Resources\botonBuscador.png" />
     <None Include="Resources\alerta.png" />
+    <None Include="Resources\flecha_izquierda.png" />
+    <None Include="Resources\flecha_derecha.png" />
     <Content Include="Resources\hideTableColumn.png" />
   </ItemGroup>
   <ItemGroup>

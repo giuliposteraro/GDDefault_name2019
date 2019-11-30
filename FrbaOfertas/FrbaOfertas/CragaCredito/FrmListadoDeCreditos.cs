@@ -81,14 +81,152 @@ namespace FrbaOfertas.CragaCredito
             return (MessageBox.Show(mensage, "Confirmar", System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes);
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+
+        public List<Cliente> clientes
+        {
+            get
+            {
+
+                return (List<Cliente>)cboClientes.DataSource;
+            }
+            set
+            {
+                cboClientes.DisplayMember = "nombre";
+                cboClientes.ValueMember = "Id_Cliente";
+                cboClientes.DataSource = value;
+            }
+        }
+
+        public Cliente ClienteSeleccionado
+        {
+            get
+            {
+                return (Cliente)cboClientes.SelectedItem;
+            }
+            set
+            {
+                cboClientes.SelectedItem = value;
+            }
+        }
+
+        public List<TipoDePago> TiposDePago
+        {
+            get
+            {
+                return (List<TipoDePago>)cboClientes.DataSource;
+            }
+            set
+            {
+                cboTiposDePago.DisplayMember = "Nombre";
+                cboTiposDePago.ValueMember = "Id";
+                cboTiposDePago.DataSource = value;
+            }
+        }
+
+        public TipoDePago TiposDePagoSeleccionado
+        {
+            get
+            {
+                return (TipoDePago)cboTiposDePago.SelectedItem;
+            }
+            set
+            {
+                cboTiposDePago.SelectedItem = value;
+            }
+        }
+
+        public DateTime FechaDesde
+        {
+            get
+            {
+                return dtpFechaDesde.Value;
+            }
+            set
+            {
+                dtpFechaDesde.Value = value;
+            }
+        }
+
+        public DateTime fechaHasta
+        {
+            get
+            {
+                return dtpFechaHasta.Value;
+            }
+            set
+            {
+                dtpFechaHasta.Value = value;
+            }
+        }
+
+        #region paginador
+        private void paginador_SeSeleccionaPaginaSiguiente(object sender, System.EventArgs e)
+        {
+            if (DesignMode) return;
+            Presentador.ObtenerPaginado(int.Parse(this.paginador.ObtenerItemsPorPagina()), int.Parse(this.paginador.ObtenerPaginaActual()));
+            
+        }
+
+        private void paginador_SolicitarBusqueda(object sender, System.EventArgs e)
+        {
+            if (DesignMode) return;
+            Presentador.ObtenerPaginado(int.Parse(this.paginador.ObtenerItemsPorPagina()), int.Parse(this.paginador.ObtenerPaginaActual()));
+            
+        }
+
+        private void paginador_SeSeleccionaUltimaPagina(object sender, System.EventArgs e)
+        {
+            if (DesignMode) return;
+            Presentador.ObtenerPaginado(int.Parse(this.paginador.ObtenerItemsPorPagina()), int.Parse(this.paginador.ObtenerPaginaActual()));
+            
+        }
+            private void paginador_SeSeleccionaPaginaAnterior(object sender, System.EventArgs e)
+        {
+            if (DesignMode) return;
+            Presentador.ObtenerPaginado(int.Parse(this.paginador.ObtenerItemsPorPagina()), int.Parse(this.paginador.ObtenerPaginaActual()));
+            
+        }
+        private void paginador_SeSeleccionaPrimeraPagina(object sender, System.EventArgs e)
+        {
+            if (DesignMode) return;
+            Presentador.ObtenerPaginado(int.Parse(this.paginador.ObtenerItemsPorPagina()), int.Parse(this.paginador.ObtenerPaginaActual()));
+            
+        }
+
+
+        #endregion
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            Presentador.BuscarDatos(int.Parse(this.paginador.ObtenerItemsPorPagina()));
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            Presentador.LimpiarDatos();
+        }
+
+
+        public void SetarTotalItemsEnGrill(int cantidadItems)
+        {
+            this.paginador.SetearCantidadDeItems(cantidadItems);
+            this.paginador.SetearNumeroPagina(1);
+        }
+
+        private void FrmListadoDeCreditos_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void FrmListadoDeCreditos_Shown(object sender, EventArgs e)
         {
-            this.Close();
+            dgvCreditos._parentForm_Shown(sender, e);
         }
     }
 }

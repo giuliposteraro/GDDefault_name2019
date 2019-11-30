@@ -35,7 +35,6 @@ namespace FrbaOfertas.CragaCredito
             frm.Show();
         }
 
-        public int ClienteSeleccionado { get; set; }
 
         public void MostrarAlerta(bool mostrarAlerta)
         {
@@ -57,7 +56,7 @@ namespace FrbaOfertas.CragaCredito
             }
         }
 
-        Cliente IVistaAltaCredito.ClienteSeleccionado
+        public Cliente ClienteSeleccionado
         {
             get
             {
@@ -65,7 +64,7 @@ namespace FrbaOfertas.CragaCredito
             }
             set
             {
-                cboClientes.SelectedItem = value;
+                cboClientes.SelectedItem = value; 
             }
         }
 
@@ -221,7 +220,7 @@ namespace FrbaOfertas.CragaCredito
             }
             set
             {
-                cboTiposDePago.SelectedItem = value;
+                cboTiposDePago.SelectedItem  = value;
             }
         }
     }

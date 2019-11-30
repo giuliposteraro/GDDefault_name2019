@@ -30,3 +30,4 @@ C:\Users\giuli\OneDrive\Documentos\GDDefault_name2019\FrbaOfertas\FrbaOfertas\ob
 C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.ComprarOferta.FrmCompraDeOfertas.resources
 C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.CrearOferta.FrmBuscarOfertas.resources
 C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.CragaCredito.FrmAltaCredito.resources
+C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Componentes.paginador.resources

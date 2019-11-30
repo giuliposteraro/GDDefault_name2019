@@ -95,7 +95,7 @@ namespace FrbaOfertasPresentacion.Creditos
             var _cliente = repo.ObtenerDelUsuario(Usuario.Id_Usuario);
 
             List<Cliente> clientes = repo.Buscar();
-            _vista.Clientes = clientes;
+            _vista.Clientes = clientes.OrderBy(x => x.ToString()).ToList();
             //en caso de que el usuario actual no tenga cliente 
             //(se puede dar si tiene el rol cliente pero no un cliente creado, muestro una alerta en pantalla)
             _vista.MostrarAlerta(_cliente == null);

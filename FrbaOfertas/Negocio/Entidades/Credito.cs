@@ -42,7 +42,7 @@ namespace Negocio.Entidades
         public String ClienteNombre
         {
             get {
-                return _cliente.ToString();
+                return Cliente.ToString();
             }
         }
 
