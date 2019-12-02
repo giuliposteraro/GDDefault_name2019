@@ -426,6 +426,12 @@ begin
 			from gd_esquema.Maestra) ss  on ss.Cli_DNI =c.DNI_CLie
 		left join Default_name.cliente c2 on ss.cli_dest_dni = c2.DNI_CLIE
 
+	--inserto la direccion de los clientes
+	INSERT INTO [DEFAULT_NAME].[Direccion]
+	([Id_Objeto],[Tipo_Objeto],[Numero_Dir],[Piso_Dir],[Depto_Dir],[Localidad_Dir],[Ciudad_Dir],[Calle_Dir],[Codigo_Postal_Dir])
+		select distinct id_cliente, 1, '-','-','-', '-', Cli_Ciudad, Cli_Direccion, '-'
+		from gd_esquema.Maestra m
+		inner join Default_name.cliente c on m.Cli_DNI =c.DNI_CLie
 	
 	--creo usuarios y roles para el cliente
 	--busco el id mayor y voy a recorrer para abajo creando los usuarios correspondientes
@@ -500,6 +506,14 @@ begin
 	    ([Id_Cuenta],[Mail_Proveedor],[Telefono_Prov],[Cuit_Prov],[Rubro_Prov],[Nom_Contacto_Prov],[Razon_Social_Prov])
 		select distinct null, '', Provee_Telefono, Provee_CUIT, Provee_Rubro, '', Provee_RS 
 		from gd_esquema.Maestra where provee_cuit is not null
+
+	--inserto domicilios
+	INSERT INTO [DEFAULT_NAME].[Direccion]
+	([Id_Objeto],[Tipo_Objeto],[Numero_Dir],[Piso_Dir],[Depto_Dir],[Localidad_Dir],[Ciudad_Dir],[Calle_Dir],[Codigo_Postal_Dir])
+	select distinct p.id_proveedor, 2, '-','-','-','-',Provee_Ciudad,Provee_Dom,'-'
+		from gd_esquema.Maestra m
+		inner join DEFAULT_NAME.Proveedor p on m.Provee_CUIT = p.Cuit_Prov
+		where provee_cuit is not null
 
 	--busco el id mayor y voy a recorrer para abajo creando los usuarios correspondientes
 	declare @cantidadRegistrosProveedores int
