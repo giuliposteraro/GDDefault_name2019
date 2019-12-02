@@ -2,7 +2,11 @@ Estas son las especificaciones para armar el pdf a presentar.
 
 --consideraciones script base de datos--
 al momento de insertar los datos para cada cliente se va a generar un usuario, el nombre del usuario se creara con la primeras 4 letra del nombre + el apellido del cliente.
+al momento se insertar los datos del proveedor para cada provedor se genero un usuario cuyo nombre de usuario, es la razon social sin caracteres especiales (. , _ °) y su password es el cuit solo en numeros (sin los -).
 las columnas Cli_Dest_* tenian todos sus datos en null, igualmente se dejo listo el script de inserción para  trabajar con un set de datos donde estas columnas si esten completas, creando los clientes correspondientes y asociandolos cuando corresponda.
+Se asume el los datos en la columna "Oferta_Cantidad", se refiere al stock disponible ofrecido por el proveedor, y que cada compra, ya que no hay una columna que indique la cantidad comprada, es una compra de un unico item, es decir cantidad 1.
+
+
 
 --consideraciones programa
 -Al agregar o quitar funcionalidades a un rol, si el usuario actual tiene asociado el rol, automaticamente se validaran los permisos asociados a dichas funcionalidades y se quitaran o agregaran los menus asociados.

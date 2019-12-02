@@ -88,7 +88,7 @@ CREATE TABLE [DEFAULT_NAME].[Direccion]
 	Depto_Dir varchar(3),
 	Localidad_Dir varchar(100),
 	Ciudad_Dir varchar(100),
-	Calle_Dir varchar(100),
+	Calle_Dir varchar(100) not null,
 	Codigo_Postal_Dir varchar(10),
 )
 
@@ -141,7 +141,7 @@ end
 CREATE TABLE [DEFAULT_NAME].[Proveedor]
 (
 	Id_Proveedor int IDENTITY(1,1) PRIMARY KEY,
-	Id_Cuenta  int NOT NULL,
+	Id_Cuenta  int NULL,
 	Mail_Proveedor varchar(100),
 	Telefono_Prov varchar(13),
 	Cuit_Prov varchar(13),
@@ -161,13 +161,14 @@ CREATE TABLE [DEFAULT_NAME].[Oferta]
 (
 	Id_Oferta int IDENTITY(1,1) PRIMARY KEY,
 	Id_Proveedor  int NOT NULL,
-	Descripcion_Of varchar(500),
-	Fecha_Publi_Of Datetime,
-	Fecha_Venc_Of Datetime,
-	Precio_Oferta decimal(12,2),
+	Descripcion_Of varchar(500) not null,
+	Fecha_Publi_Of Datetime not null,
+	Fecha_Venc_Of Datetime not null,
+	Precio_Oferta decimal(12,2) not null,
 	Precio_Lista decimal(12,2),
-	Cant_Disp_Oferta int,
-	Codigo_Of int,
+	Cant_Disp_Oferta int not null,
+	Maximo_Por_Compra int not null,
+	Codigo_Of varchar(20) not null unique,
 	Precio_fict_Of decimal(12,2),
 )
 
@@ -185,10 +186,12 @@ CREATE TABLE [DEFAULT_NAME].[Compra]
 	Id_Cliente int NOT NULL,
 	Id_Proveedor  int NOT NULL,
 	Id_Oferta int NOT NULL,
-	Fecha_Compra Datetime,
+	Fecha_Compra Datetime NOT NULL,
 	Fecha_Entrega Datetime,
 	Codigo_Cupon varchar(10),
 	Estado_Cupon int,
+	Cantidad int not null,
+	Monto decimal(12,2) not null
 )
 
 --factura, se borra la tabla si existia previamente
@@ -201,10 +204,10 @@ CREATE TABLE [DEFAULT_NAME].[Factura]
 (
 	Id_Factura int IDENTITY(1,1) PRIMARY KEY,
 	Id_Proveedor  int NOT NULL,
-	Numero_Fact varchar(13),
-	Tipo_Fact char(1),
-	Total_Fact decimal(14,2),
-	Fecha_Fact datetime,
+	Numero_Fact varchar(13) NOT NULL unique,
+	Tipo_Fact char(1) NOT NULL,
+	Total_Fact decimal(14,2) NOT NULL,
+	Fecha_Fact datetime NOT NULL,
 )
 
 --detalle, se borra la tabla si existia previamente
@@ -218,8 +221,8 @@ CREATE TABLE [DEFAULT_NAME].[Detalle]
 	Id_Detalle int IDENTITY(1,1) PRIMARY KEY,
 	Id_Factura  int NOT NULL,
 	Id_Compra int NOT NULL,
-	Monto decimal(12,2),
-	Cantidad int,
+	Monto decimal(12,2) not null,
+	Cantidad int not null,
 	
 )
 
@@ -237,7 +240,7 @@ ALTER TABLE [DEFAULT_NAME].[Proveedor] ADD CONSTRAINT FK_PROVEEDOR_CUENTA FOREIG
 ALTER TABLE [DEFAULT_NAME].[Oferta] ADD CONSTRAINT FK_OFERTA_PROVEEDOR FOREIGN KEY (Id_Proveedor) REFERENCES [DEFAULT_NAME].[Proveedor](Id_Proveedor);
 ALTER TABLE [DEFAULT_NAME].[Compra] ADD CONSTRAINT FK_COMPRA_CLIENTE FOREIGN KEY (Id_Cliente) REFERENCES [DEFAULT_NAME].[Cliente](Id_Cliente);
 ALTER TABLE [DEFAULT_NAME].[Compra] ADD CONSTRAINT FK_COMPRA_PROVEEDOR FOREIGN KEY (Id_Proveedor) REFERENCES [DEFAULT_NAME].[Proveedor](Id_Proveedor);
-ALTER TABLE [DEFAULT_NAME].[Compra] ADD CONSTRAINT FK_COMPRA_OFERTA FOREIGN KEY (Id_Proveedor) REFERENCES [DEFAULT_NAME].[Oferta](Id_Oferta);
+ALTER TABLE [DEFAULT_NAME].[Compra] ADD CONSTRAINT FK_COMPRA_OFERTA FOREIGN KEY (Id_Oferta) REFERENCES [DEFAULT_NAME].[Oferta](Id_Oferta);
 ALTER TABLE [DEFAULT_NAME].[Factura] ADD CONSTRAINT FK_FACTURA_PROVEEDOR FOREIGN KEY (Id_Proveedor) REFERENCES [DEFAULT_NAME].[Proveedor](Id_Proveedor);
 ALTER TABLE [DEFAULT_NAME].[Detalle] ADD CONSTRAINT FK_DETALLE_FACTURA FOREIGN KEY (Id_Factura) REFERENCES [DEFAULT_NAME].[Factura](Id_Factura);
 ALTER TABLE [DEFAULT_NAME].[Detalle] ADD CONSTRAINT FK_DETALLE_COMPRA FOREIGN KEY (Id_Compra) REFERENCES [DEFAULT_NAME].[Compra](Id_Compra);
@@ -287,6 +290,21 @@ INSERT INTO [DEFAULT_NAME].[Rol_Por_Cuenta]
            ([Id_Rol],[Id_Usuario])
      VALUES
            (@IdAdmin,@UserId)
+go
+
+--agergo funcionalidades a rol cliente
+declare @idRolCliente int;
+select @idRolCliente = Id_Rol from [DEFAULT_NAME].[Rol] where [Nombre_rol] = 'Cliente';
+INSERT INTO [DEFAULT_NAME].[Funcionalidad_Por_Rol]
+SELECT @idRolCliente,Id_Funcionalidad FROM [DEFAULT_NAME].[Funcionalidad]
+where [Detalle_func] in ('Cargar Crédito','Comprar Oferta')
+go
+--agrego funcionalidades al rol Proveedor
+declare @idRolProveedor int;
+select @idRolProveedor = Id_Rol from [DEFAULT_NAME].[Rol] where [Nombre_rol] = 'Proveedor';
+INSERT INTO [DEFAULT_NAME].[Funcionalidad_Por_Rol]
+SELECT @idRolProveedor,Id_Funcionalidad FROM [DEFAULT_NAME].[Funcionalidad]
+where [Detalle_func] in ('Confección y publicación de ofertas')
 go
 
 --sp SP_Cuenta_Suma_Intento_Fallido
@@ -374,28 +392,29 @@ begin
 	inner join 	(select id_Cliente, sum(Carga_Cred) as Carga_Cred from inserted  group by Id_Cliente) as ss
 	on c.id_cliente = ss.id_cliente
 end 
+go
 
-
---IMPORTACION DESDE TABLA
-IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'SP_ImportacionDeDatos') 
+--IMPORTACION DESDE TABLA MAESTRA
+--CLIENTES
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'SP_ImportacionDeDatosCliente') 
 BEGIN
-	DROP PROCEDURE DEFAULT_NAME.SP_ImportacionDeDatos
+	DROP PROCEDURE DEFAULT_NAME.SP_ImportacionDeDatosCliente
 END
 GO
 
-create PROCEDURE DEFAULT_NAME.SP_ImportacionDeDatos
+create PROCEDURE DEFAULT_NAME.SP_ImportacionDeDatosCliente
 as 
 begin
 	--inserto los clientes
 	INSERT INTO [DEFAULT_NAME].[Cliente] ([Id_Cuenta],[Id_Cliente_Dest],[Nombre_Clie],[Apellido_Clie],
 			[DNI_Clie],[Mail_Clie],[Tel_Clie],[Fecha_Nac_Clie],[Monto_Total_cred_Clie])
-	select distinct null, null, Cli_Nombre,	Cli_Apellido, Cli_Dni, Cli_Mail, Cli_Telefono, Cli_Fecha_Nac,0				
+	select distinct null, null, Cli_Nombre,	Cli_Apellido, Cli_Dni, Cli_Mail, Cli_Telefono, convert(datetime,Cli_Fecha_Nac,121),0				
 	from gd_esquema.Maestra
 
 	--inserto los cliente dest, que no esten ya como cliente, valido por dni
 	INSERT INTO [DEFAULT_NAME].[Cliente] ([Id_Cuenta],[Id_Cliente_Dest],[Nombre_Clie],[Apellido_Clie],
 			[DNI_Clie],[Mail_Clie],[Tel_Clie],[Fecha_Nac_Clie],[Monto_Total_cred_Clie])
-	select distinct null, null, Cli_Dest_Nombre, Cli_Dest_Apellido, Cli_Dest_Dni, Cli_Dest_Mail, Cli_Dest_Telefono, Cli_Dest_Fecha_Nac,0				
+	select distinct null, null, Cli_Dest_Nombre, Cli_Dest_Apellido, Cli_Dest_Dni, Cli_Dest_Mail, Cli_Dest_Telefono, convert(datetime,Cli_Dest_Fecha_Nac,121),0				
 	from gd_esquema.Maestra m
 	where not exists (select 1 from Default_name.cliente where m.Cli_Dest_Dni = DNI_clie)
 	and Cli_Dest_Dni is not null
@@ -407,7 +426,8 @@ begin
 			from gd_esquema.Maestra) ss  on ss.Cli_DNI =c.DNI_CLie
 		left join Default_name.cliente c2 on ss.cli_dest_dni = c2.DNI_CLIE
 
-
+	
+	--creo usuarios y roles para el cliente
 	--busco el id mayor y voy a recorrer para abajo creando los usuarios correspondientes
 	declare @cantidadRegistros int
 	select @cantidadRegistros = max([Id_CLiente]) from [DEFAULT_NAME].[Cliente]
@@ -439,18 +459,212 @@ begin
 		INSERT INTO [DEFAULT_NAME].[Rol_Por_Cuenta]([Id_Rol],[Id_Usuario])
 			VALUES (@idRol,@UserId)
 		--descuento uno de la cantidad
-		set @cantidadRegistros = @cantidadRegistros -1
+		set @cantidadRegistros = @cantidadRegistros -1;
 	end 
+end
+go 
 
+
+--CREDITOS
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'SP_ImportacionDeDatosCredito') 
+BEGIN
+	DROP PROCEDURE DEFAULT_NAME.SP_ImportacionDeDatosCredito
+END
+GO
+	
+create PROCEDURE DEFAULT_NAME.SP_ImportacionDeDatosCredito
+as 
+begin
 	--inserto los creditos
 	INSERT INTO [DEFAULT_NAME].[Credito]
            ([Id_Cliente],[Carga_Fecha],[Carga_Cred],[Tarjeta],[Detalle],[Tipo_Pago])
-	select distinct id_cliente, Carga_Fecha,Carga_Credito, '','',Tipo_Pago_Desc
+	select distinct id_cliente, convert(datetime,Carga_Fecha,121),Carga_Credito, '','',Tipo_Pago_Desc
 	from gd_esquema.Maestra
 	inner join [DEFAULT_NAME].[Cliente] on gd_esquema.Maestra.Cli_DNI = [DEFAULT_NAME].[Cliente].DNI_Clie
-	where  carga_credito is not null
+	where  carga_credito is not null;
+end 
+go
+
+--PROVEEDOR
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'SP_ImportacionDeDatosProveedor') 
+BEGIN
+	DROP PROCEDURE DEFAULT_NAME.SP_ImportacionDeDatosProveedor
+END
+GO
+
+create PROCEDURE DEFAULT_NAME.SP_ImportacionDeDatosProveedor
+as 
+begin
+	--inserto los proveedores
+	INSERT INTO [DEFAULT_NAME].[Proveedor]
+	    ([Id_Cuenta],[Mail_Proveedor],[Telefono_Prov],[Cuit_Prov],[Rubro_Prov],[Nom_Contacto_Prov],[Razon_Social_Prov])
+		select distinct null, '', Provee_Telefono, Provee_CUIT, Provee_Rubro, '', Provee_RS 
+		from gd_esquema.Maestra where provee_cuit is not null
+
+	--busco el id mayor y voy a recorrer para abajo creando los usuarios correspondientes
+	declare @cantidadRegistrosProveedores int
+	select @cantidadRegistrosProveedores = max(Id_Proveedor) from [DEFAULT_NAME].[Proveedor]
+	--select max(Id_Proveedor) from [DEFAULT_NAME].[Proveedor]
+	--busco el rol para el usuario
+	declare @idRolProveedor int 
+	select @idRolProveedor= Id_Rol from [DEFAULT_NAME].[Rol] where [Nombre_rol] = 'Proveedor'
+
+	while(@cantidadRegistrosProveedores > 0)
+	begin
+		declare @idProveedor int = 0
+		declare @UsuarioProveedor varchar(20)
+		declare @ContraProveedor varchar(250)
+		SELECT @idProveedor = Id_Proveedor, @UsuarioProveedor = replace(replace(replace(Razon_Social_Prov,' ', ''),'.',''),'°',''), 
+		@ContraProveedor = SUBSTRING(master.dbo.fn_varbintohexstr(HASHBYTES('SHA2_256', cast(replace(Cuit_Prov,'-','') as varchar(20)))), 3, 250)
+			 FROM  [DEFAULT_NAME].[Proveedor] WHERE [Id_Proveedor] =@cantidadRegistrosProveedores
+			  
+		if (isnull(@idProveedor,0) =0 )
+		begin
+			set @cantidadRegistrosProveedores = @cantidadRegistrosProveedores -1
+			continue
+		end 
+		--creo el usuario para el cliente
+		INSERT INTO [DEFAULT_NAME].[Cuenta]([Usuario_Cuenta],[Contra_Cuenta],[Cant_Ingresos_Cuenta],[Estado_Cuenta])
+			VALUES(@UsuarioProveedor,@ContraProveedor,0,1)
+		--asigno el usuario al cliente
+		declare @UserIdProveedor int = @@Identity;
+		update [DEFAULT_NAME].[Proveedor] set [Id_Cuenta] = @UserIdProveedor where [Id_Proveedor] =@cantidadRegistrosProveedores
+		--le asigno el rol al nuevo usuario
+		
+		INSERT INTO [DEFAULT_NAME].[Rol_Por_Cuenta]([Id_Rol],[Id_Usuario])
+			VALUES (@idRolProveedor,@UserIdProveedor)
+		--descuento uno de la cantidad
+		set @cantidadRegistrosProveedores = @cantidadRegistrosProveedores -1
+	end 
+
+	
 end
 go
 
-exec DEFAULT_NAME.SP_ImportacionDeDatos
+--OFERTAS
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'SP_ImportacionDeDatosOfertas') 
+BEGIN
+	DROP PROCEDURE DEFAULT_NAME.SP_ImportacionDeDatosOfertas
+END
+GO
+
+create PROCEDURE DEFAULT_NAME.SP_ImportacionDeDatosOfertas
+as 
+begin
+	--creacion de ofertas
+	INSERT INTO [DEFAULT_NAME].[Oferta]
+           ([Id_Proveedor],[Descripcion_Of],[Fecha_Publi_Of],[Fecha_Venc_Of],[Precio_Oferta],[Precio_Lista]
+			,[Cant_Disp_Oferta],[Codigo_Of],[Precio_fict_Of],[Maximo_Por_Compra])
+	select distinct id_Proveedor, Oferta_Descripcion, convert(datetime,Oferta_Fecha,121), 
+		convert(datetime,Oferta_Fecha_Venc,121),Oferta_Precio,null,Oferta_Cantidad,Oferta_Codigo, Oferta_Precio_Ficticio, 1
+	from gd_esquema.Maestra m
+		inner join DEFAULT_NAME.Proveedor p on m.Provee_CUIT = p.Cuit_Prov
+	where oferta_Codigo is not null;
+    
+end 
 go
+
+--compras
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'SP_ImportacionDeDatosCompras') 
+BEGIN
+	DROP PROCEDURE DEFAULT_NAME.SP_ImportacionDeDatosCompras
+END
+GO
+
+create PROCEDURE DEFAULT_NAME.SP_ImportacionDeDatosCompras
+as 
+begin
+	--cargo las compras
+	INSERT INTO [DEFAULT_NAME].[Compra]
+	([Id_Cliente],[Id_Proveedor],[Id_Oferta],[Fecha_Compra],[Fecha_Entrega],[Codigo_Cupon],[Estado_Cupon],[Cantidad], [Monto])
+	select distinct id_Cliente, p.id_Proveedor,o.id_Oferta,convert(datetime,oferta_Fecha_Compra,121), null, null, null, 1, o.Precio_oferta  
+	from gd_esquema.Maestra m
+	inner join DEFAULT_NAME.Proveedor p on m.Provee_CUIT = p.Cuit_Prov
+	inner join DEFAULT_NAME.Cliente c on m.Cli_Dni = c.DNI_Clie
+	inner join DEFAULT_NAME.oferta o on o.codigo_of = m.Oferta_Codigo
+	where oferta_Fecha_Compra is not null
+	and Oferta_Entregado_Fecha is null
+	and	Factura_Nro is null
+	and	Factura_Fecha is null
+
+	--actualizo la fecha de entrega
+	update com set com.fecha_entrega = convert(datetime,Oferta_Entregado_Fecha,121) 
+	from gd_esquema.Maestra m
+	inner join DEFAULT_NAME.Proveedor p on m.Provee_CUIT = p.Cuit_Prov
+	inner join DEFAULT_NAME.Cliente c on m.Cli_Dni = c.DNI_Clie
+	inner join DEFAULT_NAME.oferta o on o.codigo_of = m.Oferta_Codigo
+	inner join [DEFAULT_NAME].[Compra] com  on  com.id_Oferta = o.id_oferta and com.id_Proveedor = p.id_proveedor 
+	and com.id_cliente = c.id_cliente and convert(datetime,com.fecha_compra,121) = convert(datetime,oferta_Fecha_Compra,121)
+	where oferta_Fecha_Compra is not null
+	and Oferta_Entregado_Fecha is not null
+	and	Factura_Nro is null
+	and	Factura_Fecha is null
+end
+go
+
+--facturas
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'SP_ImportacionDeDatosFacturas') 
+BEGIN
+	DROP PROCEDURE DEFAULT_NAME.SP_ImportacionDeDatosFacturas
+END
+GO
+
+create PROCEDURE DEFAULT_NAME.SP_ImportacionDeDatosFacturas
+as 
+begin
+	--primero cargo las facturas 	
+	INSERT INTO [DEFAULT_NAME].[Factura]
+	([Id_Proveedor],[Numero_Fact],[Tipo_Fact],[Total_Fact],[Fecha_Fact])
+	select distinct o.id_proveedor, concat('0001-', replicate(0, 8 - len(factura_Nro)),factura_Nro), 'A', '0', convert(datetime,Factura_Fecha,121)  
+	from gd_esquema.Maestra m
+	inner join DEFAULT_NAME.Proveedor p on m.Provee_CUIT = p.Cuit_Prov
+	inner join DEFAULT_NAME.Cliente c on m.Cli_Dni = c.DNI_Clie
+	inner join DEFAULT_NAME.oferta o on o.codigo_of = m.Oferta_Codigo
+	where oferta_Fecha_Compra is not null
+	and Oferta_Entregado_Fecha is null
+	and	Factura_Nro is not null
+	and	Factura_Fecha is not null
+
+	--luego cargo los detalles para cada factura
+	INSERT INTO [DEFAULT_NAME].[Detalle]
+	([Id_Factura],[Id_Compra],[Monto],[Cantidad])
+	select f.id_factura, com.id_compra, com.Monto, 1  
+	from gd_esquema.Maestra m
+	inner join DEFAULT_NAME.Proveedor p on m.Provee_CUIT = p.Cuit_Prov
+	inner join DEFAULT_NAME.Cliente c on m.Cli_Dni = c.DNI_Clie
+	inner join DEFAULT_NAME.oferta o on o.codigo_of = m.Oferta_Codigo
+	inner join [DEFAULT_NAME].[Compra] com  on  com.id_Oferta = o.id_oferta and com.id_Proveedor = p.id_proveedor 
+		and com.id_cliente = c.id_cliente and convert(datetime,com.fecha_compra,121) = convert(datetime,oferta_Fecha_Compra,121)
+	inner join DEFAULT_NAME.Factura f on f.Numero_Fact =  concat('0001-', replicate(0, 8 - len(factura_Nro)),factura_Nro)
+	where oferta_Fecha_Compra is not null
+	and	Factura_Nro is not null
+	and	Factura_Fecha is not null
+
+	--sumo los detalles para y seteo los precios de las facturas
+	update f set f.Total_Fact = ss.Total
+	from default_name.factura f inner join
+	(select sum(Monto) as Total, id_factura from default_name.Detalle group by id_factura) ss
+	on ss.id_factura = f.id_factura
+end
+go
+
+--Ejecucion de sp para insercion.
+exec DEFAULT_NAME.SP_ImportacionDeDatosCliente
+go
+exec DEFAULT_NAME.SP_ImportacionDeDatosCredito
+go
+exec DEFAULT_NAME.SP_ImportacionDeDatosProveedor
+go
+exec DEFAULT_NAME.SP_ImportacionDeDatosOfertas
+go
+exec DEFAULT_NAME.SP_ImportacionDeDatosCompras
+go 
+exec DEFAULT_NAME.SP_ImportacionDeDatosFacturas
+go
+
+--agrego indices necesarios para busquedas.
+CREATE NONCLUSTERED INDEX [idx_credito_cliente] ON [DEFAULT_NAME].[Credito]
+(
+	[Id_Cliente] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
