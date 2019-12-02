@@ -4,8 +4,8 @@ Estas son las especificaciones para armar el pdf a presentar.
 al momento de insertar los datos para cada cliente se va a generar un usuario, el nombre del usuario se creara con la primeras 4 letra del nombre + el apellido del cliente.
 al momento se insertar los datos del proveedor para cada provedor se genero un usuario cuyo nombre de usuario, es la razon social sin caracteres especiales (. , _ °) y su password es el cuit solo en numeros (sin los -).
 las columnas Cli_Dest_* tenian todos sus datos en null, igualmente se dejo listo el script de inserción para  trabajar con un set de datos donde estas columnas si esten completas, creando los clientes correspondientes y asociandolos cuando corresponda.
-Se asume el los datos en la columna "Oferta_Cantidad", se refiere al stock disponible ofrecido por el proveedor, y que cada compra, ya que no hay una columna que indique la cantidad comprada, es una compra de un unico item, es decir cantidad 1.
-
+Se asume el los datos en la columna "Oferta_Cantidad", se refiere al stock disponible ofrecido por el proveedor, y que cada compra, ya que no hay una columna que indique la cantidad comprada, es una compra de un unico item, es decir cantidad 1. Se asume para la importacion que el maximo por compra es igual a 1 ya que no es un dato especificado.
+Para la creacion de facturas, se asume que todos las facturas son tipo A, se completara el numero de factura con ceros y el numero para el punto de venta se usara el 0001, quedando los numeros de factura de esta forma 0001-00xxxxxx
 
 
 --consideraciones programa
@@ -20,3 +20,5 @@ Se asume el los datos en la columna "Oferta_Cantidad", se refiere al stock dispo
 
 -Desde la carga de créditos un usuario puede acceder al historico de sus créditos, si el usuario ademas tiene el rol de administrador podra ver el historico de todos los clientes.
 -El usuario q tenga el rol de "administrador general" podra cargar creditos a otros usuarios. Un usuario con la funcionalidad "alta de creditos" y que no este asociado a un cliente no podra cargar creditos.
+
+

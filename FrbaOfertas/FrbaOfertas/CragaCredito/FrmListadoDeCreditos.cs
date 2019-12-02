@@ -199,6 +199,11 @@ namespace FrbaOfertas.CragaCredito
             
         }
 
+        public void SetarTotalItemsEnGrill(int cantidadItems)
+        {
+            this.paginador.SetearCantidadDeItems(cantidadItems);
+            this.paginador.SetearNumeroPagina(1);
+        }
 
         #endregion
 
@@ -213,11 +218,7 @@ namespace FrbaOfertas.CragaCredito
         }
 
 
-        public void SetarTotalItemsEnGrill(int cantidadItems)
-        {
-            this.paginador.SetearCantidadDeItems(cantidadItems);
-            this.paginador.SetearNumeroPagina(1);
-        }
+  
 
         private void FrmListadoDeCreditos_Load(object sender, EventArgs e)
         {

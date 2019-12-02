@@ -199,6 +199,9 @@
     <EmbeddedResource Include="CrearOferta\FrmBuscarOfertas.resx">
       <DependentUpon>FrmBuscarOfertas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CrearOferta\FrmListadoDeOfertas.resx">
+      <DependentUpon>FrmListadoDeOfertas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LogIn\FrmAltaDeCuentas.resx">
       <DependentUpon>FrmAltaDeCuentas.cs</DependentUpon>
     </EmbeddedResource>
