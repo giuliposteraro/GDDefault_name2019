@@ -35,11 +35,12 @@
             this.creditoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ofertasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuCompraOferta = new System.Windows.Forms.ToolStripMenuItem();
             this.facturaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estadisticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cambiarContraseñaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aCercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuCompraOferta = new System.Windows.Forms.ToolStripMenuItem();
+            this.entregaDeOfertasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,13 +55,14 @@
             this.proveedoresToolStripMenuItem,
             this.ofertasToolStripMenuItem,
             this.toolStripMenuCompraOferta,
+            this.entregaDeOfertasToolStripMenuItem,
             this.facturaciónToolStripMenuItem,
             this.estadisticasToolStripMenuItem,
             this.cambiarContraseñaToolStripMenuItem,
             this.aCercaDeToolStripMenuItem});
             this.mnuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.mnuPrincipal.Name = "mnuPrincipal";
-            this.mnuPrincipal.Size = new System.Drawing.Size(898, 24);
+            this.mnuPrincipal.Size = new System.Drawing.Size(1035, 24);
             this.mnuPrincipal.TabIndex = 0;
             this.mnuPrincipal.Text = "Principal";
             // 
@@ -106,6 +108,13 @@
             this.ofertasToolStripMenuItem.Text = "Publicar Ofertas";
             this.ofertasToolStripMenuItem.Click += new System.EventHandler(this.ofertasToolStripMenuItem_Click);
             // 
+            // toolStripMenuCompraOferta
+            // 
+            this.toolStripMenuCompraOferta.Name = "toolStripMenuCompraOferta";
+            this.toolStripMenuCompraOferta.Size = new System.Drawing.Size(98, 20);
+            this.toolStripMenuCompraOferta.Text = "Compra Oferta";
+            this.toolStripMenuCompraOferta.Click += new System.EventHandler(this.toolStripMenuCompraOferta_Click);
+            // 
             // facturaciónToolStripMenuItem
             // 
             this.facturaciónToolStripMenuItem.Name = "facturaciónToolStripMenuItem";
@@ -134,19 +143,19 @@
             this.aCercaDeToolStripMenuItem.Text = "A Cerca de...";
             this.aCercaDeToolStripMenuItem.Click += new System.EventHandler(this.aCercaDeToolStripMenuItem_Click);
             // 
-            // toolStripMenuCompraOferta
+            // entregaDeOfertasToolStripMenuItem
             // 
-            this.toolStripMenuCompraOferta.Name = "toolStripMenuCompraOferta";
-            this.toolStripMenuCompraOferta.Size = new System.Drawing.Size(98, 20);
-            this.toolStripMenuCompraOferta.Text = "Compra Oferta";
-            this.toolStripMenuCompraOferta.Click += new System.EventHandler(this.toolStripMenuCompraOferta_Click);
+            this.entregaDeOfertasToolStripMenuItem.Name = "entregaDeOfertasToolStripMenuItem";
+            this.entregaDeOfertasToolStripMenuItem.Size = new System.Drawing.Size(116, 20);
+            this.entregaDeOfertasToolStripMenuItem.Text = "Entrega de Ofertas";
+            this.entregaDeOfertasToolStripMenuItem.Click += new System.EventHandler(this.entregaDeOfertasToolStripMenuItem_Click);
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.GreenYellow;
-            this.ClientSize = new System.Drawing.Size(898, 561);
+            this.ClientSize = new System.Drawing.Size(1035, 561);
             this.Controls.Add(this.mnuPrincipal);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.mnuPrincipal;
@@ -175,6 +184,7 @@
         private System.Windows.Forms.ToolStripMenuItem facturaciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem estadisticasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuCompraOferta;
+        private System.Windows.Forms.ToolStripMenuItem entregaDeOfertasToolStripMenuItem;
     }
 }
 

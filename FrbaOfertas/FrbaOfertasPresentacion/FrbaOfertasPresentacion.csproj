@@ -52,7 +52,9 @@
     <Compile Include="bases\ModosDeEjecucion.cs" />
     <Compile Include="Componentes\IGrillaGestionDatosVista.cs" />
     <Compile Include="Componentes\PresentadorGrillaGestionDatos.cs" />
+    <Compile Include="PublicacionOfertas\IVistaAltaOferta.cs" />
     <Compile Include="CompraOfertas\IVistaCompraOferta.cs" />
+    <Compile Include="PublicacionOfertas\PresentadorAltaOferta.cs" />
     <Compile Include="CompraOfertas\PresentadorCompraOferta.cs" />
     <Compile Include="Creditos\IVistaAltaCredito.cs" />
     <Compile Include="Creditos\PresentadorAltaCredito.cs" />

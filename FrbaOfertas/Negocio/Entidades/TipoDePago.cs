@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Negocio.Entidades
 {
+    [Serializable]
     public class TipoDePago : EntidadBase
     {
         public int Id { get; set; }

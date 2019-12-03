@@ -27,5 +27,7 @@ namespace FrbaOfertasPresentacion.PublicacionOfertas
         void MostrarAlerta(bool p);
 
         void HabilitarCombo(bool p);
+
+        Oferta OfertaSeleccionada { get; set; }
     }
 }

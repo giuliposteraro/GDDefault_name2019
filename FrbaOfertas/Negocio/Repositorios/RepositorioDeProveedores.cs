@@ -23,7 +23,14 @@ namespace Negocio.Repositorios
         /// <returns></returns>
         internal Proveedor ObtenerUnoPorId(int Id_Proveedor)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return this.maper.mapearAEntidad(ObtenerPorID("Id_Proveedor", Id_Proveedor)).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("se produjo un error al buscar el Proveedor: {0}", ex.Message));
+            }
         }
 
         /// <summary>

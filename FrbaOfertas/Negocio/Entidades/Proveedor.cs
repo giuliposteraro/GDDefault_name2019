@@ -6,6 +6,7 @@ using System.Text;
 
 namespace Negocio.Entidades
 {
+    [Serializable]
     public class Proveedor : EntidadBase
     {
         public int Id_Proveedor { get; set; }

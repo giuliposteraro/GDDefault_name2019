@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmListadoDeOfertas));
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblAlertaUsuario = new System.Windows.Forms.Label();
             this.cboProveedor = new System.Windows.Forms.ComboBox();
             this.dtpFechaHasta = new System.Windows.Forms.DateTimePicker();
             this.dtpFechaDesde = new System.Windows.Forms.DateTimePicker();
@@ -47,25 +48,28 @@
             this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFuncionalidades = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panComandos = new System.Windows.Forms.Panel();
-            this.btnVerCompras = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnModificar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
+            this.colFecha_Publi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFecha_Venc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrecio_Oferta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrecioLista = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMaximoPorCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.publicarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verCompraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panComandos = new System.Windows.Forms.Panel();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.paginador = new FrbaOfertas.Componentes.paginador();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lblAlertaUsuario = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOfertas)).BeginInit();
-            this.panComandos.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.panComandos.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -101,6 +105,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(697, 100);
             this.panel1.TabIndex = 22;
+            // 
+            // lblAlertaUsuario
+            // 
+            this.lblAlertaUsuario.AutoSize = true;
+            this.lblAlertaUsuario.ForeColor = System.Drawing.Color.Red;
+            this.lblAlertaUsuario.Image = global::FrbaOfertas.Properties.Resources.alerta;
+            this.lblAlertaUsuario.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.lblAlertaUsuario.Location = new System.Drawing.Point(24, 72);
+            this.lblAlertaUsuario.MaximumSize = new System.Drawing.Size(620, 0);
+            this.lblAlertaUsuario.Name = "lblAlertaUsuario";
+            this.lblAlertaUsuario.Size = new System.Drawing.Size(603, 26);
+            this.lblAlertaUsuario.TabIndex = 20;
+            this.lblAlertaUsuario.Text = "      El usuario actual no tiene un proveedor asociado, podrá ver las ofertas pub" +
+    "licadas pero no podrá cargar o modificar ofertas\r\n.";
+            this.lblAlertaUsuario.Visible = false;
             // 
             // cboProveedor
             // 
@@ -222,8 +241,15 @@
             this.dgvOfertas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colNombre,
             this.colEstado,
-            this.colFuncionalidades});
+            this.colFuncionalidades,
+            this.colFecha_Publi,
+            this.colFecha_Venc,
+            this.colPrecio_Oferta,
+            this.colPrecioLista,
+            this.colCantidad,
+            this.colMaximoPorCompra});
             this.dgvOfertas.ColumnsOcultas = ((System.Collections.Generic.List<string>)(resources.GetObject("dgvOfertas.ColumnsOcultas")));
+            this.dgvOfertas.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvOfertas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvOfertas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvOfertas.EventSyncInvoke = null;
@@ -253,26 +279,91 @@
             // colNombre
             // 
             this.colNombre.DataPropertyName = "Codigo_of";
-            this.colNombre.HeaderText = "Nombre";
+            this.colNombre.HeaderText = "Código Oferta";
             this.colNombre.Name = "colNombre";
             // 
             // colEstado
             // 
-            this.colEstado.DataPropertyName = "EstadoComoString";
-            this.colEstado.HeaderText = "Estado";
+            this.colEstado.DataPropertyName = "Descripcion_Of";
+            this.colEstado.HeaderText = "Descripción";
             this.colEstado.Name = "colEstado";
             // 
             // colFuncionalidades
             // 
-            this.colFuncionalidades.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colFuncionalidades.DataPropertyName = "Funcionalidades";
-            this.colFuncionalidades.HeaderText = "Funcionalidades";
+            this.colFuncionalidades.DataPropertyName = "ProveedorRazonSocial";
+            this.colFuncionalidades.HeaderText = "Proveedor";
             this.colFuncionalidades.Name = "colFuncionalidades";
+            this.colFuncionalidades.Width = 120;
+            // 
+            // colFecha_Publi
+            // 
+            this.colFecha_Publi.DataPropertyName = "Fecha_Publi_Of";
+            this.colFecha_Publi.HeaderText = "Fecha Publicación";
+            this.colFecha_Publi.Name = "colFecha_Publi";
+            // 
+            // colFecha_Venc
+            // 
+            this.colFecha_Venc.DataPropertyName = "Fecha_Venc_Of";
+            this.colFecha_Venc.HeaderText = "Fecha Vencimiento";
+            this.colFecha_Venc.Name = "colFecha_Venc";
+            // 
+            // colPrecio_Oferta
+            // 
+            this.colPrecio_Oferta.DataPropertyName = "Precio_Oferta";
+            this.colPrecio_Oferta.HeaderText = "Precio Oferta";
+            this.colPrecio_Oferta.Name = "colPrecio_Oferta";
+            // 
+            // colPrecioLista
+            // 
+            this.colPrecioLista.DataPropertyName = "Precio_Lista";
+            this.colPrecioLista.HeaderText = "Precio de lista";
+            this.colPrecioLista.Name = "colPrecioLista";
+            // 
+            // colCantidad
+            // 
+            this.colCantidad.DataPropertyName = "Cant_Disp_Oferta";
+            this.colCantidad.HeaderText = "CantidadDisponible";
+            this.colCantidad.Name = "colCantidad";
+            // 
+            // colMaximoPorCompra
+            // 
+            this.colMaximoPorCompra.DataPropertyName = "Maximo_Por_Compra";
+            this.colMaximoPorCompra.HeaderText = "Máximo por Compra";
+            this.colMaximoPorCompra.Name = "colMaximoPorCompra";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.publicarToolStripMenuItem,
+            this.modificarToolStripMenuItem,
+            this.eliminarToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(126, 70);
+            // 
+            // publicarToolStripMenuItem
+            // 
+            this.publicarToolStripMenuItem.Name = "publicarToolStripMenuItem";
+            this.publicarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.publicarToolStripMenuItem.Text = "Publicar";
+            this.publicarToolStripMenuItem.Click += new System.EventHandler(this.publicarToolStripMenuItem_Click);
+            // 
+            // modificarToolStripMenuItem
+            // 
+            this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
+            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.modificarToolStripMenuItem.Text = "Modificar";
+            this.modificarToolStripMenuItem.Click += new System.EventHandler(this.modificarToolStripMenuItem_Click);
+            // 
+            // eliminarToolStripMenuItem
+            // 
+            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.eliminarToolStripMenuItem.Text = "Eliminar";
+            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
             // panComandos
             // 
             this.panComandos.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.panComandos.Controls.Add(this.btnVerCompras);
             this.panComandos.Controls.Add(this.btnEliminar);
             this.panComandos.Controls.Add(this.btnModificar);
             this.panComandos.Controls.Add(this.btnAgregar);
@@ -282,18 +373,6 @@
             this.panComandos.Name = "panComandos";
             this.panComandos.Size = new System.Drawing.Size(697, 32);
             this.panComandos.TabIndex = 20;
-            // 
-            // btnVerCompras
-            // 
-            this.btnVerCompras.BackColor = System.Drawing.SystemColors.Control;
-            this.btnVerCompras.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnVerCompras.Location = new System.Drawing.Point(249, 4);
-            this.btnVerCompras.Name = "btnVerCompras";
-            this.btnVerCompras.Size = new System.Drawing.Size(75, 25);
-            this.btnVerCompras.TabIndex = 6;
-            this.btnVerCompras.Text = "Ver Compras";
-            this.btnVerCompras.UseVisualStyleBackColor = false;
-            this.btnVerCompras.Click += new System.EventHandler(this.btnVerCompras_Click);
             // 
             // btnEliminar
             // 
@@ -305,6 +384,7 @@
             this.btnEliminar.TabIndex = 4;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnModificar
             // 
@@ -316,6 +396,7 @@
             this.btnModificar.TabIndex = 3;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnAgregar
             // 
@@ -327,6 +408,7 @@
             this.btnAgregar.TabIndex = 2;
             this.btnAgregar.Text = "Publicar";
             this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnCancelar
             // 
@@ -339,40 +421,6 @@
             this.btnCancelar.TabIndex = 1;
             this.btnCancelar.Text = "Cerrar";
             this.btnCancelar.UseVisualStyleBackColor = false;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.publicarToolStripMenuItem,
-            this.modificarToolStripMenuItem,
-            this.eliminarToolStripMenuItem,
-            this.verCompraToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 92);
-            // 
-            // publicarToolStripMenuItem
-            // 
-            this.publicarToolStripMenuItem.Name = "publicarToolStripMenuItem";
-            this.publicarToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.publicarToolStripMenuItem.Text = "Publicar";
-            // 
-            // modificarToolStripMenuItem
-            // 
-            this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.modificarToolStripMenuItem.Text = "Modificar";
-            // 
-            // eliminarToolStripMenuItem
-            // 
-            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.eliminarToolStripMenuItem.Text = "Eliminar";
-            // 
-            // verCompraToolStripMenuItem
-            // 
-            this.verCompraToolStripMenuItem.Name = "verCompraToolStripMenuItem";
-            this.verCompraToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.verCompraToolStripMenuItem.Text = "Ver Compra";
             // 
             // panel3
             // 
@@ -404,21 +452,6 @@
             this.panel2.Size = new System.Drawing.Size(697, 166);
             this.panel2.TabIndex = 25;
             // 
-            // lblAlertaUsuario
-            // 
-            this.lblAlertaUsuario.AutoSize = true;
-            this.lblAlertaUsuario.ForeColor = System.Drawing.Color.Red;
-            this.lblAlertaUsuario.Image = global::FrbaOfertas.Properties.Resources.alerta;
-            this.lblAlertaUsuario.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.lblAlertaUsuario.Location = new System.Drawing.Point(24, 72);
-            this.lblAlertaUsuario.MaximumSize = new System.Drawing.Size(620, 0);
-            this.lblAlertaUsuario.Name = "lblAlertaUsuario";
-            this.lblAlertaUsuario.Size = new System.Drawing.Size(603, 26);
-            this.lblAlertaUsuario.TabIndex = 20;
-            this.lblAlertaUsuario.Text = "      El usuario actual no tiene un proveedor asociado, podrá ver las ofertas pub" +
-    "licadas pero no podrá cargar o modificar ofertas\r\n.";
-            this.lblAlertaUsuario.Visible = false;
-            // 
             // FrmListadoDeOfertas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -438,8 +471,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOfertas)).EndInit();
-            this.panComandos.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
+            this.panComandos.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -457,7 +490,6 @@
         private System.Windows.Forms.Label Label4;
         private Componentes.GrillaGestionDatos dgvOfertas;
         private System.Windows.Forms.Panel panComandos;
-        private System.Windows.Forms.Button btnVerCompras;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnAgregar;
@@ -466,7 +498,6 @@
         private System.Windows.Forms.ToolStripMenuItem publicarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem verCompraToolStripMenuItem;
         private System.Windows.Forms.Panel panel3;
         private Componentes.paginador paginador;
         private System.Windows.Forms.Panel panel2;
@@ -476,9 +507,15 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblAlertaUsuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEstado;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFuncionalidades;
-        private System.Windows.Forms.Label lblAlertaUsuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFecha_Publi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFecha_Venc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPrecio_Oferta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPrecioLista;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMaximoPorCompra;
     }
 }

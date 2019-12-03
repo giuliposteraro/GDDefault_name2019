@@ -72,9 +72,11 @@ namespace FrbaOfertas.ComprarOferta
         {
             if (DesignMode) return;
 
-            var frm = new FrmBuscarOfertas();
+            var frm = new FrmListadoDeOfertas();
+            frm.Presentador.PosicionarParaSeleccion();
             if (frm.ShowDialog(this.MdiParent) == System.Windows.Forms.DialogResult.OK)
             {
+                this.Oferta = frm.OfertaSeleccionada;
                 //_presenter.ActualizarVista();
             }
         }
@@ -82,5 +84,7 @@ namespace FrbaOfertas.ComprarOferta
         public void MostrarAlerta(bool mostrarAlerta){
             lblAlertaUsuario.Visible = mostrarAlerta;
         }
+
+        public Oferta Oferta { get; set; }
     }
 }

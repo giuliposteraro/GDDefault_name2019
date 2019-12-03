@@ -213,5 +213,76 @@ namespace FrbaOfertas.CrearOferta
         {
             this.cboProveedor.Enabled = p;
         }
+
+
+        public Oferta OfertaSeleccionada
+        {
+            get
+            {
+                return (Oferta)dgvOfertas.ItemSeleccionado;
+            }
+            set
+            {
+                dgvOfertas.ItemSeleccionado = value;
+            }
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
+
+            var frm = new FrmAltaOfertas();
+            frm.Presentador.PosicionarAlta(this.ProveedorSeleccionado);
+            if (frm.ShowDialog(this.MdiParent) == System.Windows.Forms.DialogResult.OK)
+            {
+                _presenter.BuscarDatos(int.Parse(this.paginador.ObtenerItemsPorPagina()));
+            }
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            if (this.OfertaSeleccionada == null)
+            {
+                MessageBox.Show("Debe seleccionar una oferta a modificar");
+                return;
+            }
+
+            var frm = new FrmAltaOfertas();
+            frm.Presentador.PosicionarModificar(this.OfertaSeleccionada);
+            if (frm.ShowDialog(this.MdiParent) == System.Windows.Forms.DialogResult.OK)
+            {
+                _presenter.BuscarDatos(int.Parse(this.paginador.ObtenerItemsPorPagina()));
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (this.OfertaSeleccionada == null)
+            {
+                MessageBox.Show("Debe seleccionar una oferta a eliminar");
+                return;
+            }
+            var frm = new FrmAltaOfertas();
+            frm.Presentador.PosicionarBaja(this.OfertaSeleccionada);
+            if (frm.ShowDialog(this.MdiParent) == System.Windows.Forms.DialogResult.OK)
+            {
+                _presenter.BuscarDatos(int.Parse(this.paginador.ObtenerItemsPorPagina()));
+            }
+        }
+
+        private void publicarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.btnAgregar.PerformClick();
+        }
+
+        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.btnModificar.PerformClick();
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.btnEliminar.PerformClick();
+        }
     }
 }

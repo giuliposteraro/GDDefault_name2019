@@ -90,6 +90,15 @@ namespace Negocio.Entidades
             }
         }
 
+        public static Funcionalidad EntregaDeOfertas
+        {
+            get
+            {
+                var maper = new MaperDeFuncionalidades();
+                var repo = new RepositorioDeFuncionalidades(maper);
+                return repo.ObtenerUnoPorId((int)Eid.EntregaDeOfertas);
+            }
+        }
         public static Funcionalidad FacturacionaProveedor
         {
             get
@@ -135,7 +144,8 @@ namespace Negocio.Entidades
 	    CargarCrédito = 5,
 	    ComprarOferta = 6,
 	    Confeccionypublicaciondeofertas =7,
-	    FacturacionaProveedor =8,
-	    ListadoEstadistico = 9
+        EntregaDeOfertas = 8,
+	    FacturacionaProveedor =9,
+	    ListadoEstadistico = 10
     }
 }

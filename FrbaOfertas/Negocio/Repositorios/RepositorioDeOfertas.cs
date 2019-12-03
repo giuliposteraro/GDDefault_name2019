@@ -17,64 +17,6 @@ namespace Negocio.Repositorios
         }
 
 
-
-        /*public void InsertarNuevo(Oferta oferta)
-        {
-            this.InicializarConexion();
-            SqlTransaction transaction;
-            transaction = conn.BeginTransaction();
-
-            try
-            {
-
-                //inserto el nuevo rol
-
-                SqlCommand command = conn.CreateCommand();
-                command.Connection = conn;
-                command.Transaction = transaction;
-                SqlParameter param = new SqlParameter("@Id_Cliente", credito.Id_Cliente);
-                command.Parameters.Add(param);
-                param = new SqlParameter("@Carga_Fecha", credito.Carga_Fecha);
-                command.Parameters.Add(param);
-                param = new SqlParameter("@Carga_Cred", credito.Carga_Cred);
-                command.Parameters.Add(param);
-                param = new SqlParameter("@Tarjeta", credito.Tarjeta);
-                command.Parameters.Add(param);
-                param = new SqlParameter("@Detalle", credito.Detalle);
-                command.Parameters.Add(param);
-                param = new SqlParameter("@Tipo_Pago", credito.Tipo_Pago);
-                command.Parameters.Add(param);
-
-                command.CommandText = @"INSERT INTO [DEFAULT_NAME].[Credito]
-                                       ([Id_Cliente]
-                                       ,[Carga_Fecha]
-                                       ,[Carga_Cred]
-                                       ,[Tarjeta]
-                                       ,[Detalle]
-                                       ,[Tipo_Pago])
-                                 VALUES
-                                       (@Id_Cliente,
-                                       convert(datetime,@Carga_Fecha,121),
-                                       @Carga_Cred, 
-                                       @Tarjeta,
-                                       @Detalle,
-                                       @Tipo_Pago)";
-
-                command.ExecuteNonQuery();
-
-                transaction.Commit();
-            }
-            catch (Exception ex)
-            {
-                transaction.Rollback();
-                throw new Exception(string.Format("se produjo un error al buscar las Funcionalidades: {0}", ex.Message));
-            }
-            finally
-            {
-                this.CerrarConexion();
-            }
-        }*/
-
         public int ContarItems(Proveedor proveedor, string codigo, DateTime fechaDesde, DateTime fechaHasta)
         {
             this.InicializarConexion();
@@ -170,6 +112,94 @@ namespace Negocio.Repositorios
             catch (Exception ex)
             {
                 throw new Exception(string.Format("se produjo un error al buscar la cantidad de items: {0}", ex.Message));
+            }
+            finally
+            {
+                this.CerrarConexion();
+            }
+        }
+
+        /// <summary>
+        /// devuelve la oferta correspondiente al id que se pasa por parametro
+        /// </summary>
+        /// <param name="Id_Oferta"></param>
+        /// <returns></returns>
+        internal Oferta ObtenerUnoPorId(int Id_Oferta)
+        {
+            try
+            {
+                return this.maper.mapearAEntidad(ObtenerPorID("Id_Oferta", Id_Oferta)).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("se produjo un error al buscar la Oferta: {0}", ex.Message));
+            }
+        }
+
+        public void Guardar(Oferta OfertaEnEdicion)
+        {
+            this.InicializarConexion();
+            SqlTransaction transaction;
+            transaction = conn.BeginTransaction();
+
+            try
+            {
+
+                //inserto el nuevo rol
+
+                SqlCommand command = conn.CreateCommand();
+                command.Connection = conn;
+                command.Transaction = transaction;
+                SqlParameter param = new SqlParameter("@Id_Proveedor", OfertaEnEdicion.Id_Proveedor);
+                command.Parameters.Add(param);
+                param = new SqlParameter("@Descripcion_Of", OfertaEnEdicion.Descripcion_Of);
+                command.Parameters.Add(param);
+                param = new SqlParameter("@Fecha_Publi_Of", OfertaEnEdicion.Fecha_Publi_Of);
+                command.Parameters.Add(param);
+                param = new SqlParameter("@Fecha_Venc_Of", OfertaEnEdicion.Fecha_Venc_Of);
+                command.Parameters.Add(param);
+                param = new SqlParameter("@Precio_Oferta", OfertaEnEdicion.Precio_Oferta);
+                command.Parameters.Add(param);
+                param = new SqlParameter("@Precio_Lista", OfertaEnEdicion.Precio_Lista);
+                command.Parameters.Add(param);
+                param = new SqlParameter("@Cant_Disp_Oferta", OfertaEnEdicion.Cant_Disp_Oferta);
+                command.Parameters.Add(param);
+                param = new SqlParameter("@Maximo_Por_Compra", OfertaEnEdicion.Maximo_Por_Compra);
+                command.Parameters.Add(param);
+                param = new SqlParameter("@Codigo_Of", OfertaEnEdicion.Codigo_Of);
+                command.Parameters.Add(param);
+
+                command.CommandText = @"INSERT INTO [DEFAULT_NAME].[Oferta]
+                                       ([Id_Proveedor]
+                                       ,[Descripcion_Of]
+                                       ,[Fecha_Publi_Of]
+                                       ,[Fecha_Venc_Of]
+                                       ,[Precio_Oferta]
+                                       ,[Precio_Lista]
+                                       ,[Cant_Disp_Oferta]
+                                       ,[Maximo_Por_Compra]
+                                       ,[Codigo_Of]
+                                       ,[Precio_fict_Of])
+                                 VALUES
+                                       (@Id_Proveedor,
+                                        @Descripcion_Of,
+                                        convert(datetime,@Fecha_Publi_Of,121),
+                                        convert(datetime,@Fecha_Venc_Of,121),
+                                       @Precio_Oferta, 
+                                       @Precio_Lista,
+                                       @Cant_Disp_Oferta,
+                                       @Maximo_Por_Compra,
+                                        @Codigo_Of,
+                                       null)";
+
+                command.ExecuteNonQuery();
+
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                throw new Exception(string.Format("se produjo un error al buscar las Funcionalidades: {0}", ex.Message));
             }
             finally
             {

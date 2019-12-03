@@ -1,4 +1,5 @@
 ﻿using FrbaOfertasPresentacion.bases;
+using Negocio.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,7 @@ namespace FrbaOfertasPresentacion.CompraOfertas
         Negocio.Entidades.Cliente Cliente { get; set; }
 
         string NombreCliente { get; set; }
+
+        Oferta Oferta { get; set; }
     }
 }

@@ -21,4 +21,6 @@ Para la creacion de facturas, se asume que todos las facturas son tipo A, se com
 -Desde la carga de créditos un usuario puede acceder al historico de sus créditos, si el usuario ademas tiene el rol de administrador podra ver el historico de todos los clientes.
 -El usuario q tenga el rol de "administrador general" podra cargar creditos a otros usuarios. Un usuario con la funcionalidad "alta de creditos" y que no este asociado a un cliente no podra cargar creditos.
 
+-Al ingresar a la opcion de menu "Publicar Ofertas" se abre un listado con las ofertas del proveedor desde este listado, se pueden agregar nuevas ofertas, modificar las existentes y eliminar las ofertas que no queremos mas.
+-Al ingresar a entrega de ofertas vermos un listado de todas las ofertas compradas y podremos marcar la oferta como entregada.
 

@@ -83,6 +83,7 @@
             // 
             this.txtMontoCreditoTotal.Enabled = false;
             this.txtMontoCreditoTotal.Location = new System.Drawing.Point(98, 58);
+            this.txtMontoCreditoTotal.MaxLength = 12;
             this.txtMontoCreditoTotal.Name = "txtMontoCreditoTotal";
             this.txtMontoCreditoTotal.Size = new System.Drawing.Size(100, 20);
             this.txtMontoCreditoTotal.TabIndex = 22;
@@ -276,6 +277,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(124, 273);
+            this.txtDescripcion.MaxLength = 100;
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(273, 99);

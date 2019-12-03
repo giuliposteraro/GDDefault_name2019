@@ -67,6 +67,7 @@ namespace FrbaOfertas
             estadisticasToolStripMenuItem.Visible = gestor.TienePermisoPara(Funcionalidad.ListadoEstadistico);
             toolStripMenuCompraOferta.Visible = gestor.TienePermisoPara(Funcionalidad.ComprarOferta);
             ofertasToolStripMenuItem.Visible = gestor.TienePermisoPara(Funcionalidad.Confeccionypublicaciondeofertas);
+            entregaDeOfertasToolStripMenuItem.Visible = gestor.TienePermisoPara(Funcionalidad.EntregaDeOfertas);
             
             
         }
@@ -157,6 +158,11 @@ namespace FrbaOfertas
             frm.Presentador.Posicionar();
             frm.MdiParent = this;
             frm.Show();
+        }
+
+        private void entregaDeOfertasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

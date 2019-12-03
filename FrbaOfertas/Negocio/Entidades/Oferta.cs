@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Negocio.Entidades
 {
+    [Serializable]
     public class Oferta : EntidadBase
     {
         public int Id_Oferta { get; set; }
@@ -22,7 +23,7 @@ namespace Negocio.Entidades
         public string Codigo_Of{get; set;}
 
         private Proveedor _proveedor;
-        public Proveedor Cliente
+        public Proveedor Proveedor
         {
             get 
             {
@@ -38,6 +39,14 @@ namespace Negocio.Entidades
             { 
                 _proveedor = value;
                 Id_Proveedor = value.ID;
+            }
+        }
+
+        public string ProveedorRazonSocial
+        {
+            get
+            {
+                return Proveedor.Razon_Social_Prov;
             }
         }
 

@@ -25,7 +25,7 @@ namespace Negocio.Repositorios
                 var c = new Cliente();
                 c.Id_Cliente = dr.IsNull("Id_Cliente") ? 0 : dr.Field<int>("Id_Cliente");
                 c.Id_Cuenta = dr.IsNull("Id_Cuenta") ? 0 : dr.Field<int>("Id_Cuenta");
-                c.Id_Cuenta = dr.IsNull("Id_Cliente_Dest") ? 0 : dr.Field<int>("Id_Cliente_Dest");
+                c.Id_Cliente_Dest = dr.IsNull("Id_Cliente_Dest") ? 0 : dr.Field<int>("Id_Cliente_Dest");
                 c.Nombre_Clie = dr.IsNull("Nombre_Clie") ? String.Empty : dr.Field<String>("Nombre_Clie");
                 c.Apellido_Clie = dr.IsNull("Apellido_Clie") ? String.Empty : dr.Field<String>("Apellido_Clie");
                 c.DNI_Clie = dr.IsNull("DNI_Clie") ? 0 : dr.Field<int>("DNI_Clie");

@@ -239,6 +239,32 @@ namespace Negocio.Base
             }
         }
 
+        public bool EliminarEntidad(T unaEntidad, string propertyID)
+        {
+            try
+            {
+                List<SqlParameter> parametros = new List<SqlParameter>();
+
+
+                //armo el parametro para los ids
+                SqlParameter param = new SqlParameter(string.Format("@{0}", propertyID), unaEntidad.GetType().GetProperty(propertyID).GetValue(unaEntidad, null));
+                parametros.Add(param);
+
+                //armo el update en funcion de los parametros a actualizar
+                StringBuilder statement = new StringBuilder();
+                statement.AppendLine(string.Format("Delete from {0}.{1} where {2} = @{2}", maper.schema, maper.tabla, propertyID));
+
+                //ejecuto la actualizacion
+                EjecutarStatement(statement.ToString(), parametros);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("se produjo un error al actualizar la tabla: {0} - {1}", maper.tabla, ex.Message));
+                return false;
+            }
+        }
+
         public bool ActualizarEntidad (T unaEntidad, List<string> propertiesAActualizar, string propertyID)
         {
             try
@@ -272,6 +298,7 @@ namespace Negocio.Base
             catch (Exception ex)
             {
                 throw new Exception(string.Format("se produjo un error al actualizar la tabla: {0} - {1}",maper.tabla, ex.Message));
+                return false;
             }
         }
 
