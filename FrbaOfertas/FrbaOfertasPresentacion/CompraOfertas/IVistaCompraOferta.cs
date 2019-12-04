@@ -18,5 +18,23 @@ namespace FrbaOfertasPresentacion.CompraOfertas
         string NombreCliente { get; set; }
 
         Oferta Oferta { get; set; }
+
+        decimal Credito { get; set; }
+
+        DateTime fecha { get; set; }
+
+        string Descripcion { get; set; }
+
+        string Codigo { get; set; }
+
+        int Stock { get; set; }
+
+        int Maximo { get; set; }
+
+        decimal Plista { get; set; }
+
+        decimal POferta { get; set; }
+
+        int Cantidad { get; set; }
     }
 }

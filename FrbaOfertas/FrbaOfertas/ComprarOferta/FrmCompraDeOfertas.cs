@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Negocio.Base;
 
 namespace FrbaOfertas.ComprarOferta
 {
@@ -63,9 +64,15 @@ namespace FrbaOfertas.ComprarOferta
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnComprar_Click(object sender, EventArgs e)
         {
+            if (!(Presentador.ValidarGuardar()))
+                return;
 
+            if (this.Presentador.Guardar())
+            {
+                this.Presentador.Limpiar();
+            }
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -76,8 +83,7 @@ namespace FrbaOfertas.ComprarOferta
             frm.Presentador.PosicionarParaSeleccion();
             if (frm.ShowDialog(this.MdiParent) == System.Windows.Forms.DialogResult.OK)
             {
-                this.Oferta = frm.OfertaSeleccionada;
-                //_presenter.ActualizarVista();
+                _presenter.ActualizarVista(frm.OfertaSeleccionada);
             }
         }
 
@@ -85,6 +91,138 @@ namespace FrbaOfertas.ComprarOferta
             lblAlertaUsuario.Visible = mostrarAlerta;
         }
 
-        public Oferta Oferta { get; set; }
+        private Oferta _oferta;
+        public Oferta Oferta 
+        {
+            get
+            {
+                return _oferta;
+            }
+            set
+            {
+                _oferta = value;
+                if (value != null)
+                    txtOferta.Text = _oferta.ToString();
+                else
+                    txtOferta.Text = "";
+            }
+        }
+
+
+        public decimal Credito
+        {
+            get
+            {
+                if ((txtCredito.Text).EsNuloOVacio()) return 0;
+                return decimal.Parse(txtCredito.Text);
+            }
+            set
+            {
+                txtCredito.Text = value.ToString();
+            }
+        }
+
+        public DateTime fecha
+        {
+            get
+            {
+                return dtpFecha.Value;
+            }
+            set
+            {
+                dtpFecha.Value = value;
+            }
+        }
+
+        public string Descripcion
+        {
+            get
+            {
+                return txtDescripcion.Text;
+            }
+            set
+            {
+                txtDescripcion.Text = value;
+            }
+        }
+
+        public string Codigo
+        {
+            get
+            {
+                return txtNumero.Text;
+            }
+            set
+            {
+                txtNumero.Text = value;
+            }
+        }
+
+        public int Stock
+        {
+            get
+            {
+                return int.Parse(txtStock.Text);
+            }
+            set
+            {
+                txtStock.Text = value.ToString();
+            }
+        }
+
+        public int Maximo
+        {
+            get
+            {
+                return int.Parse(txtMaximo.Text);
+            }
+            set
+            {
+                txtMaximo.Text = value.ToString();
+            }
+        }
+
+        public decimal Plista
+        {
+            get
+            {
+                return decimal.Parse(txtLista.Text);
+            }
+            set
+            {
+                txtLista.Text = value.ToString();
+            }
+        }
+
+        public decimal POferta
+        {
+            get
+            {
+                return decimal.Parse(txtPoferta.Text);
+            }
+            set
+            {
+                txtPoferta.Text = value.ToString();
+            }
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+
+        public int Cantidad
+        {
+            get
+            {
+                return (int)nmCantidad.Value;
+            }
+            set
+            {
+                nmCantidad.Value = value;
+            }
+        }
     }
 }

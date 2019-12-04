@@ -32,6 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmListadoDeOfertas));
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dtpVHasta = new System.Windows.Forms.DateTimePicker();
+            this.dtpVDesde = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.lblAlertaUsuario = new System.Windows.Forms.Label();
             this.cboProveedor = new System.Windows.Forms.ComboBox();
             this.dtpFechaHasta = new System.Windows.Forms.DateTimePicker();
@@ -44,6 +48,19 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.Label4 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.publicarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panComandos = new System.Windows.Forms.Panel();
+            this.btnSeleccionar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.paginador = new FrbaOfertas.Componentes.paginador();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.dgvOfertas = new FrbaOfertas.Componentes.GrillaGestionDatos();
             this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,24 +71,12 @@
             this.colPrecioLista = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMaximoPorCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.publicarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panComandos = new System.Windows.Forms.Panel();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnModificar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.paginador = new FrbaOfertas.Componentes.paginador();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOfertas)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.panComandos.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOfertas)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -80,7 +85,7 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(0, 119);
+            this.label1.Location = new System.Drawing.Point(0, 152);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(697, 19);
             this.label1.TabIndex = 21;
@@ -89,6 +94,10 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.dtpVHasta);
+            this.panel1.Controls.Add(this.dtpVDesde);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.lblAlertaUsuario);
             this.panel1.Controls.Add(this.cboProveedor);
             this.panel1.Controls.Add(this.dtpFechaHasta);
@@ -103,8 +112,42 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 19);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(697, 100);
+            this.panel1.Size = new System.Drawing.Size(697, 133);
             this.panel1.TabIndex = 22;
+            // 
+            // dtpVHasta
+            // 
+            this.dtpVHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpVHasta.Location = new System.Drawing.Point(449, 68);
+            this.dtpVHasta.Name = "dtpVHasta";
+            this.dtpVHasta.Size = new System.Drawing.Size(143, 20);
+            this.dtpVHasta.TabIndex = 24;
+            // 
+            // dtpVDesde
+            // 
+            this.dtpVDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpVDesde.Location = new System.Drawing.Point(158, 68);
+            this.dtpVDesde.Name = "dtpVDesde";
+            this.dtpVDesde.Size = new System.Drawing.Size(143, 20);
+            this.dtpVDesde.TabIndex = 23;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(316, 74);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(131, 13);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "Fecha vencimiento Hasta:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(24, 74);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(134, 13);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "Fecha vencimiento Desde:";
             // 
             // lblAlertaUsuario
             // 
@@ -112,7 +155,7 @@
             this.lblAlertaUsuario.ForeColor = System.Drawing.Color.Red;
             this.lblAlertaUsuario.Image = global::FrbaOfertas.Properties.Resources.alerta;
             this.lblAlertaUsuario.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.lblAlertaUsuario.Location = new System.Drawing.Point(24, 72);
+            this.lblAlertaUsuario.Location = new System.Drawing.Point(24, 96);
             this.lblAlertaUsuario.MaximumSize = new System.Drawing.Size(620, 0);
             this.lblAlertaUsuario.Name = "lblAlertaUsuario";
             this.lblAlertaUsuario.Size = new System.Drawing.Size(603, 26);
@@ -133,7 +176,7 @@
             // dtpFechaHasta
             // 
             this.dtpFechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaHasta.Location = new System.Drawing.Point(339, 42);
+            this.dtpFechaHasta.Location = new System.Drawing.Point(449, 42);
             this.dtpFechaHasta.Name = "dtpFechaHasta";
             this.dtpFechaHasta.Size = new System.Drawing.Size(143, 20);
             this.dtpFechaHasta.TabIndex = 11;
@@ -141,7 +184,7 @@
             // dtpFechaDesde
             // 
             this.dtpFechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaDesde.Location = new System.Drawing.Point(104, 42);
+            this.dtpFechaDesde.Location = new System.Drawing.Point(157, 42);
             this.dtpFechaDesde.Name = "dtpFechaDesde";
             this.dtpFechaDesde.Size = new System.Drawing.Size(143, 20);
             this.dtpFechaDesde.TabIndex = 10;
@@ -149,20 +192,20 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(262, 48);
+            this.label6.Location = new System.Drawing.Point(315, 48);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(71, 13);
+            this.label6.Size = new System.Drawing.Size(128, 13);
             this.label6.TabIndex = 9;
-            this.label6.Text = "Fecha Hasta:";
+            this.label6.Text = "Fecha publicación Hasta:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(24, 48);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(74, 13);
+            this.label5.Size = new System.Drawing.Size(131, 13);
             this.label5.TabIndex = 8;
-            this.label5.Text = "Fecha Desde:";
+            this.label5.Text = "Fecha publicación Desde:";
             // 
             // label3
             // 
@@ -193,7 +236,6 @@
             // 
             this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLimpiar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnLimpiar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnLimpiar.Location = new System.Drawing.Point(610, 37);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 25);
@@ -206,7 +248,6 @@
             // 
             this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBuscar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnBuscar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnBuscar.Location = new System.Drawing.Point(610, 6);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 25);
@@ -227,109 +268,6 @@
             this.Label4.TabIndex = 19;
             this.Label4.Text = "Filtros";
             this.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // dgvOfertas
-            // 
-            this.dgvOfertas.AjustarColumnas = false;
-            this.dgvOfertas.AllowUserToAddRows = false;
-            this.dgvOfertas.AllowUserToDeleteRows = false;
-            this.dgvOfertas.AllowUserToResizeRows = false;
-            this.dgvOfertas.CheckOnClick = false;
-            this.dgvOfertas.ChecksDataPropertyName = null;
-            this.dgvOfertas.ChecksToolTipText = "";
-            this.dgvOfertas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOfertas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colNombre,
-            this.colEstado,
-            this.colFuncionalidades,
-            this.colFecha_Publi,
-            this.colFecha_Venc,
-            this.colPrecio_Oferta,
-            this.colPrecioLista,
-            this.colCantidad,
-            this.colMaximoPorCompra});
-            this.dgvOfertas.ColumnsOcultas = ((System.Collections.Generic.List<string>)(resources.GetObject("dgvOfertas.ColumnsOcultas")));
-            this.dgvOfertas.ContextMenuStrip = this.contextMenuStrip1;
-            this.dgvOfertas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvOfertas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvOfertas.EventSyncInvoke = null;
-            this.dgvOfertas.Exportar_FinDeColumna = "\t";
-            this.dgvOfertas.Exportar_FinDeFila = "\r\n";
-            this.dgvOfertas.Exportar_FinDeLineaEnCelda = ",";
-            this.dgvOfertas.ItemsChequeados = ((System.Collections.IEnumerable)(resources.GetObject("dgvOfertas.ItemsChequeados")));
-            this.dgvOfertas.Location = new System.Drawing.Point(0, 0);
-            this.dgvOfertas.MantenerSeleccionAlReordenar = false;
-            this.dgvOfertas.MostrarWaitWindowOnDataSourceChanged = false;
-            this.dgvOfertas.MultiSelect = false;
-            this.dgvOfertas.Name = "dgvOfertas";
-            this.dgvOfertas.PermiteOcultarColumnas = true;
-            this.dgvOfertas.ResaltarCeldasEditables = false;
-            this.dgvOfertas.RowHeadersVisible = false;
-            this.dgvOfertas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOfertas.Size = new System.Drawing.Size(697, 166);
-            this.dgvOfertas.StatusTripAMostrarAlerta = null;
-            this.dgvOfertas.TabIndex = 18;
-            this.dgvOfertas.TieneCheckMasivo = false;
-            this.dgvOfertas.TieneCopiarDatos = true;
-            this.dgvOfertas.TieneExportarDatos = false;
-            this.dgvOfertas.CambioChequeadosMultiplesItems += new System.EventHandler(this.dgvOfertas_CambioChequeadosMultiplesItems);
-            this.dgvOfertas.CambioChequeadosUnItem += new System.EventHandler<System.Windows.Forms.DataGridViewCellEventArgs>(this.dgvOfertas_CambioChequeadosUnItem);
-            this.dgvOfertas.SelectionChanged += new System.EventHandler(this.dgvOfertas_SelectionChanged);
-            // 
-            // colNombre
-            // 
-            this.colNombre.DataPropertyName = "Codigo_of";
-            this.colNombre.HeaderText = "Código Oferta";
-            this.colNombre.Name = "colNombre";
-            // 
-            // colEstado
-            // 
-            this.colEstado.DataPropertyName = "Descripcion_Of";
-            this.colEstado.HeaderText = "Descripción";
-            this.colEstado.Name = "colEstado";
-            // 
-            // colFuncionalidades
-            // 
-            this.colFuncionalidades.DataPropertyName = "ProveedorRazonSocial";
-            this.colFuncionalidades.HeaderText = "Proveedor";
-            this.colFuncionalidades.Name = "colFuncionalidades";
-            this.colFuncionalidades.Width = 120;
-            // 
-            // colFecha_Publi
-            // 
-            this.colFecha_Publi.DataPropertyName = "Fecha_Publi_Of";
-            this.colFecha_Publi.HeaderText = "Fecha Publicación";
-            this.colFecha_Publi.Name = "colFecha_Publi";
-            // 
-            // colFecha_Venc
-            // 
-            this.colFecha_Venc.DataPropertyName = "Fecha_Venc_Of";
-            this.colFecha_Venc.HeaderText = "Fecha Vencimiento";
-            this.colFecha_Venc.Name = "colFecha_Venc";
-            // 
-            // colPrecio_Oferta
-            // 
-            this.colPrecio_Oferta.DataPropertyName = "Precio_Oferta";
-            this.colPrecio_Oferta.HeaderText = "Precio Oferta";
-            this.colPrecio_Oferta.Name = "colPrecio_Oferta";
-            // 
-            // colPrecioLista
-            // 
-            this.colPrecioLista.DataPropertyName = "Precio_Lista";
-            this.colPrecioLista.HeaderText = "Precio de lista";
-            this.colPrecioLista.Name = "colPrecioLista";
-            // 
-            // colCantidad
-            // 
-            this.colCantidad.DataPropertyName = "Cant_Disp_Oferta";
-            this.colCantidad.HeaderText = "CantidadDisponible";
-            this.colCantidad.Name = "colCantidad";
-            // 
-            // colMaximoPorCompra
-            // 
-            this.colMaximoPorCompra.DataPropertyName = "Maximo_Por_Compra";
-            this.colMaximoPorCompra.HeaderText = "Máximo por Compra";
-            this.colMaximoPorCompra.Name = "colMaximoPorCompra";
             // 
             // contextMenuStrip1
             // 
@@ -364,6 +302,7 @@
             // panComandos
             // 
             this.panComandos.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panComandos.Controls.Add(this.btnSeleccionar);
             this.panComandos.Controls.Add(this.btnEliminar);
             this.panComandos.Controls.Add(this.btnModificar);
             this.panComandos.Controls.Add(this.btnAgregar);
@@ -373,6 +312,17 @@
             this.panComandos.Name = "panComandos";
             this.panComandos.Size = new System.Drawing.Size(697, 32);
             this.panComandos.TabIndex = 20;
+            // 
+            // btnSeleccionar
+            // 
+            this.btnSeleccionar.Location = new System.Drawing.Point(249, 5);
+            this.btnSeleccionar.Name = "btnSeleccionar";
+            this.btnSeleccionar.Size = new System.Drawing.Size(75, 23);
+            this.btnSeleccionar.TabIndex = 5;
+            this.btnSeleccionar.Text = "Seleccionar";
+            this.btnSeleccionar.UseVisualStyleBackColor = true;
+            this.btnSeleccionar.Visible = false;
+            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
             // btnEliminar
             // 
@@ -447,10 +397,113 @@
             // 
             this.panel2.Controls.Add(this.dgvOfertas);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 138);
+            this.panel2.Location = new System.Drawing.Point(0, 171);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(697, 166);
+            this.panel2.Size = new System.Drawing.Size(697, 133);
             this.panel2.TabIndex = 25;
+            // 
+            // dgvOfertas
+            // 
+            this.dgvOfertas.AjustarColumnas = false;
+            this.dgvOfertas.AllowUserToAddRows = false;
+            this.dgvOfertas.AllowUserToDeleteRows = false;
+            this.dgvOfertas.AllowUserToResizeRows = false;
+            this.dgvOfertas.CheckOnClick = false;
+            this.dgvOfertas.ChecksDataPropertyName = null;
+            this.dgvOfertas.ChecksToolTipText = "";
+            this.dgvOfertas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOfertas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colNombre,
+            this.colEstado,
+            this.colFuncionalidades,
+            this.colFecha_Publi,
+            this.colFecha_Venc,
+            this.colPrecio_Oferta,
+            this.colPrecioLista,
+            this.colCantidad,
+            this.colMaximoPorCompra});
+            this.dgvOfertas.ColumnsOcultas = ((System.Collections.Generic.List<string>)(resources.GetObject("dgvOfertas.ColumnsOcultas")));
+            this.dgvOfertas.ContextMenuStrip = this.contextMenuStrip1;
+            this.dgvOfertas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvOfertas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvOfertas.EventSyncInvoke = null;
+            this.dgvOfertas.Exportar_FinDeColumna = "\t";
+            this.dgvOfertas.Exportar_FinDeFila = "\r\n";
+            this.dgvOfertas.Exportar_FinDeLineaEnCelda = ",";
+            this.dgvOfertas.ItemsChequeados = ((System.Collections.IEnumerable)(resources.GetObject("dgvOfertas.ItemsChequeados")));
+            this.dgvOfertas.Location = new System.Drawing.Point(0, 0);
+            this.dgvOfertas.MantenerSeleccionAlReordenar = false;
+            this.dgvOfertas.MostrarWaitWindowOnDataSourceChanged = false;
+            this.dgvOfertas.MultiSelect = false;
+            this.dgvOfertas.Name = "dgvOfertas";
+            this.dgvOfertas.PermiteOcultarColumnas = true;
+            this.dgvOfertas.ResaltarCeldasEditables = false;
+            this.dgvOfertas.RowHeadersVisible = false;
+            this.dgvOfertas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvOfertas.Size = new System.Drawing.Size(697, 133);
+            this.dgvOfertas.StatusTripAMostrarAlerta = null;
+            this.dgvOfertas.TabIndex = 18;
+            this.dgvOfertas.TieneCheckMasivo = false;
+            this.dgvOfertas.TieneCopiarDatos = true;
+            this.dgvOfertas.TieneExportarDatos = false;
+            this.dgvOfertas.CambioChequeadosMultiplesItems += new System.EventHandler(this.dgvOfertas_CambioChequeadosMultiplesItems);
+            this.dgvOfertas.CambioChequeadosUnItem += new System.EventHandler<System.Windows.Forms.DataGridViewCellEventArgs>(this.dgvOfertas_CambioChequeadosUnItem);
+            this.dgvOfertas.SelectionChanged += new System.EventHandler(this.dgvOfertas_SelectionChanged);
+            // 
+            // colNombre
+            // 
+            this.colNombre.DataPropertyName = "Codigo_of";
+            this.colNombre.HeaderText = "Código Oferta";
+            this.colNombre.Name = "colNombre";
+            // 
+            // colEstado
+            // 
+            this.colEstado.DataPropertyName = "Descripcion_Of";
+            this.colEstado.HeaderText = "Descripción";
+            this.colEstado.Name = "colEstado";
+            // 
+            // colFuncionalidades
+            // 
+            this.colFuncionalidades.DataPropertyName = "ProveedorRazonSocial";
+            this.colFuncionalidades.HeaderText = "Proveedor";
+            this.colFuncionalidades.Name = "colFuncionalidades";
+            this.colFuncionalidades.Width = 120;
+            // 
+            // colFecha_Publi
+            // 
+            this.colFecha_Publi.DataPropertyName = "Fecha_Publi_Of";
+            this.colFecha_Publi.HeaderText = "Fecha Publicación";
+            this.colFecha_Publi.Name = "colFecha_Publi";
+            // 
+            // colFecha_Venc
+            // 
+            this.colFecha_Venc.DataPropertyName = "Fecha_Venc_Of";
+            this.colFecha_Venc.HeaderText = "Fecha Vencimiento";
+            this.colFecha_Venc.Name = "colFecha_Venc";
+            // 
+            // colPrecio_Oferta
+            // 
+            this.colPrecio_Oferta.DataPropertyName = "Precio_Oferta";
+            this.colPrecio_Oferta.HeaderText = "Precio Oferta";
+            this.colPrecio_Oferta.Name = "colPrecio_Oferta";
+            // 
+            // colPrecioLista
+            // 
+            this.colPrecioLista.DataPropertyName = "Precio_Lista";
+            this.colPrecioLista.HeaderText = "Precio de lista";
+            this.colPrecioLista.Name = "colPrecioLista";
+            // 
+            // colCantidad
+            // 
+            this.colCantidad.DataPropertyName = "Cant_Disp_Oferta";
+            this.colCantidad.HeaderText = "CantidadDisponible";
+            this.colCantidad.Name = "colCantidad";
+            // 
+            // colMaximoPorCompra
+            // 
+            this.colMaximoPorCompra.DataPropertyName = "Maximo_Por_Compra";
+            this.colMaximoPorCompra.HeaderText = "Máximo por Compra";
+            this.colMaximoPorCompra.Name = "colMaximoPorCompra";
             // 
             // FrmListadoDeOfertas
             // 
@@ -470,11 +523,11 @@
             this.Shown += new System.EventHandler(this.FrmListadoDeOfertas_Shown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOfertas)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.panComandos.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOfertas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -517,5 +570,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colPrecioLista;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMaximoPorCompra;
+        private System.Windows.Forms.Button btnSeleccionar;
+        private System.Windows.Forms.DateTimePicker dtpVHasta;
+        private System.Windows.Forms.DateTimePicker dtpVDesde;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }

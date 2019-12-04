@@ -3,6 +3,7 @@ using Negocio.Entidades;
 using Negocio.Repositorios;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,13 +24,13 @@ namespace FrbaOfertasPresentacion.PublicacionOfertas
         {
             try
             {
-                if (proveedorBusqueda == null || !this.proveedorBusqueda.Equals(_vista.ProveedorSeleccionado) || this.fechaDBusqueda != _vista.FechaDesde || this.fechaHBusqueda != _vista.FechaHasta || this.codigoBusqueda != _vista.Codigo)
+                if (proveedorBusqueda == null || !this.proveedorBusqueda.Equals(_vista.ProveedorSeleccionado) || this.fechaDBusqueda != _vista.FechaDesde || this.fechaHBusqueda != _vista.FechaHasta || this.codigoBusqueda != _vista.Codigo || this.fechaVhasta != _vista.FechaVHasta || this.fechaVDesde != _vista.FechaVDesde)
                     cargarDatosParaBusqueda();
 
                 var maper = new MaperDeOfertas();
                 var repo = new RepositorioDeOfertas(maper);
 
-                _vista.Ofertas = repo.ObtenerPaginado(this.proveedorBusqueda, this.codigoBusqueda, this.fechaDBusqueda, this.fechaHBusqueda, cantidadPorPagina, paginaActual);
+                _vista.Ofertas = repo.ObtenerPaginado(this.proveedorBusqueda, this.codigoBusqueda, this.fechaDBusqueda, this.fechaHBusqueda, this.fechaVDesde, this.fechaVhasta, cantidadPorPagina, paginaActual);
             }
             catch (Exception ex)
             {
@@ -43,7 +44,7 @@ namespace FrbaOfertasPresentacion.PublicacionOfertas
             {
                 var maper = new MaperDeOfertas();
                 var repo = new RepositorioDeOfertas(maper);
-                int cantidadItems = repo.ContarItems(_vista.ProveedorSeleccionado, _vista.Codigo, _vista.FechaDesde, _vista.FechaHasta);
+                int cantidadItems = repo.ContarItems(_vista.ProveedorSeleccionado, _vista.Codigo, _vista.FechaDesde, _vista.FechaHasta, _vista.FechaVDesde, _vista.FechaVHasta);
                 _vista.SetarTotalItemsEnGrill(cantidadItems);
 
                 cargarDatosParaBusqueda();
@@ -57,12 +58,23 @@ namespace FrbaOfertasPresentacion.PublicacionOfertas
             }
         }
 
+        //limpia los datos de la pantalla
         public void LimpiarDatos()
         {
             _vista.ProveedorSeleccionado = _proveedorOriginal;
             _vista.Codigo = string.Empty;
-            _vista.FechaDesde = DateTime.Now.AddMonths(-1);
-            _vista.FechaHasta = DateTime.Now;
+            if (esSeleccion)
+            {
+                _vista.FechaHasta = DateTime.Parse(ConfigurationManager.AppSettings["FechaDelDia"]).AddDays(1).AddMilliseconds(-1);
+                _vista.FechaVDesde = DateTime.Parse(ConfigurationManager.AppSettings["FechaDelDia"]);
+            }
+            else
+            {
+                _vista.FechaHasta = DateTime.Now.Date.AddDays(1).AddMilliseconds(-1);
+                _vista.FechaVDesde = DateTime.Now.Date;
+            }
+            _vista.FechaDesde = DateTime.Now.Date.AddMonths(-1);
+            _vista.FechaVHasta = DateTime.Now.Date.AddDays(1).AddMilliseconds(-1);
         }
 
         private void cargarDatosParaBusqueda()
@@ -71,7 +83,8 @@ namespace FrbaOfertasPresentacion.PublicacionOfertas
             this.codigoBusqueda = _vista.Codigo;
             this.fechaDBusqueda = _vista.FechaDesde;
             this.fechaHBusqueda = _vista.FechaHasta;
-
+            this.fechaVDesde = _vista.FechaVDesde;
+            this.fechaVhasta = _vista.FechaVHasta;
         }
 
         private Negocio.Entidades.Proveedor _proveedorOriginal { get; set; }
@@ -83,9 +96,14 @@ namespace FrbaOfertasPresentacion.PublicacionOfertas
         private DateTime fechaDBusqueda { get; set; }
 
         private DateTime fechaHBusqueda { get; set; }
+        
+        private DateTime fechaVhasta { get; set; }
+
+        private DateTime fechaVDesde { get; set; }
 
         public void Posicionar()
         {
+            this.esSeleccion = false;
             try 
             {
                 //Global.SessionUsuario
@@ -117,7 +135,10 @@ namespace FrbaOfertasPresentacion.PublicacionOfertas
 
                 _vista.HabilitarCombo(_proveedor == null);
                 //cargo la fecha desde hace un mes
-                _vista.FechaDesde = DateTime.Now.AddMonths(-1);
+                _vista.FechaDesde = DateTime.Now.Date.AddMonths(-1);
+                _vista.FechaVDesde = DateTime.Now.Date.AddMonths(-1);
+                _vista.FechaHasta = DateTime.Now.Date.AddDays(1).AddMilliseconds(-1);
+                _vista.FechaVHasta = DateTime.Now.Date.AddDays(1).AddMilliseconds(-1);
             }
             catch (Exception ex)
             {
@@ -127,10 +148,26 @@ namespace FrbaOfertasPresentacion.PublicacionOfertas
         }
 
 
-
+        /// <summary>
+        /// metodo propio para usar la ventana como seleccion de ofertas
+        /// </summary>
         public void PosicionarParaSeleccion()
-        {
-            throw new NotImplementedException();
+        {            
+            this.Posicionar();
+            _vista.HabilitarCombo(true);
+            _vista.MostrarAlerta(false);
+            _vista.MostrarBotonesSeleccion();
+
+            //solo traera las ofertas que esten vigentes, es decir las que fueron publicadas hasta el dia de la fecha pero vencen luego de la fecha actual
+            _vista.FechaHasta = DateTime.Parse(ConfigurationManager.AppSettings["FechaDelDia"]).AddDays(1).AddMilliseconds(-1);
+            _vista.FechaDesde = _vista.FechaHasta.AddMonths(-1);
+            _vista.FechaVDesde = DateTime.Parse(ConfigurationManager.AppSettings["FechaDelDia"]);
+            _vista.FechaVHasta = _vista.FechaVDesde.AddMonths(1).AddDays(1).AddMilliseconds(-1);
+            this.esSeleccion = true;
         }
+
+        private bool esSeleccion { get; set; }
+
+        
     }
 }

@@ -29,5 +29,11 @@ namespace FrbaOfertasPresentacion.PublicacionOfertas
         void HabilitarCombo(bool p);
 
         Oferta OfertaSeleccionada { get; set; }
+
+        void MostrarBotonesSeleccion();
+
+        DateTime FechaVDesde { get; set; }
+
+        DateTime FechaVHasta { get; set; }
     }
 }

@@ -100,7 +100,10 @@ namespace FrbaOfertasPresentacion.Creditos
             //(se puede dar si tiene el rol cliente pero no un cliente creado, muestro una alerta en pantalla)
             _vista.MostrarAlerta(_cliente == null);
             if (_cliente != null)
+            {
                 _vista.Cliente = _cliente;
+                _vista.ClienteSeleccionado = _cliente; 
+            }
         }
 
         private Credito ObtenerDesdeVista()

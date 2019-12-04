@@ -683,3 +683,42 @@ CREATE NONCLUSTERED INDEX [idx_credito_cliente] ON [DEFAULT_NAME].[Credito]
 	[Id_Cliente] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
+
+CREATE NONCLUSTERED INDEX [idx_oferta_proveedor] ON [DEFAULT_NAME].[Oferta]
+(
+	[Id_Proveedor] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [idx_compra_Proveedor] ON [DEFAULT_NAME].[Compra]
+(
+	[Id_Proveedor] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [idx_compra_cliente] ON [DEFAULT_NAME].[Compra]
+(
+	[Id_Cliente] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [idx_Detalle_factura] ON [DEFAULT_NAME].[Detalle]
+(
+	[Id_Factura] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+
+--agrego un disparador para actualizar los montos de clientes y los disponibles de una compra
+create trigger TR_Actualizar_Compra_AFT_INS
+on DEFAULT_NAME.Compra
+AFTER INSERT AS
+begin
+	Update c set c.Monto_Total_cred_Clie -= I.Cantidad * I.Monto
+	from DEFAULT_NAME.cliente c 
+	inner join inserted I on c.id_cliente = I.id_cliente
+
+	update o set Cant_Disp_Oferta -= I.Cantidad
+	from DEFAULT_NAME.Oferta o 
+	inner join inserted I on o.id_oferta = I.id_oferta
+end 
+go

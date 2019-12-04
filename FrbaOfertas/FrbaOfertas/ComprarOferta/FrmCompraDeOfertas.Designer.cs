@@ -31,25 +31,40 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtNumero = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtNombreCliente = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnComprar = new System.Windows.Forms.Button();
+            this.btnCerrar = new System.Windows.Forms.Button();
+            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
+            this.txtOferta = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtCredito = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblAlertaUsuario = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.lblAlertaUsuario = new System.Windows.Forms.Label();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtStock = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtMaximo = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.nmCantidad = new System.Windows.Forms.NumericUpDown();
+            this.txtLista = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtPoferta = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmCantidad)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 189);
+            this.label1.Location = new System.Drawing.Point(12, 183);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 13);
             this.label1.TabIndex = 0;
@@ -67,18 +82,19 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(353, 126);
+            this.label3.Location = new System.Drawing.Point(12, 152);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 13);
+            this.label3.Size = new System.Drawing.Size(88, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Número de oferta:";
+            this.label3.Text = "Código de oferta:";
             // 
-            // textBox2
+            // txtNumero
             // 
-            this.textBox2.Location = new System.Drawing.Point(451, 123);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(123, 20);
-            this.textBox2.TabIndex = 5;
+            this.txtNumero.Enabled = false;
+            this.txtNumero.Location = new System.Drawing.Point(110, 149);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(130, 20);
+            this.txtNumero.TabIndex = 5;
             // 
             // label4
             // 
@@ -94,45 +110,51 @@
             this.txtNombreCliente.Enabled = false;
             this.txtNombreCliente.Location = new System.Drawing.Point(65, 31);
             this.txtNombreCliente.Name = "txtNombreCliente";
-            this.txtNombreCliente.Size = new System.Drawing.Size(175, 20);
+            this.txtNombreCliente.Size = new System.Drawing.Size(235, 20);
             this.txtNombreCliente.TabIndex = 7;
             // 
-            // button1
+            // btnComprar
             // 
-            this.button1.Location = new System.Drawing.Point(404, 257);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Comprar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnComprar.Location = new System.Drawing.Point(404, 257);
+            this.btnComprar.Name = "btnComprar";
+            this.btnComprar.Size = new System.Drawing.Size(75, 23);
+            this.btnComprar.TabIndex = 8;
+            this.btnComprar.Text = "Comprar";
+            this.btnComprar.UseVisualStyleBackColor = true;
+            this.btnComprar.Click += new System.EventHandler(this.btnComprar_Click);
             // 
-            // button2
+            // btnCerrar
             // 
-            this.button2.Location = new System.Drawing.Point(499, 257);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Cerrar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCerrar.Location = new System.Drawing.Point(499, 257);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(75, 23);
+            this.btnCerrar.TabIndex = 9;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
-            // dateTimePicker1
+            // dtpFecha
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(110, 186);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(130, 20);
-            this.dateTimePicker1.TabIndex = 11;
+            this.dtpFecha.Enabled = false;
+            this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFecha.Location = new System.Drawing.Point(110, 177);
+            this.dtpFecha.Name = "dtpFecha";
+            this.dtpFecha.Size = new System.Drawing.Size(130, 20);
+            this.dtpFecha.TabIndex = 11;
             // 
-            // textBox1
+            // txtOferta
             // 
-            this.textBox1.Location = new System.Drawing.Point(56, 123);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(244, 20);
-            this.textBox1.TabIndex = 12;
+            this.txtOferta.Enabled = false;
+            this.txtOferta.Location = new System.Drawing.Point(56, 123);
+            this.txtOferta.Name = "txtOferta";
+            this.txtOferta.Size = new System.Drawing.Size(365, 20);
+            this.txtOferta.TabIndex = 12;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtCredito);
+            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.lblAlertaUsuario);
             this.panel1.Controls.Add(this.txtNombreCliente);
             this.panel1.Controls.Add(this.label7);
@@ -142,6 +164,37 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(803, 89);
             this.panel1.TabIndex = 19;
+            // 
+            // txtCredito
+            // 
+            this.txtCredito.Enabled = false;
+            this.txtCredito.Location = new System.Drawing.Point(417, 34);
+            this.txtCredito.Name = "txtCredito";
+            this.txtCredito.Size = new System.Drawing.Size(175, 20);
+            this.txtCredito.TabIndex = 21;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(316, 37);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(95, 13);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Credito Disponible:";
+            // 
+            // lblAlertaUsuario
+            // 
+            this.lblAlertaUsuario.AutoSize = true;
+            this.lblAlertaUsuario.ForeColor = System.Drawing.Color.Red;
+            this.lblAlertaUsuario.Image = global::FrbaOfertas.Properties.Resources.alerta;
+            this.lblAlertaUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblAlertaUsuario.Location = new System.Drawing.Point(110, 68);
+            this.lblAlertaUsuario.Name = "lblAlertaUsuario";
+            this.lblAlertaUsuario.Size = new System.Drawing.Size(661, 13);
+            this.lblAlertaUsuario.TabIndex = 19;
+            this.lblAlertaUsuario.Text = "      El usuario actual no tiene un cliente asociado, por favor comuniquese con e" +
+    "l adinistrador para solicitar se asocie el usuario a un cliente.";
+            this.lblAlertaUsuario.Visible = false;
             // 
             // label7
             // 
@@ -175,47 +228,163 @@
             this.btnBuscar.BackColor = System.Drawing.SystemColors.Control;
             this.btnBuscar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnBuscar.Image = global::FrbaOfertas.Properties.Resources.botonBuscador;
-            this.btnBuscar.Location = new System.Drawing.Point(306, 120);
+            this.btnBuscar.Location = new System.Drawing.Point(427, 120);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(33, 25);
             this.btnBuscar.TabIndex = 2;
             this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // lblAlertaUsuario
+            // txtDescripcion
             // 
-            this.lblAlertaUsuario.AutoSize = true;
-            this.lblAlertaUsuario.ForeColor = System.Drawing.Color.Red;
-            this.lblAlertaUsuario.Image = global::FrbaOfertas.Properties.Resources.alerta;
-            this.lblAlertaUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblAlertaUsuario.Location = new System.Drawing.Point(110, 68);
-            this.lblAlertaUsuario.Name = "lblAlertaUsuario";
-            this.lblAlertaUsuario.Size = new System.Drawing.Size(661, 13);
-            this.lblAlertaUsuario.TabIndex = 19;
-            this.lblAlertaUsuario.Text = "      El usuario actual no tiene un cliente asociado, por favor comuniquese con e" +
-    "l adinistrador para solicitar se asocie el usuario a un cliente.";
-            this.lblAlertaUsuario.Visible = false;
+            this.txtDescripcion.Enabled = false;
+            this.txtDescripcion.Location = new System.Drawing.Point(544, 126);
+            this.txtDescripcion.Multiline = true;
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(227, 74);
+            this.txtDescripcion.TabIndex = 22;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(472, 129);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(66, 13);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "Descripción:";
+            // 
+            // txtStock
+            // 
+            this.txtStock.Enabled = false;
+            this.txtStock.Location = new System.Drawing.Point(110, 205);
+            this.txtStock.Name = "txtStock";
+            this.txtStock.Size = new System.Drawing.Size(130, 20);
+            this.txtStock.TabIndex = 24;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(15, 208);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(90, 13);
+            this.label9.TabIndex = 23;
+            this.label9.Text = "Stock Disponible:";
+            // 
+            // txtMaximo
+            // 
+            this.txtMaximo.Enabled = false;
+            this.txtMaximo.Location = new System.Drawing.Point(111, 233);
+            this.txtMaximo.Name = "txtMaximo";
+            this.txtMaximo.Size = new System.Drawing.Size(130, 20);
+            this.txtMaximo.TabIndex = 26;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 236);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(103, 13);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "Máximo por Compra:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(443, 210);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(102, 13);
+            this.label11.TabIndex = 27;
+            this.label11.Text = "Cantidad a comprar:";
+            // 
+            // nmCantidad
+            // 
+            this.nmCantidad.Location = new System.Drawing.Point(544, 209);
+            this.nmCantidad.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.nmCantidad.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nmCantidad.Name = "nmCantidad";
+            this.nmCantidad.Size = new System.Drawing.Size(120, 20);
+            this.nmCantidad.TabIndex = 28;
+            this.nmCantidad.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // txtLista
+            // 
+            this.txtLista.Enabled = false;
+            this.txtLista.Location = new System.Drawing.Point(330, 149);
+            this.txtLista.Name = "txtLista";
+            this.txtLista.Size = new System.Drawing.Size(130, 20);
+            this.txtLista.TabIndex = 30;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(259, 152);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(65, 13);
+            this.label12.TabIndex = 29;
+            this.label12.Text = "Precio Lista:";
+            // 
+            // txtPoferta
+            // 
+            this.txtPoferta.Enabled = false;
+            this.txtPoferta.Location = new System.Drawing.Point(330, 175);
+            this.txtPoferta.Name = "txtPoferta";
+            this.txtPoferta.Size = new System.Drawing.Size(130, 20);
+            this.txtPoferta.TabIndex = 32;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(254, 178);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(70, 13);
+            this.label13.TabIndex = 31;
+            this.label13.Text = "Precio oferta:";
             // 
             // FrmCompraDeOfertas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(803, 292);
+            this.Controls.Add(this.txtPoferta);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.txtLista);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.nmCantidad);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.txtMaximo);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.txtStock);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.txtDescripcion);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtOferta);
+            this.Controls.Add(this.dtpFecha);
+            this.Controls.Add(this.btnCerrar);
+            this.Controls.Add(this.txtNumero);
+            this.Controls.Add(this.btnComprar);
             this.Controls.Add(this.label3);
             this.Name = "FrmCompraDeOfertas";
             this.Text = "Compra de ofertas";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmCantidad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,17 +395,31 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtNumero;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtNombreCliente;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnComprar;
+        private System.Windows.Forms.Button btnCerrar;
+        private System.Windows.Forms.DateTimePicker dtpFecha;
+        private System.Windows.Forms.TextBox txtOferta;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblAlertaUsuario;
+        private System.Windows.Forms.TextBox txtCredito;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtDescripcion;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtStock;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtMaximo;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.NumericUpDown nmCantidad;
+        private System.Windows.Forms.TextBox txtLista;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtPoferta;
+        private System.Windows.Forms.Label label13;
     }
 }

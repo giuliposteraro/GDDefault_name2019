@@ -17,7 +17,7 @@ namespace Negocio.Repositorios
         }
 
 
-        public int ContarItems(Proveedor proveedor, string codigo, DateTime fechaDesde, DateTime fechaHasta)
+        public int ContarItems(Proveedor proveedor, string codigo, DateTime fechaDesde, DateTime fechaHasta, DateTime fechaVDesde, DateTime fechaVHasta)
         {
             this.InicializarConexion();
             
@@ -32,11 +32,16 @@ namespace Negocio.Repositorios
                 command.Parameters.Add(param);
                 param = new SqlParameter("@fechaHasta", fechaHasta);
                 command.Parameters.Add(param);
+                param = new SqlParameter("@fechaVDesde", fechaVDesde);
+                command.Parameters.Add(param);
+                param = new SqlParameter("@fechaVHasta", fechaVHasta);
+                command.Parameters.Add(param);
 
                 var texto = @"SELECT count(*)
                               FROM [DEFAULT_NAME].[Oferta]
                               where [Id_Proveedor] = @Id_Proveedor
-                              and convert(datetime,[Fecha_Publi_Of],121) between convert(datetime,@fechaDesde,121) and convert(datetime,@fechaHasta,121)";
+                              and convert(datetime,[Fecha_Publi_Of],121) between convert(datetime,@fechaDesde,121) and convert(datetime,@fechaHasta,121)
+                              and convert(datetime,[Fecha_Venc_Of],121) between convert(datetime,@fechavDesde,121) and convert(datetime,@fechaVHasta,121)";
 
                 if (!(codigo.EsNuloOVacio()))
                 {
@@ -60,7 +65,7 @@ namespace Negocio.Repositorios
             }
         }
 
-        public List<Oferta> ObtenerPaginado(Proveedor proveedor, string codigo, DateTime fechaDesde, DateTime fechaHasta, int cantidadPorPagina, int paginaActual)
+        public List<Oferta> ObtenerPaginado(Proveedor proveedor, string codigo, DateTime fechaDesde, DateTime fechaHasta, DateTime fechaVDesde, DateTime fechaVHasta, int cantidadPorPagina, int paginaActual)
         {
             this.InicializarConexion();
             
@@ -74,6 +79,10 @@ namespace Negocio.Repositorios
                 param = new SqlParameter("@fechaDesde", fechaDesde);
                 parametros.Add(param);
                 param = new SqlParameter("@fechaHasta", fechaHasta);
+                parametros.Add(param);
+                param = new SqlParameter("@fechaVDesde", fechaVDesde);
+                parametros.Add(param);
+                param = new SqlParameter("@fechaVHasta", fechaVHasta);
                 parametros.Add(param);
                 param = new SqlParameter("@pagesize", cantidadPorPagina);
                 parametros.Add(param);
@@ -96,6 +105,7 @@ namespace Negocio.Repositorios
                                         and convert(datetime,[Fecha_Publi_Of],121) 
                                         between convert(datetime,@fechaDesde,121) 
                                         and convert(datetime,@fechaHasta,121)
+                                        and convert(datetime,[Fecha_Venc_Of],121) between convert(datetime,@fechavDesde,121) and convert(datetime,@fechaVHasta,121)
                                         {0}
                         )
                         SELECT *
@@ -199,7 +209,7 @@ namespace Negocio.Repositorios
             catch (Exception ex)
             {
                 transaction.Rollback();
-                throw new Exception(string.Format("se produjo un error al buscar las Funcionalidades: {0}", ex.Message));
+                throw new Exception(string.Format("se produjo un error al guardar las ofertas: {0}", ex.Message));
             }
             finally
             {

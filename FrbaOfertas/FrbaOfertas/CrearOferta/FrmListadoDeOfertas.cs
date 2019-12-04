@@ -284,5 +284,55 @@ namespace FrbaOfertas.CrearOferta
         {
             this.btnEliminar.PerformClick();
         }
+
+        private void btnSeleccionar_Click(object sender, EventArgs e)
+        {
+            if (this.OfertaSeleccionada == null)
+            {
+                MessageBox.Show("Debe seleccionar una oferta");
+                return;
+            }
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+
+        public void MostrarBotonesSeleccion()
+        {
+            btnAgregar.Visible = false;
+            btnModificar.Visible = false;
+            btnEliminar.Visible = false;
+            modificarToolStripMenuItem.Visible = false;
+            eliminarToolStripMenuItem.Visible = false;
+            publicarToolStripMenuItem.Visible = false;
+            btnSeleccionar.Visible = true;
+            dtpFechaHasta.Enabled = false;
+            dtpVDesde.Enabled = false;
+        }
+
+
+        public DateTime FechaVDesde
+        {
+            get
+            {
+                return dtpVDesde.Value;
+            }
+            set
+            {
+                dtpVDesde.Value = value;
+            }
+        }
+
+        public DateTime FechaVHasta
+        {
+            get
+            {
+                return dtpVHasta.Value;
+            }
+            set
+            {
+                dtpVHasta.Value = value;
+            }
+        }
     }
 }

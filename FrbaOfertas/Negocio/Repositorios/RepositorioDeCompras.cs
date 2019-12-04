@@ -88,5 +88,72 @@ namespace Negocio.Repositorios
                 this.CerrarConexion();
             }
         }
+
+        public void Guardar(Compra compra)
+        {
+            this.InicializarConexion();
+            SqlTransaction transaction;
+            transaction = conn.BeginTransaction();
+
+            try
+            {
+
+                //inserto la nueva compra
+
+                SqlCommand command = conn.CreateCommand();
+                command.Connection = conn;
+                command.Transaction = transaction;
+                SqlParameter param = new SqlParameter("@Id_Cliente", compra.Id_Cliente);
+                command.Parameters.Add(param);
+                param = new SqlParameter("@Id_Proveedor", compra.Id_Proveedor);
+                command.Parameters.Add(param);
+                param = new SqlParameter("@Id_Oferta", compra.Id_Oferta);
+                command.Parameters.Add(param);
+                param = new SqlParameter("@Fecha_Compra", compra.Fecha_Compra);
+                command.Parameters.Add(param);
+                param = new SqlParameter("@Codigo_Cupon", compra.Codigo_Cupon);
+                command.Parameters.Add(param);
+                param = new SqlParameter("@Estado_Cupon", compra.Estado_Cupon);
+                command.Parameters.Add(param);
+                param = new SqlParameter("@Cantidad", compra.Cantidad);
+                command.Parameters.Add(param);
+                param = new SqlParameter("Monto", compra.Monto);
+                command.Parameters.Add(param);
+
+                command.CommandText = @"INSERT INTO [DEFAULT_NAME].[Compra]
+                                           ([Id_Cliente]
+                                           ,[Id_Proveedor]
+                                           ,[Id_Oferta]
+                                           ,[Fecha_Compra]
+                                           ,[Fecha_Entrega]
+                                           ,[Codigo_Cupon]
+                                           ,[Estado_Cupon]
+                                           ,[Cantidad]
+                                           ,[Monto])
+                                     VALUES
+                                           (@Id_Cliente
+                                           ,@Id_Proveedor
+                                           ,@Id_Oferta
+                                           ,convert(datetime,@Fecha_Compra,121)
+                                           ,null
+                                           ,@Codigo_Cupon
+                                           ,@Estado_Cupon
+                                           ,@Cantidad
+                                           ,@Monto)";
+
+                command.ExecuteNonQuery();
+
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                throw new Exception(string.Format("se produjo un error al guardar las compras: {0}", ex.Message));
+            }
+            finally
+            {
+                this.CerrarConexion();
+            }
+        }
     }
 }

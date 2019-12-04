@@ -171,7 +171,7 @@ namespace FrbaOfertas.CragaCredito
         {
             get
             {
-                return (List<TipoDePago>)cboClientes.DataSource;
+                return (List<TipoDePago>)cboTiposDePago.DataSource;
             }
             set
             {

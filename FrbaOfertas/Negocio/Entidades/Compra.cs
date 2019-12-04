@@ -39,7 +39,8 @@ namespace Negocio.Entidades
             set
             {
                 _cliente = value;
-                Id_Cliente = value.ID;
+                if (value != null)
+                    Id_Cliente = value.ID;
             }
         }
 
