@@ -162,7 +162,12 @@ namespace FrbaOfertas
 
         private void entregaDeOfertasToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (DesignMode) return;
 
+            var frm = new FrmEntregarOferta();
+            frm.Presentador.Posicionar();
+            frm.MdiParent = this;
+            frm.Show();
         }
     }
 }

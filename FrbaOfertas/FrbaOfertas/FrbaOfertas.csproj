@@ -98,6 +98,12 @@
     <Compile Include="ComprarOferta\FrmCompraDeOfertas.Designer.cs">
       <DependentUpon>FrmCompraDeOfertas.cs</DependentUpon>
     </Compile>
+    <Compile Include="ComprarOferta\FrmEntregarOferta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ComprarOferta\FrmEntregarOferta.Designer.cs">
+      <DependentUpon>FrmEntregarOferta.cs</DependentUpon>
+    </Compile>
     <Compile Include="CragaCredito\FrmAltaCredito.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ComprarOferta\FrmCompraDeOfertas.resx">
       <DependentUpon>FrmCompraDeOfertas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ComprarOferta\FrmEntregarOferta.resx">
+      <DependentUpon>FrmEntregarOferta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CragaCredito\FrmAltaCredito.resx">
       <DependentUpon>FrmAltaCredito.cs</DependentUpon>

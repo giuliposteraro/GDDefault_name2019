@@ -155,5 +155,38 @@ namespace Negocio.Repositorios
                 this.CerrarConexion();
             }
         }
+
+        public Compra ObtenerCompraPorCupon(string cupon)
+        {
+            try
+            {
+
+                List<Compra> lista = new List<Compra>();
+                List<SqlParameter> parametros = new List<SqlParameter>();
+                SqlParameter param = new SqlParameter("@Codigo_Cupon", cupon);
+                parametros.Add(param);
+
+                var texto = @"SELECT  [Id_Compra]
+                                      ,[Id_Cliente]
+                                      ,[Id_Proveedor]
+                                      ,[Id_Oferta]
+                                      ,[Fecha_Compra]
+                                      ,[Fecha_Entrega]
+                                      ,[Codigo_Cupon]
+                                      ,[Estado_Cupon]
+                                      ,[Cantidad]
+                                      ,[Monto]
+                            FROM [DEFAULT_NAME].[Compra] 
+                            where [Codigo_Cupon] = @Codigo_Cupon";
+
+                lista = this.maper.mapearAEntidad(EjecutarConsulta(texto, parametros));
+                return lista.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("se produjo un error al buscar compras con el mismo código: {0}", ex.Message));
+                return null;
+            }
+        }
     }
 }

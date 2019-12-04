@@ -52,6 +52,8 @@
     <Compile Include="bases\ModosDeEjecucion.cs" />
     <Compile Include="Componentes\IGrillaGestionDatosVista.cs" />
     <Compile Include="Componentes\PresentadorGrillaGestionDatos.cs" />
+    <Compile Include="CompraOfertas\IVistaEntregaOferta.cs" />
+    <Compile Include="CompraOfertas\PresentadorEntregaOferta.cs" />
     <Compile Include="PublicacionOfertas\IVistaAltaOferta.cs" />
     <Compile Include="CompraOfertas\IVistaCompraOferta.cs" />
     <Compile Include="PublicacionOfertas\PresentadorAltaOferta.cs" />
