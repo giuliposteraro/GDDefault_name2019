@@ -720,6 +720,9 @@ CREATE NONCLUSTERED INDEX [idx_Detalle_factura] ON [DEFAULT_NAME].[Detalle]
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
 
+
+
+
 --agrego un disparador para actualizar los montos de clientes y los disponibles de una compra
 create trigger TR_Actualizar_Compra_AFT_INS
 on DEFAULT_NAME.Compra
@@ -733,4 +736,38 @@ begin
 	from DEFAULT_NAME.Oferta o 
 	inner join inserted I on o.id_oferta = I.id_oferta
 end 
+go
+
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'FN' AND name = 'fx_Obtener_Siguiente_Nro_Factura') 
+BEGIN
+	DROP FUNCTION [DEFAULT_NAME].[fx_Obtener_Siguiente_Nro_Factura]
+END
+GO
+
+--creo una funcion para obtener el siguiente numero de factura
+CREATE FUNCTION [DEFAULT_NAME].fx_Obtener_Siguiente_Nro_Factura 
+()
+RETURNS varchar(13)
+AS
+BEGIN
+	-- Declare 
+	DECLARE @retorno varchar(13)
+	declare @NumeroAnterior varchar(13)
+	declare @aux int
+
+
+	SELECT @NumeroAnterior = Max(Numero_Fact) from [DEFAULT_NAME].Factura
+
+	if (@NumeroAnterior is null)
+		set @retorno = '0001-00000001'
+	else
+	begin
+		set @aux = cast(substring(@NumeroAnterior,charindex('0001-',@NumeroAnterior,0) + 5, len(@NumeroAnterior)) as int)
+		set @aux = @aux +1
+		set @retorno = concat('0001-', replicate(0, 8 - len(@aux)),@aux)
+	end
+
+	RETURN @retorno
+
+END
 go

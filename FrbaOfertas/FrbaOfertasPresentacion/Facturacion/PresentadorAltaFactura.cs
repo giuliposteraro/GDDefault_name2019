@@ -42,41 +42,22 @@ namespace FrbaOfertasPresentacion.Facturacion
             }
         }
 
-        public void ObtenerPaginado(int cantidadPorPagina, int paginaActual)
-        {
-            try
-            {
-                if (proveedorBusqueda == null || !this.proveedorBusqueda.Equals(_vista.ProveedorSeleccionado) || this.fechaDBusqueda != _vista.FechaDesde || this.fechaHBusqueda != _vista.FechaHasta )
-                    cargarDatosParaBusqueda();
-
-                var maper = new MaperDeCompras();
-                var repo = new RepositorioDeCompras(maper);
-
-                _vista.Disponibles = repo.ObtenerPaginado(this.proveedorBusqueda, this.fechaDBusqueda, this.fechaHBusqueda, cantidadPorPagina, paginaActual);
-            }
-            catch (Exception ex)
-            {
-                _vista.MostrarMensaje(string.Format("Se produjo una excepción al buscar las compras: {0}", ex.Message));
-            }
-        }
-
-        public void BuscarDatos(int cantidadPorPagina)
+        
+        public void BuscarDatos()
         {
             try
             {
                 var maper = new MaperDeCompras();
                 var repo = new RepositorioDeCompras(maper);
-                int cantidadItems = repo.ContarItems(_vista.ProveedorSeleccionado,  _vista.FechaDesde, _vista.FechaHasta);
-                _vista.SetarTotalItemsEnGrill(cantidadItems);
-
-                cargarDatosParaBusqueda();
-
-                //busco los items paginados
-                this.ObtenerPaginado(cantidadPorPagina, 1);
+                _vista.Disponibles = repo.Buscar(_vista.ProveedorSeleccionado, _vista.FechaDesde, _vista.FechaHasta);
 
                 //busco el siguiente numero de factura disponible
+                var maperf = new MaperDeFacturas();
+                var repof = new RepositorioDeFacturas(maperf);
 
+                _vista.Numero = repof.ObteneSiguienteNroFactura();
 
+                calcularTotales();
             }
             catch (Exception ex)
             {
@@ -84,59 +65,76 @@ namespace FrbaOfertasPresentacion.Facturacion
             }
         }
 
-        private void cargarDatosParaBusqueda()
-        {
-            this.proveedorBusqueda = _vista.ProveedorSeleccionado;
-            this.fechaDBusqueda = _vista.FechaDesde;
-            this.fechaHBusqueda = _vista.FechaHasta;
-        }
-
-        private Proveedor proveedorBusqueda { get; set; }
-
-        private DateTime fechaDBusqueda { get; set; }
-
-        private DateTime fechaHBusqueda { get; set; }
-
-        public void AgegarItems()
-        {
-            if (_vista.ItemsSeleccionados == null || !_vista.ItemsSeleccionados.Any())
-            {
-                _vista.MostrarMensaje("debe seleccionar uno o más items para agregar");
-                return;
-            }
-            if( _vista.ComprasElegidas == null)
-                _vista.ComprasElegidas = new List<Compra>();
-
-            
-            _vista.ComprasElegidas = _vista.ItemsSeleccionados.Union(_vista.ComprasElegidas).ToList();
-            calcularTotales();
-        }
-
+   
         private void calcularTotales()
         {
-            if (_vista.ComprasElegidas == null || !_vista.ComprasElegidas.Any())
+            if (_vista.Disponibles == null || !_vista.Disponibles.Any())
                 _vista.Total = 0;
             else
-                _vista.Total = _vista.ComprasElegidas.Sum(x => x.Monto * x.Cantidad);
+                _vista.Total = _vista.Disponibles.Sum(x => x.Monto * x.Cantidad);
         }
 
-        public void QuitarItems()
+        
+        public void CambioFiltros()
         {
-            if (_vista.ItemsElegidosSeleccionados == null || !_vista.ItemsElegidosSeleccionados.Any())
-            {
-                _vista.MostrarMensaje("debe seleccionar uno o más items para quitar");
-                return;
-            }
-
-            List<Compra> elegidas = _vista.ComprasElegidas;
-            _vista.ComprasElegidas = elegidas.Where(x => !_vista.ItemsElegidosSeleccionados.Contains(x)).ToList();
+            _vista.Disponibles = new List<Compra>();
             calcularTotales();
         }
 
-        public void CambioFiltros()
+        public bool Guardar()
         {
-            _vista.ComprasElegidas = new List<Compra>();
-            _vista.Disponibles = new List<Compra>();
+            Factura facturaAGuardar = this.ObtenerDesdeVista();
+            if (!this.ValidarGuardar())
+                return false;
+
+            try
+            {
+                //mando a guardar            
+                var maper = new MaperDeFacturas();
+                var repo = new RepositorioDeFacturas(maper);
+
+                repo.Guardar(facturaAGuardar);
+
+                _vista.MostrarMensaje(string.Format("La factura se genero con éxito, con el número: {0}, por un monto de {1}",facturaAGuardar.Numero_Fact, facturaAGuardar.Total_Fact));
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _vista.MostrarMensaje(string.Format("Se produjo una excepción al crear la nueva oferta: {0}", ex.Message));
+                return false;
+            }
+        }
+
+        private Factura ObtenerDesdeVista()
+        {
+            Factura f = new Factura();
+            f.Proveedor = _vista.ProveedorSeleccionado;
+            f.Numero_Fact = _vista.Numero;
+            f.Tipo_Fact = "A";
+            f.Total_Fact = _vista.Total;
+            f.Fecha_Fact = _vista.FechaFactura;
+
+            foreach (Compra c in _vista.Disponibles)
+            {
+                DetalleDeFactura d = new DetalleDeFactura();
+                d.Id_Compra = c.Id_Compra;
+                d.Monto = c.Monto;
+                d.Cantidad = c.Cantidad;
+
+                f.AgregarDetalle(d);
+            }
+            return f;
+        }
+
+        public bool ValidarGuardar()
+        {
+
+            if (_vista.Disponibles == null || !_vista.Disponibles.Any())
+            {
+                _vista.MostrarMensaje("Debe seleccionar al menos una compra para componer la factura");
+            }
+
+            return true;
         }
     }
 }

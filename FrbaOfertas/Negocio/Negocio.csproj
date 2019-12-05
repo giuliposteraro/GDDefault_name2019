@@ -51,6 +51,7 @@
     <Compile Include="Entidades\Cliente.cs" />
     <Compile Include="Entidades\Compra.cs" />
     <Compile Include="Entidades\Credito.cs" />
+    <Compile Include="Entidades\DetalleDeFactura.cs" />
     <Compile Include="Entidades\Factura.cs" />
     <Compile Include="Entidades\Funcionalidad.cs" />
     <Compile Include="Entidades\Oferta.cs" />

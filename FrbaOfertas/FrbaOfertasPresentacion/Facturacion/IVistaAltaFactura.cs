@@ -17,18 +17,12 @@ namespace FrbaOfertasPresentacion.Facturacion
 
         DateTime FechaFactura { get; set; }
 
-        void SetarTotalItemsEnGrill(int cantidadItems);
-
         Negocio.Entidades.Proveedor ProveedorSeleccionado { get; set; }
 
         List<Negocio.Entidades.Compra> Disponibles { get; set; }
 
-        List<Negocio.Entidades.Compra> ComprasElegidas { get; set; }
-
-        List<Negocio.Entidades.Compra> ItemsSeleccionados { get; set; }
-
-        List<Negocio.Entidades.Compra> ItemsElegidosSeleccionados { get; set; }
-
         decimal Total { get; set; }
+
+        string Numero { get; set; }
     }
 }

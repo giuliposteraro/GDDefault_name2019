@@ -280,5 +280,40 @@ namespace Negocio.Repositorios
                 this.CerrarConexion();
             }
         }
+
+        public List<Compra> Buscar(Proveedor proveedor, DateTime fechaDesde, DateTime fechaHasta)
+        {
+            this.InicializarConexion();
+            try
+            {
+                List<Compra> lista = new List<Compra>();
+
+                List<SqlParameter> parametros = new List<SqlParameter>();
+                SqlParameter param = new SqlParameter("@Id_Proveedor", proveedor.Id_Proveedor);
+                parametros.Add(param);
+                param = new SqlParameter("@fechaDesde", fechaDesde);
+                parametros.Add(param);
+                param = new SqlParameter("@fechaHasta", fechaHasta);
+                parametros.Add(param);
+
+                string consulta = @"SELECT *
+                            FROM [DEFAULT_NAME].[Compra]
+                              where [Id_Proveedor] = @Id_Proveedor
+                              and convert(datetime,[Fecha_Compra],121) between convert(datetime,@fechaDesde,121) and convert(datetime,@fechaHasta,121)
+                              and facturado = 0
+                              ";
+
+                lista = this.maper.mapearAEntidad(EjecutarConsulta(consulta, parametros));
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("se produjo un error al buscar las compras: {0}", ex.Message));
+            }
+            finally
+            {
+                this.CerrarConexion();
+            }
+        }
     }
 }

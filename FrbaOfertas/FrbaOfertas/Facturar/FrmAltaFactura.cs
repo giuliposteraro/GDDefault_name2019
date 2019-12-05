@@ -38,27 +38,6 @@ namespace FrbaOfertas.Facturar
 
 
         #region grilla
-        private void dgvElegidos_SelectionChanged(object sender, System.EventArgs e)
-        {
-            if (DesignMode) return;
-            //Presenter.CambioItemSeleccionado()
-        }
-
-        private void dgvElegidos_CambioChequeadosMultiplesItems(object sender, System.EventArgs e)
-        {
-            if (DesignMode) return;
-        }
-
-        private void dgvElegidos_CambioChequeadosUnItem(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
-        {
-            if (DesignMode) return;
-        }
-
-        private void dgvElegidos_CargarMenuContextual(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void dgvDisponibles_SelectionChanged(object sender, System.EventArgs e)
         {
@@ -84,61 +63,19 @@ namespace FrbaOfertas.Facturar
         private void FrmAltaFactura_Load(object sender, EventArgs e)
         {
             dgvDisponibles.Refresh();
-            dgvElegidos.Refresh();
+
         }
 
         private void FrmAltaFactura_Shown(object sender, EventArgs e)
         {
             dgvDisponibles._parentForm_Shown(sender, e);
-            dgvElegidos._parentForm_Shown(sender, e);
-        }
-        #endregion
-
-        #region paginador
-        private void paginador_SeSeleccionaPaginaSiguiente(object sender, System.EventArgs e)
-        {
-            if (DesignMode) return;
-            Presentador.ObtenerPaginado(int.Parse(this.paginador.ObtenerItemsPorPagina()), int.Parse(this.paginador.ObtenerPaginaActual()));
 
         }
-
-        private void paginador_SolicitarBusqueda(object sender, System.EventArgs e)
-        {
-            if (DesignMode) return;
-            Presentador.ObtenerPaginado(int.Parse(this.paginador.ObtenerItemsPorPagina()), int.Parse(this.paginador.ObtenerPaginaActual()));
-
-        }
-
-        private void paginador_SeSeleccionaUltimaPagina(object sender, System.EventArgs e)
-        {
-            if (DesignMode) return;
-            Presentador.ObtenerPaginado(int.Parse(this.paginador.ObtenerItemsPorPagina()), int.Parse(this.paginador.ObtenerPaginaActual()));
-
-        }
-        private void paginador_SeSeleccionaPaginaAnterior(object sender, System.EventArgs e)
-        {
-            if (DesignMode) return;
-            Presentador.ObtenerPaginado(int.Parse(this.paginador.ObtenerItemsPorPagina()), int.Parse(this.paginador.ObtenerPaginaActual()));
-
-        }
-        private void paginador_SeSeleccionaPrimeraPagina(object sender, System.EventArgs e)
-        {
-            if (DesignMode) return;
-            Presentador.ObtenerPaginado(int.Parse(this.paginador.ObtenerItemsPorPagina()), int.Parse(this.paginador.ObtenerPaginaActual()));
-
-        }
-
-        public void SetarTotalItemsEnGrill(int cantidadItems)
-        {
-            this.paginador.SetearCantidadDeItems(cantidadItems);
-            this.paginador.SetearNumeroPagina(1);
-        }
-
         #endregion
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            Presentador.BuscarDatos(int.Parse(this.paginador.ObtenerItemsPorPagina()));
+            Presentador.BuscarDatos();
         }
 
         public List<Negocio.Entidades.Proveedor> proveedores
@@ -217,74 +154,6 @@ namespace FrbaOfertas.Facturar
             }
         }
 
-        private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.btnAgregar.PerformClick();
-        }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            Presentador.AgegarItems();
-        }
-
-        private void quitarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.btnQuitar.PerformClick();
-        }
-
-        private void btnQuitar_Click(object sender, EventArgs e)
-        {
-            Presentador.QuitarItems();
-        }
-
-
-        public List<Compra> ItemsSeleccionados
-        {
-            get
-            {
-                List<Compra> lista = new List<Compra>();
-                IEnumerable chequeados = dgvDisponibles.ItemsChequeados;
-                foreach (object c in chequeados)
-                    lista.Add((Compra)c);
-                return lista; 
-            }
-            set
-            {
-                dgvDisponibles.ItemsChequeados = value;
-            }
-        }
-
-        public List<Compra> ItemsElegidosSeleccionados
-        {
-            get
-            {
-                List<Compra> lista = new List<Compra>();
-                IEnumerable chequeados = dgvElegidos.ItemsChequeados;
-                foreach (object c in chequeados)
-                    lista.Add((Compra)c);
-                return lista; 
-            }
-            set
-            {
-                dgvElegidos.ItemsChequeados = value;
-            }
-        }
-
-
-        public List<Compra> ComprasElegidas
-        {
-            get
-            {
-                return (List<Negocio.Entidades.Compra>)dgvElegidos.Items;
-            }
-            set
-            {
-                dgvElegidos.Items = value;
-                dgvElegidos.Refresh();
-            }
-        }
-
-
         public decimal Total
         {
             get
@@ -313,6 +182,31 @@ namespace FrbaOfertas.Facturar
         {
             if (DesignMode) return;
             Presentador.CambioFiltros();
+        }
+
+        private void btnComponer_Click(object sender, EventArgs e)
+        {
+            if (!(Presentador.ValidarGuardar()))
+                return;
+
+            if (this.Presentador.Guardar())
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+        }
+
+
+        public string Numero
+        {
+            get
+            {
+                return txtCodigo.Text;
+            }
+            set
+            {
+                txtCodigo.Text = value;
+            }
         }
     }
 }

@@ -32,8 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAltaFactura));
             this.Label4 = new System.Windows.Forms.Label();
             this.panComandos = new System.Windows.Forms.Panel();
-            this.btnQuitar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
             this.btnComponer = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -60,33 +58,11 @@
             this.colEstado_Cupon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.agregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.dgvElegidos = new FrbaOfertas.Componentes.GrillaGestionDatos();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEstado_Cupon2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCantidad2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.quitarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.paginador = new FrbaOfertas.Componentes.paginador();
             this.panComandos.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisponibles)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvElegidos)).BeginInit();
-            this.contextMenuStrip2.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // Label4
@@ -105,55 +81,32 @@
             // panComandos
             // 
             this.panComandos.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.panComandos.Controls.Add(this.btnQuitar);
-            this.panComandos.Controls.Add(this.btnAgregar);
             this.panComandos.Controls.Add(this.btnComponer);
             this.panComandos.Controls.Add(this.btnCancelar);
             this.panComandos.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panComandos.Location = new System.Drawing.Point(0, 597);
+            this.panComandos.Location = new System.Drawing.Point(0, 497);
             this.panComandos.Name = "panComandos";
             this.panComandos.Size = new System.Drawing.Size(723, 32);
             this.panComandos.TabIndex = 28;
-            // 
-            // btnQuitar
-            // 
-            this.btnQuitar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnQuitar.Location = new System.Drawing.Point(84, 7);
-            this.btnQuitar.Name = "btnQuitar";
-            this.btnQuitar.Size = new System.Drawing.Size(75, 25);
-            this.btnQuitar.TabIndex = 4;
-            this.btnQuitar.Text = "Quitar Item";
-            this.btnQuitar.UseVisualStyleBackColor = false;
-            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAgregar.Location = new System.Drawing.Point(3, 7);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 25);
-            this.btnAgregar.TabIndex = 3;
-            this.btnAgregar.Text = "Agregar Item";
-            this.btnAgregar.UseVisualStyleBackColor = false;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnComponer
             // 
             this.btnComponer.BackColor = System.Drawing.SystemColors.Control;
             this.btnComponer.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnComponer.Location = new System.Drawing.Point(474, 4);
+            this.btnComponer.Location = new System.Drawing.Point(562, 3);
             this.btnComponer.Name = "btnComponer";
             this.btnComponer.Size = new System.Drawing.Size(75, 25);
             this.btnComponer.TabIndex = 2;
             this.btnComponer.Text = "Guardar";
             this.btnComponer.UseVisualStyleBackColor = false;
+            this.btnComponer.Click += new System.EventHandler(this.btnComponer_Click);
             // 
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancelar.BackColor = System.Drawing.SystemColors.Control;
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(643, 4);
+            this.btnCancelar.Location = new System.Drawing.Point(643, 3);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 25);
             this.btnCancelar.TabIndex = 1;
@@ -291,7 +244,7 @@
             // 
             this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBuscar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnBuscar.Location = new System.Drawing.Point(643, 7);
+            this.btnBuscar.Location = new System.Drawing.Point(636, 7);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 25);
             this.btnBuscar.TabIndex = 13;
@@ -302,10 +255,10 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.dgvDisponibles);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 127);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(723, 252);
+            this.panel2.Size = new System.Drawing.Size(723, 370);
             this.panel2.TabIndex = 31;
             // 
             // dgvDisponibles
@@ -328,7 +281,6 @@
             this.colCantidad,
             this.colPrecioUnitario});
             this.dgvDisponibles.ColumnsOcultas = ((System.Collections.Generic.List<string>)(resources.GetObject("dgvDisponibles.ColumnsOcultas")));
-            this.dgvDisponibles.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvDisponibles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDisponibles.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvDisponibles.EventSyncInvoke = null;
@@ -345,16 +297,15 @@
             this.dgvDisponibles.ResaltarCeldasEditables = false;
             this.dgvDisponibles.RowHeadersVisible = false;
             this.dgvDisponibles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDisponibles.Size = new System.Drawing.Size(723, 252);
+            this.dgvDisponibles.Size = new System.Drawing.Size(723, 370);
             this.dgvDisponibles.StatusTripAMostrarAlerta = null;
             this.dgvDisponibles.TabIndex = 26;
-            this.dgvDisponibles.TieneCheckMasivo = true;
-            this.dgvDisponibles.TieneChecks = true;
+            this.dgvDisponibles.TieneCheckMasivo = false;
             this.dgvDisponibles.TieneCopiarDatos = true;
             this.dgvDisponibles.TieneExportarDatos = false;
             this.dgvDisponibles.CambioChequeadosMultiplesItems += new System.EventHandler(this.dgvDisponibles_CambioChequeadosMultiplesItems);
-            this.dgvDisponibles.CargarMenuContextual += new System.EventHandler(this.dgvElegidos_CargarMenuContextual);
-            this.dgvDisponibles.CambioChequeadosUnItem += new System.EventHandler<System.Windows.Forms.DataGridViewCellEventArgs>(this.dgvElegidos_CambioChequeadosUnItem);
+            this.dgvDisponibles.CargarMenuContextual += new System.EventHandler(this.dgvDisponibles_CargarMenuContextual);
+            this.dgvDisponibles.CambioChequeadosUnItem += new System.EventHandler<System.Windows.Forms.DataGridViewCellEventArgs>(this.dgvDisponibles_CambioChequeadosUnItem);
             // 
             // colFecha_Venc
             // 
@@ -405,20 +356,6 @@
             this.colPrecioUnitario.HeaderText = "Precio Unitario";
             this.colPrecioUnitario.Name = "colPrecioUnitario";
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.agregarToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(117, 26);
-            // 
-            // agregarToolStripMenuItem
-            // 
-            this.agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
-            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
-            this.agregarToolStripMenuItem.Text = "Agregar";
-            this.agregarToolStripMenuItem.Click += new System.EventHandler(this.agregarToolStripMenuItem_Click);
-            // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.CadetBlue;
@@ -432,174 +369,17 @@
             this.label1.Text = "Compras Disponibles";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.dgvElegidos);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 426);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(723, 171);
-            this.panel3.TabIndex = 33;
-            // 
-            // dgvElegidos
-            // 
-            this.dgvElegidos.AjustarColumnas = false;
-            this.dgvElegidos.AllowUserToAddRows = false;
-            this.dgvElegidos.AllowUserToDeleteRows = false;
-            this.dgvElegidos.AllowUserToResizeRows = false;
-            this.dgvElegidos.CheckOnClick = false;
-            this.dgvElegidos.ChecksDataPropertyName = null;
-            this.dgvElegidos.ChecksToolTipText = "";
-            this.dgvElegidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvElegidos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.colEstado_Cupon2,
-            this.colCantidad2,
-            this.colMonto});
-            this.dgvElegidos.ColumnsOcultas = ((System.Collections.Generic.List<string>)(resources.GetObject("dgvElegidos.ColumnsOcultas")));
-            this.dgvElegidos.ContextMenuStrip = this.contextMenuStrip2;
-            this.dgvElegidos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvElegidos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvElegidos.EventSyncInvoke = null;
-            this.dgvElegidos.Exportar_FinDeColumna = "\t";
-            this.dgvElegidos.Exportar_FinDeFila = "\r\n";
-            this.dgvElegidos.Exportar_FinDeLineaEnCelda = ",";
-            this.dgvElegidos.ItemsChequeados = ((System.Collections.IEnumerable)(resources.GetObject("dgvElegidos.ItemsChequeados")));
-            this.dgvElegidos.Location = new System.Drawing.Point(0, 0);
-            this.dgvElegidos.MantenerSeleccionAlReordenar = false;
-            this.dgvElegidos.MostrarWaitWindowOnDataSourceChanged = false;
-            this.dgvElegidos.MultiSelect = false;
-            this.dgvElegidos.Name = "dgvElegidos";
-            this.dgvElegidos.PermiteOcultarColumnas = true;
-            this.dgvElegidos.ResaltarCeldasEditables = false;
-            this.dgvElegidos.RowHeadersVisible = false;
-            this.dgvElegidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvElegidos.Size = new System.Drawing.Size(723, 171);
-            this.dgvElegidos.StatusTripAMostrarAlerta = null;
-            this.dgvElegidos.TabIndex = 26;
-            this.dgvElegidos.TieneCheckMasivo = true;
-            this.dgvElegidos.TieneChecks = true;
-            this.dgvElegidos.TieneCopiarDatos = true;
-            this.dgvElegidos.TieneExportarDatos = false;
-            this.dgvElegidos.CambioChequeadosMultiplesItems += new System.EventHandler(this.dgvElegidos_CambioChequeadosMultiplesItems);
-            this.dgvElegidos.CargarMenuContextual += new System.EventHandler(this.dgvElegidos_CargarMenuContextual);
-            this.dgvElegidos.CambioChequeadosUnItem += new System.EventHandler<System.Windows.Forms.DataGridViewCellEventArgs>(this.dgvElegidos_CambioChequeadosUnItem);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ClienteNombre";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Cliente";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "OfertaNombre";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Oferta";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Fecha_Compra";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Fecha Compra";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 120;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Fecha_Entrega";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Fecha Entrega";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Codigo_Cupon";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Código Cupon";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // colEstado_Cupon2
-            // 
-            this.colEstado_Cupon2.DataPropertyName = "Estado";
-            this.colEstado_Cupon2.HeaderText = "Estado Cupon";
-            this.colEstado_Cupon2.Name = "colEstado_Cupon2";
-            // 
-            // colCantidad2
-            // 
-            this.colCantidad2.DataPropertyName = "Cantidad";
-            this.colCantidad2.HeaderText = "Cantidad";
-            this.colCantidad2.Name = "colCantidad2";
-            // 
-            // colMonto
-            // 
-            this.colMonto.DataPropertyName = "Monto";
-            this.colMonto.HeaderText = "Precio unitario";
-            this.colMonto.Name = "colMonto";
-            // 
-            // contextMenuStrip2
-            // 
-            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.quitarToolStripMenuItem});
-            this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(108, 26);
-            // 
-            // quitarToolStripMenuItem
-            // 
-            this.quitarToolStripMenuItem.Name = "quitarToolStripMenuItem";
-            this.quitarToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.quitarToolStripMenuItem.Text = "Quitar";
-            this.quitarToolStripMenuItem.Click += new System.EventHandler(this.quitarToolStripMenuItem_Click);
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.CadetBlue;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(0, 407);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(723, 19);
-            this.label2.TabIndex = 32;
-            this.label2.Text = "Compras Agregadas";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.paginador);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 379);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(723, 28);
-            this.panel4.TabIndex = 34;
-            // 
-            // paginador
-            // 
-            this.paginador.Location = new System.Drawing.Point(0, 0);
-            this.paginador.Name = "paginador";
-            this.paginador.Size = new System.Drawing.Size(635, 25);
-            this.paginador.TabIndex = 2;
-            this.paginador.SolicitarBusqueda += new System.EventHandler(this.paginador_SolicitarBusqueda);
-            this.paginador.SeSeleccionaPaginaSiguiente += new System.EventHandler(this.paginador_SeSeleccionaPaginaSiguiente);
-            this.paginador.SeSeleccionaUltimaPagina += new System.EventHandler(this.paginador_SeSeleccionaUltimaPagina);
-            this.paginador.SeSeleccionaPaginaAnterior += new System.EventHandler(this.paginador_SeSeleccionaPaginaAnterior);
-            this.paginador.SeSeleccionaPrimeraPagina += new System.EventHandler(this.paginador_SeSeleccionaPrimeraPagina);
-            // 
             // FrmAltaFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(723, 629);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.panel4);
+            this.ClientSize = new System.Drawing.Size(723, 529);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panComandos);
             this.Controls.Add(this.Label4);
-            this.MinimumSize = new System.Drawing.Size(739, 668);
+            this.MinimumSize = new System.Drawing.Size(739, 568);
             this.Name = "FrmAltaFactura";
             this.Text = "FrmAltaFactura";
             this.Load += new System.EventHandler(this.FrmAltaFactura_Load);
@@ -609,11 +389,6 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisponibles)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvElegidos)).EndInit();
-            this.contextMenuStrip2.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -627,18 +402,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel4;
-        private Componentes.paginador paginador;
-        private System.Windows.Forms.Button btnQuitar;
-        private System.Windows.Forms.Button btnAgregar;
         private Componentes.GrillaGestionDatos dgvDisponibles;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem agregarToolStripMenuItem;
-        private Componentes.GrillaGestionDatos dgvElegidos;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
-        private System.Windows.Forms.ToolStripMenuItem quitarToolStripMenuItem;
         private System.Windows.Forms.DateTimePicker dtpFechaFactura;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtMontoTotal;
@@ -660,13 +424,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colEstado_Cupon;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPrecioUnitario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colEstado_Cupon2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCantidad2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colMonto;
     }
 }

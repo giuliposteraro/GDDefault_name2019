@@ -71,5 +71,43 @@ namespace Negocio.Entidades
             //sino compara por los ids
             return this.ID == ((Factura)obj).ID;
         }
+
+
+        private List<DetalleDeFactura> _Detalle;
+
+        public List<DetalleDeFactura> Detalle
+        {
+            get
+            {
+                if (_Detalle == null)
+                {
+                    _Detalle = new List<DetalleDeFactura>();
+                }
+                return _Detalle;
+            }
+        }
+
+        //agrega una funcionalidad si 
+        public void AgregarDetalle(DetalleDeFactura func)
+        {
+            if (_Detalle == null) _Detalle = new List<DetalleDeFactura>();
+
+            if (!_Detalle.Contains(func)) _Detalle.Add(func);
+        }
+
+        public void EliminarDetalle(DetalleDeFactura func)
+        {
+            if (_Detalle == null) return;
+
+            if (_Detalle.Contains(func)) _Detalle.Remove(func);
+        }
+
+        //limpia el listado de funcionalidades
+        public void LimpiarFuncionalidades()
+        {
+            _Detalle = new List<DetalleDeFactura>();
+        }
+
+
     }
 }
