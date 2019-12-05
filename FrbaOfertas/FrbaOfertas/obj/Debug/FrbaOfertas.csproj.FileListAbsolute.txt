@@ -33,3 +33,5 @@ C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.
 C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.CrearOferta.FrmListadoDeOfertas.resources
 C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.CrearOferta.FrmAltaOfertas.resources
 C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.ComprarOferta.FrmEntregarOferta.resources
+C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Facturar.FrmListadoDeFacturas.resources
+C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Facturar.FrmAltaFactura.resources

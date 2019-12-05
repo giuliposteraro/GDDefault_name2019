@@ -189,9 +189,10 @@ CREATE TABLE [DEFAULT_NAME].[Compra]
 	Fecha_Compra Datetime NOT NULL,
 	Fecha_Entrega Datetime,
 	Codigo_Cupon varchar(10),
-	Estado_Cupon int,
+	Estado_Cupon int default(1),
 	Cantidad int not null,
-	Monto decimal(12,2) not null
+	Monto decimal(12,2) not null,
+	Facturado bit not null default(0)
 )
 
 --factura, se borra la tabla si existia previamente
@@ -395,6 +396,17 @@ begin
 end 
 go
 
+create trigger TR_Actualizar_DetalleF_Compra_AFT_INS
+on DEFAULT_NAME.Detalle
+AFTER INSERT AS
+begin
+	Update c set c.Facturado = 1
+	from DEFAULT_NAME.compra c 
+	inner join inserted I on c.id_compra = I.id_Compra
+end 
+go
+
+
 --IMPORTACION DESDE TABLA MAESTRA
 --CLIENTES
 IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'SP_ImportacionDeDatosCliente') 
@@ -592,7 +604,7 @@ begin
 	--cargo las compras
 	INSERT INTO [DEFAULT_NAME].[Compra]
 	([Id_Cliente],[Id_Proveedor],[Id_Oferta],[Fecha_Compra],[Fecha_Entrega],[Codigo_Cupon],[Estado_Cupon],[Cantidad], [Monto])
-	select distinct id_Cliente, p.id_Proveedor,o.id_Oferta,convert(datetime,oferta_Fecha_Compra,121), null, null, null, 1, o.Precio_oferta  
+	select distinct id_Cliente, p.id_Proveedor,o.id_Oferta,convert(datetime,oferta_Fecha_Compra,121), null, null, 1, 1, o.Precio_oferta  
 	from gd_esquema.Maestra m
 	inner join DEFAULT_NAME.Proveedor p on m.Provee_CUIT = p.Cuit_Prov
 	inner join DEFAULT_NAME.Cliente c on m.Cli_Dni = c.DNI_Clie
@@ -603,7 +615,7 @@ begin
 	and	Factura_Fecha is null
 
 	--actualizo la fecha de entrega
-	update com set com.fecha_entrega = convert(datetime,Oferta_Entregado_Fecha,121) 
+	update com set com.fecha_entrega = convert(datetime,Oferta_Entregado_Fecha,121) , [Estado_Cupon] = 2
 	from gd_esquema.Maestra m
 	inner join DEFAULT_NAME.Proveedor p on m.Provee_CUIT = p.Cuit_Prov
 	inner join DEFAULT_NAME.Cliente c on m.Cli_Dni = c.DNI_Clie

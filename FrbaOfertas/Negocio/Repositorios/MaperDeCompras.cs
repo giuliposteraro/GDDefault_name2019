@@ -33,6 +33,7 @@ namespace Negocio.Repositorios
                 c.Estado_Cupon = dr.IsNull("Estado_Cupon") ? 0 : (estadoCupon)dr.Field<int>("Estado_Cupon");
                 c.Cantidad = dr.IsNull("Cantidad") ? 0 : dr.Field<int>("Cantidad");
                 c.Monto = dr.IsNull("Monto") ? 0: dr.Field<Decimal>("Monto");
+                c.Facturado = dr.IsNull("Facturado") ? false : dr.Field<Boolean>("Facturado");
 
                 newList.Add(c);
             }

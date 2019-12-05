@@ -128,6 +128,12 @@
     <Compile Include="CrearOferta\FrmListadoDeOfertas.Designer.cs">
       <DependentUpon>FrmListadoDeOfertas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Facturar\FrmAltaFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facturar\FrmAltaFactura.Designer.cs">
+      <DependentUpon>FrmAltaFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Facturar\FrmListadoDeFacturas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +216,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CrearOferta\FrmListadoDeOfertas.resx">
       <DependentUpon>FrmListadoDeOfertas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Facturar\FrmAltaFactura.resx">
+      <DependentUpon>FrmAltaFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Facturar\FrmListadoDeFacturas.resx">
+      <DependentUpon>FrmListadoDeFacturas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogIn\FrmAltaDeCuentas.resx">
       <DependentUpon>FrmAltaDeCuentas.cs</DependentUpon>

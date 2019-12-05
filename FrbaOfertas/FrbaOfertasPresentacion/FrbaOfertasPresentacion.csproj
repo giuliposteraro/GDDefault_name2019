@@ -54,6 +54,10 @@
     <Compile Include="Componentes\PresentadorGrillaGestionDatos.cs" />
     <Compile Include="CompraOfertas\IVistaEntregaOferta.cs" />
     <Compile Include="CompraOfertas\PresentadorEntregaOferta.cs" />
+    <Compile Include="Facturacion\IVistaAltaFactura.cs" />
+    <Compile Include="Facturacion\IVistaListaFacturas.cs" />
+    <Compile Include="Facturacion\PresentadorAltaFactura.cs" />
+    <Compile Include="Facturacion\PresentadorListaFacturas.cs" />
     <Compile Include="PublicacionOfertas\IVistaAltaOferta.cs" />
     <Compile Include="CompraOfertas\IVistaCompraOferta.cs" />
     <Compile Include="PublicacionOfertas\PresentadorAltaOferta.cs" />

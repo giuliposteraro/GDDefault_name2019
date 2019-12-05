@@ -21,6 +21,7 @@ namespace Negocio.Entidades
         public estadoCupon Estado_Cupon { get; set; }
         public int Cantidad{ get; set; }
         public Decimal Monto{ get; set; }
+        public bool Facturado { get; set; }
 
 
         private Cliente _cliente;
@@ -84,6 +85,29 @@ namespace Negocio.Entidades
             }
         }
 
+       public string ClienteNombre
+       {get{
+           if (Cliente == null) return "";
+           return Cliente.ToString();
+       }}
+	
+        public string OfertaNombre
+            {get{
+           if (Oferta == null) return "";
+           return Oferta.ToString();
+       }}
+
+        public string Estado
+        {
+            get {
+                if (this.Estado_Cupon == estadoCupon.creado)
+                    return "Creado";
+                else if (this.Estado_Cupon == estadoCupon.entregado)
+                    return "Canjeado";
+                else
+                    return "";
+            }
+        }
 
         public override string ToString()
         {

@@ -125,7 +125,7 @@ namespace FrbaOfertas
             if (DesignMode) return;
 
             var frm = new FrmListadoDeFacturas();
-            //frm.Presentador.Posicionar(Global.SessionUsuario);
+            frm.Presentador.Posicionar();
             frm.MdiParent = this;
             frm.Show();
         }
