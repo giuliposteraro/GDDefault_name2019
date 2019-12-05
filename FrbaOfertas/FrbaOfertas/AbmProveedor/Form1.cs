@@ -72,11 +72,6 @@ namespace FrbaOfertas.AbmProveedor
 
         }
 
-        private void btnRehabilitar_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
 

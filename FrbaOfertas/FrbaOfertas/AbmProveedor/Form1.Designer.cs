@@ -31,25 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvProveedores = new FrbaOfertas.Componentes.GrillaGestionDatos();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.txtRazonSocial = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnLimpiar = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.Label4 = new System.Windows.Forms.Label();
-            this.panComandos = new System.Windows.Forms.Panel();
-            this.btnRehabilitar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnModificar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textNombreContacto = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textCuit = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textMail = new System.Windows.Forms.TextBox();
             this.ColumnRazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnNombreContacto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCuit = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +39,24 @@
             this.ColumnCp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnMail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.textMail = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textCuit = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textNombreContacto = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtRazonSocial = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnLimpiar = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.Label4 = new System.Windows.Forms.Label();
+            this.panComandos = new System.Windows.Forms.Panel();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProveedores)).BeginInit();
             this.panel1.SuspendLayout();
@@ -117,6 +116,58 @@
             this.dgvProveedores.TieneExportarDatos = false;
             this.dgvProveedores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRoles_CellContentClick);
             // 
+            // ColumnRazonSocial
+            // 
+            this.ColumnRazonSocial.HeaderText = "Razon Social";
+            this.ColumnRazonSocial.Name = "ColumnRazonSocial";
+            // 
+            // ColumnNombreContacto
+            // 
+            this.ColumnNombreContacto.HeaderText = "Nombre Contacto";
+            this.ColumnNombreContacto.Name = "ColumnNombreContacto";
+            // 
+            // ColumnCuit
+            // 
+            this.ColumnCuit.HeaderText = "CUIT";
+            this.ColumnCuit.Name = "ColumnCuit";
+            // 
+            // ColumnRubro
+            // 
+            this.ColumnRubro.HeaderText = "Rubro";
+            this.ColumnRubro.Name = "ColumnRubro";
+            // 
+            // ColumnDireccion
+            // 
+            this.ColumnDireccion.HeaderText = "Direccion";
+            this.ColumnDireccion.Name = "ColumnDireccion";
+            // 
+            // ColumnCp
+            // 
+            this.ColumnCp.HeaderText = "Codigo Postal";
+            this.ColumnCp.Name = "ColumnCp";
+            // 
+            // ColumnTelefono
+            // 
+            this.ColumnTelefono.HeaderText = "Telefono";
+            this.ColumnTelefono.Name = "ColumnTelefono";
+            // 
+            // ColumnMail
+            // 
+            this.ColumnMail.HeaderText = "Mail";
+            this.ColumnMail.Name = "ColumnMail";
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAgregar.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnAgregar.Location = new System.Drawing.Point(11, 4);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(75, 25);
+            this.btnAgregar.TabIndex = 2;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.CadetBlue;
@@ -148,6 +199,57 @@
             this.panel1.Size = new System.Drawing.Size(804, 73);
             this.panel1.TabIndex = 22;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // textMail
+            // 
+            this.textMail.Location = new System.Drawing.Point(305, 40);
+            this.textMail.Name = "textMail";
+            this.textMail.Size = new System.Drawing.Size(91, 20);
+            this.textMail.TabIndex = 12;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(206, 43);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(29, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Mail:";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // textCuit
+            // 
+            this.textCuit.Location = new System.Drawing.Point(100, 40);
+            this.textCuit.Name = "textCuit";
+            this.textCuit.Size = new System.Drawing.Size(91, 20);
+            this.textCuit.TabIndex = 10;
+            this.textCuit.TextChanged += new System.EventHandler(this.textCuit_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(21, 43);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "CUIT:";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // textNombreContacto
+            // 
+            this.textNombreContacto.Location = new System.Drawing.Point(305, 11);
+            this.textNombreContacto.Name = "textNombreContacto";
+            this.textNombreContacto.Size = new System.Drawing.Size(91, 20);
+            this.textNombreContacto.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(206, 14);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(93, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Nombre Contacto:";
             // 
             // txtRazonSocial
             // 
@@ -209,7 +311,6 @@
             // panComandos
             // 
             this.panComandos.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.panComandos.Controls.Add(this.btnRehabilitar);
             this.panComandos.Controls.Add(this.btnEliminar);
             this.panComandos.Controls.Add(this.btnModificar);
             this.panComandos.Controls.Add(this.btnAgregar);
@@ -219,18 +320,6 @@
             this.panComandos.Name = "panComandos";
             this.panComandos.Size = new System.Drawing.Size(804, 32);
             this.panComandos.TabIndex = 20;
-            // 
-            // btnRehabilitar
-            // 
-            this.btnRehabilitar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnRehabilitar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnRehabilitar.Location = new System.Drawing.Point(249, 4);
-            this.btnRehabilitar.Name = "btnRehabilitar";
-            this.btnRehabilitar.Size = new System.Drawing.Size(75, 25);
-            this.btnRehabilitar.TabIndex = 6;
-            this.btnRehabilitar.Text = "Re habilitar";
-            this.btnRehabilitar.UseVisualStyleBackColor = false;
-            this.btnRehabilitar.Click += new System.EventHandler(this.btnRehabilitar_Click);
             // 
             // btnEliminar
             // 
@@ -256,18 +345,6 @@
             this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
-            // btnAgregar
-            // 
-            this.btnAgregar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAgregar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnAgregar.Location = new System.Drawing.Point(11, 4);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 25);
-            this.btnAgregar.TabIndex = 2;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = false;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -280,97 +357,6 @@
             this.btnCancelar.Text = "Cerrar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(206, 14);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Nombre Contacto:";
-            // 
-            // textNombreContacto
-            // 
-            this.textNombreContacto.Location = new System.Drawing.Point(305, 11);
-            this.textNombreContacto.Name = "textNombreContacto";
-            this.textNombreContacto.Size = new System.Drawing.Size(91, 20);
-            this.textNombreContacto.TabIndex = 8;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(21, 43);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "CUIT:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // textCuit
-            // 
-            this.textCuit.Location = new System.Drawing.Point(100, 40);
-            this.textCuit.Name = "textCuit";
-            this.textCuit.Size = new System.Drawing.Size(91, 20);
-            this.textCuit.TabIndex = 10;
-            this.textCuit.TextChanged += new System.EventHandler(this.textCuit_TextChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(206, 43);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(29, 13);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Mail:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // textMail
-            // 
-            this.textMail.Location = new System.Drawing.Point(305, 40);
-            this.textMail.Name = "textMail";
-            this.textMail.Size = new System.Drawing.Size(91, 20);
-            this.textMail.TabIndex = 12;
-            // 
-            // ColumnRazonSocial
-            // 
-            this.ColumnRazonSocial.HeaderText = "Razon Social";
-            this.ColumnRazonSocial.Name = "ColumnRazonSocial";
-            // 
-            // ColumnNombreContacto
-            // 
-            this.ColumnNombreContacto.HeaderText = "Nombre Contacto";
-            this.ColumnNombreContacto.Name = "ColumnNombreContacto";
-            // 
-            // ColumnCuit
-            // 
-            this.ColumnCuit.HeaderText = "CUIT";
-            this.ColumnCuit.Name = "ColumnCuit";
-            // 
-            // ColumnRubro
-            // 
-            this.ColumnRubro.HeaderText = "Rubro";
-            this.ColumnRubro.Name = "ColumnRubro";
-            // 
-            // ColumnDireccion
-            // 
-            this.ColumnDireccion.HeaderText = "Direccion";
-            this.ColumnDireccion.Name = "ColumnDireccion";
-            // 
-            // ColumnCp
-            // 
-            this.ColumnCp.HeaderText = "Codigo Postal";
-            this.ColumnCp.Name = "ColumnCp";
-            // 
-            // ColumnTelefono
-            // 
-            this.ColumnTelefono.HeaderText = "Telefono";
-            this.ColumnTelefono.Name = "ColumnTelefono";
-            // 
-            // ColumnMail
-            // 
-            this.ColumnMail.HeaderText = "Mail";
-            this.ColumnMail.Name = "ColumnMail";
             // 
             // Form1
             // 
@@ -406,7 +392,6 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Label Label4;
         private System.Windows.Forms.Panel panComandos;
-        private System.Windows.Forms.Button btnRehabilitar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnAgregar;

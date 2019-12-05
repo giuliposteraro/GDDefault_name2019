@@ -60,3 +60,4 @@ C:\Users\Intel\Desktop\GDD_TP\GDDefault_name2019\FrbaOfertas\FrbaOfertas\obj\Deb
 C:\Users\Intel\Desktop\GDD_TP\GDDefault_name2019\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Properties.Resources.resources
 C:\Users\Intel\Desktop\GDD_TP\GDDefault_name2019\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.csproj.GenerateResource.Cache
 C:\Users\Intel\Desktop\GDD_TP\GDDefault_name2019\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.AbmProveedor.Form1.resources
+C:\Users\Intel\Desktop\GDD_TP\GDDefault_name2019\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.AbmProveedor.detalleProveedor.resources
