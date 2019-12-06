@@ -583,7 +583,7 @@ begin
            ([Id_Proveedor],[Descripcion_Of],[Fecha_Publi_Of],[Fecha_Venc_Of],[Precio_Oferta],[Precio_Lista]
 			,[Cant_Disp_Oferta],[Codigo_Of],[Precio_fict_Of],[Maximo_Por_Compra])
 	select distinct id_Proveedor, Oferta_Descripcion, convert(datetime,Oferta_Fecha,121), 
-		convert(datetime,Oferta_Fecha_Venc,121),Oferta_Precio,Oferta_Precio,Oferta_Cantidad,Oferta_Codigo, Oferta_Precio_Ficticio, 1
+		convert(datetime,Oferta_Fecha_Venc,121),Oferta_Precio,Oferta_Precio_Ficticio,Oferta_Cantidad,Oferta_Codigo, Oferta_Precio_Ficticio, 1
 	from gd_esquema.Maestra m
 		inner join DEFAULT_NAME.Proveedor p on m.Provee_CUIT = p.Cuit_Prov
 	where oferta_Codigo is not null;

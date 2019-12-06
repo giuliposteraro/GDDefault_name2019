@@ -223,6 +223,9 @@
     <EmbeddedResource Include="Facturar\FrmListadoDeFacturas.resx">
       <DependentUpon>FrmListadoDeFacturas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ListadoEstadistico\FrmEstadisticas.resx">
+      <DependentUpon>FrmEstadisticas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LogIn\FrmAltaDeCuentas.resx">
       <DependentUpon>FrmAltaDeCuentas.cs</DependentUpon>
     </EmbeddedResource>

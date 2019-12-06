@@ -135,7 +135,7 @@ namespace FrbaOfertas
             if (DesignMode) return;
 
             var frm = new FrmEstadisticas();
-            //frm.Presentador.Posicionar(Global.SessionUsuario);
+            frm.Presentador.Posicionar();
             frm.MdiParent = this;
             frm.Show();
         }

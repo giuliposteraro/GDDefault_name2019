@@ -42,23 +42,23 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.Label4 = new System.Windows.Forms.Label();
-            this.dgvFacturas = new FrbaOfertas.Componentes.GrillaGestionDatos();
-            this.paginador = new FrbaOfertas.Componentes.paginador();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panComandos = new System.Windows.Forms.Panel();
             this.btnComponer = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dgvFacturas = new FrbaOfertas.Componentes.GrillaGestionDatos();
             this.colFecha_Venc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFuncionalidades = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFecha_Publi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPrecio_Oferta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paginador = new FrbaOfertas.Componentes.paginador();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
             this.panel3.SuspendLayout();
             this.panComandos.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -94,6 +94,7 @@
             // 
             // cboProveedor
             // 
+            this.cboProveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProveedor.FormattingEnabled = true;
             this.cboProveedor.Location = new System.Drawing.Point(87, 10);
             this.cboProveedor.Name = "cboProveedor";
@@ -196,61 +197,6 @@
             this.Label4.Text = "Filtros";
             this.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // dgvFacturas
-            // 
-            this.dgvFacturas.AjustarColumnas = false;
-            this.dgvFacturas.AllowUserToAddRows = false;
-            this.dgvFacturas.AllowUserToDeleteRows = false;
-            this.dgvFacturas.AllowUserToResizeRows = false;
-            this.dgvFacturas.CheckOnClick = false;
-            this.dgvFacturas.ChecksDataPropertyName = null;
-            this.dgvFacturas.ChecksToolTipText = "";
-            this.dgvFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFacturas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colFecha_Venc,
-            this.colEstado,
-            this.colFuncionalidades,
-            this.colFecha_Publi,
-            this.colPrecio_Oferta});
-            this.dgvFacturas.ColumnsOcultas = ((System.Collections.Generic.List<string>)(resources.GetObject("dgvFacturas.ColumnsOcultas")));
-            this.dgvFacturas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvFacturas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvFacturas.EventSyncInvoke = null;
-            this.dgvFacturas.Exportar_FinDeColumna = "\t";
-            this.dgvFacturas.Exportar_FinDeFila = "\r\n";
-            this.dgvFacturas.Exportar_FinDeLineaEnCelda = ",";
-            this.dgvFacturas.ItemsChequeados = ((System.Collections.IEnumerable)(resources.GetObject("dgvFacturas.ItemsChequeados")));
-            this.dgvFacturas.Location = new System.Drawing.Point(0, 0);
-            this.dgvFacturas.MantenerSeleccionAlReordenar = false;
-            this.dgvFacturas.MostrarWaitWindowOnDataSourceChanged = false;
-            this.dgvFacturas.MultiSelect = false;
-            this.dgvFacturas.Name = "dgvFacturas";
-            this.dgvFacturas.PermiteOcultarColumnas = true;
-            this.dgvFacturas.ResaltarCeldasEditables = false;
-            this.dgvFacturas.RowHeadersVisible = false;
-            this.dgvFacturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFacturas.Size = new System.Drawing.Size(759, 196);
-            this.dgvFacturas.StatusTripAMostrarAlerta = null;
-            this.dgvFacturas.TabIndex = 25;
-            this.dgvFacturas.TieneCheckMasivo = false;
-            this.dgvFacturas.TieneCopiarDatos = true;
-            this.dgvFacturas.TieneExportarDatos = false;
-            this.dgvFacturas.CambioChequeadosMultiplesItems += new System.EventHandler(this.dgvFacturas_CambioChequeadosMultiplesItems);
-            this.dgvFacturas.CargarMenuContextual += new System.EventHandler(this.dgvFacturas_CargarMenuContextual);
-            this.dgvFacturas.CambioChequeadosUnItem += new System.EventHandler<System.Windows.Forms.DataGridViewCellEventArgs>(this.dgvFacturas_CambioChequeadosUnItem);
-            // 
-            // paginador
-            // 
-            this.paginador.Location = new System.Drawing.Point(0, 0);
-            this.paginador.Name = "paginador";
-            this.paginador.Size = new System.Drawing.Size(667, 25);
-            this.paginador.TabIndex = 2;
-            this.paginador.SolicitarBusqueda += new System.EventHandler(this.paginador_SolicitarBusqueda);
-            this.paginador.SeSeleccionaPaginaSiguiente += new System.EventHandler(this.paginador_SeSeleccionaPaginaSiguiente);
-            this.paginador.SeSeleccionaUltimaPagina += new System.EventHandler(this.paginador_SeSeleccionaUltimaPagina);
-            this.paginador.SeSeleccionaPaginaAnterior += new System.EventHandler(this.paginador_SeSeleccionaPaginaAnterior);
-            this.paginador.SeSeleccionaPrimeraPagina += new System.EventHandler(this.paginador_SeSeleccionaPrimeraPagina);
-            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.paginador);
@@ -305,6 +251,49 @@
             this.panel2.Size = new System.Drawing.Size(759, 196);
             this.panel2.TabIndex = 31;
             // 
+            // dgvFacturas
+            // 
+            this.dgvFacturas.AjustarColumnas = false;
+            this.dgvFacturas.AllowUserToAddRows = false;
+            this.dgvFacturas.AllowUserToDeleteRows = false;
+            this.dgvFacturas.AllowUserToResizeRows = false;
+            this.dgvFacturas.CheckOnClick = false;
+            this.dgvFacturas.ChecksDataPropertyName = null;
+            this.dgvFacturas.ChecksToolTipText = "";
+            this.dgvFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFacturas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colFecha_Venc,
+            this.colEstado,
+            this.colFuncionalidades,
+            this.colFecha_Publi,
+            this.colPrecio_Oferta});
+            this.dgvFacturas.ColumnsOcultas = ((System.Collections.Generic.List<string>)(resources.GetObject("dgvFacturas.ColumnsOcultas")));
+            this.dgvFacturas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvFacturas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvFacturas.EventSyncInvoke = null;
+            this.dgvFacturas.Exportar_FinDeColumna = "\t";
+            this.dgvFacturas.Exportar_FinDeFila = "\r\n";
+            this.dgvFacturas.Exportar_FinDeLineaEnCelda = ",";
+            this.dgvFacturas.ItemsChequeados = ((System.Collections.IEnumerable)(resources.GetObject("dgvFacturas.ItemsChequeados")));
+            this.dgvFacturas.Location = new System.Drawing.Point(0, 0);
+            this.dgvFacturas.MantenerSeleccionAlReordenar = false;
+            this.dgvFacturas.MostrarWaitWindowOnDataSourceChanged = false;
+            this.dgvFacturas.MultiSelect = false;
+            this.dgvFacturas.Name = "dgvFacturas";
+            this.dgvFacturas.PermiteOcultarColumnas = true;
+            this.dgvFacturas.ResaltarCeldasEditables = false;
+            this.dgvFacturas.RowHeadersVisible = false;
+            this.dgvFacturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvFacturas.Size = new System.Drawing.Size(759, 196);
+            this.dgvFacturas.StatusTripAMostrarAlerta = null;
+            this.dgvFacturas.TabIndex = 25;
+            this.dgvFacturas.TieneCheckMasivo = false;
+            this.dgvFacturas.TieneCopiarDatos = true;
+            this.dgvFacturas.TieneExportarDatos = false;
+            this.dgvFacturas.CambioChequeadosMultiplesItems += new System.EventHandler(this.dgvFacturas_CambioChequeadosMultiplesItems);
+            this.dgvFacturas.CargarMenuContextual += new System.EventHandler(this.dgvFacturas_CargarMenuContextual);
+            this.dgvFacturas.CambioChequeadosUnItem += new System.EventHandler<System.Windows.Forms.DataGridViewCellEventArgs>(this.dgvFacturas_CambioChequeadosUnItem);
+            // 
             // colFecha_Venc
             // 
             this.colFecha_Venc.DataPropertyName = "Tipo_Fact";
@@ -336,6 +325,18 @@
             this.colPrecio_Oferta.HeaderText = "Total Factura";
             this.colPrecio_Oferta.Name = "colPrecio_Oferta";
             // 
+            // paginador
+            // 
+            this.paginador.Location = new System.Drawing.Point(0, 0);
+            this.paginador.Name = "paginador";
+            this.paginador.Size = new System.Drawing.Size(667, 25);
+            this.paginador.TabIndex = 2;
+            this.paginador.SolicitarBusqueda += new System.EventHandler(this.paginador_SolicitarBusqueda);
+            this.paginador.SeSeleccionaPaginaSiguiente += new System.EventHandler(this.paginador_SeSeleccionaPaginaSiguiente);
+            this.paginador.SeSeleccionaUltimaPagina += new System.EventHandler(this.paginador_SeSeleccionaUltimaPagina);
+            this.paginador.SeSeleccionaPaginaAnterior += new System.EventHandler(this.paginador_SeSeleccionaPaginaAnterior);
+            this.paginador.SeSeleccionaPrimeraPagina += new System.EventHandler(this.paginador_SeSeleccionaPrimeraPagina);
+            // 
             // FrmListadoDeFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -353,10 +354,10 @@
             this.Shown += new System.EventHandler(this.FrmListadoDeFacturas_Shown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panComandos.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).EndInit();
             this.ResumeLayout(false);
 
         }

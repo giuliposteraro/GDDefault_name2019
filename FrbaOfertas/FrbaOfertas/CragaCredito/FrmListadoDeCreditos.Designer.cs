@@ -218,6 +218,7 @@
             // 
             // cboTiposDePago
             // 
+            this.cboTiposDePago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTiposDePago.FormattingEnabled = true;
             this.cboTiposDePago.Location = new System.Drawing.Point(88, 38);
             this.cboTiposDePago.Name = "cboTiposDePago";
@@ -235,6 +236,7 @@
             // 
             // cboClientes
             // 
+            this.cboClientes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboClientes.FormattingEnabled = true;
             this.cboClientes.Location = new System.Drawing.Point(88, 11);
             this.cboClientes.Name = "cboClientes";

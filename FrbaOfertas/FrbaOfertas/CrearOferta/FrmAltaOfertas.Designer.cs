@@ -108,6 +108,7 @@
             // 
             // cboProveedor
             // 
+            this.cboProveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProveedor.Enabled = false;
             this.cboProveedor.FormattingEnabled = true;
             this.cboProveedor.Location = new System.Drawing.Point(116, 42);

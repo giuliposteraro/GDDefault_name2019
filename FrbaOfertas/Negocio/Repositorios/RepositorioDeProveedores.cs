@@ -2,6 +2,8 @@
 using Negocio.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -92,6 +94,74 @@ namespace Negocio.Repositorios
             catch (Exception ex)
             {
                 throw new Exception(string.Format("se produjo un error al buscar los proveedores: {0}", ex.Message));
+            }
+        }
+
+        public DataTable ObtenerReporteDescuentos(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            try
+            {
+                DataTable lista = new DataTable();
+
+                List<SqlParameter> parametros = new List<SqlParameter>();
+                SqlParameter param = new SqlParameter("@fechaDesde", fechaDesde);
+                parametros.Add(param);
+                param = new SqlParameter("@fechaHasta", fechaHasta);
+                parametros.Add(param);
+
+                string consulta = @"select top 5 sum(Precio_Oferta) / sum (Precio_Lista) as [Porcentaje promedio de Descuento],  
+p.Razon_Social_Prov as [Proveedor], p.Cuit_Prov as [Cuit Proveedor],  
+  p.Rubro_Prov as [Rubro], count(o.id_oferta) as [Total de ofertas], 
+  min(o.Fecha_Publi_Of) as [Fecha 1° oferta],
+  max(1 - (o.Precio_Oferta/ precio_Lista)) as [Mayor descuento Ofrecido]
+from Default_name.proveedor p
+inner join Default_name.oferta o on o.Id_Proveedor = p.Id_Proveedor
+where convert(datetime,o.fecha_Publi_OF,121) between convert(datetime,@fechaDesde,121) and convert(datetime,@fechaHasta,121)
+group by p.id_proveedor ,Razon_Social_Prov, Cuit_Prov,p.Rubro_Prov
+order by sum(Precio_Oferta) / sum (Precio_Lista) desc
+";
+
+
+
+                lista = EjecutarConsulta(consulta, parametros);
+                return lista;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("se produjo un error al buscar el reporte: {0}", ex.Message));
+            }
+        }
+
+        public DataTable ObtenerReporteFacturacion(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            try
+            {
+                DataTable lista = new DataTable();
+
+                List<SqlParameter> parametros = new List<SqlParameter>();
+                SqlParameter param = new SqlParameter("@fechaDesde", fechaDesde);
+                parametros.Add(param);
+                param = new SqlParameter("@fechaHasta", fechaHasta);
+                parametros.Add(param);
+
+                string consulta = @"select top 5 p.Razon_Social_Prov as [Proveedor], p.Cuit_Prov as [Cuit Proveedor],  
+                        p.Cuit_Prov as [Rubro], p.Mail_Proveedor as [e-Mail], p.Telefono_Prov as [Telefono],
+                        sum (f.Total_Fact) as [Total Facturado] from Default_name.Proveedor p
+                        inner join Default_name.factura f on f.Id_Proveedor = p.Id_Proveedor
+                        where convert(datetime,f.Fecha_Fact,121) between convert(datetime,@fechaDesde,121) and convert(datetime,@fechaHasta,121)
+                        group by p.Id_Proveedor, p.Razon_Social_Prov,p.Cuit_Prov,p.Mail_Proveedor,p.Telefono_Prov
+                        order by sum (f.Total_Fact) desc";
+
+
+
+                lista = EjecutarConsulta(consulta, parametros);
+                return lista;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("se produjo un error al buscar el reporte: {0}", ex.Message));
             }
         }
     }

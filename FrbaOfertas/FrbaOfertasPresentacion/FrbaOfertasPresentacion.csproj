@@ -58,6 +58,8 @@
     <Compile Include="Facturacion\IVistaListaFacturas.cs" />
     <Compile Include="Facturacion\PresentadorAltaFactura.cs" />
     <Compile Include="Facturacion\PresentadorListaFacturas.cs" />
+    <Compile Include="ListadosEstadisticos\IVistaListadoEstadistico.cs" />
+    <Compile Include="ListadosEstadisticos\PresentadorListadoEstadistico.cs" />
     <Compile Include="PublicacionOfertas\IVistaAltaOferta.cs" />
     <Compile Include="CompraOfertas\IVistaCompraOferta.cs" />
     <Compile Include="PublicacionOfertas\PresentadorAltaOferta.cs" />
