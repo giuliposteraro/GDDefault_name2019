@@ -179,5 +179,71 @@ namespace Negocio.Repositorios
                 this.CerrarConexion();
             }
         }
+
+        public void Guardar(Usuario usuarioAGuardar, Cliente cliente = null, Proveedor proveedor = null)
+        {
+            this.InicializarConexion();
+            SqlTransaction transaction;
+            transaction = conn.BeginTransaction();
+
+            try
+            {
+
+                //inserto el nuevo usuario
+
+                SqlCommand command = conn.CreateCommand();
+                command.Connection = conn;
+                command.Transaction = transaction;
+                SqlParameter param = new SqlParameter("@Usuario_Cuenta", usuarioAGuardar.Usuario_Cuenta);
+                command.Parameters.Add(param);
+                param = new SqlParameter("@Contra_Cuenta", Encriptador.ComputeSha256Hash(usuarioAGuardar.Contra_Cuenta));
+                command.Parameters.Add(param);
+
+                command.CommandText = @"INSERT INTO [DEFAULT_NAME].[Cuenta]
+                                   ([Usuario_Cuenta],[Contra_Cuenta],[Cant_Ingresos_Cuenta],[Estado_Cuenta])
+                                    VALUES (@Usuario_Cuenta,@Contra_Cuenta,0,1)
+                                SELECT SCOPE_IDENTITY()";
+
+                usuarioAGuardar.Id_Usuario = Convert.ToInt32(command.ExecuteScalar());
+                
+                
+                //si hay roles, los asigno tambien aqui
+                command.Parameters.Clear();
+                StringBuilder comando = new StringBuilder();
+                comando.AppendLine(@"INSERT INTO [DEFAULT_NAME].[Rol_Por_Cuenta]
+                                   ([Id_Rol],[Id_Usuario])
+                                    VALUES");
+
+                for (int i = 0; i < usuarioAGuardar.RolDelUsuario.Count(); i++)
+                {
+                    string a = ",";
+                    if (i == 0) a = "";
+                    param = new SqlParameter(string.Format("@Id_Rol{0}", i), usuarioAGuardar.RolDelUsuario[i].Id_Rol);
+                    command.Parameters.Add(param);
+                    param = new SqlParameter(string.Format("@Id_Usuario{0}", i), usuarioAGuardar.Id_Usuario);
+                    command.Parameters.Add(param);
+                    comando.AppendLine(string.Format("{1}(@Id_Rol{0} , @Id_Usuario{0})", i, a));
+                }
+                command.CommandText = comando.ToString();
+
+                command.ExecuteNonQuery();
+
+                //si hay un cliente lo creo aqui
+
+
+                //si hay un proveedor lo creo aqui
+
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                throw new Exception(string.Format("se produjo un error al insertar un usuario: {0}", ex.Message));
+            }
+            finally
+            {
+                this.CerrarConexion();
+            }
+        }
     }
 }

@@ -9,6 +9,8 @@ Para la creacion de facturas, se asume que todos las facturas son tipo A, se com
 
 
 --consideraciones programa
+-desde el login se puede acceder a registrar un usuario del tipo proveedor o cliente, desde la lista de cuentas se puede crear cuentas de usuarios tipo administrativo.
+
 -Al agregar o quitar funcionalidades a un rol, si el usuario actual tiene asociado el rol, automaticamente se validaran los permisos asociados a dichas funcionalidades y se quitaran o agregaran los menus asociados.
 
 -Se creo un uc para manejar las grillas, para que se vea correctamente el diseñador hay que hacer un build del proyecto antes de entrar a los diseñadores.

@@ -9,6 +9,19 @@ namespace FrbaOfertasPresentacion.LogIn.AltaCuenta
 {
     public interface IVistaAltaCuenta: IVistaBase
     {
-    
+
+        void TextoPantalla(string p);
+
+        void PantallaAdministrativo();
+
+        List<Negocio.Entidades.Rol> Roles { get; set; }
+
+        string Nombre { get; set; }
+
+        string Contrasenia { get; set; }
+
+        string Contrasenia2 { get; set; }
+
+        List<Negocio.Entidades.Rol> RolesSeleccionados { get; set; }
     }
 }

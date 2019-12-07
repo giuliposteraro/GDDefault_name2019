@@ -1,4 +1,5 @@
 ﻿using FrbaOfertas.AbmRol;
+using FrbaOfertasPresentacion.LogIn.AltaCuenta;
 using FrbaOfertasPresentacion.LogIn.ListadoDeCuentas;
 using Negocio.Entidades;
 using System;
@@ -149,6 +150,7 @@ namespace FrbaOfertas.LogIn
         {
             var frm = new FrmAltaDeCuentas();
             //frm.MdiParent = this;
+            frm.Presentador.Posicionar(ModoAltaCuenta.DesdeListado);
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 _presenter.BuscarConFiltros();
