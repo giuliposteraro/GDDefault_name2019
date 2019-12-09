@@ -1,4 +1,5 @@
 ﻿using Negocio.Base;
+using Negocio.Repositorios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,30 @@ namespace Negocio.Entidades
         public string Tel_Clie { get; set; }
         public DateTime Fecha_Nac_Clie { get; set; }
         public decimal Monto_Total_cred_Clie { get; set; }
+        public bool Habilitado { get; set; }
 
+        private int Id_Direccion { get; set; }
+        private Domicilio _Domicilio;
+        public Domicilio Direccion
+        {
+            get {
+                if (_Domicilio == null && Id_Direccion != 0)
+                {
+                    var maper = new MaperDeDireccion();
+                    var repo = new RepositorioDeDireccion(maper);
+                    _Domicilio = repo.ObtenerPorIDYTTipo(Id_Cliente, 1);
+                }
+                return _Domicilio;
+            }
+            set { 
+                _Domicilio = value;
+                if (value == null)
+                    Id_Direccion = 0;
+                else if (value.Id_Direccion != Id_Direccion)
+                    Id_Direccion = value.Id_Direccion;
+
+            }
+        }
 
         public override string ToString()
         {

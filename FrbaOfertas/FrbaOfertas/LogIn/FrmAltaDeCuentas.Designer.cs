@@ -41,8 +41,15 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtPass = new System.Windows.Forms.TextBox();
             this.txtPass2 = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblDatosExtra = new System.Windows.Forms.Label();
+            this.lblTipo = new System.Windows.Forms.Label();
+            this.cboTipo = new System.Windows.Forms.ComboBox();
+            this.ucCliente1 = new FrbaOfertas.AbmCliente.ucCliente();
+            this.ucProveedor1 = new FrbaOfertas.AbmProveedor.ucProveedor();
             this.panComandos.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // Label4
@@ -64,7 +71,7 @@
             this.panComandos.Controls.Add(this.btnAgregar);
             this.panComandos.Controls.Add(this.btnCancelar);
             this.panComandos.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panComandos.Location = new System.Drawing.Point(0, 356);
+            this.panComandos.Location = new System.Drawing.Point(0, 381);
             this.panComandos.Name = "panComandos";
             this.panComandos.Size = new System.Drawing.Size(501, 32);
             this.panComandos.TabIndex = 16;
@@ -96,6 +103,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.cboTipo);
+            this.panel1.Controls.Add(this.lblTipo);
             this.panel1.Controls.Add(this.txtPass2);
             this.panel1.Controls.Add(this.txtPass);
             this.panel1.Controls.Add(this.txtNombre);
@@ -177,19 +186,80 @@
             this.txtPass2.Size = new System.Drawing.Size(135, 20);
             this.txtPass2.TabIndex = 7;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.ucProveedor1);
+            this.panel2.Controls.Add(this.ucCliente1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 131);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(501, 250);
+            this.panel2.TabIndex = 18;
+            // 
+            // lblDatosExtra
+            // 
+            this.lblDatosExtra.BackColor = System.Drawing.Color.CadetBlue;
+            this.lblDatosExtra.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblDatosExtra.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDatosExtra.ForeColor = System.Drawing.Color.White;
+            this.lblDatosExtra.Location = new System.Drawing.Point(0, 131);
+            this.lblDatosExtra.Name = "lblDatosExtra";
+            this.lblDatosExtra.Size = new System.Drawing.Size(501, 19);
+            this.lblDatosExtra.TabIndex = 19;
+            this.lblDatosExtra.Text = "Datos del Cliente";
+            this.lblDatosExtra.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblTipo
+            // 
+            this.lblTipo.AutoSize = true;
+            this.lblTipo.Location = new System.Drawing.Point(20, 85);
+            this.lblTipo.Name = "lblTipo";
+            this.lblTipo.Size = new System.Drawing.Size(78, 13);
+            this.lblTipo.TabIndex = 8;
+            this.lblTipo.Text = "TipoDeUsuario";
+            // 
+            // cboTipo
+            // 
+            this.cboTipo.FormattingEnabled = true;
+            this.cboTipo.Location = new System.Drawing.Point(104, 82);
+            this.cboTipo.Name = "cboTipo";
+            this.cboTipo.Size = new System.Drawing.Size(163, 21);
+            this.cboTipo.TabIndex = 9;
+            this.cboTipo.SelectedIndexChanged += new System.EventHandler(this.cboTipo_SelectedIndexChanged);
+            // 
+            // ucCliente1
+            // 
+            this.ucCliente1.Location = new System.Drawing.Point(0, 21);
+            this.ucCliente1.MaximumSize = new System.Drawing.Size(501, 225);
+            this.ucCliente1.MinimumSize = new System.Drawing.Size(501, 225);
+            this.ucCliente1.Name = "ucCliente1";
+            this.ucCliente1.Size = new System.Drawing.Size(501, 225);
+            this.ucCliente1.TabIndex = 0;
+            // 
+            // ucProveedor1
+            // 
+            this.ucProveedor1.Location = new System.Drawing.Point(0, 21);
+            this.ucProveedor1.MaximumSize = new System.Drawing.Size(501, 225);
+            this.ucProveedor1.MinimumSize = new System.Drawing.Size(501, 225);
+            this.ucProveedor1.Name = "ucProveedor1";
+            this.ucProveedor1.Size = new System.Drawing.Size(501, 225);
+            this.ucProveedor1.TabIndex = 1;
+            // 
             // FrmAltaDeCuentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancelar;
-            this.ClientSize = new System.Drawing.Size(501, 388);
+            this.ClientSize = new System.Drawing.Size(501, 413);
+            this.Controls.Add(this.lblDatosExtra);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panComandos);
             this.Controls.Add(this.Label4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(517, 427);
+            this.MaximumSize = new System.Drawing.Size(517, 452);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(517, 427);
+            this.MinimumSize = new System.Drawing.Size(517, 452);
             this.Name = "FrmAltaDeCuentas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Alta De Cuentas";
@@ -197,6 +267,7 @@
             this.panComandos.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -216,5 +287,11 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.CheckedListBox chkRoles;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel2;
+        private AbmCliente.ucCliente ucCliente1;
+        private System.Windows.Forms.Label lblDatosExtra;
+        private System.Windows.Forms.ComboBox cboTipo;
+        private System.Windows.Forms.Label lblTipo;
+        private AbmProveedor.ucProveedor ucProveedor1;
     }
 }

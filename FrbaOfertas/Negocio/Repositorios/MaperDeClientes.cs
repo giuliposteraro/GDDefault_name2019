@@ -33,6 +33,7 @@ namespace Negocio.Repositorios
                 c.Tel_Clie = dr.IsNull("Tel_Clie") ? String.Empty : dr.Field<String>("Tel_Clie");             
                 c.Fecha_Nac_Clie = dr.IsNull("Fecha_Nac_Clie") ? DateTime.MinValue : dr.Field<DateTime>("Fecha_Nac_Clie");
                 c.Monto_Total_cred_Clie = dr.IsNull("Monto_Total_cred_Clie") ? 0: dr.Field<Decimal>("Monto_Total_cred_Clie");
+                c.Habilitado = dr.IsNull("Habilitado") ? false : dr.Field<Boolean>("Habilitado");
 
                 newList.Add(c);
             }

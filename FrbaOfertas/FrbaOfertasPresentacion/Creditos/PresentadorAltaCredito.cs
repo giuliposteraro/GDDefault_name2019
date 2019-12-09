@@ -37,6 +37,12 @@ namespace FrbaOfertasPresentacion.Creditos
                 return false;
             }
 
+            if (!_vista.Cliente.Habilitado)
+            {
+                _vista.MostrarMensaje("Su cliente no esta habilitado para cargar créditos.");
+                return false;
+            }
+
             StringBuilder sb = new StringBuilder();
             if (_vista.Monto.EsNuloOVacio())
                 sb.AppendLine("-El monto debe ser mayor a 0");

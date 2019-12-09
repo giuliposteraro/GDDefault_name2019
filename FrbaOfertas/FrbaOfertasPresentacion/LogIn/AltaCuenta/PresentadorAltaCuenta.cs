@@ -29,6 +29,11 @@ namespace FrbaOfertasPresentacion.LogIn.AltaCuenta
 
             _modoPosicionar = modo;
 
+            List<string> listaTipo = new List<string>();
+            listaTipo.Add("Clientes");
+            listaTipo.Add("Proveedores");
+            _vista.Tipos = listaTipo;
+
             if (_modoPosicionar == ModoAltaCuenta.DesdeListado)
             {
                 _vista.TextoPantalla("Alta de usuarios administrativos");
@@ -60,15 +65,50 @@ namespace FrbaOfertasPresentacion.LogIn.AltaCuenta
                     sb.AppendLine("la contraseña y su repetición no deben ser nulas");
 
                 //valido usuario existente
-                var maper = new MaperDeUsuarios();
-                var repo = new RepositorioDeUsuarios(maper);
-                 Usuario usuario = repo.ObtenerPorNombre(_vista.Nombre);
-                 if (usuario != null)
-                     sb.AppendLine("El nombre de usuario ya fue utilizado anteriormente");
-
+                if (_vista.Nombre == "")
+                    sb.AppendLine("Debe ingresar un nombre de usuario");
+                else
+                {
+                    var maper = new MaperDeUsuarios();
+                    var repo = new RepositorioDeUsuarios(maper);
+                    Usuario usuario = repo.ObtenerPorNombre(_vista.Nombre);
+                    if (usuario != null)
+                        sb.AppendLine("El nombre de usuario ya fue utilizado anteriormente");
+                }
                 //validaciones propias de cliente y proveedor
                 if (this._modoPosicionar == ModoAltaCuenta.DesdeLogIn)
                 {
+                    if (_vista.TipoSeleccionado == "Clientes")
+                    {
+                        if(_vista.NombreCliente == "")
+                            sb.AppendLine("Debe ingresar un Nombre para el Cliente");
+                        if (_vista.ApellidoCliente == "")
+                            sb.AppendLine("Debe ingresar un apellido para el Cliente");
+                        if (_vista.DNICliente == 0)
+                            sb.AppendLine("Debe ingresar un DNI para el Cliente");
+                        if (_vista.FechaCliente == null)
+                            sb.AppendLine("Debe ingresar la fecha de nacimiento del Cliente");
+                        if (_vista.TelCliente == "")
+                            sb.AppendLine("Debe ingresar un teléfono para el Cliente");
+                        if (_vista.Calle_Dir == "")
+                            sb.AppendLine("Debe ingresar una calle para el Cliente");
+                        
+                    }
+                    else
+                    {
+                        if (_vista.RazonSocial == "")
+                            sb.AppendLine("Debe ingresar la Razon social del proveedor");
+                        if (_vista.Rubro_Prov == "")
+                            sb.AppendLine("Debe ingresar un Rubro para el proveedor");
+                        if (_vista.Cuit_Prov == "")
+                            sb.AppendLine("Debe ingresar un CUIT para el proveedor");
+                        if (_vista.Nom_Contacto_Prov == "")
+                            sb.AppendLine("Debe ingresar un contacto para el proveedor");
+                        if (_vista.Telefono_Prov == "")
+                            sb.AppendLine("Debe ingresar un teléfono para el proveedor");
+                        if (_vista.Calle_Dir == "")
+                            sb.AppendLine("Debe ingresar una calle para el proveedor");
+                    }
                 }
 
 
@@ -102,7 +142,7 @@ namespace FrbaOfertasPresentacion.LogIn.AltaCuenta
                 var maper = new MaperDeUsuarios();
                 var repo = new RepositorioDeUsuarios(maper);
 
-                repo.Guardar(usuarioAGuardar);
+                repo.Guardar(usuarioAGuardar, clienteAGuardar, proveedorAGuardar);
 
                 _vista.MostrarMensaje("Cuenta creada con éxito.");
                 return true;
@@ -115,6 +155,8 @@ namespace FrbaOfertasPresentacion.LogIn.AltaCuenta
         }
 
         private Usuario usuarioAGuardar;
+        private Cliente clienteAGuardar;
+        private Proveedor proveedorAGuardar;
 
         private void ObtenerUsuarioDesdeVista()
         {
@@ -125,6 +167,60 @@ namespace FrbaOfertasPresentacion.LogIn.AltaCuenta
             usuarioAGuardar.Cant_Ingresos_Cuenta = 0;
             foreach (Rol r in _vista.RolesSeleccionados)
                 usuarioAGuardar.AgregarRol(r);
+
+            //obtengo clientes y proveedores para modificar
+            if (this._modoPosicionar == ModoAltaCuenta.DesdeLogIn)
+            {
+                if (_vista.TipoSeleccionado == "Clientes")
+                {
+                    proveedorAGuardar = null;
+                    clienteAGuardar = new Cliente();
+                    clienteAGuardar.Nombre_Clie = _vista.NombreCliente;
+                    clienteAGuardar.Apellido_Clie = _vista.ApellidoCliente;
+                    clienteAGuardar.DNI_Clie = _vista.DNICliente;
+                    clienteAGuardar.Mail_Clie = _vista.MailCliente;
+                    clienteAGuardar.Tel_Clie = _vista.TelCliente;
+                    clienteAGuardar.Fecha_Nac_Clie = _vista.FechaCliente;
+                    Domicilio dir = new Domicilio();
+                    dir.Tipo_Objeto = 1;
+                    dir.Numero_Dir = _vista.Numero_Dir;
+                    dir.Piso_Dir = _vista.Piso_Dir;
+                    dir.Depto_Dir = _vista.Depto_Dir;
+                    dir.Localidad_Dir = _vista.Localidad_Dir;
+                    dir.Ciudad_Dir = _vista.Ciudad_Dir;
+                    dir.Calle_Dir = _vista.Calle_Dir;
+                    dir.Codigo_Postal_Dir = _vista.Codigo_Postal_Dir;
+                    clienteAGuardar.Direccion = dir;
+                    
+                }
+                else
+                {
+                    clienteAGuardar = null;
+                    proveedorAGuardar = new Proveedor();
+                    proveedorAGuardar.Razon_Social_Prov = _vista.RazonSocial;
+                    proveedorAGuardar.Mail_Proveedor = _vista.Mail_Proveedor;
+                    proveedorAGuardar.Telefono_Prov  = _vista.Telefono_Prov;
+                    proveedorAGuardar.Cuit_Prov  = _vista.Cuit_Prov;
+                    proveedorAGuardar.Rubro_Prov  = _vista.Rubro_Prov;
+                    proveedorAGuardar.Nom_Contacto_Prov  = _vista.Nom_Contacto_Prov;
+                    Domicilio dir = new Domicilio();
+                    dir.Tipo_Objeto = 2;
+                    dir.Numero_Dir = _vista.Numero_Dir;
+                    dir.Piso_Dir = _vista.Piso_Dir;
+                    dir.Depto_Dir = _vista.Depto_Dir;
+                    dir.Localidad_Dir = _vista.Localidad_Dir;
+                    dir.Ciudad_Dir = _vista.Ciudad_Dir;
+                    dir.Calle_Dir = _vista.Calle_Dir;
+                    dir.Codigo_Postal_Dir = _vista.Codigo_Postal_Dir;
+                    proveedorAGuardar.Direccion = dir;
+                }
+            }
+        }
+
+        public void CambioTipo()
+        {
+            _vista.MostrarPantallaAdicionalClienteOProveedor(_vista.TipoSeleccionado == "Clientes");
+
         }
     }
 }

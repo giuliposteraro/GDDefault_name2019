@@ -65,6 +65,9 @@ namespace FrbaOfertasPresentacion.CompraOfertas
             if (_vista.Cliente == null)
                 sb.AppendLine("Su usuario no tiene un cliente asociado para realizar compras");
 
+            if (_vista.Cliente != null && !_vista.Cliente.Habilitado)
+                sb.AppendLine("Su cliente no esta habilitado para realizar compras.");
+
             if (_vista.Credito < _vista.POferta * _vista.Cantidad)
                 sb.AppendLine("No posee de suficiente credito para realizar la compra");
 

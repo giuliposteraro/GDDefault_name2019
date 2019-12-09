@@ -44,6 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbmProveedor\ucProveedor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AbmProveedor\ucProveedor.Designer.cs">
+      <DependentUpon>ucProveedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="AbmCliente\FrmCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,6 +61,12 @@
     </Compile>
     <Compile Include="AbmCliente\FrmClienteEditar.Designer.cs">
       <DependentUpon>FrmClienteEditar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmCliente\ucCliente.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AbmCliente\ucCliente.Designer.cs">
+      <DependentUpon>ucCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmProveedor\Form1.cs">
       <SubType>Form</SubType>
@@ -178,11 +190,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AbmProveedor\ucProveedor.resx">
+      <DependentUpon>ucProveedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AbmCliente\FrmCliente.resx">
       <DependentUpon>FrmCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmCliente\FrmClienteEditar.resx">
       <DependentUpon>FrmClienteEditar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmCliente\ucCliente.resx">
+      <DependentUpon>ucCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmRol\ABMRoles.resx">
       <DependentUpon>ABMRoles.cs</DependentUpon>

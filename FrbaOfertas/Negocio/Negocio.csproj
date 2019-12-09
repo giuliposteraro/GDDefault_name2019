@@ -52,6 +52,7 @@
     <Compile Include="Entidades\Compra.cs" />
     <Compile Include="Entidades\Credito.cs" />
     <Compile Include="Entidades\DetalleDeFactura.cs" />
+    <Compile Include="Entidades\Domicilio.cs" />
     <Compile Include="Entidades\Factura.cs" />
     <Compile Include="Entidades\Funcionalidad.cs" />
     <Compile Include="Entidades\Oferta.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\MaperDeCompras.cs" />
     <Compile Include="Repositorios\MaperDeCreditos.cs" />
+    <Compile Include="Repositorios\MaperDeDireccion.cs" />
     <Compile Include="Repositorios\MaperDeFacturas.cs" />
     <Compile Include="Repositorios\MaperDeFuncionalidades.cs" />
     <Compile Include="Repositorios\MaperDeOfertas.cs" />
@@ -73,6 +75,7 @@
     <Compile Include="Repositorios\RepositorioDeClientes.cs" />
     <Compile Include="Repositorios\RepositorioDeCompras.cs" />
     <Compile Include="Repositorios\RepositorioDeCreditos.cs" />
+    <Compile Include="Repositorios\RepositorioDeDireccion.cs" />
     <Compile Include="Repositorios\RepositorioDeFacturas.cs" />
     <Compile Include="Repositorios\RepositorioDeFuncionalidades.cs" />
     <Compile Include="Repositorios\RepositorioDeOfertas.cs" />

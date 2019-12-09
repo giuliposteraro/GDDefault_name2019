@@ -21,5 +21,11 @@ namespace FrbaOfertas.AbmCliente
         {
             return (MessageBox.Show(mensage, "Confirmar", System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes);
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+                this.Close();
+        }
     }
 }

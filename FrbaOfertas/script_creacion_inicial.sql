@@ -113,7 +113,8 @@ CREATE TABLE [DEFAULT_NAME].[Cliente]
 	Mail_Clie varchar(100),
 	Tel_Clie varchar(13),
 	Fecha_Nac_Clie dateTime,
-	Monto_Total_cred_Clie Decimal(12,2)
+	Monto_Total_cred_Clie Decimal(12,2),
+	Habilitado bit not null default(1)
 )
 
 --se agrega tabla creditos, se eliminara la misma si ya existia.
@@ -144,10 +145,11 @@ CREATE TABLE [DEFAULT_NAME].[Proveedor]
 	Id_Cuenta  int NULL,
 	Mail_Proveedor varchar(100),
 	Telefono_Prov varchar(13),
-	Cuit_Prov varchar(13),
+	Cuit_Prov varchar(13) unique,
 	Rubro_Prov varchar(100),
 	Nom_Contacto_Prov varchar(100),
-	Razon_Social_Prov varchar(100),
+	Razon_Social_Prov varchar(100) unique,
+	Habilitado bit not null default(1)
 )
 
 --oferta se borra la tabla si existia previamente
@@ -420,14 +422,14 @@ as
 begin
 	--inserto los clientes
 	INSERT INTO [DEFAULT_NAME].[Cliente] ([Id_Cuenta],[Id_Cliente_Dest],[Nombre_Clie],[Apellido_Clie],
-			[DNI_Clie],[Mail_Clie],[Tel_Clie],[Fecha_Nac_Clie],[Monto_Total_cred_Clie])
-	select distinct null, null, Cli_Nombre,	Cli_Apellido, Cli_Dni, Cli_Mail, Cli_Telefono, convert(datetime,Cli_Fecha_Nac,121),0				
+			[DNI_Clie],[Mail_Clie],[Tel_Clie],[Fecha_Nac_Clie],[Monto_Total_cred_Clie], [Habilitado])
+	select distinct null, null, Cli_Nombre,	Cli_Apellido, Cli_Dni, Cli_Mail, Cli_Telefono, convert(datetime,Cli_Fecha_Nac,121),0,1				
 	from gd_esquema.Maestra
 
 	--inserto los cliente dest, que no esten ya como cliente, valido por dni
 	INSERT INTO [DEFAULT_NAME].[Cliente] ([Id_Cuenta],[Id_Cliente_Dest],[Nombre_Clie],[Apellido_Clie],
-			[DNI_Clie],[Mail_Clie],[Tel_Clie],[Fecha_Nac_Clie],[Monto_Total_cred_Clie])
-	select distinct null, null, Cli_Dest_Nombre, Cli_Dest_Apellido, Cli_Dest_Dni, Cli_Dest_Mail, Cli_Dest_Telefono, convert(datetime,Cli_Dest_Fecha_Nac,121),0				
+			[DNI_Clie],[Mail_Clie],[Tel_Clie],[Fecha_Nac_Clie],[Monto_Total_cred_Clie], [Habilitado])
+	select distinct null, null, Cli_Dest_Nombre, Cli_Dest_Apellido, Cli_Dest_Dni, Cli_Dest_Mail, Cli_Dest_Telefono, convert(datetime,Cli_Dest_Fecha_Nac,121),0,1				
 	from gd_esquema.Maestra m
 	where not exists (select 1 from Default_name.cliente where m.Cli_Dest_Dni = DNI_clie)
 	and Cli_Dest_Dni is not null
@@ -516,8 +518,8 @@ as
 begin
 	--inserto los proveedores
 	INSERT INTO [DEFAULT_NAME].[Proveedor]
-	    ([Id_Cuenta],[Mail_Proveedor],[Telefono_Prov],[Cuit_Prov],[Rubro_Prov],[Nom_Contacto_Prov],[Razon_Social_Prov])
-		select distinct null, '', Provee_Telefono, Provee_CUIT, Provee_Rubro, '', Provee_RS 
+	    ([Id_Cuenta],[Mail_Proveedor],[Telefono_Prov],[Cuit_Prov],[Rubro_Prov],[Nom_Contacto_Prov],[Razon_Social_Prov],[Habilitado])
+		select distinct null, '', Provee_Telefono, Provee_CUIT, Provee_Rubro, '', Provee_RS,1 
 		from gd_esquema.Maestra where provee_cuit is not null
 
 	--inserto domicilios
@@ -771,3 +773,147 @@ BEGIN
 
 END
 go
+
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'SP_insertar_cliente_con_domicilio') 
+BEGIN
+	DROP PROCEDURE DEFAULT_NAME.SP_insertar_cliente_con_domicilio
+END
+GO
+
+create PROCEDURE [DEFAULT_NAME].[SP_insertar_cliente_con_domicilio]
+@FechaSistema datetime, @Id_Cuenta int, @Nombre_Clie varchar(100), @Apellido_Clie varchar(100), @DNI_Clie int,
+@Mail_Clie varchar(100),@Tel_Clie varchar(13), @Fecha_Nac_Clie datetime,@Monto_Total_cred_Clie decimal(12,2),
+@Numero_Dir varchar(8),@Piso_Dir varchar(3),@Depto_Dir varchar(3),@Localidad_Dir varchar(100),
+@Ciudad_Dir varchar(100),@Calle_Dir varchar(100),@Codigo_Postal_Dir varchar(10)
+as 
+begin
+
+	declare @idCliente int;
+	---inserto el cliente
+	INSERT INTO [DEFAULT_NAME].[Cliente]
+           ([Id_Cuenta]
+           ,[Id_Cliente_Dest]
+           ,[Nombre_Clie]
+           ,[Apellido_Clie]
+           ,[DNI_Clie]
+           ,[Mail_Clie]
+           ,[Tel_Clie]
+           ,[Fecha_Nac_Clie]
+           ,[Monto_Total_cred_Clie]
+		   ,[Habilitado])
+     VALUES
+           (@Id_Cuenta
+           ,null
+           ,@Nombre_Clie
+           ,@Apellido_Clie
+           ,@DNI_Clie
+           ,@Mail_Clie
+           ,@Tel_Clie
+           ,convert(datetime,@Fecha_Nac_Clie,121)
+           ,@Monto_Total_cred_Clie
+		   ,1)
+
+	set @idCliente = @@identity;
+
+	--inserto 200 de regalo
+	INSERT INTO [DEFAULT_NAME].[Credito]
+           ([Id_Cliente]
+           ,[Carga_Fecha]
+           ,[Carga_Cred]
+           ,[Tarjeta]
+           ,[Detalle]
+           ,[Tipo_Pago])
+     VALUES
+           (@idCliente
+           ,convert(datetime,@FechaSistema,121)
+           ,200
+           ,''
+           ,'crédito de regalo'
+           ,'Crédito')
+	
+
+	INSERT INTO [DEFAULT_NAME].[Direccion]
+           ([Id_Objeto]
+           ,[Tipo_Objeto]
+           ,[Numero_Dir]
+           ,[Piso_Dir]
+           ,[Depto_Dir]
+           ,[Localidad_Dir]
+           ,[Ciudad_Dir]
+           ,[Calle_Dir]
+           ,[Codigo_Postal_Dir])
+     VALUES
+           (@idCliente
+           ,1
+           ,@Numero_Dir
+           ,@Piso_Dir
+           ,@Depto_Dir
+           ,@Localidad_Dir
+           ,@Ciudad_Dir
+           ,@Calle_Dir
+           ,@Codigo_Postal_Dir)
+end
+
+GO
+
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'SP_insertar_proveedor_con_domicilio') 
+BEGIN
+	DROP PROCEDURE DEFAULT_NAME.SP_insertar_proveedor_con_domicilio
+END
+GO
+
+create PROCEDURE [DEFAULT_NAME].[SP_insertar_proveedor_con_domicilio]
+@Id_Cuenta int, 
+@Mail_Proveedor varchar(100), @Telefono_Prov varchar(13), @Cuit_Prov varchar(13),
+@Rubro_Prov varchar(100),@Nom_Contacto_Prov varchar(100), @Razon_Social_Prov varchar(100),
+@Numero_Dir varchar(8),@Piso_Dir varchar(3),@Depto_Dir varchar(3),@Localidad_Dir varchar(100),
+@Ciudad_Dir varchar(100),@Calle_Dir varchar(100),@Codigo_Postal_Dir varchar(10)
+as 
+begin
+
+	declare @idProveedor int;
+	---inserto el cliente
+	INSERT INTO [DEFAULT_NAME].[Proveedor]
+           ([Id_Cuenta]
+           ,[Mail_Proveedor]
+           ,[Telefono_Prov]
+           ,[Cuit_Prov]
+           ,[Rubro_Prov]
+           ,[Nom_Contacto_Prov]
+           ,[Razon_Social_Prov]
+		   ,[Habilitado])
+     VALUES
+           (@Id_Cuenta
+           ,@Mail_Proveedor
+           ,@Telefono_Prov
+           ,@Cuit_Prov
+           ,@Rubro_Prov
+           ,@Nom_Contacto_Prov
+           ,@Razon_Social_Prov
+		   ,1)
+
+	set @idProveedor = @@identity;
+
+	INSERT INTO [DEFAULT_NAME].[Direccion]
+           ([Id_Objeto]
+           ,[Tipo_Objeto]
+           ,[Numero_Dir]
+           ,[Piso_Dir]
+           ,[Depto_Dir]
+           ,[Localidad_Dir]
+           ,[Ciudad_Dir]
+           ,[Calle_Dir]
+           ,[Codigo_Postal_Dir])
+     VALUES
+           (@idProveedor
+           ,2
+           ,@Numero_Dir
+           ,@Piso_Dir
+           ,@Depto_Dir
+           ,@Localidad_Dir
+           ,@Ciudad_Dir
+           ,@Calle_Dir
+           ,@Codigo_Postal_Dir)
+end
+
+GO

@@ -1,4 +1,5 @@
 ﻿using FrbaOfertasPresentacion.LogIn;
+using FrbaOfertasPresentacion.LogIn.AltaCuenta;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -67,7 +68,8 @@ namespace FrbaOfertas.LogIn
         {
             var frm = new FrmAltaDeCuentas();
             //frm.MdiParent = this;
-            if (frm.ShowDialog() == DialogResult.Cancel)
+            frm.Presentador.Posicionar(ModoAltaCuenta.DesdeLogIn);
+            if (frm.ShowDialog() == DialogResult.OK)
             {
                 
             }
