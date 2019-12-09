@@ -42,7 +42,7 @@ namespace FrbaOfertasPresentacion.LogIn.AltaCuenta
 
         DateTime FechaCliente { get; set; }
 
-        int Numero_Dir { get; set; }
+        string Numero_Dir { get; set; }
 
         string Piso_Dir { get; set; }
 

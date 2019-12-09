@@ -444,7 +444,7 @@ begin
 	--inserto la direccion de los clientes
 	INSERT INTO [DEFAULT_NAME].[Direccion]
 	([Id_Objeto],[Tipo_Objeto],[Numero_Dir],[Piso_Dir],[Depto_Dir],[Localidad_Dir],[Ciudad_Dir],[Calle_Dir],[Codigo_Postal_Dir])
-		select distinct id_cliente, 1, '-','-','-', '-', Cli_Ciudad, Cli_Direccion, '-'
+		select distinct id_cliente, 1, '','','', '', Cli_Ciudad, Cli_Direccion, ''
 		from gd_esquema.Maestra m
 		inner join Default_name.cliente c on m.Cli_DNI =c.DNI_CLie
 	
@@ -525,7 +525,7 @@ begin
 	--inserto domicilios
 	INSERT INTO [DEFAULT_NAME].[Direccion]
 	([Id_Objeto],[Tipo_Objeto],[Numero_Dir],[Piso_Dir],[Depto_Dir],[Localidad_Dir],[Ciudad_Dir],[Calle_Dir],[Codigo_Postal_Dir])
-	select distinct p.id_proveedor, 2, '-','-','-','-',Provee_Ciudad,Provee_Dom,'-'
+	select distinct p.id_proveedor, 2, '','','','',Provee_Ciudad,Provee_Dom,''
 		from gd_esquema.Maestra m
 		inner join DEFAULT_NAME.Proveedor p on m.Provee_CUIT = p.Cuit_Prov
 		where provee_cuit is not null

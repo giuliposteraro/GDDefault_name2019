@@ -33,6 +33,10 @@ namespace FrbaOfertas.AbmCliente
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCliente));
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtMail = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtDNI = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,16 +47,20 @@ namespace FrbaOfertas.AbmCliente
             this.panComandos = new System.Windows.Forms.Panel();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvClientes = new FrbaOfertas.Componentes.GrillaGestionDatos();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mniAgregar = new System.Windows.Forms.ToolStripMenuItem();
-            this.mniModificar = new System.Windows.Forms.ToolStripMenuItem();
-            this.mniEliminar = new System.Windows.Forms.ToolStripMenuItem();
             this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDNI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFechaNac = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colHabilitado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mniModificar = new System.Windows.Forms.ToolStripMenuItem();
+            this.mniEliminar = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panComandos.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -68,13 +76,17 @@ namespace FrbaOfertas.AbmCliente
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(0, 92);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(601, 19);
+            this.label1.Size = new System.Drawing.Size(681, 19);
             this.label1.TabIndex = 11;
             this.label1.Text = "Listado";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtMail);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.txtDNI);
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.txtApellido);
             this.panel1.Controls.Add(this.txtNombre);
             this.panel1.Controls.Add(this.label3);
@@ -84,8 +96,40 @@ namespace FrbaOfertas.AbmCliente
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 19);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(601, 73);
+            this.panel1.Size = new System.Drawing.Size(681, 73);
             this.panel1.TabIndex = 12;
+            // 
+            // txtMail
+            // 
+            this.txtMail.Location = new System.Drawing.Point(308, 37);
+            this.txtMail.Name = "txtMail";
+            this.txtMail.Size = new System.Drawing.Size(174, 20);
+            this.txtMail.TabIndex = 11;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(264, 40);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 13);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "E-mail:";
+            // 
+            // txtDNI
+            // 
+            this.txtDNI.Location = new System.Drawing.Point(74, 37);
+            this.txtDNI.Name = "txtDNI";
+            this.txtDNI.Size = new System.Drawing.Size(174, 20);
+            this.txtDNI.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(39, 40);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(29, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "DNI:";
             // 
             // txtApellido
             // 
@@ -124,19 +168,20 @@ namespace FrbaOfertas.AbmCliente
             this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLimpiar.BackColor = System.Drawing.SystemColors.Control;
             this.btnLimpiar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnLimpiar.Location = new System.Drawing.Point(514, 45);
+            this.btnLimpiar.Location = new System.Drawing.Point(594, 45);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 25);
             this.btnLimpiar.TabIndex = 3;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnBuscar
             // 
             this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBuscar.BackColor = System.Drawing.SystemColors.Control;
             this.btnBuscar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnBuscar.Location = new System.Drawing.Point(514, 14);
+            this.btnBuscar.Location = new System.Drawing.Point(594, 14);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 25);
             this.btnBuscar.TabIndex = 2;
@@ -152,7 +197,7 @@ namespace FrbaOfertas.AbmCliente
             this.Label4.ForeColor = System.Drawing.Color.White;
             this.Label4.Location = new System.Drawing.Point(0, 0);
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(601, 19);
+            this.Label4.Size = new System.Drawing.Size(681, 19);
             this.Label4.TabIndex = 9;
             this.Label4.Text = "Filtros";
             this.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -162,32 +207,30 @@ namespace FrbaOfertas.AbmCliente
             this.panComandos.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panComandos.Controls.Add(this.btnEliminar);
             this.panComandos.Controls.Add(this.btnModificar);
-            this.panComandos.Controls.Add(this.btnAgregar);
             this.panComandos.Controls.Add(this.btnCancelar);
             this.panComandos.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panComandos.Location = new System.Drawing.Point(0, 280);
+            this.panComandos.Location = new System.Drawing.Point(0, 367);
             this.panComandos.Name = "panComandos";
-            this.panComandos.Size = new System.Drawing.Size(601, 32);
+            this.panComandos.Size = new System.Drawing.Size(681, 32);
             this.panComandos.TabIndex = 10;
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEliminar.BackColor = System.Drawing.SystemColors.Control;
             this.btnEliminar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnEliminar.Location = new System.Drawing.Point(88, 3);
+            this.btnEliminar.Location = new System.Drawing.Point(87, 3);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 25);
             this.btnEliminar.TabIndex = 4;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnModificar
             // 
-            this.btnModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnModificar.BackColor = System.Drawing.SystemColors.Control;
             this.btnModificar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnModificar.Location = new System.Drawing.Point(7, 3);
+            this.btnModificar.Location = new System.Drawing.Point(6, 3);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 25);
             this.btnModificar.TabIndex = 3;
@@ -195,25 +238,12 @@ namespace FrbaOfertas.AbmCliente
             this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
-            // btnAgregar
-            // 
-            this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAgregar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAgregar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnAgregar.Location = new System.Drawing.Point(-74, 3);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 25);
-            this.btnAgregar.TabIndex = 2;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = false;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancelar.BackColor = System.Drawing.SystemColors.Control;
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(521, 4);
+            this.btnCancelar.Location = new System.Drawing.Point(601, 4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 25);
             this.btnCancelar.TabIndex = 1;
@@ -227,7 +257,7 @@ namespace FrbaOfertas.AbmCliente
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 111);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(601, 169);
+            this.panel2.Size = new System.Drawing.Size(681, 256);
             this.panel2.TabIndex = 13;
             // 
             // dgvClientes
@@ -242,7 +272,13 @@ namespace FrbaOfertas.AbmCliente
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colNombre,
-            this.colApellido});
+            this.colApellido,
+            this.colDNI,
+            this.colMail,
+            this.colTelefono,
+            this.colFechaNac,
+            this.colMonto,
+            this.colHabilitado});
             this.dgvClientes.ColumnsOcultas = ((System.Collections.Generic.List<string>)(resources.GetObject("dgvClientes.ColumnsOcultas")));
             this.dgvClientes.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvClientes.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -261,43 +297,15 @@ namespace FrbaOfertas.AbmCliente
             this.dgvClientes.ResaltarCeldasEditables = false;
             this.dgvClientes.RowHeadersVisible = false;
             this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClientes.Size = new System.Drawing.Size(601, 169);
+            this.dgvClientes.Size = new System.Drawing.Size(681, 256);
             this.dgvClientes.StatusTripAMostrarAlerta = null;
             this.dgvClientes.TabIndex = 0;
-            this.dgvClientes.TieneCheckMasivo = true;
-            this.dgvClientes.TieneChecks = true;
+            this.dgvClientes.TieneCheckMasivo = false;
             this.dgvClientes.TieneCopiarDatos = true;
             this.dgvClientes.TieneExportarDatos = false;
             this.dgvClientes.CambioChequeadosMultiplesItems += new System.EventHandler(this.dgvClientes_CambioChequeadosMultiplesItems);
             this.dgvClientes.CambioChequeadosUnItem += new System.EventHandler<System.Windows.Forms.DataGridViewCellEventArgs>(this.dgvClientes_CambioChequeadosUnItem);
             this.dgvClientes.SelectionChanged += new System.EventHandler(this.dgvClientes_SelectionChanged);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mniAgregar,
-            this.mniModificar,
-            this.mniEliminar});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(126, 70);
-            // 
-            // mniAgregar
-            // 
-            this.mniAgregar.Name = "mniAgregar";
-            this.mniAgregar.Size = new System.Drawing.Size(125, 22);
-            this.mniAgregar.Text = "Agregar";
-            // 
-            // mniModificar
-            // 
-            this.mniModificar.Name = "mniModificar";
-            this.mniModificar.Size = new System.Drawing.Size(125, 22);
-            this.mniModificar.Text = "Modificar";
-            // 
-            // mniEliminar
-            // 
-            this.mniEliminar.Name = "mniEliminar";
-            this.mniEliminar.Size = new System.Drawing.Size(125, 22);
-            this.mniEliminar.Text = "Eliminar";
             // 
             // colNombre
             // 
@@ -311,18 +319,76 @@ namespace FrbaOfertas.AbmCliente
             this.colApellido.HeaderText = "Apellido";
             this.colApellido.Name = "colApellido";
             // 
+            // colDNI
+            // 
+            this.colDNI.DataPropertyName = "DNI_Clie";
+            this.colDNI.HeaderText = "DNI";
+            this.colDNI.Name = "colDNI";
+            // 
+            // colMail
+            // 
+            this.colMail.DataPropertyName = "Mail_Clie";
+            this.colMail.HeaderText = "Mail";
+            this.colMail.Name = "colMail";
+            // 
+            // colTelefono
+            // 
+            this.colTelefono.DataPropertyName = "Tel_Clie";
+            this.colTelefono.HeaderText = "Teléfono";
+            this.colTelefono.Name = "colTelefono";
+            // 
+            // colFechaNac
+            // 
+            this.colFechaNac.DataPropertyName = "Fecha_Nac_Clie";
+            this.colFechaNac.HeaderText = "Fecha Nacimiento";
+            this.colFechaNac.Name = "colFechaNac";
+            // 
+            // colMonto
+            // 
+            this.colMonto.DataPropertyName = "Monto_Total_cred_Clie";
+            this.colMonto.HeaderText = "Monto Credito";
+            this.colMonto.Name = "colMonto";
+            // 
+            // colHabilitado
+            // 
+            this.colHabilitado.DataPropertyName = "HabilitadoTexto";
+            this.colHabilitado.HeaderText = "Habilitado";
+            this.colHabilitado.Name = "colHabilitado";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mniModificar,
+            this.mniEliminar});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(126, 48);
+            // 
+            // mniModificar
+            // 
+            this.mniModificar.Name = "mniModificar";
+            this.mniModificar.Size = new System.Drawing.Size(125, 22);
+            this.mniModificar.Text = "Modificar";
+            this.mniModificar.Click += new System.EventHandler(this.mniModificar_Click);
+            // 
+            // mniEliminar
+            // 
+            this.mniEliminar.Name = "mniEliminar";
+            this.mniEliminar.Size = new System.Drawing.Size(125, 22);
+            this.mniEliminar.Text = "Eliminar";
+            this.mniEliminar.Click += new System.EventHandler(this.mniEliminar_Click);
+            // 
             // FrmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(601, 312);
+            this.ClientSize = new System.Drawing.Size(681, 399);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Label4);
             this.Controls.Add(this.panComandos);
             this.Name = "FrmCliente";
-            this.Text = "FrmCliente2";
+            this.Text = "Listado de clientes";
             this.Load += new System.EventHandler(this.FrmCliente_Load);
             this.Shown += new System.EventHandler(this.FrmCliente_Shown);
             this.panel1.ResumeLayout(false);
@@ -349,15 +415,23 @@ namespace FrbaOfertas.AbmCliente
         private System.Windows.Forms.Panel panComandos;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnModificar;
-        private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Panel panel2;
         private Componentes.GrillaGestionDatos dgvClientes;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem mniAgregar;
         private System.Windows.Forms.ToolStripMenuItem mniModificar;
         private System.Windows.Forms.ToolStripMenuItem mniEliminar;
+        private TextBox txtMail;
+        private Label label6;
+        private TextBox txtDNI;
+        private Label label5;
         private DataGridViewTextBoxColumn colNombre;
         private DataGridViewTextBoxColumn colApellido;
+        private DataGridViewTextBoxColumn colDNI;
+        private DataGridViewTextBoxColumn colMail;
+        private DataGridViewTextBoxColumn colTelefono;
+        private DataGridViewTextBoxColumn colFechaNac;
+        private DataGridViewTextBoxColumn colMonto;
+        private DataGridViewTextBoxColumn colHabilitado;
     }
 }

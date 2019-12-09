@@ -16,5 +16,9 @@ namespace FrbaOfertasPresentacion.AbmCliente
 
         List<Cliente> Clientes { get; set; }
 
+
+        int DNI { get; set; }
+
+        string email { get; set; }
     }
 }

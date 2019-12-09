@@ -42,7 +42,7 @@ namespace Negocio.Repositorios
         /// <param name="Apellido">busca concidencias aproximadas</param>
         /// <param name="idUsuario">filtro exacto</param>
         /// <returns></returns>
-        public List<Cliente> BuscarConFiltros(string Nombre = null, string Apellido = null, int idUsuario = 0)
+        public List<Cliente> BuscarConFiltros(string Nombre = null, string Apellido = null, int DNI = 0, string email ="", int idUsuario = 0)
         {
             try
             {
@@ -51,6 +51,8 @@ namespace Negocio.Repositorios
                 Dictionary<string, object[]> parametros = new Dictionary<string, object[]>();
                 if (Nombre != string.Empty) parametros.Add("Nombre_Clie", new object[2] { Nombre, TipoDeComparador.eID.Texto });
                 if (Apellido != string.Empty) parametros.Add("Apellido_Clie", new object[2] { Apellido, TipoDeComparador.eID.Texto });
+                if (DNI != 0) parametros.Add("DNI_Clie", new object[2] { DNI, TipoDeComparador.eID.TextoExacto });
+                if (email != string.Empty) parametros.Add("Mail_Clie", new object[2] { email, TipoDeComparador.eID.Texto });
                 if (idUsuario != 0) parametros.Add("Id_Cuenta", new object[2] { idUsuario, TipoDeComparador.eID.TextoExacto });
 
                 lista = this.maper.mapearAEntidad(BuscarTodosPorFiltro(parametros));
@@ -96,6 +98,12 @@ namespace Negocio.Repositorios
             {
                 throw new Exception(string.Format("se produjo un error al buscar el cliente: {0}", ex.Message));
             }
+        }
+
+
+        public void Modificar(Cliente clienteAGuardar)
+        {
+            throw new NotImplementedException();
         }
     }
 }

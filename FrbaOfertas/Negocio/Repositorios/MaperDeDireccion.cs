@@ -27,7 +27,7 @@ namespace Negocio.Repositorios
                 c.Id_Direccion = dr.IsNull("Id_Direccion") ? 0 : dr.Field<int>("Id_Direccion");
                 c.Id_Objeto = dr.IsNull("Id_Objeto") ? 0 : dr.Field<int>("Id_Objeto");
                 c.Tipo_Objeto = dr.IsNull("Tipo_Objeto") ? 0 : dr.Field<int>("Tipo_Objeto");
-                c.Numero_Dir = dr.IsNull("Numero_Dir") ? 0 : dr.Field<int>("Numero_Dir");
+                c.Numero_Dir = dr.IsNull("Numero_Dir") ? String.Empty : dr.Field<string>("Numero_Dir");
                 c.Piso_Dir = dr.IsNull("Piso_Dir") ? String.Empty : dr.Field<string>("Piso_Dir");
                 c.Depto_Dir = dr.IsNull("Depto_Dir") ? String.Empty : dr.Field<String>("Depto_Dir");
                 c.Localidad_Dir = dr.IsNull("Localidad_Dir") ? String.Empty : dr.Field<String>("Localidad_Dir");

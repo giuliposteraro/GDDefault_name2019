@@ -13,7 +13,7 @@ namespace Negocio.Entidades
          public int Id_Direccion {get; set;}
           public int Id_Objeto {get; set;}
           public int Tipo_Objeto {get; set;}
-          public int Numero_Dir {get; set;}
+          public string Numero_Dir {get; set;}
           public string Piso_Dir {get; set;}
           public string Depto_Dir {get; set;}
           public string Localidad_Dir {get; set;}

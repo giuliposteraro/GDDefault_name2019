@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbmCliente\IVistaABMCliente.cs" />
     <Compile Include="AbmCliente\IVistaClientes.cs" />
+    <Compile Include="AbmCliente\PresentadorABMCliente.cs" />
     <Compile Include="AbmCliente\PresentadorClientes.cs" />
     <Compile Include="ABMRol\IVistaABMRol.cs" />
     <Compile Include="ABMRol\IVistaListaDeRoles.cs" />

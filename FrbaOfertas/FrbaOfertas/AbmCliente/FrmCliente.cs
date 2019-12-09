@@ -1,4 +1,5 @@
 ﻿using FrbaOfertasPresentacion.AbmCliente;
+using FrbaOfertasPresentacion.bases;
 using Negocio.Entidades;
 using System;
 using System.Collections.Generic;
@@ -68,13 +69,7 @@ namespace FrbaOfertas.AbmCliente
 
         private void mniAgregar_Click(object sender, EventArgs e)
         {
-            if (DesignMode) return;
-
-            var frm = new FrmClienteEditar();
-            if (frm.ShowDialog(this.MdiParent) == System.Windows.Forms.DialogResult.OK)
-            {
-                _presenter.ActualizarVista();
-            }
+            
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -100,7 +95,14 @@ namespace FrbaOfertas.AbmCliente
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            this._presenter.ActualizarVista();
+            if (DesignMode) return;
+
+            var frm = new FrmClienteEditar();
+            frm.Presentador.Posicionar(ModosDeEjecucion.Modificacion, this.ClienteSeleccionado);
+            if (frm.ShowDialog(this.MdiParent) == System.Windows.Forms.DialogResult.OK)
+            {
+                _presenter.ActualizarVista();
+            }
         }
 
         private void dgvClientes_CargarMenuContextual(object sender, EventArgs e)
@@ -116,6 +118,71 @@ namespace FrbaOfertas.AbmCliente
         public bool MensajePregunta(string mensage)
         {
             return (MessageBox.Show(mensage, "Confirmar", System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes);
+        }
+
+
+        public int DNI
+        {
+            get
+            {
+                if (txtDNI.Text == "") return 0;
+                return int.Parse(txtDNI.Text); 
+            }
+            set
+            {
+                txtDNI.Text = value.ToString();
+            }
+        }
+
+        public string email
+        {
+            get
+            {
+                return txtMail.Text;
+            }
+            set
+            {
+                txtMail.Text= value;
+            }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            _presenter.Limpiar();
+        }
+
+        private void mniModificar_Click(object sender, EventArgs e)
+        {
+            btnModificar.PerformClick();
+        }
+
+        private void mniEliminar_Click(object sender, EventArgs e)
+        {
+            btnEliminar.PerformClick();
+        }
+
+        public Cliente ClienteSeleccionado 
+        { 
+            get
+            {
+                return (Cliente)dgvClientes.ItemSeleccionado;
+            } 
+            set
+            {
+                dgvClientes.ItemSeleccionado = value;
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
+
+            var frm = new FrmClienteEditar();
+            frm.Presentador.Posicionar(ModosDeEjecucion.Baja, this.ClienteSeleccionado);
+            if (frm.ShowDialog(this.MdiParent) == System.Windows.Forms.DialogResult.OK)
+            {
+                _presenter.ActualizarVista();
+            }
         }
     }
 }

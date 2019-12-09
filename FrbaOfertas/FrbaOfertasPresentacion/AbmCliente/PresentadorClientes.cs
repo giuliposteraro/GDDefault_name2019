@@ -19,11 +19,11 @@ namespace FrbaOfertasPresentacion.AbmCliente
         }
         public void IniciarVista()
         {
-            _vista.Nombre = Global.SessionUsuario.Usuario_Cuenta;
+            //_vista.Nombre = Global.SessionUsuario.Usuario_Cuenta;
         }
         public void ActualizarVista()
         {
-            var cli = _vista.Clientes;
+            this.Buscar();
         }
 
         public void Buscar()
@@ -33,7 +33,7 @@ namespace FrbaOfertasPresentacion.AbmCliente
                 var maper = new MaperDeClientes();
                 var repo = new RepositorioDeClientes(maper);
 
-                _vista.Clientes = repo.BuscarConFiltros(_vista.Nombre, _vista.Apellido);
+                _vista.Clientes = repo.BuscarConFiltros(_vista.Nombre, _vista.Apellido, _vista.DNI, _vista.email);
             }            
             catch (Exception ex)
             {
@@ -41,6 +41,14 @@ namespace FrbaOfertasPresentacion.AbmCliente
             }
         }
 
+
+        public void Limpiar()
+        {
+            _vista.Nombre = "";
+            _vista.Apellido = "";
+            _vista.DNI = 0;
+            _vista.email = "";
+        }
     }
 
         

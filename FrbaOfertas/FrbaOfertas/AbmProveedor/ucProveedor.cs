@@ -26,12 +26,11 @@ namespace FrbaOfertas.AbmProveedor
             }
         }
 
-        public int Numero_Dir
+        public string Numero_Dir
         {
             get
             {
-                if (txtNumero.Text == "") return 0; 
-                return int.Parse(txtNumero.Text); }
+                return txtNumero.Text; }
             set { txtNumero.Text = value.ToString(); }
         }
 

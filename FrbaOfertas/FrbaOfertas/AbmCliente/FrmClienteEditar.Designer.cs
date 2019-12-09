@@ -31,19 +31,32 @@
             this.ucCliente1 = new FrbaOfertas.AbmCliente.ucCliente();
             this.Label4 = new System.Windows.Forms.Label();
             this.panComandos = new System.Windows.Forms.Panel();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.panComandos.SuspendLayout();
             this.SuspendLayout();
             // 
             // ucCliente1
             // 
+            this.ucCliente1.ApellidoCliente = "";
+            this.ucCliente1.Calle_Dir = "";
+            this.ucCliente1.Ciudad_Dir = "";
+            this.ucCliente1.Codigo_Postal_Dir = "";
+            this.ucCliente1.Depto_Dir = "";
+            this.ucCliente1.DNICliente = 0;
+            this.ucCliente1.FechaCliente = new System.DateTime(2019, 12, 9, 3, 6, 25, 979);
+            this.ucCliente1.Localidad_Dir = "";
             this.ucCliente1.Location = new System.Drawing.Point(2, 34);
+            this.ucCliente1.MailCliente = "";
             this.ucCliente1.MaximumSize = new System.Drawing.Size(501, 225);
             this.ucCliente1.MinimumSize = new System.Drawing.Size(501, 225);
             this.ucCliente1.Name = "ucCliente1";
+            this.ucCliente1.NombreCliente = "";
+            this.ucCliente1.Numero_Dir = "";
+            this.ucCliente1.Piso_Dir = "";
             this.ucCliente1.Size = new System.Drawing.Size(501, 225);
             this.ucCliente1.TabIndex = 0;
+            this.ucCliente1.TelCliente = "";
             // 
             // Label4
             // 
@@ -55,7 +68,7 @@
             this.Label4.Name = "Label4";
             this.Label4.Size = new System.Drawing.Size(454, 19);
             this.Label4.TabIndex = 10;
-            this.Label4.Text = "Filtros";
+            this.Label4.Text = "Datos Clientes";
             this.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panComandos
@@ -69,6 +82,18 @@
             this.panComandos.Size = new System.Drawing.Size(454, 32);
             this.panComandos.TabIndex = 11;
             // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGuardar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnGuardar.Location = new System.Drawing.Point(293, 4);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(75, 25);
+            this.btnGuardar.TabIndex = 2;
+            this.btnGuardar.Text = "Aceptar";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -81,17 +106,6 @@
             this.btnCancelar.Text = "Cerrar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGuardar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnGuardar.Location = new System.Drawing.Point(293, 4);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(75, 25);
-            this.btnGuardar.TabIndex = 2;
-            this.btnGuardar.Text = "Aceptar";
-            this.btnGuardar.UseVisualStyleBackColor = false;
             // 
             // FrmClienteEditar
             // 

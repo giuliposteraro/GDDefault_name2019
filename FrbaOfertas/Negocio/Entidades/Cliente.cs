@@ -24,12 +24,24 @@ namespace Negocio.Entidades
         public decimal Monto_Total_cred_Clie { get; set; }
         public bool Habilitado { get; set; }
 
+
+        public string HabilitadoTexto
+        {
+            get 
+            {
+                if (Habilitado)
+                    return "SI";
+                else
+                    return "NO";
+            }
+        }
+
         private int Id_Direccion { get; set; }
         private Domicilio _Domicilio;
         public Domicilio Direccion
         {
             get {
-                if (_Domicilio == null && Id_Direccion != 0)
+                if (_Domicilio == null && Id_Cliente != 0)
                 {
                     var maper = new MaperDeDireccion();
                     var repo = new RepositorioDeDireccion(maper);

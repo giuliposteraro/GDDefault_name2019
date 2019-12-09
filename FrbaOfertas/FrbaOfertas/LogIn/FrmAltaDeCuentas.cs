@@ -287,14 +287,14 @@ namespace FrbaOfertas.LogIn
             }
         }
 
-        public int Numero_Dir
+        public string Numero_Dir
         {
             get
             {
                 if (this.ucCliente1.Visible)
-                    return ucCliente1.Numero_Dir;
+                    return ucCliente1.Numero_Dir.ToString();
                 else
-                    return ucProveedor1.Numero_Dir;
+                    return ucProveedor1.Numero_Dir.ToString();
             }
             set
             {

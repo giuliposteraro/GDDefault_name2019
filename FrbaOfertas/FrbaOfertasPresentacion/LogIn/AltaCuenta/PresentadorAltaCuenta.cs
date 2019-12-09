@@ -219,6 +219,9 @@ namespace FrbaOfertasPresentacion.LogIn.AltaCuenta
 
         public void CambioTipo()
         {
+            clienteAGuardar = null;
+            proveedorAGuardar = null;
+
             if (this._modoPosicionar != ModoAltaCuenta.DesdeListado)
                 _vista.MostrarPantallaAdicionalClienteOProveedor(_vista.TipoSeleccionado == "Clientes");
 
