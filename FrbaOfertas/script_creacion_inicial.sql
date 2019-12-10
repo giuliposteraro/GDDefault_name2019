@@ -863,7 +863,7 @@ END
 GO
 
 create PROCEDURE [DEFAULT_NAME].[SP_insertar_proveedor_con_domicilio]
-@Id_Cuenta int, 
+@Id_Cuenta int = null, 
 @Mail_Proveedor varchar(100), @Telefono_Prov varchar(13), @Cuit_Prov varchar(13),
 @Rubro_Prov varchar(100),@Nom_Contacto_Prov varchar(100), @Razon_Social_Prov varchar(100),
 @Numero_Dir varchar(8),@Piso_Dir varchar(3),@Depto_Dir varchar(3),@Localidad_Dir varchar(100),

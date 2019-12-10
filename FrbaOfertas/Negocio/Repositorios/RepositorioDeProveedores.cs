@@ -196,9 +196,74 @@ order by sum(Precio_Oferta) / sum (Precio_Lista) desc
             throw new NotImplementedException();
         }
 
-        public void Agregar(Proveedor ProveedorAGuardar)
+        public void Agregar(Proveedor proveedor)
         {
-            throw new NotImplementedException();
+            this.InicializarConexion();
+            SqlTransaction transaction;
+            transaction = conn.BeginTransaction();
+
+            try
+            {
+                              
+
+                //si hay un proveedor lo creo aqui
+                    List<SqlParameter> parametros = new List<SqlParameter>();
+
+                    SqlParameter parametro = new SqlParameter("@Id_Cuenta", null);
+                    parametros.Add(parametro);
+                    parametro = new SqlParameter("@Mail_Proveedor", proveedor.Mail_Proveedor);
+                    parametros.Add(parametro);
+                    parametro = new SqlParameter("@Telefono_Prov", proveedor.Telefono_Prov);
+                    parametros.Add(parametro);
+                    parametro = new SqlParameter("@Cuit_Prov", proveedor.Cuit_Prov);
+                    parametros.Add(parametro);
+                    parametro = new SqlParameter("@Rubro_Prov", proveedor.Rubro_Prov);
+                    parametros.Add(parametro);
+                    parametro = new SqlParameter("@Nom_Contacto_Prov", proveedor.Nom_Contacto_Prov);
+                    parametros.Add(parametro);
+                    parametro = new SqlParameter("@Razon_Social_Prov", proveedor.Razon_Social_Prov);
+                    parametros.Add(parametro);
+                    parametro = new SqlParameter("@Numero_Dir", proveedor.Direccion.Numero_Dir);
+                    parametros.Add(parametro);
+                    parametro = new SqlParameter("@Piso_Dir", proveedor.Direccion.Piso_Dir);
+                    parametros.Add(parametro);
+                    parametro = new SqlParameter("@Depto_Dir", proveedor.Direccion.Depto_Dir);
+                    parametros.Add(parametro);
+                    parametro = new SqlParameter("@Localidad_Dir", proveedor.Direccion.Localidad_Dir);
+                    parametros.Add(parametro);
+                    parametro = new SqlParameter("@Ciudad_Dir", proveedor.Direccion.Ciudad_Dir);
+                    parametros.Add(parametro);
+                    parametro = new SqlParameter("@Calle_Dir", proveedor.Direccion.Calle_Dir);
+                    parametros.Add(parametro);
+                    parametro = new SqlParameter("@Codigo_Postal_Dir", proveedor.Direccion.Codigo_Postal_Dir);
+                    parametros.Add(parametro);
+
+                    string sp = "DEFAULT_NAME.SP_insertar_proveedor_con_domicilio";
+
+                    SqlCommand cmd = new SqlCommand(sp, conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Transaction = transaction;
+
+                    foreach (SqlParameter par in parametros)
+                    {
+                        cmd.Parameters.Add(par);
+                    }
+
+                    int resultado = cmd.ExecuteNonQuery();
+                    if (resultado == 0)
+                        throw new Exception("error al ejecutar el sp de inserción de proveedores");
+
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                throw new Exception(string.Format("se produjo un error al insertar un proveedor: {0}", ex.Message));
+            }
+            finally
+            {
+                this.CerrarConexion();
+            }
         }
     }
 }
