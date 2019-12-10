@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Negocio.Entidades;
 
 namespace FrbaOfertasPresentacion.AbmProveedor
 {
@@ -77,6 +78,44 @@ namespace FrbaOfertasPresentacion.AbmProveedor
             {
                 _vista.MostrarMensaje(string.Format("Se produjo una excepción al realizar la activación sobre el proveedor: {0}", ex.Message));
                 return false;
+            }
+        }
+
+        public void AsociarUsuario(Negocio.Entidades.Usuario user, Negocio.Entidades.Proveedor proveedor)
+        {
+            try
+            {
+                //valido que el cliente no tenga una cuenta
+                if (proveedor.Id_Cuenta != 0)
+                {
+                    _vista.MostrarMensaje("el proveedor ya tiene una cuenta asociada");
+                    return;
+                }
+
+                //mando a guardar            
+                var maper = new MaperDeProveedores();
+                var repo = new RepositorioDeProveedores(maper);
+                //verifico que la cuenta no est asociada a otro proveedor
+                Proveedor proveedorPosible = repo.ObtenerDelUsuario(user.Id_Usuario);
+                if (proveedorPosible != null)
+                {
+                    _vista.MostrarMensaje("La cuenta seleccionada ya esta asociada a otro proveedor");
+                    return;
+                }
+
+
+                proveedor.Id_Cuenta = user.Id_Usuario;
+                List<string> propertiesAActualizar = new List<string> { ("Id_Cuenta") };
+                repo.ActualizarEntidad(proveedor, propertiesAActualizar, "Id_Proveedor");
+
+
+                _vista.MostrarMensaje("cuenta asignada con éxito.");
+
+            }
+            catch (Exception ex)
+            {
+                _vista.MostrarMensaje(string.Format("Se produjo una excepción al asignar la cuenta: {0}", ex.Message));
+
             }
         }
     }

@@ -86,7 +86,7 @@ namespace Negocio.Repositorios
                 List<Proveedor> lista = new List<Proveedor>();
 
                 Dictionary<string, object[]> parametros = new Dictionary<string, object[]>();
-                if (razonSocial != string.Empty) parametros.Add("Razon_Social_Prov", new object[2] { razonSocial, TipoDeComparador.eID.TextoExacto });
+                if (razonSocial != string.Empty && razonSocial != null) parametros.Add("Razon_Social_Prov", new object[2] { razonSocial, TipoDeComparador.eID.TextoExacto });
                 if (idUsuario != 0) parametros.Add("Id_Cuenta", new object[2] { idUsuario, TipoDeComparador.eID.TextoExacto });
 
                 lista = this.maper.mapearAEntidad(BuscarTodosPorFiltro(parametros));

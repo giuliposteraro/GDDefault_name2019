@@ -55,10 +55,11 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.Label4 = new System.Windows.Forms.Label();
             this.panComandos = new System.Windows.Forms.Panel();
+            this.btnActivar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnActivar = new System.Windows.Forms.Button();
+            this.btnAsociarCta = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProveedores)).BeginInit();
             this.panel1.SuspendLayout();
@@ -331,6 +332,7 @@
             // panComandos
             // 
             this.panComandos.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panComandos.Controls.Add(this.btnAsociarCta);
             this.panComandos.Controls.Add(this.btnActivar);
             this.panComandos.Controls.Add(this.btnEliminar);
             this.panComandos.Controls.Add(this.btnModificar);
@@ -341,6 +343,16 @@
             this.panComandos.Name = "panComandos";
             this.panComandos.Size = new System.Drawing.Size(804, 32);
             this.panComandos.TabIndex = 20;
+            // 
+            // btnActivar
+            // 
+            this.btnActivar.Location = new System.Drawing.Point(249, 5);
+            this.btnActivar.Name = "btnActivar";
+            this.btnActivar.Size = new System.Drawing.Size(75, 23);
+            this.btnActivar.TabIndex = 5;
+            this.btnActivar.Text = "Activar";
+            this.btnActivar.UseVisualStyleBackColor = true;
+            this.btnActivar.Click += new System.EventHandler(this.btnActivar_Click);
             // 
             // btnEliminar
             // 
@@ -379,15 +391,15 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // btnActivar
+            // btnAsociarCta
             // 
-            this.btnActivar.Location = new System.Drawing.Point(249, 5);
-            this.btnActivar.Name = "btnActivar";
-            this.btnActivar.Size = new System.Drawing.Size(75, 23);
-            this.btnActivar.TabIndex = 5;
-            this.btnActivar.Text = "Activar";
-            this.btnActivar.UseVisualStyleBackColor = true;
-            this.btnActivar.Click += new System.EventHandler(this.btnActivar_Click);
+            this.btnAsociarCta.Location = new System.Drawing.Point(330, 5);
+            this.btnAsociarCta.Name = "btnAsociarCta";
+            this.btnAsociarCta.Size = new System.Drawing.Size(98, 23);
+            this.btnAsociarCta.TabIndex = 8;
+            this.btnAsociarCta.Text = "Asociar a Usuario";
+            this.btnAsociarCta.UseVisualStyleBackColor = true;
+            this.btnAsociarCta.Click += new System.EventHandler(this.btnAsociarCta_Click);
             // 
             // ListaProveedores
             // 
@@ -444,5 +456,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMail;
         private System.Windows.Forms.DataGridViewTextBoxColumn colHabilitado;
         private System.Windows.Forms.Button btnActivar;
+        private System.Windows.Forms.Button btnAsociarCta;
     }
 }

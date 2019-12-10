@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaOfertasPresentacion.bases;
 using Negocio.Entidades;
+using FrbaOfertas.LogIn;
 
 namespace FrbaOfertas.AbmProveedor
 {
@@ -227,6 +228,23 @@ namespace FrbaOfertas.AbmProveedor
         {
             if (_presenter.Activar())
                 _presenter.Buscar();
+        }
+
+        private void btnAsociarCta_Click(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
+
+            if (ProveedorSeleccionado == null)
+            {
+                this.MostrarMensaje("debe seleccionar un proveedor para asociarle una cuenta");
+                return;
+            }
+
+            var frm = new frmSeleccionarCuenta();
+            if (frm.ShowDialog(this.MdiParent) == System.Windows.Forms.DialogResult.OK)
+            {
+                _presenter.AsociarUsuario(frm.UsuarioSeleccionado, this.ProveedorSeleccionado);
+            }
         }
 
 
