@@ -1,4 +1,5 @@
-﻿using Negocio.Repositorios;
+﻿using Negocio.Entidades;
+using Negocio.Repositorios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -101,12 +102,32 @@ namespace FrbaOfertasPresentacion.AbmProveedor
 
         private void ObtenerProveedorDesdeVista()
         {
-            throw new NotImplementedException();
+            if (ProveedorAGuardar == null)
+            {
+                ProveedorAGuardar = new Proveedor();
+                Domicilio dir = new Domicilio();
+                ProveedorAGuardar.Direccion = dir;
+            }
+            ProveedorAGuardar.Razon_Social_Prov = _vista.RazonSocial;
+            ProveedorAGuardar.Mail_Proveedor = _vista.Mail_Proveedor;
+            ProveedorAGuardar.Telefono_Prov = _vista.Telefono_Prov;
+            ProveedorAGuardar.Cuit_Prov = _vista.Cuit_Prov;
+            ProveedorAGuardar.Rubro_Prov = _vista.Rubro_Prov;
+            ProveedorAGuardar.Nom_Contacto_Prov = _vista.Nom_Contacto_Prov;
+
+            ProveedorAGuardar.Direccion.Tipo_Objeto = 2;
+            ProveedorAGuardar.Direccion.Numero_Dir = _vista.Numero_Dir;
+            ProveedorAGuardar.Direccion.Piso_Dir = _vista.Piso_Dir;
+            ProveedorAGuardar.Direccion.Depto_Dir = _vista.Depto_Dir;
+            ProveedorAGuardar.Direccion.Localidad_Dir = _vista.Localidad_Dir;
+            ProveedorAGuardar.Direccion.Ciudad_Dir = _vista.Ciudad_Dir;
+            ProveedorAGuardar.Direccion.Calle_Dir = _vista.Calle_Dir;
+            ProveedorAGuardar.Direccion.Codigo_Postal_Dir = _vista.Codigo_Postal_Dir;
         }
 
         public bool ValidarGuardar()
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

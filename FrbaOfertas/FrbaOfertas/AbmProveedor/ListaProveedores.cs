@@ -145,7 +145,7 @@ namespace FrbaOfertas.AbmProveedor
             }
             set
             {
-                textCuit.Text = Text;
+                textCuit.Text = value;
             }
         }
 
