@@ -115,6 +115,12 @@ namespace FrbaOfertasPresentacion.CompraOfertas
 
          public bool ValidarGuardar()
          {
+             if (_vista.proveedorSeleccionado != null && !_vista.proveedorSeleccionado.Habilitado)
+             {
+                  _vista.MostrarMensaje("El proveedor no esta habilitado para publicar ofertas.");
+                  return false;
+             }
+
              if (modo == ModosDeEjecucion.Baja)
                  return ValidarEliminar("eliminarse");
 

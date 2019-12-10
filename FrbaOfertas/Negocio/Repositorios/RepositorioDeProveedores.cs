@@ -86,7 +86,7 @@ namespace Negocio.Repositorios
                 List<Proveedor> lista = new List<Proveedor>();
 
                 Dictionary<string, object[]> parametros = new Dictionary<string, object[]>();
-                if (razonSocial != string.Empty) parametros.Add("Razon_Social_Prov", new object[2] { razonSocial, TipoDeComparador.eID.Texto });
+                if (razonSocial != string.Empty) parametros.Add("Razon_Social_Prov", new object[2] { razonSocial, TipoDeComparador.eID.TextoExacto });
                 if (idUsuario != 0) parametros.Add("Id_Cuenta", new object[2] { idUsuario, TipoDeComparador.eID.TextoExacto });
 
                 lista = this.maper.mapearAEntidad(BuscarTodosPorFiltro(parametros));
@@ -112,13 +112,14 @@ namespace Negocio.Repositorios
                 if (Nombre != string.Empty) parametros.Add("Nom_Contacto_Prov", new object[2] { Nombre, TipoDeComparador.eID.Texto });
                 if (Razon_Social != string.Empty) parametros.Add("Razon_Social_Prov", new object[2] { Razon_Social, TipoDeComparador.eID.Texto });
                 if (cuit != string.Empty) parametros.Add("Cuit_Prov", new object[2] { cuit, TipoDeComparador.eID.TextoExacto });
-
+                if (mail != string.Empty) parametros.Add("Mail_Proveedor", new object[2] { mail, TipoDeComparador.eID.Texto });
+                
                 lista = this.maper.mapearAEntidad(BuscarTodosPorFiltro(parametros));
                 return lista;
             }
             catch (Exception ex)
             {
-                throw new Exception(string.Format("se produjo un error al buscar los clientes: {0}", ex.Message));
+                throw new Exception(string.Format("se produjo un error al buscar los proveedores: {0}", ex.Message));
             }
         }
 

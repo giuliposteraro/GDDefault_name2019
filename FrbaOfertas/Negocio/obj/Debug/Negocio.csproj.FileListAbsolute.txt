@@ -7,3 +7,4 @@ C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\Negocio\bin\Debug\Negocio.dll
 C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\Negocio\bin\Debug\Negocio.pdb
 C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\Negocio\obj\Debug\Negocio.dll
 C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\Negocio\obj\Debug\Negocio.pdb
+C:\Proyecto\SITIOS\gestionDeDatos\FrbaOfertas\Negocio\obj\Debug\Negocio.csprojResolveAssemblyReference.cache

@@ -56,6 +56,12 @@ namespace FrbaOfertasPresentacion.AbmProveedor
                 _vista.Calle_Dir = ProveedorAGuardar.Direccion.Calle_Dir;
                 _vista.Codigo_Postal_Dir = ProveedorAGuardar.Direccion.Codigo_Postal_Dir;
             }
+            else
+            {
+                ProveedorAGuardar = new Proveedor();
+                Domicilio dir = new Domicilio();
+                ProveedorAGuardar.Direccion = dir;
+            }
         }
 
         public bases.ModosDeEjecucion modo { get; set; }
@@ -102,12 +108,7 @@ namespace FrbaOfertasPresentacion.AbmProveedor
 
         private void ObtenerProveedorDesdeVista()
         {
-            if (ProveedorAGuardar == null)
-            {
-                ProveedorAGuardar = new Proveedor();
-                Domicilio dir = new Domicilio();
-                ProveedorAGuardar.Direccion = dir;
-            }
+            
             ProveedorAGuardar.Razon_Social_Prov = _vista.RazonSocial;
             ProveedorAGuardar.Mail_Proveedor = _vista.Mail_Proveedor;
             ProveedorAGuardar.Telefono_Prov = _vista.Telefono_Prov;
@@ -127,7 +128,55 @@ namespace FrbaOfertasPresentacion.AbmProveedor
 
         public bool ValidarGuardar()
         {
-            return true;
+            try
+            {
+                StringBuilder sb = new StringBuilder();
+
+                //valido unicidad de razon social y cuit
+                var maper = new MaperDeProveedores();
+                var repo = new RepositorioDeProveedores(maper);
+
+
+                
+
+
+                if (_vista.RazonSocial == "")
+                    sb.AppendLine("Debe ingresar la Razon social del proveedor");
+                else
+                {
+                    List<Proveedor> prov = repo.BuscarConFiltros(_vista.RazonSocial, 0);
+                    if (prov.Where(x => x.Id_Proveedor != ProveedorAGuardar.Id_Proveedor).Any())
+                        sb.AppendLine("Ya existe un proveedor con la misma razon social");
+                }
+
+
+                if (_vista.Rubro_Prov == "")
+                    sb.AppendLine("Debe ingresar un Rubro para el proveedor");
+                if (_vista.Cuit_Prov == "")
+                    sb.AppendLine("Debe ingresar un CUIT para el proveedor");
+                else
+                {
+                    List<Proveedor> prov = repo.BuscarConFiltros(null, null, _vista.Cuit_Prov,null);
+                    if (prov.Where(x => x.Id_Proveedor != ProveedorAGuardar.Id_Proveedor).Any())
+                        sb.AppendLine("Ya existe un proveedor con el mismo CUIT");
+                }
+                if (_vista.Telefono_Prov == "")
+                    sb.AppendLine("Debe ingresar un teléfono para el proveedor");
+                if (_vista.Calle_Dir == "")
+                    sb.AppendLine("Debe ingresar una calle para el proveedor");
+                if (sb.Length > 0)
+                {
+                    _vista.MostrarMensaje(sb.ToString());
+                    return false;
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _vista.MostrarMensaje(string.Format("Se produjo una excepción al validar el nuevo usuario: {0}", ex.Message));
+                return false;
+            }
         }
     }
 }
