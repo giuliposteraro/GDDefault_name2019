@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Negocio.Entidades;
 
 namespace FrbaOfertasPresentacion.AbmCliente
 {
@@ -81,6 +82,44 @@ namespace FrbaOfertasPresentacion.AbmCliente
             {
                 _vista.MostrarMensaje(string.Format("Se produjo una excepción al realizar la activación sobre el cliente: {0}", ex.Message));
                 return false;
+            }
+        }
+
+        public void AsociarUsuario(Usuario user, Cliente clie)
+        {
+            try
+            {
+                //valido que el cliente no tenga una cuenta
+                if (clie.Id_Cuenta != 0)
+                {
+                    _vista.MostrarMensaje("el cliente ya tiene una cuenta asociada");
+                    return;
+                }
+                
+                //mando a guardar            
+                var maper = new MaperDeClientes();
+                var repo = new RepositorioDeClientes(maper);
+                //verifico que la cuenta no est asociada a otro cliente
+                Cliente clientePosible = repo.ObtenerDelUsuario(user.Id_Usuario);
+                if (clientePosible != null)
+                {
+                    _vista.MostrarMensaje("La cuenta seleccionada ya esta asociada a otro cliente");
+                    return;
+                }
+
+                
+                clie.Id_Cuenta = user.Id_Usuario;
+                List<string> propertiesAActualizar = new List<string> { ("Id_Cuenta") };
+                repo.ActualizarEntidad(clie, propertiesAActualizar, "Id_Cliente");
+               
+
+                _vista.MostrarMensaje("cuenta asignada con éxito.");
+
+            }
+            catch (Exception ex)
+            {
+                _vista.MostrarMensaje(string.Format("Se produjo una excepción al asignar la cuenta: {0}", ex.Message));
+
             }
         }
     }

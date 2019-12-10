@@ -63,6 +63,7 @@ namespace FrbaOfertas.AbmCliente
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mniModificar = new System.Windows.Forms.ToolStripMenuItem();
             this.mniEliminar = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAsociarCta = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panComandos.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -207,6 +208,7 @@ namespace FrbaOfertas.AbmCliente
             // panComandos
             // 
             this.panComandos.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panComandos.Controls.Add(this.btnAsociarCta);
             this.panComandos.Controls.Add(this.button1);
             this.panComandos.Controls.Add(this.btnActivar);
             this.panComandos.Controls.Add(this.btnEliminar);
@@ -401,6 +403,16 @@ namespace FrbaOfertas.AbmCliente
             this.mniEliminar.Text = "Eliminar";
             this.mniEliminar.Click += new System.EventHandler(this.mniEliminar_Click);
             // 
+            // btnAsociarCta
+            // 
+            this.btnAsociarCta.Location = new System.Drawing.Point(340, 7);
+            this.btnAsociarCta.Name = "btnAsociarCta";
+            this.btnAsociarCta.Size = new System.Drawing.Size(98, 23);
+            this.btnAsociarCta.TabIndex = 7;
+            this.btnAsociarCta.Text = "Asociar a Usuario";
+            this.btnAsociarCta.UseVisualStyleBackColor = true;
+            this.btnAsociarCta.Click += new System.EventHandler(this.btnAsociarCta_Click);
+            // 
             // FrmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -459,5 +471,6 @@ namespace FrbaOfertas.AbmCliente
         private DataGridViewTextBoxColumn colHabilitado;
         private Button btnActivar;
         private Button button1;
+        private Button btnAsociarCta;
     }
 }

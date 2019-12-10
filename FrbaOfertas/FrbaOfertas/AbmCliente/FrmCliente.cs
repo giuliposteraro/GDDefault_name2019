@@ -1,4 +1,5 @@
-﻿using FrbaOfertasPresentacion.AbmCliente;
+﻿using FrbaOfertas.LogIn;
+using FrbaOfertasPresentacion.AbmCliente;
 using FrbaOfertasPresentacion.bases;
 using Negocio.Entidades;
 using System;
@@ -200,6 +201,23 @@ namespace FrbaOfertas.AbmCliente
             if (frm.ShowDialog(this.MdiParent) == System.Windows.Forms.DialogResult.OK)
             {
                 _presenter.ActualizarVista();
+            }
+        }
+
+        private void btnAsociarCta_Click(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
+
+            if (ClienteSeleccionado == null)
+            {
+                this.MostrarMensaje("debe seleccionar un cliente para asociarle una cuenta");
+                return;
+            }
+
+            var frm = new frmSeleccionarCuenta();
+            if (frm.ShowDialog(this.MdiParent) == System.Windows.Forms.DialogResult.OK)
+            {
+                _presenter.AsociarUsuario(frm.UsuarioSeleccionado, this.ClienteSeleccionado);
             }
         }
     }

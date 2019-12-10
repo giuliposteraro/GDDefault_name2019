@@ -182,6 +182,12 @@
     <Compile Include="LogIn\FrmListadoDeCuentas.Designer.cs">
       <DependentUpon>FrmListadoDeCuentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="LogIn\frmSeleccionarCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogIn\frmSeleccionarCuenta.Designer.cs">
+      <DependentUpon>frmSeleccionarCuenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -267,6 +273,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LogIn\FrmListadoDeCuentas.resx">
       <DependentUpon>FrmListadoDeCuentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogIn\frmSeleccionarCuenta.resx">
+      <DependentUpon>frmSeleccionarCuenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
