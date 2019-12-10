@@ -61,6 +61,7 @@ namespace FrbaOfertas.AbmCliente
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mniModificar = new System.Windows.Forms.ToolStripMenuItem();
             this.mniEliminar = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnActivar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panComandos.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -205,6 +206,7 @@ namespace FrbaOfertas.AbmCliente
             // panComandos
             // 
             this.panComandos.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panComandos.Controls.Add(this.btnActivar);
             this.panComandos.Controls.Add(this.btnEliminar);
             this.panComandos.Controls.Add(this.btnModificar);
             this.panComandos.Controls.Add(this.btnCancelar);
@@ -377,6 +379,16 @@ namespace FrbaOfertas.AbmCliente
             this.mniEliminar.Text = "Eliminar";
             this.mniEliminar.Click += new System.EventHandler(this.mniEliminar_Click);
             // 
+            // btnActivar
+            // 
+            this.btnActivar.Location = new System.Drawing.Point(168, 4);
+            this.btnActivar.Name = "btnActivar";
+            this.btnActivar.Size = new System.Drawing.Size(75, 23);
+            this.btnActivar.TabIndex = 5;
+            this.btnActivar.Text = "Activar";
+            this.btnActivar.UseVisualStyleBackColor = true;
+            this.btnActivar.Click += new System.EventHandler(this.btnActivar_Click);
+            // 
             // FrmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -433,5 +445,6 @@ namespace FrbaOfertas.AbmCliente
         private DataGridViewTextBoxColumn colFechaNac;
         private DataGridViewTextBoxColumn colMonto;
         private DataGridViewTextBoxColumn colHabilitado;
+        private Button btnActivar;
     }
 }

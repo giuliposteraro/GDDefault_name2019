@@ -121,16 +121,14 @@ namespace FrbaOfertasPresentacion.AbmCliente
             clienteAGuardar.Mail_Clie = _vista.MailCliente;
             clienteAGuardar.Tel_Clie = _vista.TelCliente;
             clienteAGuardar.Fecha_Nac_Clie = _vista.FechaCliente;
-            Domicilio dir = new Domicilio();
-            dir.Tipo_Objeto = 1;
-            dir.Numero_Dir = _vista.Numero_Dir;
-            dir.Piso_Dir = _vista.Piso_Dir;
-            dir.Depto_Dir = _vista.Depto_Dir;
-            dir.Localidad_Dir = _vista.Localidad_Dir;
-            dir.Ciudad_Dir = _vista.Ciudad_Dir;
-            dir.Calle_Dir = _vista.Calle_Dir;
-            dir.Codigo_Postal_Dir = _vista.Codigo_Postal_Dir;
-            clienteAGuardar.Direccion = dir;
+            clienteAGuardar.Direccion.Tipo_Objeto = 1;
+            clienteAGuardar.Direccion.Numero_Dir = _vista.Numero_Dir;
+            clienteAGuardar.Direccion.Piso_Dir = _vista.Piso_Dir;
+            clienteAGuardar.Direccion.Depto_Dir = _vista.Depto_Dir;
+            clienteAGuardar.Direccion.Localidad_Dir = _vista.Localidad_Dir;
+            clienteAGuardar.Direccion.Ciudad_Dir = _vista.Ciudad_Dir;
+            clienteAGuardar.Direccion.Calle_Dir = _vista.Calle_Dir;
+            clienteAGuardar.Direccion.Codigo_Postal_Dir = _vista.Codigo_Postal_Dir;
         }
     }
 }

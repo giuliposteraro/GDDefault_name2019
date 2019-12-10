@@ -20,5 +20,7 @@ namespace FrbaOfertasPresentacion.AbmCliente
         int DNI { get; set; }
 
         string email { get; set; }
+
+        Cliente ClienteSeleccionado { get; set; }
     }
 }

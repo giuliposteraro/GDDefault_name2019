@@ -49,6 +49,40 @@ namespace FrbaOfertasPresentacion.AbmCliente
             _vista.DNI = 0;
             _vista.email = "";
         }
+
+        public bool Activar()
+        {
+            try
+            {
+                //mando a guardar            
+                var maper = new MaperDeClientes();
+                var repo = new RepositorioDeClientes(maper);
+
+                if (_vista.ClienteSeleccionado == null)
+                {
+                    _vista.MostrarMensaje("debe seleccionar un cliente a activar.");
+                    return false;
+                }
+
+                if (_vista.ClienteSeleccionado.Habilitado)
+                {
+                    _vista.MostrarMensaje("El cliente ya se encuentra habilitado.");
+                    return false;
+                }
+
+                    _vista.ClienteSeleccionado.Habilitado = true;
+                    List<string> propertiesAActualizar = new List<string> { ("Habilitado") };
+                    repo.ActualizarEntidad(_vista.ClienteSeleccionado, propertiesAActualizar, "Id_Cliente");
+               
+                _vista.MostrarMensaje("activación realizada con éxito.");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _vista.MostrarMensaje(string.Format("Se produjo una excepción al realizar la activación sobre el cliente: {0}", ex.Message));
+                return false;
+            }
+        }
     }
 
         

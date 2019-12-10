@@ -184,5 +184,11 @@ namespace FrbaOfertas.AbmCliente
                 _presenter.ActualizarVista();
             }
         }
+
+        private void btnActivar_Click(object sender, EventArgs e)
+        {
+            if (_presenter.Activar())
+                _presenter.ActualizarVista();
+        }
     }
 }

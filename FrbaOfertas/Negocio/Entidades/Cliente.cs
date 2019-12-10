@@ -46,6 +46,7 @@ namespace Negocio.Entidades
                     var maper = new MaperDeDireccion();
                     var repo = new RepositorioDeDireccion(maper);
                     _Domicilio = repo.ObtenerPorIDYTTipo(Id_Cliente, 1);
+                    Id_Direccion = _Domicilio.Id_Direccion;
                 }
                 return _Domicilio;
             }

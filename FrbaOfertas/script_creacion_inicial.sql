@@ -917,3 +917,50 @@ begin
 end
 
 GO
+
+
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'DEFAULT_NAME.SP_modificar_cliente_con_domicilio') 
+BEGIN
+	DROP PROCEDURE DEFAULT_NAME.SP_modificar_cliente_con_domicilio
+END
+GO
+
+create PROCEDURE [DEFAULT_NAME].[SP_modificar_cliente_con_domicilio]
+@Id_Cliente int, @Id_Cuenta int, @Nombre_Clie varchar(100), @Apellido_Clie varchar(100), @DNI_Clie int,
+@Mail_Clie varchar(100),@Tel_Clie varchar(13), @Fecha_Nac_Clie datetime,@Monto_Total_cred_Clie decimal(12,2), @Habilitado bit,
+@Id_Direccion int, @Numero_Dir varchar(8),@Piso_Dir varchar(3),@Depto_Dir varchar(3),@Localidad_Dir varchar(100),
+@Ciudad_Dir varchar(100),@Calle_Dir varchar(100),@Codigo_Postal_Dir varchar(10)
+as 
+begin
+
+	declare @idCliente int;
+	---inserto el cliente
+	UPDATE [DEFAULT_NAME].[Cliente]
+   SET [Id_Cuenta] = @Id_Cuenta
+      ,[Id_Cliente_Dest] = null
+      ,[Nombre_Clie] = @Nombre_Clie
+      ,[Apellido_Clie] = @Apellido_Clie
+      ,[DNI_Clie] = @DNI_Clie
+      ,[Mail_Clie] = @Mail_Clie
+      ,[Tel_Clie] = @Tel_Clie
+      ,[Fecha_Nac_Clie] = convert(datetime,@Fecha_Nac_Clie,121)
+      ,[Monto_Total_cred_Clie] = @Monto_Total_cred_Clie
+      ,[Habilitado] = @Habilitado
+ WHERE Id_Cliente = @Id_Cliente
+         
+         
+
+	UPDATE [DEFAULT_NAME].[Direccion]
+    SET [Id_Objeto] = @Id_Cliente
+      ,[Tipo_Objeto] = 1
+      ,[Numero_Dir] = @Numero_Dir
+      ,[Piso_Dir] = @Piso_Dir
+      ,[Depto_Dir] = @Depto_Dir
+      ,[Localidad_Dir] = @Localidad_Dir
+      ,[Ciudad_Dir] = @Ciudad_Dir
+      ,[Calle_Dir] = @Calle_Dir
+      ,[Codigo_Postal_Dir] = @Codigo_Postal_Dir
+	WHERE id_Direccion = @Id_Direccion
+end
+
+GO
