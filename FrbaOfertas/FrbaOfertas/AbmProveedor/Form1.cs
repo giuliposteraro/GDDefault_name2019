@@ -1,4 +1,5 @@
 ﻿using System;
+using FrbaOfertasPresentacion.AbmProveedor;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,13 @@ using System.Windows.Forms;
 
 namespace FrbaOfertas.AbmProveedor
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form, IVistaProveedor
     {
+        private readonly PresentadorProveedor _presenter;
         public Form1()
         {
             InitializeComponent();
+            _presenter = new PresentadorProveedor(this);
         }
 
         private void txtNombre_TextChanged(object sender, EventArgs e)
@@ -44,27 +47,33 @@ namespace FrbaOfertas.AbmProveedor
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            _presenter.IniciarVista();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-
+            _presenter.Buscar();
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            if (DesignMode) return;
 
+            var frm = new detalleProveedor();
+            if (frm.ShowDialog(this.MdiParent) == System.Windows.Forms.DialogResult.OK)
+            {
+                _presenter.ActualizarVista();
+            }
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-
+            this._presenter.ActualizarVista();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
