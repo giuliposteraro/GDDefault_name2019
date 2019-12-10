@@ -45,6 +45,8 @@ namespace FrbaOfertas.AbmCliente
             this.btnBuscar = new System.Windows.Forms.Button();
             this.Label4 = new System.Windows.Forms.Label();
             this.panComandos = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnActivar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -61,7 +63,6 @@ namespace FrbaOfertas.AbmCliente
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mniModificar = new System.Windows.Forms.ToolStripMenuItem();
             this.mniEliminar = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnActivar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panComandos.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -206,6 +207,7 @@ namespace FrbaOfertas.AbmCliente
             // panComandos
             // 
             this.panComandos.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panComandos.Controls.Add(this.button1);
             this.panComandos.Controls.Add(this.btnActivar);
             this.panComandos.Controls.Add(this.btnEliminar);
             this.panComandos.Controls.Add(this.btnModificar);
@@ -216,11 +218,31 @@ namespace FrbaOfertas.AbmCliente
             this.panComandos.Size = new System.Drawing.Size(681, 32);
             this.panComandos.TabIndex = 10;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(15, 6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Agregar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnActivar
+            // 
+            this.btnActivar.Location = new System.Drawing.Point(258, 6);
+            this.btnActivar.Name = "btnActivar";
+            this.btnActivar.Size = new System.Drawing.Size(75, 23);
+            this.btnActivar.TabIndex = 5;
+            this.btnActivar.Text = "Activar";
+            this.btnActivar.UseVisualStyleBackColor = true;
+            this.btnActivar.Click += new System.EventHandler(this.btnActivar_Click);
+            // 
             // btnEliminar
             // 
             this.btnEliminar.BackColor = System.Drawing.SystemColors.Control;
             this.btnEliminar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnEliminar.Location = new System.Drawing.Point(87, 3);
+            this.btnEliminar.Location = new System.Drawing.Point(177, 5);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 25);
             this.btnEliminar.TabIndex = 4;
@@ -232,7 +254,7 @@ namespace FrbaOfertas.AbmCliente
             // 
             this.btnModificar.BackColor = System.Drawing.SystemColors.Control;
             this.btnModificar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnModificar.Location = new System.Drawing.Point(6, 3);
+            this.btnModificar.Location = new System.Drawing.Point(96, 5);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 25);
             this.btnModificar.TabIndex = 3;
@@ -379,16 +401,6 @@ namespace FrbaOfertas.AbmCliente
             this.mniEliminar.Text = "Eliminar";
             this.mniEliminar.Click += new System.EventHandler(this.mniEliminar_Click);
             // 
-            // btnActivar
-            // 
-            this.btnActivar.Location = new System.Drawing.Point(168, 4);
-            this.btnActivar.Name = "btnActivar";
-            this.btnActivar.Size = new System.Drawing.Size(75, 23);
-            this.btnActivar.TabIndex = 5;
-            this.btnActivar.Text = "Activar";
-            this.btnActivar.UseVisualStyleBackColor = true;
-            this.btnActivar.Click += new System.EventHandler(this.btnActivar_Click);
-            // 
             // FrmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -446,5 +458,6 @@ namespace FrbaOfertas.AbmCliente
         private DataGridViewTextBoxColumn colMonto;
         private DataGridViewTextBoxColumn colHabilitado;
         private Button btnActivar;
+        private Button button1;
     }
 }

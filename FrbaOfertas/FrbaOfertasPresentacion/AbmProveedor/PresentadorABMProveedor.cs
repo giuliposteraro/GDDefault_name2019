@@ -136,8 +136,8 @@ namespace FrbaOfertasPresentacion.AbmProveedor
                 var maper = new MaperDeProveedores();
                 var repo = new RepositorioDeProveedores(maper);
 
-
-                
+                if (modo == bases.ModosDeEjecucion.Modificacion && !ProveedorAGuardar.Habilitado)
+                    sb.AppendLine("No se puede editar un proveedor inhabilitado");
 
 
                 if (_vista.RazonSocial == "")

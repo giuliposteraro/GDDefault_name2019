@@ -109,7 +109,7 @@ CREATE TABLE [DEFAULT_NAME].[Cliente]
 	Id_Cliente_Dest int NULL,
 	Nombre_Clie varchar(100),
 	Apellido_Clie varchar(100),
-	DNI_Clie int,
+	DNI_Clie int unique,
 	Mail_Clie varchar(100),
 	Tel_Clie varchar(13),
 	Fecha_Nac_Clie dateTime,
@@ -781,7 +781,7 @@ END
 GO
 
 create PROCEDURE [DEFAULT_NAME].[SP_insertar_cliente_con_domicilio]
-@FechaSistema datetime, @Id_Cuenta int, @Nombre_Clie varchar(100), @Apellido_Clie varchar(100), @DNI_Clie int,
+@FechaSistema datetime, @Id_Cuenta int = null, @Nombre_Clie varchar(100), @Apellido_Clie varchar(100), @DNI_Clie int,
 @Mail_Clie varchar(100),@Tel_Clie varchar(13), @Fecha_Nac_Clie datetime,@Monto_Total_cred_Clie decimal(12,2),
 @Numero_Dir varchar(8),@Piso_Dir varchar(3),@Depto_Dir varchar(3),@Localidad_Dir varchar(100),
 @Ciudad_Dir varchar(100),@Calle_Dir varchar(100),@Codigo_Postal_Dir varchar(10)
@@ -926,7 +926,7 @@ END
 GO
 
 create PROCEDURE [DEFAULT_NAME].[SP_modificar_cliente_con_domicilio]
-@Id_Cliente int, @Id_Cuenta int, @Nombre_Clie varchar(100), @Apellido_Clie varchar(100), @DNI_Clie int,
+@Id_Cliente int, @Id_Cuenta int = null, @Nombre_Clie varchar(100), @Apellido_Clie varchar(100), @DNI_Clie int,
 @Mail_Clie varchar(100),@Tel_Clie varchar(13), @Fecha_Nac_Clie datetime,@Monto_Total_cred_Clie decimal(12,2), @Habilitado bit,
 @Id_Direccion int, @Numero_Dir varchar(8),@Piso_Dir varchar(3),@Depto_Dir varchar(3),@Localidad_Dir varchar(100),
 @Ciudad_Dir varchar(100),@Calle_Dir varchar(100),@Codigo_Postal_Dir varchar(10)

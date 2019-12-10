@@ -204,10 +204,13 @@ order by sum(Precio_Oferta) / sum (Precio_Lista) desc
                 //si hay un proveedor lo creo aqui
                 List<SqlParameter> parametros = new List<SqlParameter>();
 
-                SqlParameter parametro = new SqlParameter("@Id_Cuenta", proveedor.Id_Cuenta);
+                SqlParameter parametro = new SqlParameter("@Id_Proveedor", proveedor.Id_Proveedor);
                 parametros.Add(parametro);
-                parametro = new SqlParameter("@Id_Proveedor", proveedor.Id_Proveedor);
-                parametros.Add(parametro);
+                if (proveedor.Id_Cuenta != 0)
+                {
+                    parametro = new SqlParameter("@Id_Cuenta", proveedor.Id_Cuenta);
+                    parametros.Add(parametro);
+                }
                 parametro = new SqlParameter("@Mail_Proveedor", proveedor.Mail_Proveedor);
                 parametros.Add(parametro);
                 parametro = new SqlParameter("@Telefono_Prov", proveedor.Telefono_Prov);

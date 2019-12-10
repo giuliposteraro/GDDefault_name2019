@@ -28,22 +28,34 @@ namespace FrbaOfertasPresentacion.AbmCliente
                 _vista.BloquearPantalla();
                 _vista.Texto = "Baja de clientes";
             }
-            _vista.Texto = "Modificación de clientes";
+            else if (modo == bases.ModosDeEjecucion.Modificacion)
+                _vista.Texto = "Modificación de clientes";
+            else
+                _vista.Texto = "Alta de clientes";
 
-            _vista.NombreCliente = cliente.Nombre_Clie;
-            _vista.ApellidoCliente = cliente.Apellido_Clie;
-            _vista.DNICliente = cliente.DNI_Clie;
-            _vista.MailCliente = cliente.Mail_Clie;
-            _vista.TelCliente = cliente.Tel_Clie;
-            _vista.FechaCliente = cliente.Fecha_Nac_Clie;
-            _vista.Numero_Dir = cliente.Direccion.Numero_Dir;
-            _vista.Piso_Dir = cliente.Direccion.Piso_Dir;
-            _vista.Depto_Dir = cliente.Direccion.Depto_Dir;
-            _vista.Localidad_Dir = cliente.Direccion.Localidad_Dir;
-            _vista.Ciudad_Dir = cliente.Direccion.Ciudad_Dir;
-            _vista.Calle_Dir = cliente.Direccion.Calle_Dir;
-            _vista.Codigo_Postal_Dir = cliente.Direccion.Codigo_Postal_Dir;
+            if (cliente != null)
+            {
+                _vista.NombreCliente = cliente.Nombre_Clie;
+                _vista.ApellidoCliente = cliente.Apellido_Clie;
+                _vista.DNICliente = cliente.DNI_Clie;
+                _vista.MailCliente = cliente.Mail_Clie;
+                _vista.TelCliente = cliente.Tel_Clie;
+                _vista.FechaCliente = cliente.Fecha_Nac_Clie;
+                _vista.Numero_Dir = cliente.Direccion.Numero_Dir;
+                _vista.Piso_Dir = cliente.Direccion.Piso_Dir;
+                _vista.Depto_Dir = cliente.Direccion.Depto_Dir;
+                _vista.Localidad_Dir = cliente.Direccion.Localidad_Dir;
+                _vista.Ciudad_Dir = cliente.Direccion.Ciudad_Dir;
+                _vista.Calle_Dir = cliente.Direccion.Calle_Dir;
+                _vista.Codigo_Postal_Dir = cliente.Direccion.Codigo_Postal_Dir;
+            }
 
+            if (clienteAGuardar == null)
+            {
+                clienteAGuardar = new Cliente();
+                Domicilio dir = new Domicilio();
+                clienteAGuardar.Direccion = dir;
+            }
         }
 
         private bases.ModosDeEjecucion modo { get; set; }
@@ -52,13 +64,27 @@ namespace FrbaOfertasPresentacion.AbmCliente
         {
             try
             {
+                var maper = new MaperDeClientes();
+                var repo = new RepositorioDeClientes(maper);
+
                 StringBuilder sb = new StringBuilder();
+
+                if (modo == bases.ModosDeEjecucion.Modificacion && !clienteAGuardar.Habilitado)
+                    sb.AppendLine("No se puede editar un cliente inhabilitado");
+
+
                 if (_vista.NombreCliente == "")
                     sb.AppendLine("Debe ingresar un Nombre para el Cliente");
                 if (_vista.ApellidoCliente == "")
                     sb.AppendLine("Debe ingresar un apellido para el Cliente");
                 if (_vista.DNICliente == 0)
                     sb.AppendLine("Debe ingresar un DNI para el Cliente");
+                else
+                {
+                    List<Cliente> clie = repo.BuscarConFiltros(null, null,_vista.DNICliente,null, 0);
+                    if (clie.Where(x => x.Id_Cliente != clienteAGuardar.Id_Cliente).Any())
+                        sb.AppendLine("Ya existe un cliente con el mismo DNI");
+                }
                 if (_vista.FechaCliente == null)
                     sb.AppendLine("Debe ingresar la fecha de nacimiento del Cliente");
                 if (_vista.TelCliente == "")
@@ -97,10 +123,12 @@ namespace FrbaOfertasPresentacion.AbmCliente
                     List<string> propertiesAActualizar = new List<string> { ("Habilitado") };
                     repo.ActualizarEntidad(clienteAGuardar, propertiesAActualizar, "Id_Cliente");
                 }
-                else
+                else if (modo == bases.ModosDeEjecucion.Modificacion)
                 {
                     repo.Modificar(clienteAGuardar);
                 }
+                else
+                    repo.Agregar(clienteAGuardar);
 
                 _vista.MostrarMensaje(string.Format("{0} realizada con éxito.",modo));
                 return true;

@@ -190,5 +190,17 @@ namespace FrbaOfertas.AbmCliente
             if (_presenter.Activar())
                 _presenter.ActualizarVista();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
+
+            var frm = new FrmClienteEditar();
+            frm.Presentador.Posicionar(ModosDeEjecucion.Alta, null);
+            if (frm.ShowDialog(this.MdiParent) == System.Windows.Forms.DialogResult.OK)
+            {
+                _presenter.ActualizarVista();
+            }
+        }
     }
 }
