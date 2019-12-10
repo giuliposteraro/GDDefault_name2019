@@ -964,3 +964,46 @@ begin
 end
 
 GO
+
+
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'SP_modificar_proveedor_con_domicilio') 
+BEGIN
+	DROP PROCEDURE DEFAULT_NAME.SP_modificar_proveedor_con_domicilio
+END
+GO
+
+create PROCEDURE [DEFAULT_NAME].[SP_modificar_proveedor_con_domicilio]
+@Id_Cuenta int = null, @Id_Proveedor int, 
+@Mail_Proveedor varchar(100), @Telefono_Prov varchar(13), @Cuit_Prov varchar(13),
+@Rubro_Prov varchar(100),@Nom_Contacto_Prov varchar(100), @Razon_Social_Prov varchar(100), @Habilitado bit,
+@Numero_Dir varchar(8),@Piso_Dir varchar(3),@Depto_Dir varchar(3),@Localidad_Dir varchar(100),
+@Ciudad_Dir varchar(100),@Calle_Dir varchar(100),@Codigo_Postal_Dir varchar(10),@Id_Direccion int
+as 
+begin
+
+	UPDATE [DEFAULT_NAME].[Proveedor]
+   SET [Id_Cuenta] = @Id_Cuenta
+      ,[Mail_Proveedor] = @Mail_Proveedor
+      ,[Telefono_Prov] = @Telefono_Prov
+      ,[Cuit_Prov] = @Cuit_Prov
+      ,[Rubro_Prov] = @Rubro_Prov
+      ,[Nom_Contacto_Prov] = @Nom_Contacto_Prov
+      ,[Razon_Social_Prov] = @Razon_Social_Prov
+      ,[Habilitado] = @Habilitado
+ WHERE Id_Proveedor = @Id_Proveedor
+
+
+	UPDATE [DEFAULT_NAME].[Direccion]
+    SET [Id_Objeto] = @Id_Proveedor
+      ,[Tipo_Objeto] = 2
+      ,[Numero_Dir] = @Numero_Dir
+      ,[Piso_Dir] = @Piso_Dir
+      ,[Depto_Dir] = @Depto_Dir
+      ,[Localidad_Dir] = @Localidad_Dir
+      ,[Ciudad_Dir] = @Ciudad_Dir
+      ,[Calle_Dir] = @Calle_Dir
+      ,[Codigo_Postal_Dir] = @Codigo_Postal_Dir
+	WHERE id_Direccion = @Id_Direccion
+end
+
+GO
