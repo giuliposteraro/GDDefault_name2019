@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Negocio.Entidades
 {
@@ -25,6 +26,8 @@ namespace Negocio.Entidades
 
         public string Razon_Social_Prov { get; set; }
 
+        public string Habilitado { get; set; }
+
         private int Id_Direccion { get; set; }
         private Domicilio _Domicilio;
         public Domicilio Direccion
@@ -35,6 +38,7 @@ namespace Negocio.Entidades
                     var maper = new MaperDeDireccion();
                     var repo = new RepositorioDeDireccion(maper);
                     _Domicilio = repo.ObtenerPorIDYTTipo(Id_Proveedor, 2);
+                    Id_Direccion = _Domicilio.Id_Direccion;
                 }
                 return _Domicilio;
             }
@@ -75,7 +79,6 @@ namespace Negocio.Entidades
             //sino compara por los ids
             return this.ID == ((Proveedor)obj).ID;
         }
-
 
     }
 }

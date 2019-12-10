@@ -66,6 +66,8 @@
     <Compile Include="CompraOfertas\IVistaCompraOferta.cs" />
     <Compile Include="PublicacionOfertas\PresentadorAltaOferta.cs" />
     <Compile Include="CompraOfertas\PresentadorCompraOferta.cs" />
+    <Compile Include="AbmProveedor\IVistaProveedor.cs" />
+    <Compile Include="AbmProveedor\PresentadorProveedor.cs" />
     <Compile Include="Creditos\IVistaAltaCredito.cs" />
     <Compile Include="Creditos\PresentadorAltaCredito.cs" />
     <Compile Include="Creditos\PresentadorCreditos.cs" />
