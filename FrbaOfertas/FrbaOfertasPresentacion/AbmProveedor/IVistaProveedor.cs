@@ -20,5 +20,7 @@ namespace FrbaOfertasPresentacion.AbmProveedor
 
         List<Proveedor> Proveedores { get; set; }
 
+
+        Proveedor ProveedorSeleccionado { get; set; }
     }
 }

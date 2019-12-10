@@ -189,5 +189,15 @@ order by sum(Precio_Oferta) / sum (Precio_Lista) desc
                 throw new Exception(string.Format("se produjo un error al buscar el reporte: {0}", ex.Message));
             }
         }
+
+        public void Modificar(Proveedor ProveedorAGuardar)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Agregar(Proveedor ProveedorAGuardar)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using FrbaOfertas.AbmCliente;
+using FrbaOfertas.AbmProveedor;
 using FrbaOfertas.AbmRol;
 using FrbaOfertas.ComprarOferta;
 using FrbaOfertas.CragaCredito;
@@ -117,7 +118,11 @@ namespace FrbaOfertas
 
         private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (DesignMode) return;
 
+            var frm = new ListaProveedores();
+            frm.MdiParent = this;
+            frm.Show();
         }
 
         private void facturaciónToolStripMenuItem_Click(object sender, EventArgs e)

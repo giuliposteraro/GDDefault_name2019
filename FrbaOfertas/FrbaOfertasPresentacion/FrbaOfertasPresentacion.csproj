@@ -44,6 +44,8 @@
     <Compile Include="AbmCliente\IVistaClientes.cs" />
     <Compile Include="AbmCliente\PresentadorABMCliente.cs" />
     <Compile Include="AbmCliente\PresentadorClientes.cs" />
+    <Compile Include="AbmProveedor\IVistaABMProveedor.cs" />
+    <Compile Include="AbmProveedor\PresentadorABMProveedor.cs" />
     <Compile Include="ABMRol\IVistaABMRol.cs" />
     <Compile Include="ABMRol\IVistaListaDeRoles.cs" />
     <Compile Include="ABMRol\IVistaRolesCta.cs" />

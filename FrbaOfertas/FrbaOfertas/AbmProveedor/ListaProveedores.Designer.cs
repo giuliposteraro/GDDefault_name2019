@@ -1,6 +1,6 @@
 ﻿namespace FrbaOfertas.AbmProveedor
 {
-    partial class Form1
+    partial class ListaProveedores
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListaProveedores));
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvProveedores = new FrbaOfertas.Componentes.GrillaGestionDatos();
             this.ColumnRazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,6 +39,7 @@
             this.ColumnCp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnMail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colHabilitado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -57,6 +58,7 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnActivar = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProveedores)).BeginInit();
             this.panel1.SuspendLayout();
@@ -90,7 +92,8 @@
             this.ColumnDireccion,
             this.ColumnCp,
             this.ColumnTelefono,
-            this.ColumnMail});
+            this.ColumnMail,
+            this.colHabilitado});
             this.dgvProveedores.ColumnsOcultas = ((System.Collections.Generic.List<string>)(resources.GetObject("dgvProveedores.ColumnsOcultas")));
             this.dgvProveedores.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProveedores.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -114,47 +117,64 @@
             this.dgvProveedores.TieneCheckMasivo = false;
             this.dgvProveedores.TieneCopiarDatos = true;
             this.dgvProveedores.TieneExportarDatos = false;
+            this.dgvProveedores.CambioChequeadosMultiplesItems += new System.EventHandler(this.dgvProveedores_CambioChequeadosMultiplesItems);
+            this.dgvProveedores.CargarMenuContextual += new System.EventHandler(this.dgvProveedores_CargarMenuContextual);
+            this.dgvProveedores.CambioChequeadosUnItem += new System.EventHandler<System.Windows.Forms.DataGridViewCellEventArgs>(this.dgvProveedores_CambioChequeadosUnItem);
             this.dgvProveedores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRoles_CellContentClick);
             // 
             // ColumnRazonSocial
             // 
+            this.ColumnRazonSocial.DataPropertyName = "Razon_Social_Prov";
             this.ColumnRazonSocial.HeaderText = "Razon Social";
             this.ColumnRazonSocial.Name = "ColumnRazonSocial";
             // 
             // ColumnNombreContacto
             // 
+            this.ColumnNombreContacto.DataPropertyName = "Nom_Contacto_Prov";
             this.ColumnNombreContacto.HeaderText = "Nombre Contacto";
             this.ColumnNombreContacto.Name = "ColumnNombreContacto";
             // 
             // ColumnCuit
             // 
+            this.ColumnCuit.DataPropertyName = "Cuit_Prov";
             this.ColumnCuit.HeaderText = "CUIT";
             this.ColumnCuit.Name = "ColumnCuit";
             // 
             // ColumnRubro
             // 
+            this.ColumnRubro.DataPropertyName = "Rubro_Prov";
             this.ColumnRubro.HeaderText = "Rubro";
             this.ColumnRubro.Name = "ColumnRubro";
             // 
             // ColumnDireccion
             // 
+            this.ColumnDireccion.DataPropertyName = "DireccionTexto";
             this.ColumnDireccion.HeaderText = "Direccion";
             this.ColumnDireccion.Name = "ColumnDireccion";
             // 
             // ColumnCp
             // 
+            this.ColumnCp.DataPropertyName = "CodigoPostalTexto";
             this.ColumnCp.HeaderText = "Codigo Postal";
             this.ColumnCp.Name = "ColumnCp";
             // 
             // ColumnTelefono
             // 
+            this.ColumnTelefono.DataPropertyName = "Telefono_Prov";
             this.ColumnTelefono.HeaderText = "Telefono";
             this.ColumnTelefono.Name = "ColumnTelefono";
             // 
             // ColumnMail
             // 
+            this.ColumnMail.DataPropertyName = "Mail_Proveedor";
             this.ColumnMail.HeaderText = "Mail";
             this.ColumnMail.Name = "ColumnMail";
+            // 
+            // colHabilitado
+            // 
+            this.colHabilitado.DataPropertyName = "HabilitadoTexto";
+            this.colHabilitado.HeaderText = "Habilitado";
+            this.colHabilitado.Name = "colHabilitado";
             // 
             // btnAgregar
             // 
@@ -311,6 +331,7 @@
             // panComandos
             // 
             this.panComandos.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panComandos.Controls.Add(this.btnActivar);
             this.panComandos.Controls.Add(this.btnEliminar);
             this.panComandos.Controls.Add(this.btnModificar);
             this.panComandos.Controls.Add(this.btnAgregar);
@@ -358,7 +379,17 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // Form1
+            // btnActivar
+            // 
+            this.btnActivar.Location = new System.Drawing.Point(249, 5);
+            this.btnActivar.Name = "btnActivar";
+            this.btnActivar.Size = new System.Drawing.Size(75, 23);
+            this.btnActivar.TabIndex = 5;
+            this.btnActivar.Text = "Activar";
+            this.btnActivar.UseVisualStyleBackColor = true;
+            this.btnActivar.Click += new System.EventHandler(this.btnActivar_Click);
+            // 
+            // ListaProveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -368,9 +399,10 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Label4);
             this.Controls.Add(this.panComandos);
-            this.Name = "Form1";
+            this.Name = "ListaProveedores";
             this.Text = "FormProveedor";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.ListaProveedores_Load);
+            this.Shown += new System.EventHandler(this.ListaProveedores_Shown);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProveedores)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -410,5 +442,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCp;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTelefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colHabilitado;
+        private System.Windows.Forms.Button btnActivar;
     }
 }

@@ -26,14 +26,14 @@ namespace Negocio.Entidades
 
         public string Razon_Social_Prov { get; set; }
 
-        public string Habilitado { get; set; }
+        public bool Habilitado { get; set; }
 
         private int Id_Direccion { get; set; }
         private Domicilio _Domicilio;
         public Domicilio Direccion
         {
             get {
-                if (_Domicilio == null && Id_Direccion != 0)
+                if (_Domicilio == null && Id_Proveedor != 0)
                 {
                     var maper = new MaperDeDireccion();
                     var repo = new RepositorioDeDireccion(maper);
@@ -53,6 +53,37 @@ namespace Negocio.Entidades
             }
         }
 
+        public string HabilitadoTexto
+        {
+            get
+            {
+                if (Habilitado)
+                    return "SI";
+                else
+                    return "NO";
+            }
+        }
+
+        public string CodigoPostalTexto
+        {
+            get
+            {
+                if (Direccion != null)
+                    return Direccion.Codigo_Postal_Dir;
+                else
+                    return "";
+            }
+        }
+        public string DireccionTexto
+        {
+            get
+            {
+                if (Direccion != null)
+                    return Direccion.Calle_Dir;
+                else
+                    return "";
+            }
+        }
 
         public override string ToString()
         {

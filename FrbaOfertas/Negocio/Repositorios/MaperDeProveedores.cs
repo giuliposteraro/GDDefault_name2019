@@ -32,6 +32,7 @@ namespace Negocio.Repositorios
                 r.Rubro_Prov = dr.IsNull("Rubro_Prov") ? String.Empty : dr.Field<String>("Rubro_Prov");
                 r.Nom_Contacto_Prov = dr.IsNull("Nom_Contacto_Prov") ? String.Empty : dr.Field<String>("Nom_Contacto_Prov");
                 r.Razon_Social_Prov = dr.IsNull("Razon_Social_Prov") ? String.Empty : dr.Field<String>("Razon_Social_Prov");
+                r.Habilitado = dr.IsNull("Habilitado") ? false : dr.Field<Boolean>("Habilitado");
                 newList.Add(r);
             }
             return newList;
